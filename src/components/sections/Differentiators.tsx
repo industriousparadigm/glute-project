@@ -8,7 +8,7 @@ type DifferentiatorKey = 'trainer_guided' | 'nutrition' | 'access_24h' | 'commun
 
 interface DifferentiatorItem {
   key: DifferentiatorKey
-  icon: React.ComponentType<any>
+  icon: React.ComponentType<{ size?: number; className?: string; 'aria-hidden'?: boolean }>
 }
 
 export function Differentiators() {
