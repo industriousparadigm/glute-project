@@ -35,13 +35,8 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <Link href="#contact" className="inline-block">
-              <Button size="lg" variant="primary">
+              <Button size="lg">
                 {t('hero.cta')}
-              </Button>
-            </Link>
-            <Link href="#facility" className="inline-block">
-              <Button size="lg" variant="outline">
-                {t('hero.cta_secondary')}
               </Button>
             </Link>
           </motion.div>

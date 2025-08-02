@@ -46,7 +46,7 @@ export function Pricing() {
             <motion.div
               key={option.key}
               className={`bg-white p-8 border-2 ${
-                option.highlighted ? 'border-primary' : 'border-neutral'
+                option.highlighted ? 'border-[#FF5E1B]' : 'border-neutral'
               } transform transition-transform duration-300 hover:scale-105`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -68,10 +68,7 @@ export function Pricing() {
                   {t(`pricing.${option.key}.description`)}
                 </p>
                 <Link href="#contact" className="block">
-                  <Button
-                    variant={option.highlighted ? 'primary' : 'outline'}
-                    fullWidth
-                  >
+                  <Button fullWidth>
                     {t('hero.cta')}
                   </Button>
                 </Link>

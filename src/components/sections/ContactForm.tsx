@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { useTranslations } from '@/lib/i18n/hooks'
 import { motion } from 'framer-motion'
+import { Button } from '@/components/ui'
 
 interface FormData {
   name: string
@@ -190,13 +191,14 @@ export function ContactForm() {
                 />
               </div>
 
-              <button
+              <Button
                 type="submit"
                 disabled={status.loading}
-                className="w-full py-4 bg-orange-500 text-white font-bold rounded-lg hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                fullWidth={true}
+                size="lg"
               >
                 {status.loading ? t('contact.form.submitting') : t('contact.form.submit')}
-              </button>
+              </Button>
 
               {status.success && (
                 <p className="text-green-600 text-center font-semibold">
@@ -227,16 +229,20 @@ export function ContactForm() {
                     href="https://wa.me/351912345678"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-full py-4 bg-green-500 text-white font-bold text-center rounded-lg hover:bg-green-600 transition-colors"
+                    className="block"
                   >
-                    {t('contact.whatsapp')}
+                    <Button fullWidth={true} size="lg">
+                      📱 {t('contact.whatsapp')}
+                    </Button>
                   </a>
 
                   <a
                     href="tel:+351912345678"
-                    className="block w-full py-4 bg-blue-500 text-white font-bold text-center rounded-lg hover:bg-blue-600 transition-colors"
+                    className="block"
                   >
-                    {t('contact.call')}
+                    <Button fullWidth={true} size="lg">
+                      📞 {t('contact.call')}
+                    </Button>
                   </a>
                 </div>
               </div>

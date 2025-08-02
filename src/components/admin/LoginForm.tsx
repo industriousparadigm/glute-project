@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { Button } from '@/components/ui'
 
 export function LoginForm() {
   const router = useRouter()
@@ -102,13 +103,14 @@ export function LoginForm() {
         </div>
       )}
       
-      <button
+      <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50"
+        fullWidth={true}
+        size="lg"
       >
         {isSubmitting ? 'Signing in...' : 'Sign in'}
-      </button>
+      </Button>
     </form>
   )
 }
