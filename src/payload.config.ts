@@ -39,9 +39,6 @@ export default buildConfig({
     defaultLocale: 'pt',
     fallback: true,
   },
-  i18n: {
-    supportedLanguages: { pt: { label: 'Português' }, en: { label: 'English' } },
-  },
   typescript: {
     outputFile: 'src/payload-types.ts',
   },

@@ -6,8 +6,6 @@ export const Media: CollectionConfig = {
     read: () => true,
   },
   upload: {
-    staticURL: '/media',
-    staticDir: 'media',
     mimeTypes: ['image/*', 'video/*'],
     imageSizes: [
       {

@@ -1,4 +1,4 @@
-import { getTranslations, getCurrentLocale, Locale } from '../i18n'
+import { getTranslations, getCurrentLocale } from '../i18n'
 
 describe('i18n', () => {
   describe('getTranslations', () => {

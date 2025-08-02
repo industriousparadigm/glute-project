@@ -1,36 +1,200 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Glute Project 🏋️‍♂️
 
-## Getting Started
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/industriousparadigm/glute-project)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-15.4.5-black)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 
-First, run the development server:
+A modern, bilingual fitness studio website for Glute Project in Matosinhos, Portugal. Built with Next.js 15, TypeScript, and Tailwind CSS, featuring a headless CMS and comprehensive testing.
+
+## 🎯 Project Overview
+
+Glute Project is a premium private fitness studio offering 24/7 access, professional guidance, and a supportive community. This website serves as the primary digital presence, driving conversions through strategic CTAs and showcasing the unique value proposition.
+
+### Key Features
+
+- **Bilingual Support**: Full PT/EN localization with automatic routing
+- **Headless CMS**: Payload CMS v3 with PostgreSQL for content management
+- **Performance First**: Optimized for Core Web Vitals (LCP < 2.5s, CLS < 0.1)
+- **Test-Driven Development**: 100% test coverage for critical components
+- **Responsive Design**: Mobile-first approach with Tailwind CSS v4
+- **Brand Identity**: Bold black & orange design system
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 20.18.0+
+- npm 11.0.0+
+- PostgreSQL database (Neon recommended)
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clone the repository
+git clone git@github.com:industriousparadigm/glute-project.git
+cd glute-project
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env.local
+# Edit .env.local with your database credentials
+
+# Run database migrations
+npm run payload migrate
+
+# Seed initial data (optional)
+npm run seed
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Start development server
+npm run dev
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Run tests in watch mode
+npm run test
 
-## Learn More
+# Run all tests once
+npm run test:ci
 
-To learn more about Next.js, take a look at the following resources:
+# Build for production
+npm run build
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Start production server
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📁 Project Structure
 
-## Deploy on Vercel
+```
+glute-project/
+├── src/
+│   ├── app/                    # Next.js app directory
+│   │   ├── [locale]/          # Localized routes
+│   │   ├── (payload)/         # CMS admin routes
+│   │   └── api/               # API routes
+│   ├── components/            # React components
+│   │   ├── sections/          # Page sections
+│   │   └── ui/                # Reusable UI components
+│   ├── lib/                   # Utilities and configs
+│   │   ├── i18n/              # Internationalization
+│   │   └── theme/             # Design system
+│   ├── cms/                   # Payload CMS collections
+│   └── payload.config.ts      # CMS configuration
+├── public/                    # Static assets
+├── scripts/                   # Build and setup scripts
+└── tests/                     # Test utilities
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎨 Design System
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Colors
+
+- **Primary**: `#FF5E1B` (Safety Orange) - Energy & action
+- **Ink**: `#0A0A0A` (Near-black) - Premium feel
+- **Accent**: `#D4FF41` (Electric Lime) - Highlights
+- **White**: `#FFFFFF` - Clean backgrounds
+- **Neutral**: `#F4F4F4` - Subtle surfaces
+
+### Typography
+
+- **Display**: Barlow Condensed - Bold, uppercase headers
+- **Body**: Inter - Clean, readable content
+
+## 🌐 Internationalization
+
+The site supports Portuguese (default) and English:
+
+- Routes automatically redirect to locale prefix: `/pt/*` or `/en/*`
+- Content managed through CMS with field-level localization
+- Language switcher available in footer
+
+## 📊 CMS Access
+
+Access the Payload CMS admin panel at `/admin`
+
+Default credentials (development):
+- Email: admin@gluteproject.com
+- Password: admin123
+
+### Available Collections
+
+- **Posts**: Blog articles and news
+- **Testimonials**: Member reviews and stories
+- **Prices**: Pricing plans and offers
+- **Media**: Image and video assets
+- **Site Settings**: Global configuration
+
+## 🧪 Testing
+
+We follow Test-Driven Development (TDD) practices:
+
+```bash
+# Run specific test file
+npm run test:ci src/components/sections/__tests__/Hero.test.tsx
+
+# Run tests with coverage
+npm run test -- --coverage
+
+# Run linting
+npm run lint
+```
+
+## 🚢 Deployment
+
+The project auto-deploys to Vercel on push to main branch.
+
+### Environment Variables
+
+Required for production:
+```env
+DATABASE_URL=your_postgres_connection_string
+PAYLOAD_SECRET=your_secret_key
+```
+
+### Build Command
+
+```bash
+npm run build
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Write tests for your changes
+4. Commit your changes (`git commit -m 'feat: Add some AmazingFeature'`)
+5. Push to the branch (`git push origin feature/AmazingFeature`)
+6. Open a Pull Request
+
+### Commit Convention
+
+We follow conventional commits:
+- `feat:` New features
+- `fix:` Bug fixes
+- `docs:` Documentation changes
+- `test:` Test additions/changes
+- `refactor:` Code refactoring
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Built with [Next.js](https://nextjs.org/)
+- CMS powered by [Payload](https://payloadcms.com/)
+- Database hosted on [Neon](https://neon.tech/)
+- Deployed on [Vercel](https://vercel.com/)
+
+## 📞 Contact
+
+For project inquiries, contact the development team at [GitHub Issues](https://github.com/industriousparadigm/glute-project/issues).
+
+---
+
+Built with 💪 for Glute Project - "O TEU TREINO O TEU TEMPO"

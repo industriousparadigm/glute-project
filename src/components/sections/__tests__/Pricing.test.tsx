@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import { Pricing } from '../Pricing'
 
 // Mock next/navigation
@@ -9,9 +8,11 @@ jest.mock('next/navigation', () => ({
 
 // Mock next/link
 jest.mock('next/link', () => {
-  return ({ children, href, ...props }: any) => {
+  const MockedLink = ({ children, href, ...props }: { children: React.ReactNode; href: string; [key: string]: unknown }) => {
     return <a href={href} {...props}>{children}</a>
   }
+  MockedLink.displayName = 'MockedLink'
+  return MockedLink
 })
 
 // Mock translations hook

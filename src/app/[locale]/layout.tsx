@@ -15,10 +15,11 @@ const barlowCondensed = Barlow_Condensed({
 });
 
 export async function generateMetadata({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
+  const { locale } = await params;
   const isEnglish = locale === 'en';
   
   return {
@@ -41,13 +42,16 @@ export async function generateMetadata({
   };
 }
 
-export default function LocaleLayout({
-  children,
-  params: { locale },
-}: Readonly<{
+type LayoutProps = {
   children: React.ReactNode;
-  params: { locale: string };
-}>) {
+  params: Promise<{ locale: string }>;
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: LayoutProps) {
+  const { locale } = await params;
   return (
     <html lang={locale}>
       <body
