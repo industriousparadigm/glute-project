@@ -79,6 +79,8 @@ export function FacilityGallery() {
                 width={600}
                 height={400}
                 className="w-full h-full object-cover"
+                loading={index < 3 ? "eager" : "lazy"}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
               <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300" />
             </div>

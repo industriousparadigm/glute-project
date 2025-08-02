@@ -138,7 +138,7 @@ export function ContactForm() {
                   onChange={handleChange}
                   required
                   disabled={status.loading}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50"
+                  className="w-full h-12 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50"
                 />
               </div>
 
@@ -154,7 +154,7 @@ export function ContactForm() {
                   onChange={handleChange}
                   required
                   disabled={status.loading}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50"
+                  className="w-full h-12 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50"
                 />
               </div>
 
@@ -171,7 +171,7 @@ export function ContactForm() {
                   required
                   disabled={status.loading}
                   placeholder="+351"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50"
+                  className="w-full h-12 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50"
                 />
               </div>
 
@@ -186,7 +186,7 @@ export function ContactForm() {
                   onChange={handleChange}
                   rows={4}
                   disabled={status.loading}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50 resize-none"
+                  className="w-full min-h-[120px] px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50 resize-none"
                 />
               </div>
 

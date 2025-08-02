@@ -123,8 +123,26 @@ export function TestimonialCarousel() {
   if (loading) {
     return (
       <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-gray-600">{t('community.loading')}</p>
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="h-12 bg-gray-200 rounded animate-pulse max-w-lg mx-auto mb-4"></div>
+            <div className="h-6 bg-gray-200 rounded animate-pulse max-w-md mx-auto"></div>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-lg shadow-lg p-8 md:p-12">
+              <div className="flex justify-center mb-6">
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <div key={i} className="w-5 h-5 bg-gray-200 rounded animate-pulse"></div>
+                  ))}
+                </div>
+              </div>
+              <div className="text-center mb-8">
+                <div className="h-20 bg-gray-200 rounded animate-pulse max-w-2xl mx-auto mb-4"></div>
+                <div className="h-6 bg-gray-200 rounded animate-pulse max-w-xs mx-auto"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     )
