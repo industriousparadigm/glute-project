@@ -51,7 +51,12 @@
   },
   "community": {
     "title": "COMMUNITY STORIES",
-    "subtitle": "What our members say"
+    "subtitle": "What our members say",
+    "loading": "Loading testimonials...",
+    "error": "Error loading testimonials",
+    "empty": "No testimonials yet",
+    "previousTestimonial": "Previous testimonial",
+    "nextTestimonial": "Next testimonial"
   },
   "pricing": {
     "title": "PRICING & TRIAL OFFER",

@@ -1,4 +1,4 @@
-import { Hero, Differentiators, Pricing, FacilityGallery } from '@/components/sections'
+import { Hero, Differentiators, Pricing, FacilityGallery, TestimonialCarousel } from '@/components/sections'
 
 export default function HomePage() {
   return (
@@ -6,6 +6,7 @@ export default function HomePage() {
       <Hero />
       <Differentiators />
       <FacilityGallery />
+      <TestimonialCarousel />
       <Pricing />
       {/* Other sections will be added here */}
     </main>

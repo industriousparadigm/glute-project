@@ -51,7 +51,12 @@
   },
   "community": {
     "title": "HISTÓRIAS DA COMUNIDADE",
-    "subtitle": "O que dizem os nossos membros"
+    "subtitle": "O que dizem os nossos membros",
+    "loading": "A carregar testemunhos...",
+    "error": "Erro ao carregar testemunhos",
+    "empty": "Ainda não temos testemunhos",
+    "previousTestimonial": "Testemunho anterior",
+    "nextTestimonial": "Próximo testemunho"
   },
   "pricing": {
     "title": "PREÇOS & OFERTA DE EXPERIMENTAÇÃO",
