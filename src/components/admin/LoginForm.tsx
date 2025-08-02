@@ -72,7 +72,7 @@ export function LoginForm() {
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
+          className="mt-1 block w-full px-3 py-2 bg-white text-gray-900 border border-gray-300 rounded-md shadow-sm focus:border-[#FF5E1B] focus:ring-1 focus:ring-[#FF5E1B] sm:text-sm"
           disabled={isSubmitting}
         />
         {errors.email && (
@@ -89,7 +89,7 @@ export function LoginForm() {
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
+          className="mt-1 block w-full px-3 py-2 bg-white text-gray-900 border border-gray-300 rounded-md shadow-sm focus:border-[#FF5E1B] focus:ring-1 focus:ring-[#FF5E1B] sm:text-sm"
           disabled={isSubmitting}
         />
         {errors.password && (

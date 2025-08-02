@@ -6,12 +6,12 @@ import { useTranslations } from '@/lib/i18n/hooks'
 import { motion } from 'framer-motion'
 
 const galleryImages = [
-  { src: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&crop=center', altKey: 'facility.image1.alt', height: 'h-80' },
-  { src: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=500&fit=crop&crop=center', altKey: 'facility.image2.alt', height: 'h-96' },
-  { src: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=350&fit=crop&crop=center', altKey: 'facility.image3.alt', height: 'h-72' },
-  { src: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&h=450&fit=crop&crop=center', altKey: 'facility.image4.alt', height: 'h-88' },
-  { src: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=400&fit=crop&crop=center', altKey: 'facility.image5.alt', height: 'h-80' },
-  { src: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=600&h=500&fit=crop&crop=center', altKey: 'facility.image6.alt', height: 'h-96' },
+  { src: '/images/Screenshot 2025-08-02 at 16.01.51.png', altKey: 'facility.image1.alt', gridSpan: 'md:col-span-2', height: 'h-64 md:h-80' },
+  { src: '/images/Screenshot 2025-08-02 at 16.06.33.png', altKey: 'facility.image2.alt', gridSpan: 'md:col-span-1', height: 'h-48 md:h-64' },
+  { src: '/images/Screenshot 2025-08-02 at 16.07.01.png', altKey: 'facility.image3.alt', gridSpan: 'md:col-span-1', height: 'h-56 md:h-72' },
+  { src: '/images/Screenshot 2025-08-02 at 16.18.12.png', altKey: 'facility.image4.alt', gridSpan: 'md:col-span-1', height: 'h-52 md:h-60' },
+  { src: '/images/Screenshot 2025-08-02 at 16.19.05.png', altKey: 'facility.image5.alt', gridSpan: 'md:col-span-2', height: 'h-48 md:h-64' },
+  { src: '/images/Screenshot 2025-08-02 at 16.19.17.png', altKey: 'facility.image6.alt', gridSpan: 'md:col-span-1', height: 'h-60 md:h-76' },
 ]
 
 export function FacilityGallery() {
@@ -75,12 +75,12 @@ export function FacilityGallery() {
           <p className="text-[#0A0A0A]/80 text-xl font-body">{t('facility.subtitle')}</p>
         </motion.div>
 
-        {/* Masonry Grid Layout - 3 columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-min">
+        {/* Mosaic Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-max">
           {galleryImages.map((image, index) => (
             <motion.button
               key={index}
-              className={`group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl block w-full ${image.height}`}
+              className={`group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl block w-full ${image.gridSpan} ${image.height}`}
               onClick={() => openModal(index)}
               aria-label={`${t('facility.viewAll')} - ${t(image.altKey)}`}
               initial={{ opacity: 0, y: 30 }}
@@ -91,11 +91,11 @@ export function FacilityGallery() {
               <Image
                 src={image.src}
                 alt={t(image.altKey)}
-                width={600}
-                height={400}
+                width={800}
+                height={600}
                 className="w-full h-full object-cover"
                 loading={index < 3 ? "eager" : "lazy"}
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
               <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/20 transition-all duration-300 pointer-events-none" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

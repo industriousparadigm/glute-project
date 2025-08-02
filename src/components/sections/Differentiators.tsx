@@ -62,7 +62,7 @@ export function Differentiators() {
                   <IconComponent 
                     size={64} 
                     className="text-[#FF5E1B] mx-auto"
-                    aria-hidden="true"
+                    aria-hidden={true}
                   />
                 </div>
                 <h3 className="text-[#0A0A0A] font-display text-2xl font-bold uppercase mb-4">

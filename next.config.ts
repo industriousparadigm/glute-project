@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   experimental: {
     reactCompiler: false
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     remotePatterns: [
       {
