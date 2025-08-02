@@ -1,11 +1,7 @@
-import { getAuthToken, checkAuth } from '../middleware'
-import { verifyToken } from '../auth'
-
-jest.mock('../auth')
+import { getAuthToken, isAuthenticated } from '../middleware'
+import { NextRequest } from 'next/server'
 
 describe('Auth Middleware', () => {
-  const mockVerifyToken = verifyToken as jest.MockedFunction<typeof verifyToken>
-  
   beforeEach(() => {
     jest.clearAllMocks()
   })
@@ -32,30 +28,42 @@ describe('Auth Middleware', () => {
     })
   })
   
-  describe('checkAuth', () => {
-    it('should return true for valid token', () => {
-      mockVerifyToken.mockReturnValue({ id: 1, email: 'admin@gluteproject.com' })
+  describe('isAuthenticated', () => {
+    it('should return true when auth token exists', () => {
+      const req = {
+        headers: {
+          get: jest.fn().mockReturnValue('auth-token=valid.jwt.token')
+        }
+      } as unknown as NextRequest
       
-      const result = checkAuth('valid.jwt.token')
+      const result = isAuthenticated(req)
       
       expect(result).toBe(true)
-      expect(mockVerifyToken).toHaveBeenCalledWith('valid.jwt.token')
+      expect(req.headers.get).toHaveBeenCalledWith('cookie')
     })
     
-    it('should return false for invalid token', () => {
-      mockVerifyToken.mockReturnValue(null)
+    it('should return false when no auth token', () => {
+      const req = {
+        headers: {
+          get: jest.fn().mockReturnValue('other-cookie=value')
+        }
+      } as unknown as NextRequest
       
-      const result = checkAuth('invalid.jwt.token')
+      const result = isAuthenticated(req)
       
       expect(result).toBe(false)
-      expect(mockVerifyToken).toHaveBeenCalledWith('invalid.jwt.token')
     })
     
-    it('should return false for null token', () => {
-      const result = checkAuth(null)
+    it('should return false when no cookies', () => {
+      const req = {
+        headers: {
+          get: jest.fn().mockReturnValue(null)
+        }
+      } as unknown as NextRequest
+      
+      const result = isAuthenticated(req)
       
       expect(result).toBe(false)
-      expect(mockVerifyToken).not.toHaveBeenCalled()
     })
   })
 })

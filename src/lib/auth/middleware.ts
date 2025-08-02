@@ -1,5 +1,4 @@
 import { NextRequest } from 'next/server'
-import { verifyToken } from './auth'
 
 export function getAuthToken(cookieString: string): string | null {
   if (!cookieString) {
@@ -18,17 +17,11 @@ export function getAuthToken(cookieString: string): string | null {
   return cookies['auth-token'] || null
 }
 
-export function checkAuth(token: string | null): boolean {
-  if (!token) {
-    return false
-  }
-  
-  const payload = verifyToken(token)
-  return payload !== null
-}
-
 export function isAuthenticated(req: NextRequest): boolean {
   const cookieHeader = req.headers.get('cookie')
   const token = getAuthToken(cookieHeader || '')
-  return checkAuth(token)
+  
+  // In middleware, we just check if token exists
+  // Actual verification happens in the API routes
+  return !!token
 }
