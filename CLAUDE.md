@@ -132,14 +132,15 @@ Writing code before tests is a critical failure. Always TDD!
 - ✅ Database client with connection pooling
 - ✅ Content API with database integration
 
+- ✅ CRUD API routes for content management
+- ✅ Admin UI for managing prices, testimonials, settings
+- ✅ Facility gallery section with modal viewer
+- ✅ Testimonials carousel with auto-rotation
+
 ### In Progress
-- 🔄 CRUD API routes for content management
-- 🔄 Admin UI for managing prices, testimonials, settings
+- 🔄 Contact form with RegyBox integration
 
 ### Pending
-- 🔲 Facility gallery section
-- 🔲 Testimonials carousel
-- 🔲 Contact form with RegyBox integration
 - 🔲 Location map section
 - 🔲 Footer with language switcher
 - 🔲 Framer Motion animations

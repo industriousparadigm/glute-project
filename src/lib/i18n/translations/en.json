@@ -84,7 +84,9 @@
       "phone": "Phone",
       "message": "Message (optional)",
       "submit": "SEND",
-      "submitting": "Sending..."
+      "submitting": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Error sending message. Please try again."
     },
     "whatsapp": "CONTACT VIA WHATSAPP",
     "call": "CALL NOW"

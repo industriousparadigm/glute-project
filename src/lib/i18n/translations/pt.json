@@ -84,7 +84,9 @@
       "phone": "Telefone",
       "message": "Mensagem (opcional)",
       "submit": "ENVIAR",
-      "submitting": "A enviar..."
+      "submitting": "A enviar...",
+      "success": "Mensagem enviada com sucesso!",
+      "error": "Erro ao enviar mensagem. Tente novamente."
     },
     "whatsapp": "CONTACTAR VIA WHATSAPP",
     "call": "LIGAR AGORA"
