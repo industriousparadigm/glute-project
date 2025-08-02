@@ -61,22 +61,51 @@ src/
 - Use Tailwind classes: `p-4`, `m-8`, etc.
 - Sections: `py-20` (consistent vertical rhythm)
 
-## Testing Requirements
+## Testing Requirements (CRITICAL - TDD MANDATORY)
 
-MUST write tests BEFORE implementation:
-1. Create `__tests__/ComponentName.test.tsx`
-2. Mock external dependencies (next/navigation, translations)
-3. Test user interactions and visual states
-4. Ensure tests pass before committing
+### ALWAYS FOLLOW TDD - NO EXCEPTIONS!
 
-Example test structure:
+1. **RED**: Write failing tests FIRST
+2. **GREEN**: Write minimal code to pass tests
+3. **REFACTOR**: Clean up code while keeping tests green
+
+### Test First Process:
+1. Create test file: `__tests__/ComponentName.test.tsx`
+2. Write ALL test cases before any implementation
+3. Run tests - they MUST fail (RED)
+4. Implement code to pass tests (GREEN)
+5. Refactor if needed (tests still pass)
+
+### Example TDD workflow:
 ```typescript
-describe('ComponentName', () => {
-  it('should render with correct content', () => {
-    // Test implementation
+// 1. FIRST: Write the test
+describe('PriceCard', () => {
+  it('should display price information', () => {
+    render(<PriceCard price={mockPrice} />)
+    expect(screen.getByText('€39.90')).toBeInTheDocument()
   })
 })
+
+// 2. Run test - it fails (component doesn't exist)
+
+// 3. THEN: Create minimal implementation to pass
+export function PriceCard({ price }) {
+  return <div>{price}</div>
+}
+
+// 4. Test passes - refactor if needed
 ```
+
+### Testing Rules:
+- NO implementation without failing test first
+- Mock all external dependencies
+- Test user behavior, not implementation details
+- Each component MUST have corresponding test file
+- API routes need integration tests
+- Database operations need unit tests
+
+### VIOLATION = UNACCEPTABLE
+Writing code before tests is a critical failure. Always TDD!
 
 ## Development Workflow
 
