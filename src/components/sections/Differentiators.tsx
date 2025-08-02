@@ -1,4 +1,7 @@
+'use client'
+
 import { useTranslations } from '@/lib/i18n/hooks'
+import { motion } from 'framer-motion'
 
 type DifferentiatorKey = 'trainer_guided' | 'nutrition' | 'access_24h' | 'community'
 
@@ -32,13 +35,26 @@ export function Differentiators() {
   return (
     <section id="differentiators" className="py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-primary font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase text-center mb-16">
+        <motion.h2 
+          className="text-primary font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           {t('differentiators.title')}
-        </h2>
+        </motion.h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {differentiators.map((item) => (
-            <div key={item.key} className="text-center group">
+          {differentiators.map((item, index) => (
+            <motion.div 
+              key={item.key} 
+              className="text-center group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
               <div className="mb-6 transform transition-transform duration-300 group-hover:scale-110">
                 <span role="img" aria-hidden="true" className="text-6xl">
                   {item.icon}
@@ -50,7 +66,7 @@ export function Differentiators() {
               <p className="text-ink/80 font-body text-base">
                 {t(`differentiators.${item.key}.description`)}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

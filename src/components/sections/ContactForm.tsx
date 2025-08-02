@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import { useTranslations } from '@/lib/i18n/hooks'
+import { motion } from 'framer-motion'
 
 interface FormData {
   name: string
@@ -105,11 +106,26 @@ export function ContactForm() {
     <section className="py-20 bg-orange-50">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">{t('contact.title')}</h2>
+          <motion.h2 
+            className="text-4xl font-bold text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {t('contact.title')}
+          </motion.h2>
           
           <div className="grid md:grid-cols-2 gap-12">
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <motion.form 
+              onSubmit={handleSubmit} 
+              className="space-y-6"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               <div>
                 <label htmlFor="name" className="block text-sm font-semibold mb-2">
                   {t('contact.form.name')} <span className="text-red-500">*</span>
@@ -193,10 +209,16 @@ export function ContactForm() {
                   {t('contact.form.error')}
                 </p>
               )}
-            </form>
+            </motion.form>
 
             {/* Contact options */}
-            <div className="space-y-6">
+            <motion.div 
+              className="space-y-6"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               <div className="bg-white p-8 rounded-lg shadow-lg">
                 <h3 className="text-2xl font-bold mb-6">Outras formas de contacto</h3>
                 
@@ -228,7 +250,7 @@ export function ContactForm() {
                   * O ginásio está aberto 24/7 para membros
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

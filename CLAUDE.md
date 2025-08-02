@@ -136,13 +136,14 @@ Writing code before tests is a critical failure. Always TDD!
 - ✅ Admin UI for managing prices, testimonials, settings
 - ✅ Facility gallery section with modal viewer
 - ✅ Testimonials carousel with auto-rotation
+- ✅ Contact form with RegyBox integration
+- ✅ Location map section with Google Maps embed
+- ✅ Footer with language switcher
 
 ### In Progress
-- 🔄 Contact form with RegyBox integration
+- 🔄 None
 
 ### Pending
-- 🔲 Location map section
-- 🔲 Footer with language switcher
 - 🔲 Framer Motion animations
 - 🔲 Vercel Analytics
 - 🔲 Performance optimization
