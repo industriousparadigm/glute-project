@@ -33,10 +33,6 @@ export async function generateMetadata({
       ? "Train with 24/7 professional guidance in a private studio that becomes your community. Private fitness studio in Matosinhos."
       : "Treina com acompanhamento profissional 24/7 num estúdio privado que se torna a tua comunidade. Private fitness studio in Matosinhos.",
     keywords: ["gym", "fitness", "personal training", "Matosinhos", "Portugal", "ginásio", "treino"],
-    icons: {
-      icon: '/favicon.svg',
-      apple: '/icon.svg',
-    },
     openGraph: {
       title: "Glute Project - Private Fitness Studio",
       description: isEnglish
