@@ -1,0 +1,88 @@
+{
+  "hero": {
+    "title": "YOUR TRAINING YOUR TIME",
+    "subtitle": "Train with 24/7 professional guidance",
+    "cta": "SCHEDULE A VISIT",
+    "cta_secondary": "EXPLORE THE SPACE"
+  },
+  "differentiators": {
+    "title": "WHAT MAKES US DIFFERENT",
+    "trainer_guided": {
+      "title": "Professional Guidance",
+      "description": "Personalized workouts with certified personal trainers"
+    },
+    "nutrition": {
+      "title": "Nutrition & Physiotherapy",
+      "description": "Integrated nutritional and physiotherapy support in your plan"
+    },
+    "access_24h": {
+      "title": "24 Hour Access",
+      "description": "Train whenever you want, the gym is always open for you"
+    },
+    "community": {
+      "title": "Community",
+      "description": "Be part of a community that supports and motivates you"
+    }
+  },
+  "facility": {
+    "title": "FACILITY & EQUIPMENT",
+    "subtitle": "500m² equipped with over 50 professional machines",
+    "gallery_alt": "Glute Project facilities"
+  },
+  "community": {
+    "title": "COMMUNITY STORIES",
+    "subtitle": "What our members say"
+  },
+  "pricing": {
+    "title": "PRICING & TRIAL OFFER",
+    "trial": {
+      "title": "FIRST SESSION",
+      "price": "FREE",
+      "description": "Try without commitment"
+    },
+    "monthly": {
+      "title": "MONTHLY",
+      "price": "From €39.90",
+      "description": "Unlimited 24/7 access"
+    },
+    "personal": {
+      "title": "PERSONAL TRAINING",
+      "price": "Upon request",
+      "description": "Personalized plans"
+    }
+  },
+  "contact": {
+    "title": "SCHEDULE A VISIT",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message (optional)",
+      "submit": "SEND",
+      "submitting": "Sending..."
+    },
+    "whatsapp": "CONTACT VIA WHATSAPP",
+    "call": "CALL NOW"
+  },
+  "location": {
+    "title": "LOCATION",
+    "address": "Example Street, 123",
+    "city": "4450-001 Matosinhos",
+    "parking": "Free parking available"
+  },
+  "footer": {
+    "social": "FOLLOW US",
+    "hours": "HOURS",
+    "hours_value": "Open 24/7",
+    "rights": "© 2025 Glute Project. All rights reserved.",
+    "language": "Language"
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "close": "Close",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success!",
+    "required": "Required"
+  }
+}

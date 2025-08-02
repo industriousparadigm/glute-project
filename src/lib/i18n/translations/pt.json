@@ -1,0 +1,88 @@
+{
+  "hero": {
+    "title": "O TEU TREINO O TEU TEMPO",
+    "subtitle": "Treina com acompanhamento profissional 24/7",
+    "cta": "AGENDAR VISITA",
+    "cta_secondary": "CONHECER O ESPAÇO"
+  },
+  "differentiators": {
+    "title": "O QUE NOS DIFERENCIA",
+    "trainer_guided": {
+      "title": "Acompanhamento Profissional",
+      "description": "Treinos personalizados com acompanhamento de personal trainers certificados"
+    },
+    "nutrition": {
+      "title": "Nutrição & Fisioterapia",
+      "description": "Apoio nutricional e fisioterapêutico integrado no teu plano"
+    },
+    "access_24h": {
+      "title": "Acesso 24 Horas",
+      "description": "Treina quando quiseres, o ginásio está sempre aberto para ti"
+    },
+    "community": {
+      "title": "Comunidade",
+      "description": "Faz parte de uma comunidade que te apoia e motiva"
+    }
+  },
+  "facility": {
+    "title": "INSTALAÇÕES & EQUIPAMENTO",
+    "subtitle": "500m² equipados com mais de 50 máquinas profissionais",
+    "gallery_alt": "Instalações do Glute Project"
+  },
+  "community": {
+    "title": "HISTÓRIAS DA COMUNIDADE",
+    "subtitle": "O que dizem os nossos membros"
+  },
+  "pricing": {
+    "title": "PREÇOS & OFERTA DE EXPERIMENTAÇÃO",
+    "trial": {
+      "title": "PRIMEIRA SESSÃO",
+      "price": "GRÁTIS",
+      "description": "Experimenta sem compromisso"
+    },
+    "monthly": {
+      "title": "MENSALIDADE",
+      "price": "A partir de €39,90",
+      "description": "Acesso ilimitado 24/7"
+    },
+    "personal": {
+      "title": "PERSONAL TRAINING",
+      "price": "Sob consulta",
+      "description": "Planos personalizados"
+    }
+  },
+  "contact": {
+    "title": "AGENDAR VISITA",
+    "form": {
+      "name": "Nome",
+      "email": "Email",
+      "phone": "Telefone",
+      "message": "Mensagem (opcional)",
+      "submit": "ENVIAR",
+      "submitting": "A enviar..."
+    },
+    "whatsapp": "CONTACTAR VIA WHATSAPP",
+    "call": "LIGAR AGORA"
+  },
+  "location": {
+    "title": "LOCALIZAÇÃO",
+    "address": "Rua Example, 123",
+    "city": "4450-001 Matosinhos",
+    "parking": "Estacionamento gratuito disponível"
+  },
+  "footer": {
+    "social": "SEGUE-NOS",
+    "hours": "HORÁRIO",
+    "hours_value": "Aberto 24/7",
+    "rights": "© 2025 Glute Project. Todos os direitos reservados.",
+    "language": "Idioma"
+  },
+  "common": {
+    "learnMore": "Saber mais",
+    "close": "Fechar",
+    "loading": "A carregar...",
+    "error": "Ocorreu um erro",
+    "success": "Sucesso!",
+    "required": "Obrigatório"
+  }
+}
