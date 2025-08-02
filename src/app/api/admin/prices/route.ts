@@ -83,8 +83,8 @@ export async function PUT(request: NextRequest) {
     const body = await request.json()
     
     // Build dynamic update query
-    const updateFields = []
-    const values = []
+    const updateFields: string[] = []
+    const values: unknown[] = []
     let paramCount = 1
 
     Object.entries(body).forEach(([key, value]) => {

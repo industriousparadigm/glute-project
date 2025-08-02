@@ -85,7 +85,7 @@ describe('Auth Functions', () => {
       const user = { id: 1, email: 'admin@gluteproject.com' }
       const mockToken = 'mock.jwt.token'
       
-      mockSign.mockReturnValue(mockToken as any)
+      mockSign.mockReturnValue(mockToken)
       
       const token = generateToken(user)
       
@@ -102,7 +102,7 @@ describe('Auth Functions', () => {
     it('should verify and decode valid token', () => {
       const mockPayload = { id: 1, email: 'admin@gluteproject.com' }
       
-      mockVerify.mockReturnValue(mockPayload as any)
+      mockVerify.mockReturnValue(mockPayload)
       
       const payload = verifyToken('valid.token')
       

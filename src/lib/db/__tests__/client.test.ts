@@ -1,4 +1,4 @@
-import { Pool } from 'pg'
+// import { Pool } from 'pg' - unused, mocked below
 
 // Mock pg module
 jest.mock('pg', () => {
@@ -13,26 +13,28 @@ jest.mock('pg', () => {
 
 describe('Database Client', () => {
   let mockQuery: jest.Mock
-  let mockEnd: jest.Mock
+  // let mockEnd: jest.Mock - unused
   let MockPool: jest.Mock
-  let query: any
-  let getPool: any
+  let query: (text: string, params?: unknown[]) => Promise<{ rows: unknown[], rowCount: number | null }>
+  let getPool: () => { query: jest.Mock, end: jest.Mock }
   
   beforeEach(() => {
     jest.clearAllMocks()
     jest.resetModules()
     
     // Get fresh mocks
-    const pgModule = require('pg')
-    MockPool = pgModule.Pool
-    const poolInstance = new MockPool()
-    mockQuery = poolInstance.query
-    mockEnd = poolInstance.end
-    
-    // Import after mocks are set up
-    const client = require('../client')
-    query = client.query
-    getPool = client.getPool
+    jest.isolateModules(() => {
+      const pgModule = jest.requireMock('pg')
+      MockPool = pgModule.Pool
+      const poolInstance = new MockPool()
+      mockQuery = poolInstance.query
+      // mockEnd = poolInstance.end - unused
+      
+      // Import after mocks are set up
+      const client = jest.requireActual('../client')
+      query = client.query
+      getPool = client.getPool
+    })
   })
   
   describe('query', () => {

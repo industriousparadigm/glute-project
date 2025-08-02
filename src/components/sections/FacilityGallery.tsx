@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { useTranslations } from '@/lib/i18n/hooks'
 
@@ -21,11 +21,11 @@ export function FacilityGallery() {
     setSelectedImageIndex(index)
   }
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setSelectedImageIndex(null)
-  }
+  }, [])
 
-  const navigateImage = (direction: 'prev' | 'next') => {
+  const navigateImage = useCallback((direction: 'prev' | 'next') => {
     if (selectedImageIndex === null) return
 
     if (direction === 'next') {
@@ -35,7 +35,7 @@ export function FacilityGallery() {
         selectedImageIndex === 0 ? galleryImages.length - 1 : selectedImageIndex - 1
       )
     }
-  }
+  }, [selectedImageIndex])
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -56,7 +56,7 @@ export function FacilityGallery() {
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [selectedImageIndex])
+  }, [selectedImageIndex, navigateImage, closeModal])
 
   return (
     <section className="py-20 bg-white">

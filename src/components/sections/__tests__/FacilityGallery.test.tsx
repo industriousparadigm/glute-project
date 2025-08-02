@@ -5,7 +5,7 @@ import { FacilityGallery } from '../FacilityGallery'
 // Mock next/image
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: ({ src, alt, onClick, className, ...props }: any) => (
+  default: ({ src, alt, onClick, className, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => (
     <img 
       src={src} 
       alt={alt} 

@@ -1,4 +1,4 @@
-import { Hero, Differentiators, Pricing, FacilityGallery, TestimonialCarousel, ContactForm, Location } from '@/components/sections'
+import { Hero, Differentiators, Pricing, FacilityGallery, TestimonialCarousel, ContactForm, Location, Footer } from '@/components/sections'
 
 export default function HomePage() {
   return (
@@ -10,7 +10,7 @@ export default function HomePage() {
       <Pricing />
       <ContactForm />
       <Location />
-      {/* Footer will be added here */}
+      <Footer />
     </main>
   )
 }

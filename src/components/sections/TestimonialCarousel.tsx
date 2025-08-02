@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { useTranslations } from '@/lib/i18n/hooks'
 
 interface Testimonial {
@@ -41,6 +41,28 @@ export function TestimonialCarousel() {
     }
   }, [testimonials.length, isPaused])
 
+  const fetchTestimonials = async () => {
+    try {
+      const response = await fetch('/api/testimonials')
+      if (!response.ok) throw new Error('Failed to fetch')
+      
+      const data = await response.json()
+      setTestimonials(data.filter((t: Testimonial) => t.highlighted))
+      setLoading(false)
+    } catch {
+      setError(true)
+      setLoading(false)
+    }
+  }
+
+  const navigateNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+  }, [testimonials.length])
+
+  const navigatePrev = useCallback(() => {
+    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))
+  }, [testimonials.length])
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (testimonials.length === 0) return
@@ -57,29 +79,7 @@ export function TestimonialCarousel() {
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [testimonials.length])
-
-  const fetchTestimonials = async () => {
-    try {
-      const response = await fetch('/api/testimonials')
-      if (!response.ok) throw new Error('Failed to fetch')
-      
-      const data = await response.json()
-      setTestimonials(data.filter((t: Testimonial) => t.highlighted))
-      setLoading(false)
-    } catch (err) {
-      setError(true)
-      setLoading(false)
-    }
-  }
-
-  const navigateNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-  }
-
-  const navigatePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))
-  }
+  }, [testimonials.length, navigateNext, navigatePrev])
 
   const goToTestimonial = (index: number) => {
     setCurrentIndex(index)
@@ -177,7 +177,7 @@ export function TestimonialCarousel() {
 
               <blockquote className="text-center mb-8">
                 <p className="text-xl md:text-2xl text-gray-800 italic">
-                  "{locale === 'pt' ? currentTestimonial.text_pt : currentTestimonial.text_en}"
+                  &ldquo;{locale === 'pt' ? currentTestimonial.text_pt : currentTestimonial.text_en}&rdquo;
                 </p>
               </blockquote>
 

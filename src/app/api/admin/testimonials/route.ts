@@ -90,8 +90,8 @@ export async function PUT(request: NextRequest) {
     }
     
     // Build dynamic update query
-    const updateFields = []
-    const values = []
+    const updateFields: string[] = []
+    const values: unknown[] = []
     let paramCount = 1
 
     Object.entries(body).forEach(([key, value]) => {

@@ -106,7 +106,15 @@
     "hours": "HOURS",
     "hours_value": "Open 24/7",
     "rights": "© 2025 Glute Project. All rights reserved.",
-    "language": "Language"
+    "language": "Language",
+    "contact": "CONTACT",
+    "phone": "+351 912 345 678",
+    "email": "info@gluteproject.com",
+    "address": "Example Street, 123",
+    "city": "4450-001 Matosinhos",
+    "links": "USEFUL LINKS",
+    "privacy": "Privacy Policy",
+    "terms": "Terms and Conditions"
   },
   "common": {
     "learnMore": "Learn more",

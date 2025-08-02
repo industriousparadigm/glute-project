@@ -91,7 +91,7 @@ export function ContactForm() {
       setTimeout(() => {
         setStatus(prev => ({ ...prev, success: false }))
       }, 5000)
-    } catch (error) {
+    } catch {
       setStatus({ loading: false, success: false, error: true })
       
       // Reset error message after 5 seconds

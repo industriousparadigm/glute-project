@@ -53,7 +53,7 @@ export function LoginForm() {
       } else {
         setServerError(data.error || 'Something went wrong')
       }
-    } catch (error) {
+    } catch {
       setServerError('Failed to connect to server')
     } finally {
       setIsSubmitting(false)

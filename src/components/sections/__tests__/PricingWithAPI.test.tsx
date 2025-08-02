@@ -71,7 +71,7 @@ describe('PricingWithAPI', () => {
       new Promise(resolve => setTimeout(() => resolve(mockPrices), 100))
     )
     
-    const { container } = render(await PricingWithAPI())
+    render(await PricingWithAPI())
     
     // Since it's a server component, we won't see loading state
     // Just verify it eventually shows content
@@ -83,7 +83,7 @@ describe('PricingWithAPI', () => {
   it('should handle API errors gracefully', async () => {
     ;(contentAPI.getPrices as jest.Mock).mockRejectedValue(new Error('API Error'))
     
-    const { container } = render(await PricingWithAPI())
+    render(await PricingWithAPI())
     
     // Should still render the section structure
     expect(screen.getByText('PREÇOS & OFERTA DE EXPERIMENTAÇÃO')).toBeInTheDocument()

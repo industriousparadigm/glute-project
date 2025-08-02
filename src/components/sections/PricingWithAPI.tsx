@@ -2,8 +2,16 @@ import { getPrices } from '@/lib/content-api'
 import { useTranslations } from '@/lib/i18n/hooks'
 import Link from 'next/link'
 
+interface Price {
+  id: string
+  title: { pt: string; en: string }
+  price: { pt: string; en: string }
+  description: { pt: string; en: string }
+  highlighted: boolean
+}
+
 export async function PricingWithAPI() {
-  let prices = []
+  let prices: Price[] = []
   
   try {
     prices = await getPrices()
@@ -12,14 +20,6 @@ export async function PricingWithAPI() {
   }
 
   return <PricingContent prices={prices} />
-}
-
-interface Price {
-  id: string
-  title: { pt: string; en: string }
-  price: { pt: string; en: string }
-  description: { pt: string; en: string }
-  highlighted: boolean
 }
 
 function PricingContent({ prices }: { prices: Price[] }) {
