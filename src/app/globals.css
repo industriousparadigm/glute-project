@@ -13,6 +13,28 @@
   --foreground: #0a0a0a;
 }
 
+/* Accessibility: Improved focus indicators */
+*:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--color-primary);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 @theme inline {
   /* Custom colors */
   --color-primary: #FF5E1B;

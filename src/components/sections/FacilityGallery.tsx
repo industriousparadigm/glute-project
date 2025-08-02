@@ -68,10 +68,11 @@ export function FacilityGallery() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {galleryImages.map((image, index) => (
-            <div
+            <button
               key={index}
-              className="group relative overflow-hidden rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105"
+              className="group relative overflow-hidden rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105 block w-full"
               onClick={() => openModal(index)}
+              aria-label={`${t('facility.viewAll')} - ${t(image.altKey)}`}
             >
               <Image
                 src={image.src}
@@ -82,8 +83,8 @@ export function FacilityGallery() {
                 loading={index < 3 ? "eager" : "lazy"}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300" />
-            </div>
+              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300 pointer-events-none" />
+            </button>
           ))}
         </div>
 
@@ -101,12 +102,19 @@ export function FacilityGallery() {
       {selectedImageIndex !== null && (
         <div
           role="dialog"
-          className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center"
-          onClick={closeModal}
+          aria-modal="true"
+          aria-label={t('facility.viewAll')}
+          className="fixed inset-0 z-50 flex items-center justify-center"
         >
+          {/* Backdrop */}
+          <button
+            className="absolute inset-0 bg-black bg-opacity-90"
+            onClick={closeModal}
+            aria-label={t('facility.close')}
+          />
           <div
-            className="relative max-w-5xl max-h-[90vh] mx-4"
-            onClick={(e) => e.stopPropagation()}
+            className="relative max-w-5xl max-h-[90vh] mx-4 z-10"
+            role="document"
           >
             <Image
               src={galleryImages[selectedImageIndex].src}

@@ -6,6 +6,7 @@ import { FacilityGallery } from '../FacilityGallery'
 jest.mock('next/image', () => ({
   __esModule: true,
   default: ({ src, alt, onClick, className, ...props }: React.ImgHTMLAttributes<HTMLImageElement>) => (
+    // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
     <img 
       src={src} 
       alt={alt} 

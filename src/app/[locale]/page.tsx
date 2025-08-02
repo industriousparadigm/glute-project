@@ -2,7 +2,7 @@ import { Hero, Differentiators, Pricing, FacilityGallery, TestimonialCarousel, C
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen">
+    <main id="main" className="min-h-screen">
       <Hero />
       <Differentiators />
       <FacilityGallery />

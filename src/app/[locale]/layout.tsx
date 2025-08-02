@@ -60,6 +60,9 @@ export default async function LocaleLayout({
       <body
         className={`${inter.variable} ${barlowCondensed.variable} antialiased`}
       >
+        <a href="#main" className="skip-link">
+          {locale === 'en' ? 'Skip to main content' : 'Ir para o conteúdo principal'}
+        </a>
         {children}
         <Analytics />
       </body>

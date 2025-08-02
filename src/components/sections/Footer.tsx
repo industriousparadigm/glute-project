@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { useRouter, usePathname } from 'next/navigation'
+import Link from 'next/link'
 import { useTranslations } from '@/lib/i18n/hooks'
 
 export function Footer() {
@@ -109,14 +110,14 @@ export function Footer() {
             <h3 className="font-bold text-lg mb-4">{t('footer.links')}</h3>
             <div className="space-y-2">
               <p>
-                <a href="#" className="hover:text-orange-500 transition-colors">
+                <Link href="/privacy" className="hover:text-orange-500 transition-colors">
                   {t('footer.privacy')}
-                </a>
+                </Link>
               </p>
               <p>
-                <a href="#" className="hover:text-orange-500 transition-colors">
+                <Link href="/terms" className="hover:text-orange-500 transition-colors">
                   {t('footer.terms')}
-                </a>
+                </Link>
               </p>
             </div>
           </div>
