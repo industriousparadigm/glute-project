@@ -43,7 +43,7 @@ cp .env.example .env.local
 # Edit .env.local with your database credentials
 
 # Initialize database
-npm run init-db
+npm run db:migrate
 ```
 
 ### Development
