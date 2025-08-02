@@ -64,15 +64,15 @@ Below is a concise yet thorough product brief that your “build-the-site” AI 
 | **Framework**  | Next.js ≥ 14 (App Router)                                                                     | Built-in i18n routing([Next.js][11]), React 19 ready                                                                                                       |
 | **Hosting**    | Vercel Hobby                                                                                  | SSL, edge CDN, Analytics free tier([Vercel][1])                                                                                                            |
 | **DB**         | Neon Postgres (Vercel-managed integration)                                                    | Serverless branches per preview deploy([Neon][12], [Neon][13])                                                                                             |
-| **CMS**        | **Payload** (Next-native, OSS MIT) + Postgres                                                 | Installs in `/app`, code-first, localization support, media DAM([Payload][14], [Payload][15]) *(Strapi is a viable fallback but heavier)([strapi.io][16])* |
-| **Storage**    | Vercel Blob for media (or Payload S3 adapter)                                                 |                                                                                                                                                            |
+| **Admin**      | **Custom Admin Panel** with JWT auth + Postgres                                               | Built into `/app/admin`, secure authentication, field-level localization, direct database integration                                                       |
+| **Storage**    | Vercel Blob for media (or direct S3 integration)                                              |                                                                                                                                                            |
 | **Animations** | Framer-Motion (React)                                                                         | Lightweight, declarative micro UX([Framer][17])                                                                                                            |
 | **Analytics**  | Start with Vercel; upgrade to Plausible for GDPR privacy if desired([Plausible Analytics][2]) |                                                                                                                                                            |
 
 ## 6. Localization Strategy
 
 * Configure `next.config.js` with `locales: ['pt', 'en'], defaultLocale: 'pt'` for automatic i18n routing([Next.js][18]).
-* Store translations in `locales/{lang}.json`; Payload’s field-level localization can feed content editors.
+* Store translations in `locales/{lang}.json`; Admin panel provides field-level localization for content editors.
 
 ## 7. Performance & SEO
 
@@ -90,13 +90,13 @@ Below is a concise yet thorough product brief that your “build-the-site” AI 
 ## 9. Deliverables for the AI Agent
 
 1. **Next.js project scaffolding** with App Router, Tailwind, ESLint, Prettier.
-2. **Payload backend** inside `/cms` with collections: `Posts`, `Testimonials`, `Prices`, `SiteSettings`.
+2. **Custom admin panel** inside `/app/admin` with database tables: `admin_users`, `prices`, `testimonials`, `site_settings`.
 3. **Database schema** migrations for Neon.
 4. **Localization files** (PT default, EN fallback).
 5. **Reusable components**: Hero, Section, Gallery, TestimonialSlider, CTAButton (Framer-Motion presets).
 6. **CI/CD config** – preview branches auto-provision Neon branch & seed data.
 7. **Accessibility checks** via `@axe-core/react` in dev.
-8. **README** with setup, `.env.example`, and owner instructions for CMS login.
+8. **README** with setup, `.env.example`, and owner instructions for admin panel login.
 
 This brief should give your execution agent a crystal-clear blueprint—from brand vibe to pixel-level UX to infra choices—so it can spin up a performant, stylish, and conversion-focused web presence for Glute Project. Boa construção!
 

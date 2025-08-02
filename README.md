@@ -5,7 +5,7 @@
 [![Next.js](https://img.shields.io/badge/Next.js-15.4.5-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 
-A modern, bilingual fitness studio website for Glute Project in Matosinhos, Portugal. Built with Next.js 15, TypeScript, and Tailwind CSS, featuring a headless CMS and comprehensive testing.
+A modern, bilingual fitness studio website for Glute Project in Matosinhos, Portugal. Built with Next.js 15, TypeScript, and Tailwind CSS, featuring a custom admin panel and comprehensive testing.
 
 ## 🎯 Project Overview
 
@@ -14,7 +14,7 @@ Glute Project is a premium private fitness studio offering 24/7 access, professi
 ### Key Features
 
 - **Bilingual Support**: Full PT/EN localization with automatic routing
-- **Headless CMS**: Payload CMS v3 with PostgreSQL for content management
+- **Custom Admin Panel**: Secure content management system with PostgreSQL
 - **Performance First**: Optimized for Core Web Vitals (LCP < 2.5s, CLS < 0.1)
 - **Test-Driven Development**: 100% test coverage for critical components
 - **Responsive Design**: Mobile-first approach with Tailwind CSS v4
@@ -42,11 +42,8 @@ npm install
 cp .env.example .env.local
 # Edit .env.local with your database credentials
 
-# Run database migrations
-npm run payload migrate
-
-# Seed initial data (optional)
-npm run seed
+# Initialize database
+npm run init-db
 ```
 
 ### Development
@@ -75,16 +72,16 @@ glute-project/
 ├── src/
 │   ├── app/                    # Next.js app directory
 │   │   ├── [locale]/          # Localized routes
-│   │   ├── (payload)/         # CMS admin routes
+│   │   ├── admin/             # Admin panel routes
 │   │   └── api/               # API routes
 │   ├── components/            # React components
 │   │   ├── sections/          # Page sections
 │   │   └── ui/                # Reusable UI components
 │   ├── lib/                   # Utilities and configs
 │   │   ├── i18n/              # Internationalization
-│   │   └── theme/             # Design system
-│   ├── cms/                   # Payload CMS collections
-│   └── payload.config.ts      # CMS configuration
+│   │   ├── theme/             # Design system
+│   │   ├── auth/              # Authentication system
+│   │   └── db/                # Database client
 ├── public/                    # Static assets
 ├── scripts/                   # Build and setup scripts
 └── tests/                     # Test utilities
@@ -113,21 +110,19 @@ The site supports Portuguese (default) and English:
 - Content managed through CMS with field-level localization
 - Language switcher available in footer
 
-## 📊 CMS Access
+## 📊 Admin Panel Access
 
-Access the Payload CMS admin panel at `/admin`
+Access the custom admin panel at `/admin`
 
 Default credentials (development):
 - Email: admin@gluteproject.com
 - Password: admin123
 
-### Available Collections
+### Content Management
 
-- **Posts**: Blog articles and news
-- **Testimonials**: Member reviews and stories
-- **Prices**: Pricing plans and offers
-- **Media**: Image and video assets
-- **Site Settings**: Global configuration
+- **Prices**: Manage pricing plans and offers
+- **Testimonials**: Add and edit member reviews
+- **Site Settings**: Update contact information and details
 
 ## 🧪 Testing
 
@@ -153,7 +148,7 @@ The project auto-deploys to Vercel on push to main branch.
 Required for production:
 ```env
 DATABASE_URL=your_postgres_connection_string
-PAYLOAD_SECRET=your_secret_key
+JWT_SECRET=your_jwt_secret_key
 ```
 
 ### Build Command
@@ -187,7 +182,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🙏 Acknowledgments
 
 - Built with [Next.js](https://nextjs.org/)
-- CMS powered by [Payload](https://payloadcms.com/)
 - Database hosted on [Neon](https://neon.tech/)
 - Deployed on [Vercel](https://vercel.com/)
 

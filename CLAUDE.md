@@ -9,7 +9,8 @@ This is a bilingual fitness studio website for Glute Project in Matosinhos, Port
 - **Framework**: Next.js 15.4.5 (App Router, Turbopack)
 - **Language**: TypeScript 5.x
 - **Styling**: Tailwind CSS v4, CSS Modules
-- **CMS**: Payload CMS v3 with PostgreSQL (Neon)
+- **Database**: PostgreSQL (Neon)
+- **Admin Panel**: Custom authentication-protected admin system
 - **Testing**: Jest 30.x, React Testing Library 16.x
 - **Localization**: Next.js i18n (PT default, EN secondary)
 - **Deployment**: Vercel (auto-deploy on push to main)
@@ -22,8 +23,7 @@ This is a bilingual fitness studio website for Glute Project in Matosinhos, Port
 - `npm run test:ci`: Run all tests once (CI mode)
 - `npm run lint`: Run ESLint
 - `npm run build`: Build for production (ALWAYS run before pushing!)
-- `npm run payload`: Run Payload CMS commands
-- `npm run seed`: Seed database with initial data
+- `npm run init-db`: Initialize database with schema and default data
 
 ## Project Structure
 
@@ -31,17 +31,19 @@ This is a bilingual fitness studio website for Glute Project in Matosinhos, Port
 src/
 ├── app/
 │   ├── [locale]/          # Localized pages (pt/en)
-│   ├── (payload)/         # CMS admin interface
+│   ├── admin/             # Admin panel interface
 │   └── api/               # API routes
 ├── components/
 │   ├── sections/          # Page sections (Hero, Pricing, etc.)
 │   └── ui/                # Reusable components (Button, etc.)
 ├── lib/
 │   ├── i18n/              # Translation system
-│   └── theme/             # Design tokens
-├── cms/
-│   └── collections/       # Payload CMS schemas
-└── payload.config.ts      # CMS configuration
+│   ├── theme/             # Design tokens
+│   ├── auth/              # Authentication system
+│   ├── db/                # Database client
+│   └── content-api.ts     # Content management API
+└── scripts/
+    └── init-db.ts          # Database initialization
 ```
 
 ## Design System
@@ -120,10 +122,19 @@ Writing code before tests is a critical failure. Always TDD!
 - ✅ Testing framework setup
 - ✅ Design system (colors, typography)
 - ✅ i18n configuration
-- ✅ Payload CMS with Neon Postgres
+- ✅ Database setup with PostgreSQL (Neon)
 - ✅ Hero section
 - ✅ Differentiators section
-- ✅ Pricing section
+- ✅ Pricing section (static and API-based)
+- ✅ Custom admin panel with authentication
+- ✅ JWT-based auth system
+- ✅ Protected admin routes
+- ✅ Database client with connection pooling
+- ✅ Content API with database integration
+
+### In Progress
+- 🔄 CRUD API routes for content management
+- 🔄 Admin UI for managing prices, testimonials, settings
 
 ### Pending
 - 🔲 Facility gallery section
@@ -159,9 +170,16 @@ Writing code before tests is a critical failure. Always TDD!
 
 ## Database Access
 
-- Connection string in `.env.local`
-- CMS admin: `/admin`
+- Connection string in `.env.local` (DATABASE_URL)
+- Admin panel: `/admin`
 - Default admin: admin@gluteproject.com / admin123
+- JWT secret: Set JWT_SECRET in production
+
+### Database Schema
+- `admin_users`: Authentication for admin panel
+- `prices`: Pricing plans with localized content
+- `testimonials`: Customer reviews with translations
+- `site_settings`: Global configuration values
 
 ## Error Prevention
 
