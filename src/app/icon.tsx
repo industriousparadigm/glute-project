@@ -21,7 +21,7 @@ export default function Icon() {
           justifyContent: 'center',
           color: '#FF5E1B',
           fontWeight: 900,
-          fontFamily: 'Arial Black',
+          fontFamily: 'system-ui, -apple-system, sans-serif',
         }}
       >
         G
