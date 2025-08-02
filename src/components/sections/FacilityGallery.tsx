@@ -3,14 +3,15 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { useTranslations } from '@/lib/i18n/hooks'
+import { motion } from 'framer-motion'
 
 const galleryImages = [
-  { src: '/images/facility-1.svg', altKey: 'facility.image1.alt' },
-  { src: '/images/facility-2.svg', altKey: 'facility.image2.alt' },
-  { src: '/images/facility-3.svg', altKey: 'facility.image3.alt' },
-  { src: '/images/facility-4.svg', altKey: 'facility.image4.alt' },
-  { src: '/images/facility-5.svg', altKey: 'facility.image5.alt' },
-  { src: '/images/facility-6.svg', altKey: 'facility.image6.alt' },
+  { src: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&crop=center', altKey: 'facility.image1.alt', height: 'h-80' },
+  { src: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=500&fit=crop&crop=center', altKey: 'facility.image2.alt', height: 'h-96' },
+  { src: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=350&fit=crop&crop=center', altKey: 'facility.image3.alt', height: 'h-72' },
+  { src: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&h=450&fit=crop&crop=center', altKey: 'facility.image4.alt', height: 'h-88' },
+  { src: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&h=400&fit=crop&crop=center', altKey: 'facility.image5.alt', height: 'h-80' },
+  { src: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=600&h=500&fit=crop&crop=center', altKey: 'facility.image6.alt', height: 'h-96' },
 ]
 
 export function FacilityGallery() {
@@ -59,20 +60,33 @@ export function FacilityGallery() {
   }, [selectedImageIndex, navigateImage, closeModal])
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">{t('facility.title')}</h2>
-          <p className="text-xl text-gray-600">{t('facility.subtitle')}</p>
-        </div>
+    <section id="facility" className="py-24 md:py-32 bg-[#F4F4F4]">
+      <div className="container">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-[#FF5E1B] font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase mb-4">
+            {t('facility.title')}
+          </h2>
+          <p className="text-[#0A0A0A]/80 text-xl font-body">{t('facility.subtitle')}</p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Masonry Grid Layout - 3 columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-min">
           {galleryImages.map((image, index) => (
-            <button
+            <motion.button
               key={index}
-              className="group relative overflow-hidden rounded-lg cursor-pointer transition-transform duration-300 hover:scale-105 block w-full"
+              className={`group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl block w-full ${image.height}`}
               onClick={() => openModal(index)}
               aria-label={`${t('facility.viewAll')} - ${t(image.altKey)}`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Image
                 src={image.src}
@@ -83,18 +97,10 @@ export function FacilityGallery() {
                 loading={index < 3 ? "eager" : "lazy"}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300 pointer-events-none" />
-            </button>
+              <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/20 transition-all duration-300 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </motion.button>
           ))}
-        </div>
-
-        <div className="text-center mt-8 sm:hidden">
-          <button
-            onClick={() => openModal(0)}
-            className="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
-          >
-            {t('facility.viewAll')}
-          </button>
         </div>
       </div>
 
