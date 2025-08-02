@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Black background -->
+  <rect width="32" height="32" fill="#0A0A0A"/>
+  
+  <!-- Orange G - Simple and bold -->
+  <path d="M 16 5 C 10 5 6 9 6 16 C 6 23 10 27 16 27 C 20 27 23 25 24.5 21 L 19.5 21 C 18.5 22.5 17.5 23 16 23 C 12.5 23 10 20.5 10 16 C 10 11.5 12.5 9 16 9 C 19.5 9 22 11.5 22 15 L 15 15 L 15 19 L 26 19 L 26 15 C 26 9 21 5 16 5 Z" fill="#FF5E1B" stroke="#FF5E1B" stroke-width="0.5"/>
+</svg>
