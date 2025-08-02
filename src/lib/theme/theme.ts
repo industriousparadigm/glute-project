@@ -1,9 +1,27 @@
 export const colors = {
   // Brand colors
-  primary: '#FF5E1B', // Safety Orange
-  ink: '#0A0A0A', // Near-black
-  accent: '#D4FF41', // Electric Lime
-  white: '#FFFFFF',
+  brand: {
+    orange: '#FF5E1B', // CTA fills, links, icons
+    black: '#0A0A0A', // Primary background, hero text
+    lime: '#D4FF41', // Accent highlights (max 10% coverage)
+  },
+  
+  // Neutral colors
+  gray: {
+    900: '#111111', // Dark surface
+    50: '#F4F4F4', // Light surface
+    200: '#E5E5E5', // Borders
+    300: '#CCCCCC', // Input borders
+  },
+  
+  // Base colors
+  offwhite: '#FFF9F4', // Alternate section bg
+  white: '#FFFFFF', // Text on dark, surfaces
+  
+  // Legacy mappings (for backward compatibility)
+  primary: '#FF5E1B',
+  ink: '#0A0A0A',
+  accent: '#D4FF41',
   neutral: '#F4F4F4',
   
   // Semantic mappings
@@ -23,20 +41,26 @@ export const typography = {
     body: "'Inter', sans-serif",
   },
   fontSize: {
-    xs: '0.75rem',
-    sm: '0.875rem',
-    base: '1rem',
-    lg: '1.125rem',
-    xl: '1.25rem',
-    '2xl': '1.5rem',
-    '3xl': '1.875rem',
-    '4xl': '2.25rem',
-    '5xl': '3rem',
+    xs: '0.75rem', // 12px
+    sm: '0.875rem', // 14px
+    base: '1.125rem', // 18px (body)
+    lg: '1.25rem', // 20px
+    xl: '1.5rem', // 24px
+    '2xl': 'clamp(1.5rem, 4vw, 2rem)', // 24-32px
+    '3xl': 'clamp(2rem, 5vw, 3rem)', // 32-48px
+    '4xl': 'clamp(2.5rem, 6vw, 4rem)', // 40-64px
+    '5xl': 'clamp(3rem, 7vw, 4.5rem)', // 48-72px
   },
   fontWeight: {
     normal: 400,
     semibold: 600,
     bold: 700,
+    extrabold: 800,
+  },
+  lineHeight: {
+    tight: 1.1,
+    normal: 1.6,
+    relaxed: 1.8,
   },
 }
 

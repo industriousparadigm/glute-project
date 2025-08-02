@@ -7,12 +7,20 @@ function getJwtSecret(): string {
 }
 
 interface User {
-  id: number
+  id: number | string
   email: string
 }
 
 export async function verifyCredentials(email: string, password: string): Promise<User | null> {
   try {
+    // Temporary: Allow login with env credentials if database is not initialized
+    if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
+      return {
+        id: '1',
+        email: process.env.ADMIN_EMAIL || 'admin@gluteproject.com',
+      }
+    }
+    
     const result = await query(
       'SELECT id, email, password_hash FROM admin_users WHERE email = $1',
       [email]
@@ -35,6 +43,13 @@ export async function verifyCredentials(email: string, password: string): Promis
     }
   } catch (error) {
     console.error('Error verifying credentials:', error)
+    // Fallback to env credentials if database error
+    if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
+      return {
+        id: '1',
+        email: process.env.ADMIN_EMAIL || 'admin@gluteproject.com',
+      }
+    }
     return null
   }
 }

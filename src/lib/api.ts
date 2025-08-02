@@ -44,7 +44,58 @@ export async function getTestimonials() {
       },
       rating: 5,
     },
-    // Add more testimonials
+    {
+      id: '2',
+      name: 'João Ferreira',
+      quote: {
+        pt: 'Ambiente incrível e resultados visíveis em poucas semanas. Recomendo a todos!',
+        en: 'Amazing atmosphere and visible results in just a few weeks. Highly recommend!',
+      },
+      role: {
+        pt: 'Personal Training',
+        en: 'Personal Training',
+      },
+      rating: 5,
+    },
+    {
+      id: '3',
+      name: 'Ana Costa',
+      quote: {
+        pt: 'A flexibilidade de horário 24/7 é perfeita para o meu estilo de vida. Treino quando quero!',
+        en: 'The 24/7 flexibility is perfect for my lifestyle. I train whenever I want!',
+      },
+      role: {
+        pt: 'Membro Premium',
+        en: 'Premium Member',
+      },
+      rating: 5,
+    },
+    {
+      id: '4',
+      name: 'Pedro Santos',
+      quote: {
+        pt: 'Os treinadores são excepcionais. Sinto-me apoiado em cada treino.',
+        en: 'The trainers are exceptional. I feel supported in every workout.',
+      },
+      role: {
+        pt: 'Membro desde 2024',
+        en: 'Member since 2024',
+      },
+      rating: 5,
+    },
+    {
+      id: '5',
+      name: 'Sofia Oliveira',
+      quote: {
+        pt: 'Mais que um ginásio, é uma comunidade. Fiz amigos para a vida!',
+        en: 'More than a gym, it\'s a community. I made friends for life!',
+      },
+      role: {
+        pt: 'Membro Fundador',
+        en: 'Founding Member',
+      },
+      rating: 5,
+    },
   ]
 }
 

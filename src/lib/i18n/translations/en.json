@@ -93,8 +93,8 @@
   },
   "location": {
     "title": "LOCATION",
-    "address": "Example Street, 123",
-    "city": "4450-001 Matosinhos",
+    "address": "Rua Dr. Afonso Cordeiro, 109",
+    "city": "4450-001 Matosinhos, Portugal",
     "parking": "Free parking available",
     "directions": "Get directions",
     "publicTransport": "Public transport",
@@ -110,8 +110,8 @@
     "contact": "CONTACT",
     "phone": "+351 912 345 678",
     "email": "info@gluteproject.com",
-    "address": "Example Street, 123",
-    "city": "4450-001 Matosinhos",
+    "address": "Rua Dr. Afonso Cordeiro, 109",
+    "city": "4450-001 Matosinhos, Portugal",
     "links": "USEFUL LINKS",
     "privacy": "Privacy Policy",
     "terms": "Terms and Conditions"

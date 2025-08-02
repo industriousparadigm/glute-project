@@ -2,28 +2,29 @@
 
 ## Project Overview
 
-This is a bilingual fitness studio website for Glute Project in Matosinhos, Portugal. The project follows strict TDD practices and emphasizes performance, accessibility, and conversion optimization.
+This is a bilingual fitness studio website for Glute Project in Matosinhos, Portugal. The project follows light TDD practices, emphasizes performance, accessibility, and conversion optimization. Built with Next.js 15.4.5 and deployed on Vercel.
 
 ## Tech Stack
 
 - **Framework**: Next.js 15.4.5 (App Router, Turbopack)
 - **Language**: TypeScript 5.x
-- **Styling**: Tailwind CSS v4, CSS Modules
-- **Database**: PostgreSQL (Neon)
-- **Admin Panel**: Custom authentication-protected admin system
+- **Styling**: Tailwind CSS v4
+- **Database**: PostgreSQL (Neon) - pooled connection
+- **Auth**: JWT-based custom authentication
 - **Testing**: Jest 30.x, React Testing Library 16.x
 - **Localization**: Next.js i18n (PT default, EN secondary)
-- **Deployment**: Vercel (auto-deploy on push to main)
+- **Deployment**: Vercel (GitHub Actions auto-deploy)
+- **Analytics**: Vercel Analytics
 
-## Commands
+## Critical Commands
 
-### Development
-- `npm run dev`: Start development server with Turbopack
-- `npm run test`: Run tests in watch mode
-- `npm run test:ci`: Run all tests once (CI mode)
-- `npm run lint`: Run ESLint
-- `npm run build`: Build for production (ALWAYS run before pushing!)
-- `npm run init-db`: Initialize database with schema and default data
+```bash
+npm run dev          # Development with Turbopack on port 3001
+npm run build        # ALWAYS run before pushing!
+npm run test         # Watch mode testing
+npm run lint         # Check code quality
+npm run init-db      # Initialize database schema
+```
 
 ## Project Structure
 
@@ -31,162 +32,224 @@ This is a bilingual fitness studio website for Glute Project in Matosinhos, Port
 src/
 ├── app/
 │   ├── [locale]/          # Localized pages (pt/en)
-│   ├── admin/             # Admin panel interface
-│   └── api/               # API routes
+│   ├── admin/             # Admin panel (protected)
+│   ├── api/               # API routes
+│   ├── icon.svg           # Favicon (orange G on black)
+│   └── globals.css        # Global styles
 ├── components/
-│   ├── sections/          # Page sections (Hero, Pricing, etc.)
-│   └── ui/                # Reusable components (Button, etc.)
+│   ├── sections/          # Page sections
+│   └── ui/                # Reusable components
 ├── lib/
 │   ├── i18n/              # Translation system
 │   ├── theme/             # Design tokens
-│   ├── auth/              # Authentication system
-│   ├── db/                # Database client
-│   └── content-api.ts     # Content management API
+│   ├── auth/              # JWT authentication
+│   ├── db/client.ts       # Database connection
+│   └── api.ts             # Content API
 └── scripts/
-    └── init-db.ts          # Database initialization
+    └── create-tables-now.ts  # DB initialization
 ```
+
+## Development Philosophy
+
+### Light TDD Approach
+1. **Write tests for critical paths** - Auth, API routes, data mutations
+2. **Test after for UI** - Components can be built first, tested after
+3. **Focus on behavior** - Test what users see/do, not implementation
+4. **Mock external services** - Database, APIs, etc.
+
+### Step-by-Step Development
+1. Start simple, iterate
+2. Get it working first, optimize later
+3. Commit working code frequently
+4. Build → Test → Refactor cycle
+
+### Code Quality
+- No TODOs in production code
+- Complete implementations only
+- Handle all error states
+- TypeScript strict mode
 
 ## Design System
 
-### Colors (MUST use these exact values)
-- Primary: `#FF5E1B` (Safety Orange)
-- Ink: `#0A0A0A` (Near-black)
-- Accent: `#D4FF41` (Electric Lime)
-- White: `#FFFFFF`
-- Neutral: `#F4F4F4`
-
-### Typography
-- Display: Barlow Condensed (uppercase, bold)
-- Body: Inter (400, 600, 700)
-
-### Spacing
-- Use Tailwind classes: `p-4`, `m-8`, etc.
-- Sections: `py-20` (consistent vertical rhythm)
-
-## Testing Requirements (CRITICAL - TDD MANDATORY)
-
-### ALWAYS FOLLOW TDD - NO EXCEPTIONS!
-
-1. **RED**: Write failing tests FIRST
-2. **GREEN**: Write minimal code to pass tests
-3. **REFACTOR**: Clean up code while keeping tests green
-
-### Test First Process:
-1. Create test file: `__tests__/ComponentName.test.tsx`
-2. Write ALL test cases before any implementation
-3. Run tests - they MUST fail (RED)
-4. Implement code to pass tests (GREEN)
-5. Refactor if needed (tests still pass)
-
-### Example TDD workflow:
-```typescript
-// 1. FIRST: Write the test
-describe('PriceCard', () => {
-  it('should display price information', () => {
-    render(<PriceCard price={mockPrice} />)
-    expect(screen.getByText('€39.90')).toBeInTheDocument()
-  })
-})
-
-// 2. Run test - it fails (component doesn't exist)
-
-// 3. THEN: Create minimal implementation to pass
-export function PriceCard({ price }) {
-  return <div>{price}</div>
-}
-
-// 4. Test passes - refactor if needed
+### Brand Colors
+```css
+--primary: #FF5E1B;     /* Safety Orange */
+--ink: #0A0A0A;         /* Near Black */
+--accent: #D4FF41;      /* Electric Lime */
+--white: #FFFFFF;
+--neutral: #F4F4F4;
 ```
 
-### Testing Rules:
-- NO implementation without failing test first
-- Mock all external dependencies
-- Test user behavior, not implementation details
-- Each component MUST have corresponding test file
-- API routes need integration tests
-- Database operations need unit tests
+### Typography
+- **Display**: Barlow Condensed (uppercase, 700/800)
+- **Body**: Inter (400/600/700)
+- **Admin**: System UI stack
 
-### VIOLATION = UNACCEPTABLE
-Writing code before tests is a critical failure. Always TDD!
+### Spacing
+- Sections: `py-20` desktop, `py-12` mobile
+- Content: `max-w-7xl mx-auto px-4`
+- Cards: `p-6` internal padding
 
-## Development Workflow
+## Key Implementation Details
 
-1. **TDD Cycle**: Write test → See it fail → Implement → See it pass
-2. **Build Before Push**: ALWAYS run `npm run build` before pushing
-3. **Commit Convention**: Use conventional commits (feat:, fix:, docs:, etc.)
-4. **Bilingual Content**: Always implement both PT and EN translations
+### Authentication
+- JWT tokens in httpOnly cookies
+- Middleware checks token existence only (Edge Runtime compatible)
+- API routes verify full JWT (Node.js runtime)
+- Admin credentials: Set via env vars (ADMIN_EMAIL, ADMIN_PASSWORD)
 
-## Current Implementation Status
+### Database
+- Connection pooling via pg library
+- SSL required in production
+- Schema in `src/lib/db/schema.sql`
+- Migrations: Manual SQL files
 
-### Completed
-- ✅ Testing framework setup
-- ✅ Design system (colors, typography)
-- ✅ i18n configuration
-- ✅ Database setup with PostgreSQL (Neon)
-- ✅ Hero section
-- ✅ Differentiators section
-- ✅ Pricing section (static and API-based)
-- ✅ Custom admin panel with authentication
-- ✅ JWT-based auth system
-- ✅ Protected admin routes
-- ✅ Database client with connection pooling
-- ✅ Content API with database integration
+### Environment Variables
+```env
+DATABASE_URL=           # Neon PostgreSQL
+JWT_SECRET=            # Random secure string
+ADMIN_EMAIL=           # Admin login email
+ADMIN_PASSWORD=        # Admin login password
+NEXT_PUBLIC_BASE_URL=  # Site URL for forms
+```
 
-- ✅ CRUD API routes for content management
-- ✅ Admin UI for managing prices, testimonials, settings
-- ✅ Facility gallery section with modal viewer
-- ✅ Testimonials carousel with auto-rotation
-- ✅ Contact form with RegyBox integration
-- ✅ Location map section with Google Maps embed
-- ✅ Footer with language switcher
-- ✅ Framer Motion animations (subtle fade and slide effects)
-- ✅ Vercel Analytics configured
-- ✅ Performance optimization (font loading, image optimization, CLS prevention)
-- ✅ Accessibility audit (WCAG 2.2 AA compliant)
+### Edge Runtime Gotchas
+- No Node.js APIs in middleware
+- No jsonwebtoken in Edge Runtime
+- Use cookies() with await in Next.js 15
+- Client components for navigation hooks
 
-### In Progress
-- 🔄 None - Project complete!
+### Deployment
+- Push to main branch triggers Vercel deployment
+- Environment variables set in Vercel dashboard
+- Database must be initialized separately
+- Build locally before pushing!
 
-### Pending
-- 🔲 None - All planned features implemented!
+## Common Tasks
 
-## Important Notes
+### Add New Admin Page
+1. Create page component in `src/app/admin/[name]/page.tsx`
+2. Add navigation link in `AdminWrapper.tsx`
+3. Create API route if needed
+4. Test authentication flow
 
-1. **No Mocks**: Always implement complete, working code
-2. **No TODOs**: Complete implementations only
-3. **Test Coverage**: Maintain high test coverage for all components
-4. **Performance**: Target LCP < 2.5s, CLS < 0.1
-5. **Accessibility**: WCAG 2.2 AA compliance required
+### Update Content
+1. Admin panel: `/admin/login`
+2. Use environment credentials
+3. Changes reflect immediately on site
+4. Database stores all content
 
-## Common Patterns
+### Add Translation
+1. Edit `src/lib/i18n/translations/pt.json`
+2. Edit `src/lib/i18n/translations/en.json`
+3. Use: `const { t } = useTranslations()`
+4. Access: `t('key.path')`
 
-### Creating a New Section
-1. Create test file: `src/components/sections/__tests__/SectionName.test.tsx`
-2. Create component: `src/components/sections/SectionName.tsx`
-3. Export from index: `src/components/sections/index.ts`
-4. Add to page: `src/app/[locale]/page.tsx`
+### Handle Forms
+1. Use server actions or API routes
+2. Validate on client AND server
+3. Show loading states
+4. Handle errors gracefully
 
-### Adding Translations
-1. Update `src/lib/i18n/translations/pt.json`
-2. Update `src/lib/i18n/translations/en.json`
-3. Use in component: `const { t } = useTranslations()`
+## Performance Checklist
+- [ ] Images optimized (Next/Image)
+- [ ] Fonts preloaded (next/font)
+- [ ] CLS < 0.1 (fixed heights)
+- [ ] LCP < 2.5s (optimize hero)
+- [ ] Bundle size minimal
+- [ ] Database queries efficient
 
-## Database Access
+## Testing Strategy
 
-- Connection string in `.env.local` (DATABASE_URL)
-- Admin panel: `/admin`
-- Default admin: admin@gluteproject.com / admin123
-- JWT secret: Set JWT_SECRET in production
+### What to Test
+- **API Routes**: Full integration tests
+- **Auth Flow**: End-to-end testing
+- **Forms**: Validation and submission
+- **Critical UI**: Pricing, CTAs
+- **Accessibility**: Keyboard navigation
 
-### Database Schema
-- `admin_users`: Authentication for admin panel
-- `prices`: Pricing plans with localized content
-- `testimonials`: Customer reviews with translations
-- `site_settings`: Global configuration values
+### Test Utilities
+```typescript
+// Mock translations
+jest.mock('@/lib/i18n/hooks', () => ({
+  useTranslations: () => ({
+    t: (key: string) => key,
+    locale: 'pt'
+  })
+}))
 
-## Error Prevention
+// Mock router
+jest.mock('next/navigation', () => ({
+  useRouter: () => ({ push: jest.fn() }),
+  usePathname: () => '/'
+}))
+```
 
-- Always escape special characters in bash commands
-- Use proper TypeScript types (no `any` unless necessary)
-- Handle loading and error states in async operations
-- Validate user input on both client and server
+## Debugging Tips
+
+1. **Hydration Errors**: Check for date/time rendering
+2. **Build Errors**: Run `npm run build` locally
+3. **Auth Issues**: Check JWT_SECRET is set
+4. **DB Errors**: Verify DATABASE_URL format
+5. **Deploy Fails**: Check Vercel function logs
+
+## Project Status
+
+### Completed ✅
+- Full website implementation
+- Admin panel with auth
+- Database integration
+- Bilingual support
+- Contact form
+- Image galleries
+- Testimonials
+- Animations
+- SEO optimization
+- Accessibility (WCAG 2.2 AA)
+- Performance optimization
+- Vercel deployment
+
+### Known Issues
+- Favicon may not show in dev (works in production)
+- Database requires manual initialization
+- Admin panel is desktop-optimized
+
+## Best Practices
+
+1. **Always build before pushing** - Catches type errors
+2. **Test auth flows** - JWT expiry, logout, etc.
+3. **Use semantic HTML** - Helps with SEO/a11y
+4. **Optimize images** - Use WebP, proper sizes
+5. **Handle loading states** - Better UX
+6. **Validate all inputs** - Never trust client
+7. **Use TypeScript strictly** - Prevents runtime errors
+8. **Keep components focused** - Single responsibility
+9. **Document complex logic** - Future you will thank you
+10. **Commit working code** - Atomic commits
+
+## Quick Reference
+
+### Admin Access
+- URL: `/admin/login`
+- Credentials: Environment variables
+- Features: Prices, Testimonials, Settings
+
+### API Endpoints
+- `GET /api/testimonials` - Public testimonials
+- `GET/PUT /api/admin/*` - Protected admin APIs
+- `POST /api/contact` - Contact form submission
+
+### Key Files
+- `src/app/[locale]/page.tsx` - Homepage
+- `src/app/admin/layout.tsx` - Admin layout
+- `src/lib/auth/middleware.ts` - Auth middleware
+- `src/lib/db/client.ts` - Database connection
+
+### Deployment Checklist
+1. Set all env vars in Vercel
+2. Initialize database schema
+3. Test build locally
+4. Push to main branch
+5. Monitor deployment logs
+
+Remember: This project values working code over perfect code. Ship it!
