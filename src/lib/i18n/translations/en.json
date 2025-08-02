@@ -27,7 +27,27 @@
   "facility": {
     "title": "FACILITY & EQUIPMENT",
     "subtitle": "500m² equipped with over 50 professional machines",
-    "gallery_alt": "Glute Project facilities"
+    "gallery_alt": "Glute Project facilities",
+    "image1": {
+      "alt": "Weight training area"
+    },
+    "image2": {
+      "alt": "Cardio zone"
+    },
+    "image3": {
+      "alt": "Functional area"
+    },
+    "image4": {
+      "alt": "Class studio"
+    },
+    "image5": {
+      "alt": "Free weight area"
+    },
+    "image6": {
+      "alt": "Stretching zone"
+    },
+    "viewAll": "View all photos",
+    "close": "Close"
   },
   "community": {
     "title": "COMMUNITY STORIES",

@@ -27,7 +27,27 @@
   "facility": {
     "title": "INSTALAÇÕES & EQUIPAMENTO",
     "subtitle": "500m² equipados com mais de 50 máquinas profissionais",
-    "gallery_alt": "Instalações do Glute Project"
+    "gallery_alt": "Instalações do Glute Project",
+    "image1": {
+      "alt": "Área de musculação"
+    },
+    "image2": {
+      "alt": "Zona cardio"
+    },
+    "image3": {
+      "alt": "Área funcional"
+    },
+    "image4": {
+      "alt": "Estúdio de aulas"
+    },
+    "image5": {
+      "alt": "Área de peso livre"
+    },
+    "image6": {
+      "alt": "Zona de alongamento"
+    },
+    "viewAll": "Ver todas as fotos",
+    "close": "Fechar"
   },
   "community": {
     "title": "HISTÓRIAS DA COMUNIDADE",
