@@ -95,7 +95,11 @@
     "title": "LOCALIZAÇÃO",
     "address": "Rua Example, 123",
     "city": "4450-001 Matosinhos",
-    "parking": "Estacionamento gratuito disponível"
+    "parking": "Estacionamento gratuito disponível",
+    "directions": "Obter direções",
+    "publicTransport": "Transporte público",
+    "metro": "Metro: Estação Matosinhos Sul (10 min a pé)",
+    "bus": "Autocarro: Linhas 500, 502, 507"
   },
   "footer": {
     "social": "SEGUE-NOS",

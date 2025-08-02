@@ -95,7 +95,11 @@
     "title": "LOCATION",
     "address": "Example Street, 123",
     "city": "4450-001 Matosinhos",
-    "parking": "Free parking available"
+    "parking": "Free parking available",
+    "directions": "Get directions",
+    "publicTransport": "Public transport",
+    "metro": "Metro: Matosinhos Sul Station (10 min walk)",
+    "bus": "Bus: Lines 500, 502, 507"
   },
   "footer": {
     "social": "FOLLOW US",
