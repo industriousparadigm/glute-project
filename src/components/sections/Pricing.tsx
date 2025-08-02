@@ -29,10 +29,10 @@ export function Pricing() {
   ]
 
   return (
-    <section id="pricing" className="py-20 bg-neutral">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="pricing" className="py-24 md:py-32 bg-[#F4F4F4]">
+      <div className="container">
         <motion.h2 
-          className="text-primary font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase text-center mb-16"
+          className="text-[#FF5E1B] font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -41,30 +41,39 @@ export function Pricing() {
           {t('pricing.title')}
         </motion.h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid-12">
           {pricingOptions.map((option, index) => (
             <motion.div
               key={option.key}
-              className={`bg-white p-8 border-2 ${
-                option.highlighted ? 'border-[#FF5E1B]' : 'border-neutral'
-              } transform transition-transform duration-300 hover:scale-105`}
+              className={`col-span-4 bg-white p-8 rounded-xl shadow-lg border-2 ${
+                option.highlighted 
+                  ? 'border-[#FF5E1B] shadow-xl scale-105' 
+                  : 'border-gray-200'
+              } transform transition-all duration-300 hover:shadow-xl ${
+                !option.highlighted ? 'hover:scale-105' : ''
+              }`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.15 }}
             >
               <div className="text-center">
-                <h3 className="text-ink font-display text-2xl font-bold uppercase mb-4">
+                {option.highlighted && (
+                  <div className="bg-[#FF5E1B] text-white px-4 py-2 rounded-lg text-sm font-bold uppercase mb-4 inline-block">
+                    Recomendado
+                  </div>
+                )}
+                <h3 className="text-[#0A0A0A] font-display text-2xl font-bold uppercase mb-4">
                   {t(`pricing.${option.key}.title`)}
                 </h3>
                 <div className="mb-6">
                   <p className={`font-display text-4xl font-bold ${
-                    option.highlighted ? 'text-primary' : 'text-ink'
+                    option.highlighted ? 'text-[#FF5E1B]' : 'text-[#0A0A0A]'
                   }`}>
                     {t(`pricing.${option.key}.price`)}
                   </p>
                 </div>
-                <p className="text-ink/80 font-body text-base mb-8">
+                <p className="text-[#0A0A0A]/80 font-body text-base mb-8">
                   {t(`pricing.${option.key}.description`)}
                 </p>
                 <Link href="#contact" className="block">
