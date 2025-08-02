@@ -104,32 +104,31 @@ export function ContactForm() {
   }
 
   return (
-    <section className="py-20 bg-orange-50">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <motion.h2 
-            className="text-4xl font-bold text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+    <section id="contact" className="py-24 md:py-32 bg-[#FFF9F4]">
+      <div className="container">
+        <motion.h2 
+          className="text-[#FF5E1B] font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          {t('contact.title')}
+        </motion.h2>
+        
+        <div className="grid-12">
+          {/* Form - spans 6 columns */}
+          <motion.div 
+            className="col-span-6 bg-[#111111] p-8 rounded-lg"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            {t('contact.title')}
-          </motion.h2>
-          
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Form */}
-            <motion.form 
-              onSubmit={handleSubmit} 
-              className="space-y-6"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-semibold mb-2">
-                  {t('contact.form.name')} <span className="text-red-500">*</span>
+                <label htmlFor="name" className="block text-sm font-semibold mb-2 text-white">
+                  {t('contact.form.name')} <span className="text-[#FF5E1B]">*</span>
                 </label>
                 <input
                   type="text"
@@ -139,13 +138,13 @@ export function ContactForm() {
                   onChange={handleChange}
                   required
                   disabled={status.loading}
-                  className="w-full h-12 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50"
+                  className="w-full h-12 px-4 py-3 bg-[#111111] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF5E1B] focus:border-[#FF5E1B] disabled:opacity-50"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-semibold mb-2">
-                  {t('contact.form.email')} <span className="text-red-500">*</span>
+                <label htmlFor="email" className="block text-sm font-semibold mb-2 text-white">
+                  {t('contact.form.email')} <span className="text-[#FF5E1B]">*</span>
                 </label>
                 <input
                   type="email"
@@ -155,13 +154,13 @@ export function ContactForm() {
                   onChange={handleChange}
                   required
                   disabled={status.loading}
-                  className="w-full h-12 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50"
+                  className="w-full h-12 px-4 py-3 bg-[#111111] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF5E1B] focus:border-[#FF5E1B] disabled:opacity-50"
                 />
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-semibold mb-2">
-                  {t('contact.form.phone')} <span className="text-red-500">*</span>
+                <label htmlFor="phone" className="block text-sm font-semibold mb-2 text-white">
+                  {t('contact.form.phone')} <span className="text-[#FF5E1B]">*</span>
                 </label>
                 <input
                   type="tel"
@@ -172,12 +171,12 @@ export function ContactForm() {
                   required
                   disabled={status.loading}
                   placeholder="+351"
-                  className="w-full h-12 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50"
+                  className="w-full h-12 px-4 py-3 bg-[#111111] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF5E1B] focus:border-[#FF5E1B] disabled:opacity-50"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-semibold mb-2">
+                <label htmlFor="message" className="block text-sm font-semibold mb-2 text-white">
                   {t('contact.form.message')}
                 </label>
                 <textarea
@@ -187,7 +186,7 @@ export function ContactForm() {
                   onChange={handleChange}
                   rows={4}
                   disabled={status.loading}
-                  className="w-full min-h-[120px] px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 disabled:opacity-50 resize-none"
+                  className="w-full min-h-[120px] px-4 py-3 bg-[#111111] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF5E1B] focus:border-[#FF5E1B] disabled:opacity-50 resize-none"
                 />
               </div>
 
@@ -201,62 +200,63 @@ export function ContactForm() {
               </Button>
 
               {status.success && (
-                <p className="text-green-600 text-center font-semibold">
+                <p className="text-green-400 text-center font-semibold">
                   {t('contact.form.success')}
                 </p>
               )}
 
               {status.error && (
-                <p className="text-red-600 text-center font-semibold">
+                <p className="text-red-400 text-center font-semibold">
                   {t('contact.form.error')}
                 </p>
               )}
-            </motion.form>
+            </form>
+          </motion.div>
 
-            {/* Contact options */}
-            <motion.div 
-              className="space-y-6"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <div className="bg-white p-8 rounded-lg shadow-lg">
-                <h3 className="text-2xl font-bold mb-6">Outras formas de contacto</h3>
-                
-                <div className="space-y-4">
-                  <a
-                    href="https://wa.me/351912345678"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block"
-                  >
-                    <Button fullWidth={true} size="lg">
-                      📱 {t('contact.whatsapp')}
-                    </Button>
-                  </a>
+          {/* Quick actions - spans 6 columns */}
+          <motion.div 
+            className="col-span-6 space-y-6"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="bg-white p-8 rounded-lg shadow-lg border-2 border-gray-200">
+              <h3 className="text-[#0A0A0A] font-display text-2xl font-bold uppercase mb-6">Outras formas de contacto</h3>
+              
+              <div className="space-y-4">
+                <a
+                  href="https://wa.me/351912345678"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <Button fullWidth={true} size="lg">
+                    📱 {t('contact.whatsapp')}
+                  </Button>
+                </a>
 
-                  <a
-                    href="tel:+351912345678"
-                    className="block"
-                  >
-                    <Button fullWidth={true} size="lg">
-                      📞 {t('contact.call')}
-                    </Button>
-                  </a>
-                </div>
+                <a
+                  href="tel:+351912345678"
+                  className="block"
+                >
+                  <Button fullWidth={true} size="lg">
+                    📞 {t('contact.call')}
+                  </Button>
+                </a>
               </div>
+            </div>
 
-              <div className="bg-gray-900 text-white p-8 rounded-lg">
-                <h3 className="text-xl font-bold mb-4">Horário de contacto</h3>
-                <p className="mb-2">Segunda a Sexta: 9h - 20h</p>
-                <p className="mb-2">Sábado: 9h - 13h</p>
-                <p>Domingo: Fechado para contactos</p>
-                <p className="mt-4 text-sm text-gray-300">
-                  * O ginásio está aberto 24/7 para membros
-                </p>
-              </div>
-            </motion.div>
+            <div className="bg-[#111111] text-white p-8 rounded-lg">
+              <h3 className="text-white font-display text-xl font-bold uppercase mb-4">Horário de contacto</h3>
+              <p className="mb-2 text-white/90">Segunda a Sexta: 9h - 20h</p>
+              <p className="mb-2 text-white/90">Sábado: 9h - 13h</p>
+              <p className="text-white/90">Domingo: Fechado para contactos</p>
+              <p className="mt-4 text-sm text-white/70">
+                * O ginásio está aberto 24/7 para membros
+              </p>
+            </div>
+          </motion.div>
           </div>
         </div>
       </div>
