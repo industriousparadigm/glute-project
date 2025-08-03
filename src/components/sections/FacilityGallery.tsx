@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState, useEffect, useCallback } from 'react'
-import Image from 'next/image'
 import { useTranslations } from '@/lib/i18n/hooks'
 import { motion } from 'framer-motion'
 
@@ -88,14 +87,11 @@ export function FacilityGallery() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Image
+              <img
                 src={image.src}
                 alt={t(image.altKey)}
-                width={800}
-                height={600}
                 className="w-full h-full object-cover"
                 loading={index < 3 ? "eager" : "lazy"}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
               <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/20 transition-all duration-300 pointer-events-none" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -122,11 +118,9 @@ export function FacilityGallery() {
             className="relative max-w-5xl max-h-[90vh] mx-4 z-10"
             role="document"
           >
-            <Image
+            <img
               src={galleryImages[selectedImageIndex].src}
               alt={t(galleryImages[selectedImageIndex].altKey)}
-              width={1200}
-              height={800}
               className="w-full h-full object-contain"
             />
 
