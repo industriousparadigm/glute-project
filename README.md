@@ -1,25 +1,26 @@
-# Glute Project 🏋️‍♂️
+# Glute Project 🔥
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/industriousparadigm/glute-project)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-15.4.5-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 
-A modern, bilingual fitness studio website for Glute Project in Matosinhos, Portugal. Built with Next.js 15, TypeScript, and Tailwind CSS, featuring a custom admin panel and light TDD practices.
+A bold, high-converting fitness studio website for Glute Project in Matosinhos, Portugal. Features a striking black theme with orange accents, bilingual support, and a custom admin panel.
 
 ## 🎯 Project Overview
 
-Glute Project is a premium private fitness studio offering 24/7 access, professional guidance, and a supportive community. This website serves as the primary digital presence, driving conversions through strategic CTAs and showcasing the unique value proposition.
+Glute Project is a premium 24/7 fitness studio offering professional guidance and community support. This website drives conversions through strategic design and punchy copy, following the V3 Bold Black design system.
 
 ### Key Features
 
-- **Bilingual Support**: Full PT/EN localization with automatic routing
-- **Custom Admin Panel**: JWT-authenticated content management with PostgreSQL
-- **Performance Optimized**: Core Web Vitals (LCP < 2.5s, CLS < 0.1)
+- **Bold Black Theme**: 100% dark surfaces with high-contrast orange CTAs
+- **Bilingual Support**: Full PT/EN localization with flag indicators
+- **Custom Admin Panel**: JWT-authenticated content management
+- **Performance Optimized**: Core Web Vitals optimized, Turbopack enabled
+- **Mobile-First**: Responsive design with mobile-specific optimizations
+- **Scroll Navigation**: Fixed-position navigation dots for section jumping
+- **Instagram Integration**: Mock feed with custom grid layout
 - **Light TDD**: Tests for critical paths (auth, API, forms)
-- **Responsive Design**: Mobile-first with Tailwind CSS v4
-- **Bold Brand Identity**: Black & orange design system
-- **Accessibility**: WCAG 2.2 AA compliant
 
 ## 🚀 Quick Start
 
@@ -41,12 +42,7 @@ npm install
 
 # Copy environment variables
 cp .env.example .env.local
-# Edit .env.local with your credentials:
-# DATABASE_URL=postgres://...
-# JWT_SECRET=your-secret-key
-# ADMIN_EMAIL=admin@gluteproject.com
-# ADMIN_PASSWORD=GluteProject2024!
-# NEXT_PUBLIC_BASE_URL=http://localhost:3001
+# Edit .env.local with your credentials
 
 # Initialize database
 npx tsx scripts/create-tables-now.ts
@@ -55,7 +51,7 @@ npx tsx scripts/create-tables-now.ts
 ### Development
 
 ```bash
-# Start development server (port 3001)
+# Start development server with Turbopack (port 3001)
 npm run dev
 
 # Run tests in watch mode
@@ -77,187 +73,227 @@ glute-project/
 │   │   ├── [locale]/          # Localized pages (pt/en)
 │   │   ├── admin/             # Admin panel (protected)
 │   │   ├── api/               # API routes
-│   │   ├── icon.svg           # Favicon
-│   │   └── globals.css        # Global styles
+│   │   ├── icon.svg           # Orange G favicon
+│   │   └── globals.css        # Global styles & theme
 │   ├── components/
-│   │   ├── sections/          # Page sections (Hero, Pricing, etc.)
-│   │   └── ui/                # Reusable components
+│   │   ├── sections/          # Page sections
+│   │   │   ├── Hero.tsx       # Hero with mobile-specific image
+│   │   │   ├── Differentiators.tsx
+│   │   │   ├── FacilityGallery.tsx
+│   │   │   ├── TestimonialCarousel.tsx
+│   │   │   ├── Pricing.tsx
+│   │   │   ├── InstagramFeed.tsx
+│   │   │   ├── ContactForm.tsx
+│   │   │   ├── Location.tsx
+│   │   │   └── Footer.tsx
+│   │   └── ui/
+│   │       ├── NavRail.tsx    # Scroll progress navigation
+│   │       └── Button.tsx
 │   ├── lib/
 │   │   ├── i18n/              # Translation system
-│   │   ├── theme/             # Design tokens
+│   │   ├── theme/             # V3 Bold Black design tokens
 │   │   ├── auth/              # JWT authentication
 │   │   ├── db/                # Database client & schema
 │   │   └── api.ts             # Content API
-├── public/                    # Static assets & images
-├── scripts/                   # Database & setup scripts
-└── __tests__/                # Test files (alongside components)
+├── public/
+│   └── images/                # Optimized images
+├── scripts/                   # Database setup scripts
+└── CLAUDE.md                  # AI agent documentation
 ```
 
-## 🎨 Design System
+## 🎨 V3 Bold Black Design System
 
-### Brand Colors
+### Theme Colors
 
 ```css
---primary: #FF5E1B;    /* Safety Orange - CTAs & energy */
---ink: #0A0A0A;        /* Near-black - Premium feel */
---accent: #D4FF41;     /* Electric Lime - Highlights */
---white: #FFFFFF;      /* Clean backgrounds */
---neutral: #F4F4F4;    /* Subtle surfaces */
+--color-accent-orange: #FF5E1B;  /* CTAs, headings - WCAG 4.78:1 on black */
+--color-accent-lime: #E8ED4A;    /* Highlights - WCAG 4.62:1 on black */
+--color-brand-black: #0A0A0A;   /* Primary background */
+--color-ink: #0A0A0A;            /* Near-black surfaces */
+--color-text-gray: #B4B4B4;      /* Secondary text */
 ```
 
 ### Typography
 
-- **Display**: Barlow Condensed (700/800) - Bold uppercase headers
+- **Display**: Barlow Condensed (700/800) - Uppercase headers
 - **Body**: Inter (400/600/700) - Clean, readable content
-- **Consistent spacing**: `py-20` sections, `max-w-7xl` containers
+- **Punchy Copy**: Max 4-word headings, 10-word sub-copy
+
+### Design Principles
+
+- 100% dark surfaces - no light sections
+- High contrast orange CTAs
+- Micro-motion animations (250ms sweeps)
+- Mobile-optimized layouts
+- Compressed vertical spacing
 
 ## 🌐 Features in Detail
 
-### Bilingual Support
-- Automatic locale detection and routing
-- URL structure: `/pt/*` (default) and `/en/*`
-- Language switcher in footer
-- All content translatable via admin panel
+### Navigation
+
+- **NavRail**: Fixed-position scroll progress dots
+- **Hover Labels**: Section names on dot hover
+- **Smooth Scrolling**: Animated section transitions
+- **Language Toggle**: PT 🇵🇹 / EN 🇬🇧 with flags
+
+### Sections
+
+1. **Hero**: Full-screen with overlay, mobile-specific image
+2. **Differentiators**: Icon grid with hover effects
+3. **Facility Gallery**: Mosaic layout, modal viewer
+4. **Testimonials**: Horizontal scroll (desktop), stacked (mobile)
+5. **Pricing**: Three-tier with highlighted recommended plan
+6. **Instagram**: 1+4 grid layout with hover overlays
+7. **Contact**: WhatsApp/Call CTAs, collapsible form
+8. **Location**: Google Maps embed with directions
 
 ### Admin Panel (`/admin`)
+
 - **Authentication**: JWT tokens in httpOnly cookies
 - **Content Management**:
-  - Prices: Edit plans and descriptions
-  - Testimonials: Manage reviews with ratings
-  - Settings: Update contact info and social links
-- **Beautiful UI**: Modern design with smooth interactions
+  - Prices: Edit all three pricing tiers
+  - Testimonials: Manage reviews and ratings
+  - Settings: Update contact info and hours
+- **Responsive**: Desktop-optimized interface
 
-### Performance Features
-- Image optimization with Next/Image
-- Font preloading with next/font
-- Lazy loading for galleries
-- Database connection pooling
-- Edge Runtime compatible middleware
+### Mobile Optimizations
 
-### Contact Form
-- RegyBox integration for lead capture
-- Client & server validation
-- Loading states and error handling
-- Success feedback
+- Different hero image on mobile
+- Stacked testimonials with no quote icons
+- Smaller pricing cards and headings
+- Full-width first image in facility gallery
+- Compressed spacing throughout
 
 ## 🧪 Testing Strategy
 
-We follow light TDD practices:
+Light TDD for critical paths:
 
 ```bash
 # Run tests
 npm run test           # Watch mode
-npm run test:ci        # Single run
+npm run test:ci        # CI mode
 
-# Test coverage areas:
-# - Authentication flow
-# - API routes (prices, testimonials, settings)
-# - Form validation
+# Test areas:
+# - JWT authentication
+# - API routes (admin endpoints)
+# - Contact form validation
 # - Critical UI components
-```
-
-### Test Example
-```typescript
-// Write test first for critical paths
-describe('Admin Login', () => {
-  it('should authenticate valid credentials', async () => {
-    // Test implementation
-  })
-})
+# - Accessibility (keyboard nav)
 ```
 
 ## 🚢 Deployment
 
-### Vercel Deployment
-1. Push to `main` branch triggers auto-deployment
-2. GitHub Actions runs build and deploy
-3. Environment variables set in Vercel dashboard
+### Vercel Auto-Deploy
 
-### Required Environment Variables
+1. Push to `main` triggers deployment
+2. Environment variables set in Vercel dashboard
+3. Database must be initialized separately
+
+### Environment Variables
+
 ```env
-DATABASE_URL=           # Neon PostgreSQL connection
-JWT_SECRET=            # Random secure string (min 32 chars)
-ADMIN_EMAIL=           # Admin login email
-ADMIN_PASSWORD=        # Admin login password  
-NEXT_PUBLIC_BASE_URL=  # Site URL for forms
+DATABASE_URL=                    # Neon PostgreSQL pooled connection
+JWT_SECRET=                      # 32+ character secret
+ADMIN_EMAIL=                     # Admin login
+ADMIN_PASSWORD=                  # Admin password
+NEXT_PUBLIC_BASE_URL=           # Production URL
 ```
 
 ### Database Setup
+
 ```bash
-# Run after setting DATABASE_URL
+# After setting DATABASE_URL
 npx tsx scripts/create-tables-now.ts
 ```
 
 ## 🔧 Common Tasks
 
-### Add New Translation
-1. Edit `src/lib/i18n/translations/pt.json`
-2. Edit `src/lib/i18n/translations/en.json`
-3. Use in component: `const { t } = useTranslations()`
+### Update Translations
 
-### Create Admin Page
-1. Add page: `src/app/admin/[feature]/page.tsx`
-2. Update navigation: `src/app/admin/AdminWrapper.tsx`
-3. Create API route if needed
-4. Test authentication
+```typescript
+// Edit translation files
+src/lib/i18n/translations/pt.json
+src/lib/i18n/translations/en.json
 
-### Update Content
-1. Navigate to `/admin/login`
-2. Use environment credentials
-3. Edit content through UI
-4. Changes reflect immediately
+// Use in components
+const { t } = useTranslations()
+<h1>{t('hero.title')}</h1>
+```
+
+### Add Admin Feature
+
+1. Create page: `src/app/admin/[feature]/page.tsx`
+2. Add to navigation: `AdminWrapper.tsx`
+3. Create API route: `src/app/api/admin/[feature]/route.ts`
+4. Add database table if needed
+
+### Modify Theme
+
+```typescript
+// Edit theme tokens
+src/lib/theme/theme.ts
+
+// Update CSS variables
+src/app/globals.css
+```
 
 ## 🐛 Troubleshooting
 
 ### Common Issues
-- **Build fails**: Run `npm run build` locally first
-- **Auth not working**: Check JWT_SECRET is set
-- **DB connection fails**: Verify DATABASE_URL format
-- **Favicon missing in dev**: Normal - works in production
+
+- **White text not showing**: Check CSS inheritance
+- **Images not loading**: Use static imports for Next/Image
+- **Auth fails**: Verify JWT_SECRET is set
+- **Build errors**: Run `npm run build` locally first
 - **Hydration errors**: Check for client-only code
 
 ### Debug Commands
-```bash
-# Check environment
-npx tsx -e "console.log(process.env.DATABASE_URL ? 'DB OK' : 'DB Missing')"
 
+```bash
 # Test database connection
 npx tsx scripts/test-connection.ts
 
 # Clear Next.js cache
 rm -rf .next
+
+# Check environment
+node -e "console.log(Object.keys(process.env).filter(k => k.includes('ADMIN')))"
 ```
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create feature branch: `git checkout -b feature/amazing-feature`
-3. Write tests for critical paths
-4. Commit with conventional commits: `git commit -m 'feat: add amazing feature'`
-5. Push: `git push origin feature/amazing-feature`
+2. Create feature branch: `git checkout -b feature/name`
+3. Follow the established patterns
+4. Test critical paths
+5. Build before committing
 6. Open Pull Request
 
-### Development Principles
-- **Light TDD**: Test critical paths first
-- **Step by step**: Start simple, iterate
-- **Complete features**: No TODOs or partial implementations
-- **TypeScript strict**: Catch errors at compile time
-- **User-focused**: Test behavior, not implementation
+### Code Standards
+
+- TypeScript strict mode
+- Complete implementations only (no TODOs)
+- Mobile-first responsive design
+- WCAG 2.2 AA accessibility
+- Performance-conscious decisions
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+MIT License - see LICENSE file
 
 ## 🙏 Acknowledgments
 
-- Built with [Next.js](https://nextjs.org/) 15.4.5
-- Styled with [Tailwind CSS](https://tailwindcss.com/) v4
-- Database by [Neon](https://neon.tech/)
-- Deployed on [Vercel](https://vercel.com/)
-- Analytics by [Vercel Analytics](https://vercel.com/analytics)
+- Design: V3 Bold Black theme system
+- Framework: [Next.js](https://nextjs.org/) 15.4.5
+- Styling: [Tailwind CSS](https://tailwindcss.com/) v4
+- Database: [Neon](https://neon.tech/) PostgreSQL
+- Hosting: [Vercel](https://vercel.com/)
+- Icons: [Lucide React](https://lucide.dev/)
 
 ---
 
 **Live Site**: [glute-project.vercel.app](https://glute-project.vercel.app)
 
-Built with 💪 for Glute Project - "O TEU TREINO, O TEU TEMPO"
+**Instagram**: [@glute_project](https://instagram.com/glute_project)
+
+Built with 💪 for Glute Project - "TREINA. EVOLUI."
