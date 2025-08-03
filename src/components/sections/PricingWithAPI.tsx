@@ -29,7 +29,7 @@ function PricingContent({ prices }: { prices: Price[] }) {
   const { t, locale } = useTranslations()
   
   return (
-    <section id="pricing" className="py-20 md:py-24">
+    <section id="pricing" className="py-12 md:py-16">
       <div className="container">
         <motion.h2 
           className="text-accent-orange font-display text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase text-center mb-16 tracking-tight"
@@ -45,18 +45,18 @@ function PricingContent({ prices }: { prices: Price[] }) {
           {prices.map((price, index) => (
             <motion.div
               key={price.id}
-              className={`relative bg-gray-900/50 border-2 ${
+              className={`relative bg-black border-2 ${
                 price.highlighted 
                   ? 'border-accent-orange glow-orange' 
-                  : 'border-gray-700'
-              } rounded-xl p-8 flex flex-col justify-between transition-all duration-300 hover:bg-gray-900/70`}
+                  : 'border-zinc-700'
+              } rounded-xl p-8 flex flex-col justify-between transition-all duration-300 hover:bg-zinc-900`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <div>
-                <h3 className="text-white font-display text-2xl font-bold uppercase mb-4 tracking-wide">
+                <h3 className="text-accent-orange font-display text-2xl font-bold uppercase mb-4 tracking-wide">
                   {price.title[locale as 'pt' | 'en']}
                 </h3>
                 <p className="text-accent-orange font-display text-4xl font-extrabold mb-4">
@@ -72,7 +72,7 @@ function PricingContent({ prices }: { prices: Price[] }) {
                 className={`inline-flex justify-center items-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
                   price.highlighted
                     ? 'bg-accent-orange text-white hover:bg-accent-orange/90 hover:-translate-y-0.5 shadow-lg'
-                    : 'bg-gray-800 text-white hover:bg-gray-700'
+                    : 'bg-accent-orange text-white hover:bg-accent-orange/90'
                 }`}
               >
                 {t('hero.cta')}

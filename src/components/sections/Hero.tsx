@@ -6,6 +6,8 @@ import { Button } from '@/components/ui'
 import { useTranslations } from '@/lib/i18n/hooks'
 import { motion } from 'framer-motion'
 import { images } from '@/lib/images'
+import heroBg from '../../../public/images/hero-bg.png'
+import womanStrong from '../../../public/images/woman-strong.png'
 
 export function Hero() {
   const { t } = useTranslations()
@@ -14,14 +16,28 @@ export function Hero() {
     <section role="banner" className="relative bg-brand-black min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with 80% black overlay */}
       <div className="absolute inset-0">
-        <Image
-          src="/images/woman-strong.png"
-          alt=""
-          fill
-          className="object-cover"
-          priority
-          quality={90}
-        />
+        {/* Desktop image */}
+        <div className="hidden md:block absolute inset-0">
+          <Image
+            src={heroBg}
+            alt=""
+            fill
+            className="object-cover"
+            priority
+            quality={90}
+          />
+        </div>
+        {/* Mobile image */}
+        <div className="block md:hidden absolute inset-0">
+          <Image
+            src={womanStrong}
+            alt=""
+            fill
+            className="object-cover object-[center_20%]"
+            priority
+            quality={90}
+          />
+        </div>
         <div className="absolute inset-0 bg-brand-black/80" />
       </div>
       
@@ -41,7 +57,7 @@ export function Hero() {
           </motion.h1>
           
           <motion.p 
-            className="text-accent-lime font-display font-bold uppercase tracking-wide mb-12"
+            className="text-white font-display font-bold uppercase tracking-wide mb-12"
             style={{
               fontSize: 'clamp(1.25rem, 3vw, 2rem)',
               lineHeight: 1.2

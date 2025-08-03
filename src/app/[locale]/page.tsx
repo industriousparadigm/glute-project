@@ -5,23 +5,23 @@ export default function HomePage() {
   return (
     <>
       <NavRail />
-      <main id="main" className="min-h-screen bg-brand-black">
+      <main id="main" className="min-h-screen bg-brand-black text-white">
         <section id="hero" className="snap-section">
           <Hero />
         </section>
-        <section id="why" className="snap-section bg-surface-dark">
+        <section id="why" className="snap-section bg-brand-black">
           <Differentiators />
         </section>
         <section id="gallery" className="snap-section bg-brand-black">
           <FacilityGallery />
         </section>
-        <section id="testimonials" className="snap-section bg-surface-dark">
+        <section id="testimonials" className="snap-section bg-brand-black">
           <TestimonialCarousel />
         </section>
         <section id="pricing" className="snap-section bg-brand-black">
           <Pricing />
         </section>
-        <section id="instagram" className="snap-section bg-surface-dark">
+        <section id="instagram" className="snap-section bg-brand-black">
           <InstagramFeed />
         </section>
         <section id="contact" className="snap-section bg-brand-black">

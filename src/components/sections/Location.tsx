@@ -6,20 +6,20 @@ import { useTranslations } from '@/lib/i18n/hooks'
 export function Location() {
   const { t } = useTranslations()
   
-  // Glute Project coordinates (example - replace with actual)
+  // Glute Project coordinates - Rua Dr. Afonso Cordeiro, 109, Matosinhos
   const coordinates = {
-    lat: 41.1844,
-    lng: -8.6963
+    lat: 41.1879,
+    lng: -8.6968
   }
   
-  // Google Maps Embed API URL
-  const mapUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3004.8!2d${coordinates.lng}!3d${coordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDExJzAzLjgiTiA4wrA0MSc0Ni43Ilc!5e0!3m2!1sen!2spt!4v1234567890`
+  // Google Maps Embed API URL - using address search
+  const mapUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3004.2477!2d-8.6989!3d41.1879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sRua+Dr.+Afonso+Cordeiro%2C+109%2C+4450-001+Matosinhos!5e0!3m2!1spt!2spt!4v1234567890`
   
   // Google Maps directions URL
   const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${coordinates.lat},${coordinates.lng}`
   
   return (
-    <section className="py-10 md:py-12 border-t border-gray-800">
+    <section className="py-10 md:py-12 border-t border-zinc-800">
       <div className="container">
         <h2 className="text-accent-orange font-display text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase text-center mb-8 tracking-tight">
           {t('location.title')}
@@ -29,7 +29,7 @@ export function Location() {
           {/* Information - appears first on mobile */}
           <div className="space-y-4 order-2 lg:order-1">
             {/* Address Card */}
-            <div className="bg-gray-900 p-5 rounded-lg">
+            <div className="bg-black p-5 rounded-lg">
               <div className="flex items-start space-x-3">
                 <div className="flex-shrink-0">
                   <svg
@@ -53,7 +53,7 @@ export function Location() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-white mb-1">Morada</h3>
+                  <h3 className="font-semibold text-accent-orange mb-1">Morada</h3>
                   <p className="text-text-gray text-sm">{t('location.address')}</p>
                   <p className="text-text-gray text-sm">{t('location.city')}</p>
                 </div>
@@ -61,7 +61,7 @@ export function Location() {
             </div>
             
             {/* Parking & Transport combined */}
-            <div className="bg-gray-900 p-5 rounded-lg">
+            <div className="bg-black p-5 rounded-lg">
               <div className="space-y-3">
                 <div className="flex items-start space-x-3">
                   <div className="flex-shrink-0">
@@ -80,7 +80,7 @@ export function Location() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white mb-1">Estacionamento</h3>
+                    <h3 className="font-semibold text-accent-orange mb-1">Estacionamento</h3>
                     <p className="text-text-gray text-sm">{t('location.parking')}</p>
                   </div>
                 </div>
@@ -102,7 +102,7 @@ export function Location() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white mb-1">{t('location.publicTransport')}</h3>
+                    <h3 className="font-semibold text-accent-orange mb-1">{t('location.publicTransport')}</h3>
                     <p className="text-text-gray text-sm">{t('location.metro')}</p>
                     <p className="text-text-gray text-sm">{t('location.bus')}</p>
                   </div>

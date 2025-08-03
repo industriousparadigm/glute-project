@@ -57,7 +57,7 @@ export function FacilityGallery() {
   }, [selectedImageIndex, navigateImage, closeModal])
 
   return (
-    <section id="facility" className="py-16 md:py-20">
+    <section id="facility" className="py-12 md:py-16">
       <div className="container">
         <motion.div 
           className="text-center mb-16"
@@ -72,11 +72,11 @@ export function FacilityGallery() {
           <p className="text-text-gray text-lg font-body">{t('facility.subtitle')}</p>
         </motion.div>
 
-        {/* Mosaic Grid Layout - 3x3 with specific block arrangement */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 auto-rows-[180px] sm:auto-rows-[200px] md:auto-rows-[250px]">
-          {/* Row 1: 2x1 horizontal block + top of 1x2 vertical block */}
+        {/* Mosaic Grid Layout - responsive with mobile-first approach */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 auto-rows-[140px] sm:auto-rows-[180px] md:auto-rows-[250px]">
+          {/* First image - spans full width on mobile */}
           <motion.button
-            className="group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl col-span-2 row-span-1"
+            className="group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl col-span-2 md:col-span-2 row-span-1"
             onClick={() => openModal(0)}
             aria-label={`${t('facility.viewAll')} - ${t(galleryImages[0].altKey)}`}
             initial={{ opacity: 0, y: 30 }}
@@ -99,8 +99,9 @@ export function FacilityGallery() {
             </div>
           </motion.button>
 
+          {/* Second image - vertical on desktop, square on mobile */}
           <motion.button
-            className="group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl col-span-1 row-span-2"
+            className="group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl col-span-1 row-span-1 md:row-span-2"
             onClick={() => openModal(1)}
             aria-label={`${t('facility.viewAll')} - ${t(galleryImages[1].altKey)}`}
             initial={{ opacity: 0, y: 30 }}

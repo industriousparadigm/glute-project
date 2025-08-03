@@ -150,7 +150,7 @@ export function ContactForm() {
 
             <button
               onClick={() => setShowForm(!showForm)}
-              className="w-full inline-flex items-center justify-center gap-3 px-6 py-4 rounded-lg bg-gray-900 text-accent-lime font-semibold text-lg hover:bg-gray-800 transition-all duration-300"
+              className="w-full inline-flex items-center justify-center gap-3 px-6 py-4 rounded-lg bg-zinc-800 border-2 border-accent-lime text-accent-lime font-semibold text-lg hover:bg-accent-lime hover:text-black transition-all duration-300"
             >
               {showForm ? 'Fechar formulário' : 'Quero formulário'}
               {showForm ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
@@ -167,7 +167,7 @@ export function ContactForm() {
             {showForm ? (
               <motion.form
                 onSubmit={handleSubmit}
-                className="space-y-4 bg-gray-900 p-6 rounded-lg"
+                className="space-y-4 bg-black p-6 rounded-lg"
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
@@ -183,7 +183,7 @@ export function ContactForm() {
                     required
                     disabled={status.loading}
                     placeholder={t('contact.form.name') + ' *'}
-                    className="w-full h-11 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50"
+                    className="w-full h-11 px-4 py-2 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50"
                   />
                 </div>
 
@@ -197,7 +197,7 @@ export function ContactForm() {
                     required
                     disabled={status.loading}
                     placeholder={t('contact.form.email') + ' *'}
-                    className="w-full h-11 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50"
+                    className="w-full h-11 px-4 py-2 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50"
                   />
                 </div>
 
@@ -211,7 +211,7 @@ export function ContactForm() {
                     required
                     disabled={status.loading}
                     placeholder="+351"
-                    className="w-full h-11 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50"
+                    className="w-full h-11 px-4 py-2 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50"
                   />
                 </div>
 
@@ -224,7 +224,7 @@ export function ContactForm() {
                     rows={3}
                     disabled={status.loading}
                     placeholder={t('contact.form.message')}
-                    className="w-full min-h-[80px] px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50 resize-none"
+                    className="w-full min-h-[80px] px-4 py-2 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50 resize-none"
                   />
                 </div>
 
@@ -249,12 +249,12 @@ export function ContactForm() {
                 )}
               </motion.form>
             ) : (
-              <div className="bg-gray-900 text-white p-6 rounded-lg">
-                <h3 className="text-white font-display text-lg font-bold uppercase mb-3">Horário de contacto</h3>
+              <div className="bg-black text-white p-6 rounded-lg">
+                <h3 className="text-accent-orange font-display text-lg font-bold uppercase mb-3">Horário de contacto</h3>
                 <p className="mb-1 text-text-gray text-sm">Segunda a Sexta: 9h - 20h</p>
                 <p className="mb-1 text-text-gray text-sm">Sábado: 9h - 13h</p>
                 <p className="text-text-gray text-sm">Domingo: Fechado</p>
-                <p className="mt-3 text-xs text-gray-600">
+                <p className="mt-3 text-xs text-text-gray">
                   * Ginásio aberto 24/7 para membros
                 </p>
               </div>

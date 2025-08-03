@@ -6,20 +6,27 @@ import { useTranslations } from '@/lib/i18n/hooks'
 import { motion } from 'framer-motion'
 import { Instagram } from 'lucide-react'
 
+// Import images
+import womanJumping from '../../../public/images/woman-jumping.png'
+import gymCardio from '../../../public/images/gym-cardio-zone.jpg'
+import gymTraining from '../../../public/images/gym-training-floor.jpg'
+import gymWeights from '../../../public/images/gym-weights-area.jpg'
+import peopleRun from '../../../public/images/people-run.jpg'
+
 // Mock Instagram posts
 const mockPosts = [
-  { id: 1, image: '/images/woman-jumping.png', likes: 127, comments: 15 },
-  { id: 2, image: '/images/gym-cardio-zone.jpg', likes: 89, comments: 8 },
-  { id: 3, image: '/images/gym-training-floor.jpg', likes: 156, comments: 23 },
-  { id: 4, image: '/images/gym-weights-area.jpg', likes: 201, comments: 31 },
-  { id: 5, image: '/images/people-run.jpg', likes: 173, comments: 19 }
+  { id: 1, image: womanJumping, likes: 127, comments: 15 },
+  { id: 2, image: gymCardio, likes: 89, comments: 8 },
+  { id: 3, image: gymTraining, likes: 156, comments: 23 },
+  { id: 4, image: gymWeights, likes: 201, comments: 31 },
+  { id: 5, image: peopleRun, likes: 173, comments: 19 }
 ]
 
 export function InstagramFeed() {
   const { t } = useTranslations()
 
   return (
-    <section className="py-16 md:py-20 bg-surface-dark">
+    <section className="py-12 md:py-16">
       <div className="container">
         <motion.div 
           className="text-center mb-10"

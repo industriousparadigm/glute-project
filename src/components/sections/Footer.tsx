@@ -39,12 +39,6 @@ export function Footer() {
             <span className="text-sm font-medium">info@gluteproject.com</span>
           </a>
 
-          {/* Hours */}
-          <div className="flex items-center gap-2 text-text-gray">
-            <Clock size={20} />
-            <span className="text-sm font-medium">24/7</span>
-          </div>
-
           {/* Social */}
           <div className="flex items-center gap-3">
             <a
@@ -75,26 +69,26 @@ export function Footer() {
               aria-label="Select language"
             >
               <Globe size={20} />
-              <span className="text-sm font-medium uppercase">{locale}</span>
+              <span className="text-sm font-medium uppercase">{locale === 'pt' ? '🇵🇹 PT' : '🇬🇧 EN'}</span>
             </button>
             
             {showLanguages && (
-              <div className="absolute bottom-full right-0 mb-2 bg-gray-900 rounded-lg shadow-lg overflow-hidden">
+              <div className="absolute bottom-full right-0 mb-2 bg-black rounded-lg shadow-lg overflow-hidden">
                 <button
                   onClick={() => switchLanguage('pt')}
-                  className={`block w-full px-4 py-2 text-left text-sm hover:bg-gray-800 transition-colors ${
+                  className={`block w-full px-4 py-2 text-left text-sm hover:bg-zinc-800 transition-colors ${
                     locale === 'pt' ? 'text-accent-orange' : 'text-white'
                   }`}
                 >
-                  Português
+                  🇵🇹 Português
                 </button>
                 <button
                   onClick={() => switchLanguage('en')}
-                  className={`block w-full px-4 py-2 text-left text-sm hover:bg-gray-800 transition-colors ${
+                  className={`block w-full px-4 py-2 text-left text-sm hover:bg-zinc-800 transition-colors ${
                     locale === 'en' ? 'text-accent-orange' : 'text-white'
                   }`}
                 >
-                  English
+                  🇬🇧 English
                 </button>
               </div>
             )}

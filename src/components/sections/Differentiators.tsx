@@ -34,7 +34,7 @@ export function Differentiators() {
   ]
 
   return (
-    <section id="differentiators" className="py-16 md:py-20">
+    <section id="differentiators" className="py-12 md:py-16">
       <div className="container">
         <motion.h2 
           className="text-accent-orange font-display text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase text-center mb-16 tracking-tight"
@@ -55,7 +55,7 @@ export function Differentiators() {
             return (
               <motion.div 
                 key={item.key} 
-                className="bg-gray-900 p-8 rounded-xl group hover:bg-gray-800 transition-colors duration-300"
+                className="bg-black p-8 rounded-xl group hover:bg-zinc-900 transition-colors duration-300"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -68,11 +68,11 @@ export function Differentiators() {
                     aria-hidden={true}
                   />
                 </div>
-                <h3 className="text-white font-display text-xl font-bold uppercase mb-4 text-center tracking-wide">
+                <h3 className="text-accent-orange font-display text-xl font-bold uppercase mb-4 text-center tracking-wide">
                   {t(`differentiators.${item.key}.title`)}
                 </h3>
                 <div className="space-y-2">
-                  <p className="text-accent-lime font-body text-sm font-semibold">{part1}</p>
+                  <p className="text-white font-body text-sm font-semibold">{part1}</p>
                   {part2 && (
                     <p className="text-white/80 font-body text-xs">{part2}</p>
                   )}

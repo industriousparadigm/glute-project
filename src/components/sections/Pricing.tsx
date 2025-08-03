@@ -29,10 +29,10 @@ export function Pricing() {
   ]
 
   return (
-    <section id="pricing" className="py-16 md:py-20">
+    <section id="pricing" className="py-12 md:py-16">
       <div className="container">
         <motion.h2 
-          className="text-accent-orange font-display text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase text-center mb-16 tracking-tight"
+          className="text-accent-orange font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold uppercase text-center mb-8 md:mb-16 tracking-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -45,11 +45,11 @@ export function Pricing() {
           {pricingOptions.map((option, index) => (
             <motion.div
               key={option.key}
-              className={`relative bg-gray-900/50 border-2 ${
+              className={`relative bg-black border-2 ${
                 option.highlighted 
                   ? 'border-accent-orange glow-orange' 
-                  : 'border-gray-700'
-              } rounded-xl p-8 flex flex-col transition-all duration-300 hover:bg-gray-900/70 h-full`}
+                  : 'border-zinc-700'
+              } rounded-xl p-6 md:p-8 flex flex-col transition-all duration-300 hover:bg-zinc-900 h-full`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -61,7 +61,7 @@ export function Pricing() {
                     Recomendado
                   </div>
                 )}
-                <h3 className="text-white font-display text-2xl font-bold uppercase mb-4 text-center tracking-wide">
+                <h3 className="text-accent-orange font-display text-2xl font-bold uppercase mb-4 text-center tracking-wide">
                   {t(`pricing.${option.key}.title`)}
                 </h3>
                 <div className="mb-6 text-center">
@@ -78,7 +78,7 @@ export function Pricing() {
                 <button className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
                   option.highlighted
                     ? 'bg-accent-orange text-white hover:bg-accent-orange/90 hover:-translate-y-0.5 shadow-lg'
-                    : 'bg-gray-800 text-white hover:bg-gray-700'
+                    : 'bg-accent-orange text-white hover:bg-accent-orange/90'
                 }`}>
                   {t('hero.cta')}
                 </button>

@@ -44,6 +44,11 @@
   --color-accent: #E8ED4A;
   --color-neutral: #111111;
   
+  /* Named colors for Tailwind classes */
+  --color-accent-orange: #FF5E1B;
+  --color-accent-lime: #E8ED4A;
+  --color-brand-black: #0A0A0A;
+  
   /* Semantic colors - always dark */
   --color-background: #0A0A0A;
   --color-foreground: #FFFFFF;
@@ -57,7 +62,6 @@
 
 body {
   background: var(--background);
-  color: var(--foreground);
   font-family: var(--font-body);
   font-weight: 400;
   line-height: 1.5;

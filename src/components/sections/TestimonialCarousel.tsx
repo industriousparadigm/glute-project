@@ -39,26 +39,12 @@ export function TestimonialCarousel() {
   }
 
   const renderStars = (rating: number) => {
-    return (
-      <div className="flex gap-1">
-        {Array.from({ length: 5 }, (_, i) => (
-          <svg
-            key={i}
-            className={`w-4 h-4 ${i < rating ? 'text-accent-lime' : 'text-gray-700'}`}
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            aria-label={`${i + 1} star`}
-          >
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-          </svg>
-        ))}
-      </div>
-    )
+    return null; // Remove stars from display
   }
 
   if (loading) {
     return (
-      <section className="py-20 md:py-24">
+      <section className="py-12 md:py-16">
         <div className="container">
           <div className="text-center mb-12">
             <div className="h-16 bg-gray-800 rounded animate-pulse max-w-lg mx-auto mb-4"></div>
@@ -66,7 +52,7 @@ export function TestimonialCarousel() {
           </div>
           <div className="flex gap-6 overflow-hidden">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-gray-900 p-8 rounded-xl w-80 shrink-0">
+              <div key={i} className="bg-black p-8 rounded-xl w-80 shrink-0">
                 <div className="w-12 h-12 bg-gray-800 rounded animate-pulse mb-6"></div>
                 <div className="flex gap-1 mb-4">
                   {[1, 2, 3, 4, 5].map((j) => (
@@ -85,7 +71,7 @@ export function TestimonialCarousel() {
 
   if (error) {
     return (
-      <section className="py-20 md:py-24">
+      <section className="py-12 md:py-16">
         <div className="container text-center">
           <p className="text-red-500">{t('community.error')}</p>
         </div>
@@ -95,7 +81,7 @@ export function TestimonialCarousel() {
 
   if (testimonials.length === 0) {
     return (
-      <section className="py-20 md:py-24">
+      <section className="py-12 md:py-16">
         <div className="container text-center">
           <p className="text-text-gray">{t('community.empty')}</p>
         </div>
@@ -105,7 +91,7 @@ export function TestimonialCarousel() {
 
 
   return (
-    <section className="py-16 md:py-20 overflow-hidden">
+    <section className="py-12 md:py-16 overflow-hidden">
       <div className="container">
         <motion.div 
           className="text-center mb-12"
@@ -121,9 +107,33 @@ export function TestimonialCarousel() {
         </motion.div>
 
         <div className="relative">
-          {/* Horizontal scrollable container */}
+          {/* Mobile - stacked */}
+          <div className="block md:hidden space-y-4">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={`${testimonial.id}-${index}`}
+                className="bg-black p-6 rounded-xl"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <blockquote className="mb-4">
+                  <p className="text-white/90 text-sm leading-relaxed italic">
+                    {locale === 'pt' ? testimonial.text_pt : testimonial.text_en}
+                  </p>
+                </blockquote>
+                
+                <p className="font-semibold text-accent-orange">
+                  {testimonial.name}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Desktop - horizontal scroll */}
           <motion.div 
-            className="overflow-x-auto scrollbar-hide"
+            className="hidden md:block overflow-x-auto scrollbar-hide"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -133,25 +143,21 @@ export function TestimonialCarousel() {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={`${testimonial.id}-${index}`}
-                  className="bg-gray-900 p-8 rounded-xl w-80 shrink-0 snap-start relative group hover:bg-gray-800 transition-colors duration-300"
+                  className="bg-black p-8 rounded-xl w-80 shrink-0 snap-start relative group hover:bg-zinc-900 transition-colors duration-300"
                 >
-                  {/* Orange quote glyph */}
+                  {/* Orange quote glyph - hide on mobile */}
                   <Quote 
                     size={40} 
-                    className="text-accent-orange absolute top-6 left-6 opacity-50"
+                    className="text-accent-orange absolute top-6 left-6 opacity-50 hidden md:block"
                   />
                   
-                  <div className="mt-12 mb-6">
-                    {renderStars(testimonial.rating)}
-                  </div>
-                  
-                  <blockquote className="mb-6">
+                  <blockquote className="mb-4 md:mb-6 mt-2 md:mt-12">
                     <p className="text-white/90 text-sm leading-relaxed italic">
                       {locale === 'pt' ? testimonial.text_pt : testimonial.text_en}
                     </p>
                   </blockquote>
                   
-                  <p className="font-semibold text-white">
+                  <p className="font-semibold text-accent-orange">
                     {testimonial.name}
                   </p>
                 </div>
