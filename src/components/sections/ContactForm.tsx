@@ -105,7 +105,7 @@ export function ContactForm() {
   }
 
   return (
-    <section id="contact" className="py-16 md:py-20">
+    <section id="contact" className="py-12 md:py-16">
       <div className="container">
         <motion.h2 
           className="text-accent-orange font-display text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase text-center mb-12 tracking-tight"

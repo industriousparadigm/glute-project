@@ -57,7 +57,7 @@ export function FacilityGallery() {
   }, [selectedImageIndex, navigateImage, closeModal])
 
   return (
-    <section id="facility" className="py-20 md:py-24">
+    <section id="facility" className="py-16 md:py-20">
       <div className="container">
         <motion.div 
           className="text-center mb-16"

@@ -15,12 +15,12 @@ export function Hero() {
       {/* Background Image with 80% black overlay */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero-bg.png"
+          src="/images/woman-strong.png"
           alt=""
           fill
           className="object-cover"
           priority
-          quality={100}
+          quality={90}
         />
         <div className="absolute inset-0 bg-brand-black/80" />
       </div>

@@ -29,10 +29,10 @@ export function Pricing() {
   ]
 
   return (
-    <section id="pricing" className="py-24 md:py-32 bg-[#F4F4F4]">
+    <section id="pricing" className="py-16 md:py-20">
       <div className="container">
         <motion.h2 
-          className="text-[#FF5E1B] font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase text-center mb-16"
+          className="text-accent-orange font-display text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase text-center mb-16 tracking-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -41,47 +41,48 @@ export function Pricing() {
           {t('pricing.title')}
         </motion.h2>
         
-        <div className="grid-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {pricingOptions.map((option, index) => (
             <motion.div
               key={option.key}
-              className={`col-span-4 bg-white p-8 rounded-xl shadow-lg border-2 ${
+              className={`relative bg-gray-900/50 border-2 ${
                 option.highlighted 
-                  ? 'border-[#FF5E1B] shadow-xl scale-105' 
-                  : 'border-gray-200'
-              } transform transition-all duration-300 hover:shadow-xl ${
-                !option.highlighted ? 'hover:scale-105' : ''
-              }`}
+                  ? 'border-accent-orange glow-orange' 
+                  : 'border-gray-700'
+              } rounded-xl p-8 flex flex-col transition-all duration-300 hover:bg-gray-900/70 h-full`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className="text-center">
+              <div className="flex-grow flex flex-col">
                 {option.highlighted && (
-                  <div className="bg-[#FF5E1B] text-white px-4 py-2 rounded-lg text-sm font-bold uppercase mb-4 inline-block">
+                  <div className="bg-accent-orange text-white px-4 py-2 rounded-lg text-sm font-bold uppercase mb-4 self-center">
                     Recomendado
                   </div>
                 )}
-                <h3 className="text-[#0A0A0A] font-display text-2xl font-bold uppercase mb-4">
+                <h3 className="text-white font-display text-2xl font-bold uppercase mb-4 text-center tracking-wide">
                   {t(`pricing.${option.key}.title`)}
                 </h3>
-                <div className="mb-6">
-                  <p className={`font-display text-4xl font-bold ${
-                    option.highlighted ? 'text-[#FF5E1B]' : 'text-[#0A0A0A]'
-                  }`}>
+                <div className="mb-6 text-center">
+                  <p className="text-accent-orange font-display text-4xl font-extrabold">
                     {t(`pricing.${option.key}.price`)}
                   </p>
                 </div>
-                <p className="text-[#0A0A0A]/80 font-body text-base mb-8">
+                <p className="text-text-gray mb-8 text-center flex-grow">
                   {t(`pricing.${option.key}.description`)}
                 </p>
-                <Link href="#contact" className="block">
-                  <Button fullWidth>
-                    {t('hero.cta')}
-                  </Button>
-                </Link>
               </div>
+              
+              <Link href="#contact" className="block mt-auto">
+                <button className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                  option.highlighted
+                    ? 'bg-accent-orange text-white hover:bg-accent-orange/90 hover:-translate-y-0.5 shadow-lg'
+                    : 'bg-gray-800 text-white hover:bg-gray-700'
+                }`}>
+                  {t('hero.cta')}
+                </button>
+              </Link>
             </motion.div>
           ))}
         </div>

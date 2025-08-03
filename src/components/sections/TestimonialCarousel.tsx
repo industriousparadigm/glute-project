@@ -103,11 +103,9 @@ export function TestimonialCarousel() {
     )
   }
 
-  // Duplicate testimonials for infinite scroll effect
-  const scrollingTestimonials = [...testimonials, ...testimonials]
 
   return (
-    <section className="py-20 md:py-24 overflow-hidden">
+    <section className="py-16 md:py-20 overflow-hidden">
       <div className="container">
         <motion.div 
           className="text-center mb-12"
@@ -123,16 +121,16 @@ export function TestimonialCarousel() {
         </motion.div>
 
         <div className="relative">
-          {/* Auto-scrolling container */}
+          {/* Horizontal scrollable container */}
           <motion.div 
-            className="flex gap-6"
+            className="overflow-x-auto scrollbar-hide"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex gap-6 animate-scroll">
-              {scrollingTestimonials.map((testimonial, index) => (
+            <div className="flex gap-6 pb-4">
+              {testimonials.map((testimonial, index) => (
                 <div
                   key={`${testimonial.id}-${index}`}
                   className="bg-gray-900 p-8 rounded-xl w-80 shrink-0 snap-start relative group hover:bg-gray-800 transition-colors duration-300"
@@ -164,21 +162,12 @@ export function TestimonialCarousel() {
       </div>
 
       <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-50% - 12px));
-          }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
-        
-        .animate-scroll {
-          animation: scroll 30s linear infinite;
-        }
-        
-        .animate-scroll:hover {
-          animation-play-state: paused;
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
         }
       `}</style>
     </section>

@@ -48,7 +48,7 @@ export function Footer() {
           {/* Social */}
           <div className="flex items-center gap-3">
             <a
-              href="https://instagram.com/gluteproject"
+              href="https://instagram.com/glute_project"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"

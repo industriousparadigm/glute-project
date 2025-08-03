@@ -34,7 +34,7 @@ export function Differentiators() {
   ]
 
   return (
-    <section id="differentiators" className="py-20 md:py-24">
+    <section id="differentiators" className="py-16 md:py-20">
       <div className="container">
         <motion.h2 
           className="text-accent-orange font-display text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase text-center mb-16 tracking-tight"
@@ -71,18 +71,12 @@ export function Differentiators() {
                 <h3 className="text-white font-display text-xl font-bold uppercase mb-4 text-center tracking-wide">
                   {t(`differentiators.${item.key}.title`)}
                 </h3>
-                <ul className="text-accent-lime font-body text-sm space-y-1">
-                  <li className="flex items-center">
-                    <span className="mr-2">•</span>
-                    <span>{part1}</span>
-                  </li>
+                <div className="space-y-2">
+                  <p className="text-accent-lime font-body text-sm font-semibold">{part1}</p>
                   {part2 && (
-                    <li className="flex items-center">
-                      <span className="mr-2">•</span>
-                      <span>{part2}</span>
-                    </li>
+                    <p className="text-white/80 font-body text-xs">{part2}</p>
                   )}
-                </ul>
+                </div>
               </motion.div>
             )
           })}

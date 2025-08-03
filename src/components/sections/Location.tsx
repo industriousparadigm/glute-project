@@ -19,7 +19,7 @@ export function Location() {
   const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${coordinates.lat},${coordinates.lng}`
   
   return (
-    <section className="py-12 md:py-16 border-t border-gray-800">
+    <section className="py-10 md:py-12 border-t border-gray-800">
       <div className="container">
         <h2 className="text-accent-orange font-display text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase text-center mb-8 tracking-tight">
           {t('location.title')}
