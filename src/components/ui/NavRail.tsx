@@ -14,6 +14,7 @@ const navItems: NavItem[] = [
   { id: 'gallery', label: 'Gallery' },
   { id: 'testimonials', label: 'Testimonials' },
   { id: 'pricing', label: 'Pricing' },
+  { id: 'instagram', label: 'Instagram' },
   { id: 'contact', label: 'Contact' }
 ]
 

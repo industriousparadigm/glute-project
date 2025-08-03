@@ -1,4 +1,4 @@
-import { Hero, Differentiators, Pricing, FacilityGallery, TestimonialCarousel, ContactForm, Location, Footer } from '@/components/sections'
+import { Hero, Differentiators, Pricing, FacilityGallery, TestimonialCarousel, ContactForm, Location, InstagramFeed, Footer } from '@/components/sections'
 import { NavRail } from '@/components/ui'
 
 export default function HomePage() {
@@ -21,7 +21,10 @@ export default function HomePage() {
         <section id="pricing" className="snap-section bg-brand-black">
           <Pricing />
         </section>
-        <section id="contact" className="snap-section bg-surface-dark">
+        <section id="instagram" className="snap-section bg-surface-dark">
+          <InstagramFeed />
+        </section>
+        <section id="contact" className="snap-section bg-brand-black">
           <ContactForm />
           <Location />
         </section>
