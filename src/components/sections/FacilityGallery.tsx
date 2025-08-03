@@ -57,7 +57,7 @@ export function FacilityGallery() {
   }, [selectedImageIndex, navigateImage, closeModal])
 
   return (
-    <section id="facility" className="py-24 md:py-32 bg-[#F4F4F4]">
+    <section id="facility" className="py-20 md:py-24">
       <div className="container">
         <motion.div 
           className="text-center mb-16"
@@ -66,10 +66,10 @@ export function FacilityGallery() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-[#FF5E1B] font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase mb-4">
+          <h2 className="text-accent-orange font-display text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase mb-4 tracking-tight">
             {t('facility.title')}
           </h2>
-          <p className="text-[#0A0A0A]/80 text-xl font-body">{t('facility.subtitle')}</p>
+          <p className="text-text-gray text-lg font-body">{t('facility.subtitle')}</p>
         </motion.div>
 
         {/* Mosaic Grid Layout - 3x3 with specific block arrangement */}
@@ -92,8 +92,11 @@ export function FacilityGallery() {
               loading="eager"
               sizes="(max-width: 768px) 66vw, 66vw"
             />
-            <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/20 transition-all duration-300 pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-brand-black/30 transition-all duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <p className="text-white font-display font-bold uppercase text-sm tracking-wide drop-shadow-lg">{t(galleryImages[0].altKey)}</p>
+            </div>
           </motion.button>
 
           <motion.button
@@ -113,8 +116,11 @@ export function FacilityGallery() {
               loading="eager"
               sizes="(max-width: 768px) 33vw, 33vw"
             />
-            <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/20 transition-all duration-300 pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-brand-black/30 transition-all duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <p className="text-white font-display font-bold uppercase text-sm tracking-wide drop-shadow-lg">{t(galleryImages[1].altKey)}</p>
+            </div>
           </motion.button>
 
           {/* Row 2: 2x 1x1 blocks (continuing with vertical block from row 1) */}
@@ -135,8 +141,11 @@ export function FacilityGallery() {
               loading="lazy"
               sizes="(max-width: 768px) 33vw, 33vw"
             />
-            <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/20 transition-all duration-300 pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-brand-black/30 transition-all duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <p className="text-white font-display font-bold uppercase text-sm tracking-wide drop-shadow-lg">{t(galleryImages[2].altKey)}</p>
+            </div>
           </motion.button>
 
           <motion.button
@@ -156,8 +165,11 @@ export function FacilityGallery() {
               loading="lazy"
               sizes="(max-width: 768px) 33vw, 33vw"
             />
-            <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/20 transition-all duration-300 pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-brand-black/30 transition-all duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <p className="text-white font-display font-bold uppercase text-sm tracking-wide drop-shadow-lg">{t(galleryImages[3].altKey)}</p>
+            </div>
           </motion.button>
 
           {/* Row 3: 1x1 block + 2x1 horizontal block */}
@@ -178,8 +190,11 @@ export function FacilityGallery() {
               loading="lazy"
               sizes="(max-width: 768px) 33vw, 33vw"
             />
-            <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/20 transition-all duration-300 pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-brand-black/30 transition-all duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <p className="text-white font-display font-bold uppercase text-sm tracking-wide drop-shadow-lg">{t(galleryImages[4].altKey)}</p>
+            </div>
           </motion.button>
 
           <motion.button
@@ -199,8 +214,11 @@ export function FacilityGallery() {
               loading="lazy"
               sizes="(max-width: 768px) 66vw, 66vw"
             />
-            <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/20 transition-all duration-300 pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-brand-black/30 transition-all duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <p className="text-white font-display font-bold uppercase text-sm tracking-wide drop-shadow-lg">{t(galleryImages[5].altKey)}</p>
+            </div>
           </motion.button>
         </div>
       </div>
