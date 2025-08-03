@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { useTranslations } from '@/lib/i18n/hooks'
 import { motion } from 'framer-motion'
-import { Button } from '@/components/ui'
+import { MessageCircle, Phone, ChevronDown, ChevronUp } from 'lucide-react'
 
 interface FormData {
   name: string
@@ -20,6 +20,7 @@ interface FormStatus {
 
 export function ContactForm() {
   const { t } = useTranslations()
+  const [showForm, setShowForm] = useState(false)
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -104,10 +105,10 @@ export function ContactForm() {
   }
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-[#FFF9F4]">
+    <section id="contact" className="py-16 md:py-20">
       <div className="container">
         <motion.h2 
-          className="text-[#FF5E1B] font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase text-center mb-16"
+          className="text-accent-orange font-display text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase text-center mb-12 tracking-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -116,146 +117,148 @@ export function ContactForm() {
           {t('contact.title')}
         </motion.h2>
         
-        <div className="grid-12">
-          {/* Form - spans 6 columns */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {/* Quick CTAs - Left column */}
           <motion.div 
-            className="col-span-6 bg-[#111111] p-8 rounded-lg"
+            className="space-y-4"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-semibold mb-2 text-white">
-                  {t('contact.form.name')} <span className="text-[#FF5E1B]">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  disabled={status.loading}
-                  className="w-full h-12 px-4 py-3 bg-[#111111] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF5E1B] focus:border-[#FF5E1B] disabled:opacity-50"
-                />
-              </div>
+            <a
+              href="https://wa.me/351912345678"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <button className="w-full inline-flex items-center justify-center gap-3 px-8 py-6 rounded-lg bg-accent-orange text-white font-bold text-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+                <MessageCircle size={28} />
+                {t('contact.whatsapp')}
+              </button>
+            </a>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-semibold mb-2 text-white">
-                  {t('contact.form.email')} <span className="text-[#FF5E1B]">*</span>
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  disabled={status.loading}
-                  className="w-full h-12 px-4 py-3 bg-[#111111] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF5E1B] focus:border-[#FF5E1B] disabled:opacity-50"
-                />
-              </div>
+            <a
+              href="tel:+351912345678"
+              className="block"
+            >
+              <button className="w-full inline-flex items-center justify-center gap-3 px-8 py-6 rounded-lg bg-accent-orange text-white font-bold text-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+                <Phone size={28} />
+                {t('contact.call')}
+              </button>
+            </a>
 
-              <div>
-                <label htmlFor="phone" className="block text-sm font-semibold mb-2 text-white">
-                  {t('contact.form.phone')} <span className="text-[#FF5E1B]">*</span>
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  disabled={status.loading}
-                  placeholder="+351"
-                  className="w-full h-12 px-4 py-3 bg-[#111111] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF5E1B] focus:border-[#FF5E1B] disabled:opacity-50"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-semibold mb-2 text-white">
-                  {t('contact.form.message')}
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={4}
-                  disabled={status.loading}
-                  className="w-full min-h-[120px] px-4 py-3 bg-[#111111] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF5E1B] focus:border-[#FF5E1B] disabled:opacity-50 resize-none"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                disabled={status.loading}
-                fullWidth={true}
-                size="lg"
-              >
-                {status.loading ? t('contact.form.submitting') : t('contact.form.submit')}
-              </Button>
-
-              {status.success && (
-                <p className="text-green-400 text-center font-semibold">
-                  {t('contact.form.success')}
-                </p>
-              )}
-
-              {status.error && (
-                <p className="text-red-400 text-center font-semibold">
-                  {t('contact.form.error')}
-                </p>
-              )}
-            </form>
+            <button
+              onClick={() => setShowForm(!showForm)}
+              className="w-full inline-flex items-center justify-center gap-3 px-6 py-4 rounded-lg bg-gray-900 text-accent-lime font-semibold text-lg hover:bg-gray-800 transition-all duration-300"
+            >
+              {showForm ? 'Fechar formulário' : 'Quero formulário'}
+              {showForm ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+            </button>
           </motion.div>
 
-          {/* Quick actions - spans 6 columns */}
-          <motion.div 
-            className="col-span-6 space-y-6"
+          {/* Collapsible form - Right column */}
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="bg-white p-8 rounded-lg shadow-lg border-2 border-gray-200">
-              <h3 className="text-[#0A0A0A] font-display text-2xl font-bold uppercase mb-6">Outras formas de contacto</h3>
-              
-              <div className="space-y-4">
-                <a
-                  href="https://wa.me/351912345678"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block"
-                >
-                  <Button fullWidth={true} size="lg">
-                    📱 {t('contact.whatsapp')}
-                  </Button>
-                </a>
+            {showForm ? (
+              <motion.form
+                onSubmit={handleSubmit}
+                className="space-y-4 bg-gray-900 p-6 rounded-lg"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    disabled={status.loading}
+                    placeholder={t('contact.form.name') + ' *'}
+                    className="w-full h-11 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50"
+                  />
+                </div>
 
-                <a
-                  href="tel:+351912345678"
-                  className="block"
+                <div>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    disabled={status.loading}
+                    placeholder={t('contact.form.email') + ' *'}
+                    className="w-full h-11 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50"
+                  />
+                </div>
+
+                <div>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    disabled={status.loading}
+                    placeholder="+351"
+                    className="w-full h-11 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50"
+                  />
+                </div>
+
+                <div>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={3}
+                    disabled={status.loading}
+                    placeholder={t('contact.form.message')}
+                    className="w-full min-h-[80px] px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50 resize-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={status.loading}
+                  className="w-full px-6 py-3 bg-accent-orange text-white font-semibold rounded-lg hover:bg-accent-orange/90 transition-colors disabled:opacity-50"
                 >
-                  <Button fullWidth={true} size="lg">
-                    📞 {t('contact.call')}
-                  </Button>
-                </a>
+                  {status.loading ? t('contact.form.submitting') : t('contact.form.submit')}
+                </button>
+
+                {status.success && (
+                  <p className="text-accent-lime text-center font-semibold">
+                    {t('contact.form.success')}
+                  </p>
+                )}
+
+                {status.error && (
+                  <p className="text-red-500 text-center font-semibold">
+                    {t('contact.form.error')}
+                  </p>
+                )}
+              </motion.form>
+            ) : (
+              <div className="bg-gray-900 text-white p-6 rounded-lg">
+                <h3 className="text-white font-display text-lg font-bold uppercase mb-3">Horário de contacto</h3>
+                <p className="mb-1 text-text-gray text-sm">Segunda a Sexta: 9h - 20h</p>
+                <p className="mb-1 text-text-gray text-sm">Sábado: 9h - 13h</p>
+                <p className="text-text-gray text-sm">Domingo: Fechado</p>
+                <p className="mt-3 text-xs text-gray-600">
+                  * Ginásio aberto 24/7 para membros
+                </p>
               </div>
-            </div>
-
-            <div className="bg-[#111111] text-white p-8 rounded-lg">
-              <h3 className="text-white font-display text-xl font-bold uppercase mb-4">Horário de contacto</h3>
-              <p className="mb-2 text-white/90">Segunda a Sexta: 9h - 20h</p>
-              <p className="mb-2 text-white/90">Sábado: 9h - 13h</p>
-              <p className="text-white/90">Domingo: Fechado para contactos</p>
-              <p className="mt-4 text-sm text-white/70">
-                * O ginásio está aberto 24/7 para membros
-              </p>
-            </div>
+            )}
           </motion.div>
         </div>
       </div>
