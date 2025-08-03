@@ -6,12 +6,12 @@ import { useTranslations } from '@/lib/i18n/hooks'
 import { motion } from 'framer-motion'
 
 const galleryImages = [
-  { src: '/images/screenshot-2025-08-02-at-16.01.51.png', altKey: 'facility.image1.alt', gridSpan: 'md:col-span-2', height: 'h-64 md:h-80' },
-  { src: '/images/screenshot-2025-08-02-at-16.06.33.png', altKey: 'facility.image2.alt', gridSpan: 'md:col-span-1', height: 'h-48 md:h-64' },
-  { src: '/images/screenshot-2025-08-02-at-16.07.01.png', altKey: 'facility.image3.alt', gridSpan: 'md:col-span-1', height: 'h-56 md:h-72' },
-  { src: '/images/screenshot-2025-08-02-at-16.18.12.png', altKey: 'facility.image4.alt', gridSpan: 'md:col-span-1', height: 'h-52 md:h-60' },
-  { src: '/images/screenshot-2025-08-02-at-16.19.05.png', altKey: 'facility.image5.alt', gridSpan: 'md:col-span-2', height: 'h-48 md:h-64' },
-  { src: '/images/screenshot-2025-08-02-at-16.19.17.png', altKey: 'facility.image6.alt', gridSpan: 'md:col-span-1', height: 'h-60 md:h-76' },
+  { src: '/images/gym-weights-area.jpg', altKey: 'facility.image1.alt', gridSpan: 'md:col-span-2', height: 'h-64 md:h-80' },
+  { src: '/images/gym-cardio-zone.jpg', altKey: 'facility.image2.alt', gridSpan: 'md:col-span-1', height: 'h-48 md:h-64' },
+  { src: '/images/gym-training-floor.jpg', altKey: 'facility.image3.alt', gridSpan: 'md:col-span-1', height: 'h-56 md:h-72' },
+  { src: '/images/gym-equipment-rack.jpg', altKey: 'facility.image4.alt', gridSpan: 'md:col-span-1', height: 'h-52 md:h-60' },
+  { src: '/images/gym-functional-area.jpg', altKey: 'facility.image5.alt', gridSpan: 'md:col-span-2', height: 'h-48 md:h-64' },
+  { src: '/images/gym-strength-zone.jpg', altKey: 'facility.image6.alt', gridSpan: 'md:col-span-1', height: 'h-60 md:h-76' },
 ]
 
 export function FacilityGallery() {
