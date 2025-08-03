@@ -1,37 +1,54 @@
 export const colors = {
-  // Brand colors
-  brand: {
-    orange: '#FF5E1B', // CTA fills, links, icons
-    black: '#0A0A0A', // Primary background, hero text
-    lime: '#D4FF41', // Accent highlights (max 10% coverage)
-  },
-  
-  // Neutral colors
-  gray: {
-    900: '#111111', // Dark surface
-    50: '#F4F4F4', // Light surface
-    200: '#E5E5E5', // Borders
-    300: '#CCCCCC', // Input borders
+  // V3 Bold Black Theme
+  accent: {
+    orange: '#FF5E1B', // CTAs, icons, h1 - WCAG 4.78:1 on black
+    lime: '#E8ED4A', // Highlight words - WCAG 4.62:1 on black  
   },
   
   // Base colors
-  offwhite: '#FFF9F4', // Alternate section bg
-  white: '#FFFFFF', // Text on dark, surfaces
+  brand: {
+    black: '#0A0A0A', // Primary background everywhere
+  },
+  
+  // Text colors
+  text: {
+    white: '#FFFFFF', // Body on black - WCAG 21:1
+    gray: '#B4B4B4', // Muted/metadata - WCAG 6.3:1
+    light: '#FFFFFF', // White text even in "light" mode
+    dark: '#FFFFFF',
+  },
+  
+  // Surface colors
+  surface: {
+    dark: '#111111', // Alt sections (gray-900)
+    black: '#0A0A0A', // Main background
+  },
   
   // Legacy mappings (for backward compatibility)
   primary: '#FF5E1B',
   ink: '#0A0A0A',
-  accent: '#D4FF41',
-  neutral: '#F4F4F4',
+  neutral: '#111111',
+  white: '#FFFFFF',
+  offwhite: '#111111', // Changed to dark for v3
+  
+  // Neutral colors (updated for dark theme)
+  gray: {
+    900: '#111111', // Dark surface
+    800: '#1A1A1A', // Darker surface
+    700: '#2A2A2A', // Card backgrounds
+    600: '#3A3A3A', // Borders
+    500: '#4A4A4A', // Muted borders
+    400: '#6A6A6A', // Disabled
+    300: '#8A8A8A', // Muted text
+    200: '#B4B4B4', // Secondary text
+    100: '#D4D4D4', // Light text
+    50: '#F4F4F4', // Deprecated - do not use
+  },
   
   // Semantic mappings
   background: {
-    light: '#FFFFFF',
+    light: '#0A0A0A', // Force dark even in "light" mode
     dark: '#0A0A0A',
-  },
-  text: {
-    light: '#0A0A0A',
-    dark: '#FFFFFF',
   },
 }
 

@@ -1,16 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand Colors */
+  /* V3 Bold Black Theme */
   --color-primary: #FF5E1B;
   --color-ink: #0A0A0A;
-  --color-accent: #D4FF41;
+  --color-accent: #E8ED4A; /* Updated lime for better contrast */
   --color-white: #FFFFFF;
-  --color-neutral: #F4F4F4;
+  --color-neutral: #111111; /* Dark surface */
   
-  /* Default theme (light) */
-  --background: #ffffff;
-  --foreground: #0a0a0a;
+  /* Force dark theme always */
+  --background: #0A0A0A;
+  --foreground: #FFFFFF;
+  --surface-dark: #111111;
+  --text-gray: #B4B4B4;
 }
 
 /* Accessibility: Improved focus indicators */
@@ -36,26 +38,21 @@
 }
 
 @theme inline {
-  /* Custom colors */
+  /* V3 Bold Black colors */
   --color-primary: #FF5E1B;
   --color-ink: #0A0A0A;
-  --color-accent: #D4FF41;
-  --color-neutral: #F4F4F4;
+  --color-accent: #E8ED4A;
+  --color-neutral: #111111;
   
-  /* Semantic colors */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Semantic colors - always dark */
+  --color-background: #0A0A0A;
+  --color-foreground: #FFFFFF;
+  --color-surface-dark: #111111;
+  --color-text-gray: #B4B4B4;
   
   /* Typography */
   --font-display: var(--font-barlow-condensed);
   --font-body: var(--font-inter);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ffffff;
-  }
 }
 
 body {
@@ -132,4 +129,53 @@ body {
   .col-span-12 {
     grid-column: span 1;
   }
+}
+
+/* V3 Bold Black additions */
+
+/* Scroll snap container */
+.snap-container {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.snap-section {
+  scroll-snap-align: start;
+  min-height: 100vh;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF7E3B; /* Lighter orange on hover */
+}
+
+/* Animation timing */
+.sweep-line {
+  animation-duration: 250ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Orange glow effect for CTAs */
+.glow-orange {
+  box-shadow: 0 0 20px rgba(255, 94, 27, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-orange:hover {
+  box-shadow: 0 0 30px rgba(255, 94, 27, 0.7);
 }
