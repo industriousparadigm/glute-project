@@ -1,17 +1,15 @@
 'use client'
 
 import React, { useState, useEffect, useCallback } from 'react'
+import Image from 'next/image'
 import { useTranslations } from '@/lib/i18n/hooks'
 import { motion } from 'framer-motion'
+import { images } from '@/lib/images'
 
-const galleryImages = [
-  { src: '/images/gym-weights-area.jpg', altKey: 'facility.image1.alt', gridSpan: 'md:col-span-2', height: 'h-64 md:h-80' },
-  { src: '/images/gym-cardio-zone.jpg', altKey: 'facility.image2.alt', gridSpan: 'md:col-span-1', height: 'h-48 md:h-64' },
-  { src: '/images/gym-training-floor.jpg', altKey: 'facility.image3.alt', gridSpan: 'md:col-span-1', height: 'h-56 md:h-72' },
-  { src: '/images/gym-equipment-rack.jpg', altKey: 'facility.image4.alt', gridSpan: 'md:col-span-1', height: 'h-52 md:h-60' },
-  { src: '/images/gym-functional-area.jpg', altKey: 'facility.image5.alt', gridSpan: 'md:col-span-2', height: 'h-48 md:h-64' },
-  { src: '/images/gym-strength-zone.jpg', altKey: 'facility.image6.alt', gridSpan: 'md:col-span-1', height: 'h-60 md:h-76' },
-]
+const galleryImages = images.gallery.map((img, index) => ({
+  ...img,
+  altKey: `facility.image${index + 1}.alt` as const
+}))
 
 export function FacilityGallery() {
   const { t } = useTranslations()
@@ -87,11 +85,13 @@ export function FacilityGallery() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <img
+              <Image
                 src={image.src}
                 alt={t(image.altKey)}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
                 loading={index < 3 ? "eager" : "lazy"}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
               <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/20 transition-all duration-300 pointer-events-none" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -118,11 +118,15 @@ export function FacilityGallery() {
             className="relative max-w-5xl max-h-[90vh] mx-4 z-10"
             role="document"
           >
-            <img
-              src={galleryImages[selectedImageIndex].src}
-              alt={t(galleryImages[selectedImageIndex].altKey)}
-              className="w-full h-full object-contain"
-            />
+            <div className="relative w-full h-full">
+              <Image
+                src={galleryImages[selectedImageIndex].src}
+                alt={t(galleryImages[selectedImageIndex].altKey)}
+                fill
+                className="object-contain"
+                sizes="90vw"
+              />
+            </div>
 
             {/* Navigation buttons */}
             <button

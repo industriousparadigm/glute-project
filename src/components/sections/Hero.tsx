@@ -1,9 +1,11 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui'
 import { useTranslations } from '@/lib/i18n/hooks'
 import { motion } from 'framer-motion'
+import { images } from '@/lib/images'
 
 export function Hero() {
   const { t } = useTranslations()
@@ -24,8 +26,8 @@ export function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
           >
-            <img
-              src="/images/logo.jpg"
+            <Image
+              src={images.logo}
               alt="Glute Project Logo"
               width={120}
               height={120}
