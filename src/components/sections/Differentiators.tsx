@@ -34,10 +34,10 @@ export function Differentiators() {
   ]
 
   return (
-    <section id="differentiators" className="py-24 md:py-32 bg-white">
+    <section id="differentiators" className="py-20 md:py-24">
       <div className="container">
         <motion.h2 
-          className="text-[#FF5E1B] font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase text-center mb-16"
+          className="text-accent-orange font-display text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase text-center mb-16 tracking-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -46,13 +46,16 @@ export function Differentiators() {
           {t('differentiators.title')}
         </motion.h2>
         
-        <div className="grid-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {differentiators.map((item, index) => {
             const IconComponent = item.icon
+            const description = t(`differentiators.${item.key}.description`)
+            const [part1, part2] = description.split(' · ')
+            
             return (
               <motion.div 
                 key={item.key} 
-                className="col-span-3 text-center group"
+                className="bg-gray-900 p-8 rounded-xl group hover:bg-gray-800 transition-colors duration-300"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -60,17 +63,26 @@ export function Differentiators() {
               >
                 <div className="mb-6 transform transition-transform duration-300 group-hover:scale-110">
                   <IconComponent 
-                    size={64} 
-                    className="text-[#FF5E1B] mx-auto"
+                    size={56} 
+                    className="text-accent-orange mx-auto stroke-2"
                     aria-hidden={true}
                   />
                 </div>
-                <h3 className="text-[#0A0A0A] font-display text-2xl font-bold uppercase mb-4">
+                <h3 className="text-white font-display text-xl font-bold uppercase mb-4 text-center tracking-wide">
                   {t(`differentiators.${item.key}.title`)}
                 </h3>
-                <p className="text-[#0A0A0A]/80 font-body text-base">
-                  {t(`differentiators.${item.key}.description`)}
-                </p>
+                <ul className="text-accent-lime font-body text-sm space-y-1">
+                  <li className="flex items-center">
+                    <span className="mr-2">•</span>
+                    <span>{part1}</span>
+                  </li>
+                  {part2 && (
+                    <li className="flex items-center">
+                      <span className="mr-2">•</span>
+                      <span>{part2}</span>
+                    </li>
+                  )}
+                </ul>
               </motion.div>
             )
           })}

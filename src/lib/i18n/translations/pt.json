@@ -1,27 +1,27 @@
 {
   "hero": {
-    "title": "O Teu Treino · O Teu Tempo",
-    "subtitle": "Treina com acompanhamento profissional 24/7",
-    "cta": "AGENDAR VISITA",
+    "title": "TREINA. EVOLUI.",
+    "subtitle": "24/7 · SEM DESCULPAS",
+    "cta": "MARCA JÁ",
     "cta_secondary": "CONHECER O ESPAÇO"
   },
   "differentiators": {
-    "title": "O QUE NOS DIFERENCIA",
+    "title": "PORQUÊ NÓS",
     "trainer_guided": {
-      "title": "Acompanhamento Profissional",
-      "description": "Treinos personalizados com acompanhamento de personal trainers certificados"
+      "title": "TREINO GUIADO",
+      "description": "PTs certificados · Plano personalizado"
     },
     "nutrition": {
-      "title": "Nutrição & Fisioterapia",
-      "description": "Apoio nutricional e fisioterapêutico integrado no teu plano"
+      "title": "NUTRI/PHYSIO",
+      "description": "Corpo completo · Mente focada"
     },
     "access_24h": {
-      "title": "Acesso 24 Horas",
-      "description": "Treina quando quiseres, o ginásio está sempre aberto para ti"
+      "title": "24H",
+      "description": "Sempre aberto · Zero limites"
     },
     "community": {
-      "title": "Comunidade",
-      "description": "Faz parte de uma comunidade que te apoia e motiva"
+      "title": "COMUNIDADE",
+      "description": "Juntos · Mais fortes"
     }
   },
   "facility": {

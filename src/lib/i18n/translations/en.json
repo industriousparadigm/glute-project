@@ -1,27 +1,27 @@
 {
   "hero": {
-    "title": "Train on Your Time",
-    "subtitle": "Train with 24/7 professional guidance",
-    "cta": "SCHEDULE A VISIT",
+    "title": "TRAIN. EVOLVE.",
+    "subtitle": "24/7 · NO EXCUSES",
+    "cta": "BOOK NOW",
     "cta_secondary": "EXPLORE THE SPACE"
   },
   "differentiators": {
-    "title": "WHAT MAKES US DIFFERENT",
+    "title": "WHY US",
     "trainer_guided": {
-      "title": "Professional Guidance",
-      "description": "Personalized workouts with certified personal trainers"
+      "title": "GUIDED TRAINING",
+      "description": "Certified PTs · Custom plan"
     },
     "nutrition": {
-      "title": "Nutrition & Physiotherapy",
-      "description": "Integrated nutritional and physiotherapy support in your plan"
+      "title": "NUTRI/PHYSIO",
+      "description": "Complete body · Focused mind"
     },
     "access_24h": {
-      "title": "24 Hour Access",
-      "description": "Train whenever you want, the gym is always open for you"
+      "title": "24H",
+      "description": "Always open · Zero limits"
     },
     "community": {
-      "title": "Community",
-      "description": "Be part of a community that supports and motivates you"
+      "title": "COMMUNITY",
+      "description": "Together · Stronger"
     }
   },
   "facility": {
