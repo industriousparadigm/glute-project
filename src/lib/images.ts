@@ -1,20 +1,31 @@
 // Import all images as static imports for Next.js Image optimization
-import gymWeightsArea from '../../public/images/gym-weights-area.jpg'
-import gymCardioZone from '../../public/images/gym-cardio-zone.jpg'
-import gymTrainingFloor from '../../public/images/gym-training-floor.jpg'
-import gymEquipmentRack from '../../public/images/gym-equipment-rack.jpg'
-import gymFunctionalArea from '../../public/images/gym-functional-area.jpg'
-import gymStrengthZone from '../../public/images/gym-strength-zone.jpg'
+import wideColThree from '../../public/images/woman-studio.png'
+import womanStrong from '../../public/images/woman-strong.png'
+import colTwoOne from '../../public/images/bros-studio.png'
+import glutePeopleOutside from '../../public/images/glutes-outside.png'
+import runningPeople from '../../public/images/people-run.jpg'
+import gluteAction from '../../public/images/glute-action.png'
 import logo from '../../public/images/logo.jpg'
 
 export const images = {
   logo,
   gallery: [
-    { src: gymWeightsArea, alt: 'Gym weights area', gridSpan: 'md:col-span-2', height: 'h-64 md:h-80' },
-    { src: gymCardioZone, alt: 'Gym cardio zone', gridSpan: 'md:col-span-1', height: 'h-48 md:h-64' },
-    { src: gymTrainingFloor, alt: 'Gym training floor', gridSpan: 'md:col-span-1', height: 'h-56 md:h-72' },
-    { src: gymEquipmentRack, alt: 'Gym equipment rack', gridSpan: 'md:col-span-1', height: 'h-52 md:h-60' },
-    { src: gymFunctionalArea, alt: 'Gym functional area', gridSpan: 'md:col-span-2', height: 'h-48 md:h-64' },
-    { src: gymStrengthZone, alt: 'Gym strength zone', gridSpan: 'md:col-span-1', height: 'h-60 md:h-76' },
+    // Row 1, Col 1-2: Horizontal 2x1 image
+    { src: gluteAction, alt: 'Woman lifts with her feet' }, // row1col1 (spans to col2)
+    
+    // Row 1-2, Col 3: Vertical 1x2 image
+    { src: womanStrong, alt: 'Woman strong' }, // row1col3 (spans to row2)
+    
+    // Row 2, Col 1: Square 1x1 image
+    { src: colTwoOne, alt: 'Bros at studio' }, // row2col1
+    
+    // Row 2, Col 2: Square 1x1 image
+    { src: glutePeopleOutside, alt: 'Gang outside' }, // row2col2
+    
+    // Row 3, Col 1: Square 1x1 image
+    { src: runningPeople, alt: 'People running' }, // row3col1
+    
+    // Row 3, Col 2-3: Horizontal 2x1 image
+    { src: wideColThree, alt: 'Gym strength zone' }, // row3col2 (spans to col3)
   ]
 }

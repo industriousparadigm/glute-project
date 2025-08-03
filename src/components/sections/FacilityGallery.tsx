@@ -72,31 +72,136 @@ export function FacilityGallery() {
           <p className="text-[#0A0A0A]/80 text-xl font-body">{t('facility.subtitle')}</p>
         </motion.div>
 
-        {/* Mosaic Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-max">
-          {galleryImages.map((image, index) => (
-            <motion.button
-              key={index}
-              className={`group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl block w-full ${image.gridSpan} ${image.height}`}
-              onClick={() => openModal(index)}
-              aria-label={`${t('facility.viewAll')} - ${t(image.altKey)}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Image
-                src={image.src}
-                alt={t(image.altKey)}
-                fill
-                className="object-cover"
-                loading={index < 3 ? "eager" : "lazy"}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
-              <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/20 transition-all duration-300 pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </motion.button>
-          ))}
+        {/* Mosaic Grid Layout - 3x3 with specific block arrangement */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 auto-rows-[180px] sm:auto-rows-[200px] md:auto-rows-[250px]">
+          {/* Row 1: 2x1 horizontal block + top of 1x2 vertical block */}
+          <motion.button
+            className="group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl col-span-2 row-span-1"
+            onClick={() => openModal(0)}
+            aria-label={`${t('facility.viewAll')} - ${t(galleryImages[0].altKey)}`}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0 }}
+          >
+            <Image
+              src={galleryImages[0].src}
+              alt={t(galleryImages[0].altKey)}
+              fill
+              className="object-cover"
+              loading="eager"
+              sizes="(max-width: 768px) 66vw, 66vw"
+            />
+            <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/20 transition-all duration-300 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </motion.button>
+
+          <motion.button
+            className="group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl col-span-1 row-span-2"
+            onClick={() => openModal(1)}
+            aria-label={`${t('facility.viewAll')} - ${t(galleryImages[1].altKey)}`}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <Image
+              src={galleryImages[1].src}
+              alt={t(galleryImages[1].altKey)}
+              fill
+              className="object-cover"
+              loading="eager"
+              sizes="(max-width: 768px) 33vw, 33vw"
+            />
+            <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/20 transition-all duration-300 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </motion.button>
+
+          {/* Row 2: 2x 1x1 blocks (continuing with vertical block from row 1) */}
+          <motion.button
+            className="group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl col-span-1 row-span-1"
+            onClick={() => openModal(2)}
+            aria-label={`${t('facility.viewAll')} - ${t(galleryImages[2].altKey)}`}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Image
+              src={galleryImages[2].src}
+              alt={t(galleryImages[2].altKey)}
+              fill
+              className="object-cover"
+              loading="lazy"
+              sizes="(max-width: 768px) 33vw, 33vw"
+            />
+            <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/20 transition-all duration-300 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </motion.button>
+
+          <motion.button
+            className="group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl col-span-1 row-span-1"
+            onClick={() => openModal(3)}
+            aria-label={`${t('facility.viewAll')} - ${t(galleryImages[3].altKey)}`}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <Image
+              src={galleryImages[3].src}
+              alt={t(galleryImages[3].altKey)}
+              fill
+              className="object-cover"
+              loading="lazy"
+              sizes="(max-width: 768px) 33vw, 33vw"
+            />
+            <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/20 transition-all duration-300 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </motion.button>
+
+          {/* Row 3: 1x1 block + 2x1 horizontal block */}
+          <motion.button
+            className="group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl col-span-1 row-span-1"
+            onClick={() => openModal(4)}
+            aria-label={`${t('facility.viewAll')} - ${t(galleryImages[4].altKey)}`}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <Image
+              src={galleryImages[4].src}
+              alt={t(galleryImages[4].altKey)}
+              fill
+              className="object-cover"
+              loading="lazy"
+              sizes="(max-width: 768px) 33vw, 33vw"
+            />
+            <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/20 transition-all duration-300 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </motion.button>
+
+          <motion.button
+            className="group relative overflow-hidden rounded-xl cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl col-span-2 row-span-1"
+            onClick={() => openModal(5)}
+            aria-label={`${t('facility.viewAll')} - ${t(galleryImages[5].altKey)}`}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            <Image
+              src={galleryImages[5].src}
+              alt={t(galleryImages[5].altKey)}
+              fill
+              className="object-cover"
+              loading="lazy"
+              sizes="(max-width: 768px) 66vw, 66vw"
+            />
+            <div className="absolute inset-0 bg-[#0A0A0A]/0 group-hover:bg-[#0A0A0A]/20 transition-all duration-300 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </motion.button>
         </div>
       </div>
 
