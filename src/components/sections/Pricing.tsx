@@ -49,7 +49,7 @@ export function Pricing() {
                 option.highlighted 
                   ? 'border-accent-orange glow-orange' 
                   : 'border-zinc-700'
-              } rounded-xl p-6 md:p-8 flex flex-col transition-all duration-300 hover:bg-zinc-900 h-full`}
+              } p-6 md:p-8 flex flex-col transition-all duration-300 hover:bg-zinc-900 h-full`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -57,7 +57,7 @@ export function Pricing() {
             >
               <div className="flex-grow flex flex-col">
                 {option.highlighted && (
-                  <div className="bg-accent-orange text-white px-4 py-2 rounded-lg text-sm font-bold uppercase mb-4 self-center">
+                  <div className="bg-accent-orange text-white px-4 py-2 text-sm font-bold uppercase mb-4 self-center">
                     Recomendado
                   </div>
                 )}
@@ -75,7 +75,7 @@ export function Pricing() {
               </div>
               
               <Link href="#contact" className="block mt-auto">
-                <button className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                <button className={`w-full px-6 py-3 font-semibold transition-all duration-300 ${
                   option.highlighted
                     ? 'bg-accent-orange text-white hover:bg-accent-orange/90 hover:-translate-y-0.5 shadow-lg'
                     : 'bg-accent-orange text-white hover:bg-accent-orange/90'

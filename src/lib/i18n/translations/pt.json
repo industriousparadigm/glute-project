@@ -1,7 +1,7 @@
 {
   "hero": {
-    "title": "TREINA. EVOLUI.",
-    "subtitle": "24/7 · SEM DESCULPAS",
+    "title": "GLUTE PROJECT",
+    "subtitle": "THE BODY ACHIEVES WHAT THE MIND BELIEVES",
     "cta": "MARCA JÁ",
     "cta_secondary": "CONHECER O ESPAÇO"
   },
@@ -24,6 +24,12 @@
       "description": "Juntos · Mais fortes"
     }
   },
+  "studio": {
+    "title": "O NOSSO ESTÚDIO",
+    "subtitle": "500m² de pura motivação e equipamento profissional",
+    "viewAll": "Ver todas as fotos",
+    "close": "Fechar"
+  },
   "facility": {
     "title": "INSTALAÇÕES & EQUIPAMENTO",
     "subtitle": "500m² equipados com mais de 50 máquinas profissionais",
@@ -45,6 +51,12 @@
     },
     "image6": {
       "alt": "Zona de alongamento"
+    },
+    "image7": {
+      "alt": "Zona de cardio"
+    },
+    "image8": {
+      "alt": "Equipamento profissional"
     },
     "viewAll": "Ver todas as fotos",
     "close": "Fechar"
@@ -89,7 +101,14 @@
       "error": "Erro ao enviar mensagem. Tente novamente."
     },
     "whatsapp": "CONTACTAR VIA WHATSAPP",
-    "call": "LIGAR AGORA"
+    "call": "LIGAR AGORA",
+    "form_toggle_open": "Quero formulário",
+    "form_toggle_close": "Fechar formulário",
+    "contact_hours": "Horário de contacto",
+    "weekdays": "Segunda a Sexta: 9h - 20h",
+    "saturday": "Sábado: 9h - 13h",
+    "sunday": "Domingo: Fechado",
+    "member_access": "* Ginásio aberto 24/7 para membros"
   },
   "location": {
     "title": "LOCALIZAÇÃO",
@@ -123,5 +142,13 @@
     "error": "Ocorreu um erro",
     "success": "Sucesso!",
     "required": "Obrigatório"
+  },
+  "navigation": {
+    "hero": "Início",
+    "studio": "O Nosso Estúdio",
+    "testimonials": "Testemunhos",
+    "pricing": "Preços",
+    "instagram": "Instagram",
+    "contact": "Contacto"
   }
 }

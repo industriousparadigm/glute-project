@@ -1,21 +1,41 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import { useTranslations } from '@/lib/i18n/hooks'
-import { Phone, Mail, Clock, Globe, Instagram, Facebook } from 'lucide-react'
+import { useLanguagePreference } from '@/lib/i18n/useLanguagePreference'
+import { Phone, Mail, Clock, Instagram, Facebook } from 'lucide-react'
 
 export function Footer() {
   const { t, locale } = useTranslations()
   const router = useRouter()
   const pathname = usePathname()
   const [showLanguages, setShowLanguages] = useState(false)
+  const languageRef = useRef<HTMLDivElement>(null)
+  const { saveLanguagePreference } = useLanguagePreference()
 
   const switchLanguage = (newLocale: string) => {
     const newPath = pathname.replace(`/${locale}`, `/${newLocale}`)
+    saveLanguagePreference(newLocale)
     router.push(newPath)
     setShowLanguages(false)
   }
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (languageRef.current && !languageRef.current.contains(event.target as Node)) {
+        setShowLanguages(false)
+      }
+    }
+
+    if (showLanguages) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [showLanguages])
 
   return (
     <footer className="bg-brand-black border-t border-gray-800">
@@ -62,33 +82,32 @@ export function Footer() {
           </div>
 
           {/* Language Switcher */}
-          <div className="relative">
+          <div className="relative" ref={languageRef}>
             <button
               onClick={() => setShowLanguages(!showLanguages)}
               className="flex items-center gap-2 text-text-gray hover:text-accent-orange transition-colors"
               aria-label="Select language"
             >
-              <Globe size={20} />
-              <span className="text-sm font-medium uppercase">{locale === 'pt' ? '🇵🇹 PT' : '🇬🇧 EN'}</span>
+              <span className="text-lg font-bold">{locale === 'pt' ? '🇵🇹 PT' : '🇬🇧 EN'}</span>
             </button>
             
             {showLanguages && (
-              <div className="absolute bottom-full right-0 mb-2 bg-black rounded-lg shadow-lg overflow-hidden">
+              <div className="absolute bottom-full right-0 mb-2 bg-black shadow-lg overflow-hidden">
                 <button
                   onClick={() => switchLanguage('pt')}
-                  className={`block w-full px-4 py-2 text-left text-sm hover:bg-zinc-800 transition-colors ${
+                  className={`block w-full px-4 py-2 text-left hover:bg-zinc-800 transition-colors whitespace-nowrap ${
                     locale === 'pt' ? 'text-accent-orange' : 'text-white'
                   }`}
                 >
-                  🇵🇹 Português
+                  <span className="text-lg font-bold">🇵🇹 PT</span>
                 </button>
                 <button
                   onClick={() => switchLanguage('en')}
-                  className={`block w-full px-4 py-2 text-left text-sm hover:bg-zinc-800 transition-colors ${
+                  className={`block w-full px-4 py-2 text-left hover:bg-zinc-800 transition-colors whitespace-nowrap ${
                     locale === 'en' ? 'text-accent-orange' : 'text-white'
                   }`}
                 >
-                  🇬🇧 English
+                  <span className="text-lg font-bold">🇬🇧 EN</span>
                 </button>
               </div>
             )}

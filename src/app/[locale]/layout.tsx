@@ -1,19 +1,26 @@
 import type { Metadata } from "next";
-import { Inter, Barlow_Condensed } from "next/font/google";
+import { Bebas_Neue, Oswald, Barlow_Condensed } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "../globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const oswald = Oswald({
+  variable: "--font-oswald",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+});
+
+const bebasNeue = Bebas_Neue({
+  variable: "--font-bebas-neue",
+  subsets: ["latin"],
+  weight: ["400"],
   display: "swap",
 });
 
 const barlowCondensed = Barlow_Condensed({
   variable: "--font-barlow-condensed",
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
+  weight: ["400", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -62,7 +69,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body
-        className={`${inter.variable} ${barlowCondensed.variable} antialiased`}
+        className={`${oswald.variable} ${bebasNeue.variable} ${barlowCondensed.variable} antialiased`}
       >
         <a href="#main" className="skip-link">
           {locale === 'en' ? 'Skip to main content' : 'Ir para o conteúdo principal'}

@@ -1,0 +1,142 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "quote": {
+        "pt": "Simplesmente o melhor ginásio onde já treinei! O ambiente é super acolhedor e motivador.",
+        "en": "Simply the best gym I've ever trained at! The atmosphere is super welcoming and motivating."
+      },
+      "author": "Pedro Candeias",
+      "highlight": true
+    },
+    {
+      "id": 2,
+      "quote": {
+        "pt": "Aqui não há julgamentos, só motivação, profissionalismo e boa disposição.",
+        "en": "Here there are no judgments, only motivation, professionalism, and good vibes."
+      },
+      "author": "Mariana Assunção",
+      "highlight": true
+    },
+    {
+      "id": 3,
+      "quote": {
+        "pt": "É muito mais do que um plano de treino, é um verdadeiro apoio ao meu bem-estar físico e psicológico!",
+        "en": "It's much more than a workout plan, it's true support for my physical and psychological well-being!"
+      },
+      "author": "Heloísa Silva",
+      "highlight": true
+    },
+    {
+      "id": 4,
+      "quote": {
+        "pt": "A gym that instantly feels like home.",
+        "en": "A gym that instantly feels like home."
+      },
+      "author": "Caroline Kern",
+      "highlight": true
+    },
+    {
+      "id": 5,
+      "quote": {
+        "pt": "Fitness and community go hand in hand.",
+        "en": "Fitness and community go hand in hand."
+      },
+      "author": "Mariana Miragaia",
+      "highlight": false
+    },
+    {
+      "id": 6,
+      "quote": {
+        "pt": "Parece uma grande família!",
+        "en": "It feels like a big family!"
+      },
+      "author": "Mariana Scalercio Thiago",
+      "highlight": false
+    },
+    {
+      "id": 7,
+      "quote": {
+        "pt": "Sem dúvida alguma é o melhor estúdio para treinar da região do Grande Porto!",
+        "en": "Without a doubt the best training studio in the Greater Porto region!"
+      },
+      "author": "Renato Fonseca",
+      "highlight": true
+    },
+    {
+      "id": 8,
+      "quote": {
+        "pt": "They have proper squat racks (hard to find in commercial gyms)",
+        "en": "They have proper squat racks (hard to find in commercial gyms)"
+      },
+      "author": "Paulina Karwowski",
+      "highlight": false
+    },
+    {
+      "id": 9,
+      "quote": {
+        "pt": "24/7 availability of the facilities",
+        "en": "24/7 availability of the facilities"
+      },
+      "author": "Rafayel Chibukhchyan",
+      "highlight": false
+    },
+    {
+      "id": 10,
+      "quote": {
+        "pt": "Never crowded, cosy with a great variety of equipment.",
+        "en": "Never crowded, cosy with a great variety of equipment."
+      },
+      "author": "Lusine Harutyunyan",
+      "highlight": false
+    }
+  ],
+  "impactfulPhrases": {
+    "community": {
+      "pt": [
+        "Uma grande família",
+        "Sente-se em casa",
+        "Ambiente acolhedor",
+        "Sem julgamentos",
+        "Equipa incrível"
+      ],
+      "en": [
+        "Like a big family",
+        "Feels like home",
+        "Welcoming environment",
+        "No judgments",
+        "Amazing team"
+      ]
+    },
+    "quality": {
+      "pt": [
+        "O melhor ginásio",
+        "Equipamento de qualidade",
+        "Treinos personalizados",
+        "Profissionais dedicados",
+        "Resultados garantidos"
+      ],
+      "en": [
+        "The best gym",
+        "Quality equipment",
+        "Personalized training",
+        "Dedicated professionals",
+        "Guaranteed results"
+      ]
+    },
+    "flexibility": {
+      "pt": [
+        "Treinar 24/7",
+        "Horários flexíveis",
+        "Nunca lotado",
+        "Liberdade total"
+      ],
+      "en": [
+        "Train 24/7",
+        "Flexible hours",
+        "Never crowded",
+        "Total freedom"
+      ]
+    }
+  }
+}

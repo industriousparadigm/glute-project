@@ -29,7 +29,7 @@ export function Location() {
           {/* Information - appears first on mobile */}
           <div className="space-y-4 order-2 lg:order-1">
             {/* Address Card */}
-            <div className="bg-black p-5 rounded-lg">
+            <div className="bg-black p-5">
               <div className="flex items-start space-x-3">
                 <div className="flex-shrink-0">
                   <svg
@@ -61,7 +61,7 @@ export function Location() {
             </div>
             
             {/* Parking & Transport combined */}
-            <div className="bg-black p-5 rounded-lg">
+            <div className="bg-black p-5">
               <div className="space-y-3">
                 <div className="flex items-start space-x-3">
                   <div className="flex-shrink-0">
@@ -115,14 +115,14 @@ export function Location() {
               href={directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full py-3 bg-accent-orange text-white font-bold text-center rounded-lg hover:bg-accent-orange/90 transition-colors"
+              className="block w-full py-3 bg-accent-orange text-white font-bold text-center hover:bg-accent-orange/90 transition-colors"
             >
               {t('location.directions')}
             </a>
           </div>
           
           {/* Map */}
-          <div className="h-48 md:h-64 rounded-lg overflow-hidden order-1 lg:order-2">
+          <div className="h-48 md:h-64 overflow-hidden order-1 lg:order-2">
             <iframe
               src={mapUrl}
               width="100%"

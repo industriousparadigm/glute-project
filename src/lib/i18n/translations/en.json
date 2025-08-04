@@ -1,7 +1,7 @@
 {
   "hero": {
-    "title": "TRAIN. EVOLVE.",
-    "subtitle": "24/7 · NO EXCUSES",
+    "title": "GLUTE PROJECT",
+    "subtitle": "THE BODY ACHIEVES WHAT THE MIND BELIEVES",
     "cta": "BOOK NOW",
     "cta_secondary": "EXPLORE THE SPACE"
   },
@@ -24,6 +24,12 @@
       "description": "Together · Stronger"
     }
   },
+  "studio": {
+    "title": "OUR STUDIO",
+    "subtitle": "500m² of pure motivation and professional equipment",
+    "viewAll": "View all photos",
+    "close": "Close"
+  },
   "facility": {
     "title": "FACILITY & EQUIPMENT",
     "subtitle": "500m² equipped with over 50 professional machines",
@@ -45,6 +51,12 @@
     },
     "image6": {
       "alt": "Stretching zone"
+    },
+    "image7": {
+      "alt": "Cardio zone"
+    },
+    "image8": {
+      "alt": "Professional equipment"
     },
     "viewAll": "View all photos",
     "close": "Close"
@@ -89,7 +101,14 @@
       "error": "Error sending message. Please try again."
     },
     "whatsapp": "CONTACT VIA WHATSAPP",
-    "call": "CALL NOW"
+    "call": "CALL NOW",
+    "form_toggle_open": "I want the form",
+    "form_toggle_close": "Close form",
+    "contact_hours": "Contact hours",
+    "weekdays": "Monday to Friday: 9am - 8pm",
+    "saturday": "Saturday: 9am - 1pm",
+    "sunday": "Sunday: Closed",
+    "member_access": "* Gym open 24/7 for members"
   },
   "location": {
     "title": "LOCATION",
@@ -123,5 +142,13 @@
     "error": "An error occurred",
     "success": "Success!",
     "required": "Required"
+  },
+  "navigation": {
+    "hero": "Hero",
+    "studio": "Our Studio",
+    "testimonials": "Testimonials",
+    "pricing": "Pricing",
+    "instagram": "Instagram",
+    "contact": "Contact"
   }
 }

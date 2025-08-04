@@ -47,20 +47,20 @@ export function TestimonialCarousel() {
       <section className="py-12 md:py-16">
         <div className="container">
           <div className="text-center mb-12">
-            <div className="h-16 bg-gray-800 rounded animate-pulse max-w-lg mx-auto mb-4"></div>
-            <div className="h-6 bg-gray-800 rounded animate-pulse max-w-md mx-auto"></div>
+            <div className="h-16 bg-gray-800 animate-pulse max-w-lg mx-auto mb-4"></div>
+            <div className="h-6 bg-gray-800 animate-pulse max-w-md mx-auto"></div>
           </div>
           <div className="flex gap-6 overflow-hidden">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-black p-8 rounded-xl w-80 shrink-0">
-                <div className="w-12 h-12 bg-gray-800 rounded animate-pulse mb-6"></div>
+              <div key={i} className="bg-black p-8 w-80 shrink-0">
+                <div className="w-12 h-12 bg-gray-800 animate-pulse mb-6"></div>
                 <div className="flex gap-1 mb-4">
                   {[1, 2, 3, 4, 5].map((j) => (
-                    <div key={j} className="w-4 h-4 bg-gray-800 rounded animate-pulse"></div>
+                    <div key={j} className="w-4 h-4 bg-gray-800 animate-pulse"></div>
                   ))}
                 </div>
-                <div className="h-20 bg-gray-800 rounded animate-pulse mb-4"></div>
-                <div className="h-6 bg-gray-800 rounded animate-pulse w-32"></div>
+                <div className="h-20 bg-gray-800 animate-pulse mb-4"></div>
+                <div className="h-6 bg-gray-800 animate-pulse w-32"></div>
               </div>
             ))}
           </div>
@@ -112,7 +112,7 @@ export function TestimonialCarousel() {
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={`${testimonial.id}-${index}`}
-                className="bg-black p-6 rounded-xl"
+                className="bg-black p-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -143,7 +143,7 @@ export function TestimonialCarousel() {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={`${testimonial.id}-${index}`}
-                  className="bg-black p-8 rounded-xl w-80 shrink-0 snap-start relative group hover:bg-zinc-900 transition-colors duration-300"
+                  className="bg-black p-8 w-80 shrink-0 snap-start relative group hover:bg-zinc-900 transition-colors duration-300"
                 >
                   {/* Orange quote glyph - hide on mobile */}
                   <Quote 

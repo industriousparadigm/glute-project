@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { useTranslations } from '@/lib/i18n/hooks'
 
 interface NavItem {
   id: string
@@ -10,10 +11,9 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { id: 'hero', label: 'Hero' },
-  { id: 'why', label: 'Why Glute' },
-  { id: 'gallery', label: 'Gallery' },
-  { id: 'testimonials', label: 'Testimonials' },
+  { id: 'studio', label: 'Our Studio' },
   { id: 'pricing', label: 'Pricing' },
+  { id: 'testimonials', label: 'Testimonials' },
   { id: 'instagram', label: 'Instagram' },
   { id: 'contact', label: 'Contact' }
 ]
@@ -21,6 +21,7 @@ const navItems: NavItem[] = [
 export function NavRail() {
   const [activeSection, setActiveSection] = useState('hero')
   const [hoveredDot, setHoveredDot] = useState<string | null>(null)
+  const { t } = useTranslations()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,15 +83,16 @@ export function NavRail() {
                   transition={{ duration: 0.2 }}
                   className="absolute right-6 whitespace-nowrap text-sm font-semibold text-accent-orange"
                 >
-                  {item.label}
+                  {t(`navigation.${item.id}`)}
                 </motion.span>
 
-                {/* Dot */}
+                {/* Dot - square for grittier look */}
                 <motion.div
-                  className="w-2 h-2 rounded-full bg-accent-orange"
+                  className="w-2 h-2 bg-accent-orange"
                   animate={{
                     scale: isActive ? 1.8 : 1,
-                    backgroundColor: isActive ? '#FF5E1B' : isHovered ? '#FF7E3B' : '#FF5E1B'
+                    backgroundColor: isActive ? '#FF5E1B' : isHovered ? '#FF7E3B' : '#FF5E1B',
+                    rotate: isActive ? 45 : 0
                   }}
                   transition={{ duration: 0.25, ease: 'easeOut' }}
                 />

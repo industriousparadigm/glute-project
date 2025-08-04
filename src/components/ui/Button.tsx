@@ -14,8 +14,8 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   ...props
 }) => {
-  // Base classes following UX brief: inline-flex items-center gap-2 px-6 py-3 bg-[brand.orange] text-[white] rounded-[8px] shadow transition hover:scale-[1.02] focus:ring
-  const baseClasses = 'inline-flex items-center justify-center gap-2 font-display font-semibold uppercase tracking-wider transition-all duration-300 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 hover:scale-[1.02] active:scale-[0.98]'
+  // Base classes - removed rounded corners for grittier look
+  const baseClasses = 'inline-flex items-center justify-center gap-2 font-display font-semibold uppercase tracking-wider transition-all duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 hover:scale-[1.02] active:scale-[0.98]'
   
   // Single primary style only - solid orange with white text
   const colorClasses = 'bg-[#FF5E1B] text-white hover:bg-[#E54515] active:bg-[#CC3D12]'

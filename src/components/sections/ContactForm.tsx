@@ -132,7 +132,7 @@ export function ContactForm() {
               rel="noopener noreferrer"
               className="block"
             >
-              <button className="w-full inline-flex items-center justify-center gap-3 px-8 py-6 rounded-lg bg-accent-orange text-white font-bold text-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+              <button className="w-full inline-flex items-center justify-center gap-3 px-8 py-6 bg-accent-orange text-white font-bold text-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
                 <MessageCircle size={28} />
                 {t('contact.whatsapp')}
               </button>
@@ -142,7 +142,7 @@ export function ContactForm() {
               href="tel:+351912345678"
               className="block"
             >
-              <button className="w-full inline-flex items-center justify-center gap-3 px-8 py-6 rounded-lg bg-accent-orange text-white font-bold text-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+              <button className="w-full inline-flex items-center justify-center gap-3 px-8 py-6 bg-accent-orange text-white font-bold text-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
                 <Phone size={28} />
                 {t('contact.call')}
               </button>
@@ -150,9 +150,9 @@ export function ContactForm() {
 
             <button
               onClick={() => setShowForm(!showForm)}
-              className="w-full inline-flex items-center justify-center gap-3 px-6 py-4 rounded-lg bg-zinc-800 border-2 border-accent-lime text-accent-lime font-semibold text-lg hover:bg-accent-lime hover:text-black transition-all duration-300"
+              className="w-full inline-flex items-center justify-center gap-3 px-6 py-4 bg-zinc-800 border-2 border-accent-lime text-accent-lime font-semibold text-lg hover:bg-accent-lime hover:text-black transition-all duration-300"
             >
-              {showForm ? 'Fechar formulário' : 'Quero formulário'}
+              {showForm ? t('contact.form_toggle_close') : t('contact.form_toggle_open')}
               {showForm ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
             </button>
           </motion.div>
@@ -167,7 +167,7 @@ export function ContactForm() {
             {showForm ? (
               <motion.form
                 onSubmit={handleSubmit}
-                className="space-y-4 bg-black p-6 rounded-lg"
+                className="space-y-4 bg-black p-6"
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
@@ -183,7 +183,7 @@ export function ContactForm() {
                     required
                     disabled={status.loading}
                     placeholder={t('contact.form.name') + ' *'}
-                    className="w-full h-11 px-4 py-2 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50"
+                    className="w-full h-11 px-4 py-2 bg-zinc-900 border border-zinc-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50"
                   />
                 </div>
 
@@ -197,7 +197,7 @@ export function ContactForm() {
                     required
                     disabled={status.loading}
                     placeholder={t('contact.form.email') + ' *'}
-                    className="w-full h-11 px-4 py-2 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50"
+                    className="w-full h-11 px-4 py-2 bg-zinc-900 border border-zinc-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50"
                   />
                 </div>
 
@@ -211,7 +211,7 @@ export function ContactForm() {
                     required
                     disabled={status.loading}
                     placeholder="+351"
-                    className="w-full h-11 px-4 py-2 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50"
+                    className="w-full h-11 px-4 py-2 bg-zinc-900 border border-zinc-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50"
                   />
                 </div>
 
@@ -224,14 +224,14 @@ export function ContactForm() {
                     rows={3}
                     disabled={status.loading}
                     placeholder={t('contact.form.message')}
-                    className="w-full min-h-[80px] px-4 py-2 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50 resize-none"
+                    className="w-full min-h-[80px] px-4 py-2 bg-zinc-900 border border-zinc-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-accent-orange focus:border-accent-orange disabled:opacity-50 resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={status.loading}
-                  className="w-full px-6 py-3 bg-accent-orange text-white font-semibold rounded-lg hover:bg-accent-orange/90 transition-colors disabled:opacity-50"
+                  className="w-full px-6 py-3 bg-accent-orange text-white font-semibold hover:bg-accent-orange/90 transition-colors disabled:opacity-50"
                 >
                   {status.loading ? t('contact.form.submitting') : t('contact.form.submit')}
                 </button>
@@ -249,13 +249,13 @@ export function ContactForm() {
                 )}
               </motion.form>
             ) : (
-              <div className="bg-black text-white p-6 rounded-lg">
-                <h3 className="text-accent-orange font-display text-lg font-bold uppercase mb-3">Horário de contacto</h3>
-                <p className="mb-1 text-text-gray text-sm">Segunda a Sexta: 9h - 20h</p>
-                <p className="mb-1 text-text-gray text-sm">Sábado: 9h - 13h</p>
-                <p className="text-text-gray text-sm">Domingo: Fechado</p>
+              <div className="bg-black text-white p-6">
+                <h3 className="text-accent-orange font-display text-lg font-bold uppercase mb-3">{t('contact.contact_hours')}</h3>
+                <p className="mb-1 text-text-gray text-sm">{t('contact.weekdays')}</p>
+                <p className="mb-1 text-text-gray text-sm">{t('contact.saturday')}</p>
+                <p className="text-text-gray text-sm">{t('contact.sunday')}</p>
                 <p className="mt-3 text-xs text-text-gray">
-                  * Ginásio aberto 24/7 para membros
+                  {t('contact.member_access')}
                 </p>
               </div>
             )}

@@ -12,6 +12,20 @@ import womanStrong from '../../../public/images/woman-strong.png'
 export function Hero() {
   const { t } = useTranslations()
 
+  // Glitch animation variants
+  const glitchVariants = {
+    hidden: { 
+      opacity: 0,
+      filter: 'blur(10px)',
+      transform: 'translate3d(0, 20px, 0) scale(0.9)'
+    },
+    visible: {
+      opacity: 1,
+      filter: 'blur(0px)',
+      transform: 'translate3d(0, 0, 0) scale(1)'
+    }
+  }
+
   return (
     <section role="banner" className="relative bg-brand-black min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with 80% black overlay */}
@@ -33,56 +47,48 @@ export function Hero() {
             src={womanStrong}
             alt=""
             fill
-            className="object-cover object-[center_20%]"
+            className="object-cover object-center"
             priority
             quality={90}
+            sizes="100vw"
           />
         </div>
         <div className="absolute inset-0 bg-brand-black/80" />
       </div>
       
-      <div className="container relative z-10">
-        <div className="text-center max-w-4xl mx-auto">
-          <motion.h1 
-            className="text-accent-orange font-display font-extrabold uppercase tracking-tight mb-4"
-            style={{
-              fontSize: 'clamp(2.5rem, 6vw, 6rem)',
-              lineHeight: 0.9
-            }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            {t('hero.title')}
-          </motion.h1>
-          
-          <motion.p 
-            className="text-white font-display font-bold uppercase tracking-wide mb-12"
-            style={{
-              fontSize: 'clamp(1.25rem, 3vw, 2rem)',
-              lineHeight: 1.2
-            }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            {t('hero.subtitle')}
-          </motion.p>
-          <motion.div 
-            className="flex justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <Link href="#contact" className="inline-block">
-              <Button 
-                size="lg" 
-                className="inline-flex gap-2 px-7 py-4 rounded-lg bg-accent-orange text-white font-semibold text-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
-              >
-                {t('hero.cta')}
-              </Button>
-            </Link>
-          </motion.div>
+      {/* GLUTE PROJECT in top left - double size */}
+      <motion.div 
+        className="absolute top-8 left-8 md:top-12 md:left-12 z-10"
+        initial="hidden"
+        animate="visible"
+        variants={glitchVariants}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <h1 className="text-accent-orange font-display font-normal uppercase"
+           style={{
+             fontSize: 'clamp(4rem, 8vw, 6rem)',
+             lineHeight: 0.85,
+             letterSpacing: '-0.03em',
+             fontWeight: 400
+           }}
+        >
+          GLUTE PROJECT
+        </h1>
+      </motion.div>
+
+      {/* Massive scrolling typography at bottom */}
+      <div className="absolute bottom-9 left-0 w-full h-48 md:h-64 overflow-hidden">
+        <div className="scrolling-text-container">
+          <div className="scrolling-text">
+            <span>{t('hero.subtitle')}</span>
+            <span className="scrolling-separator">♦</span>
+            <span>{t('hero.subtitle')}</span>
+            <span className="scrolling-separator">♦</span>
+            <span>{t('hero.subtitle')}</span>
+            <span className="scrolling-separator">♦</span>
+            <span>{t('hero.subtitle')}</span>
+            <span className="scrolling-separator">♦</span>
+          </div>
         </div>
       </div>
     </section>
