@@ -4,6 +4,17 @@
 import dotenv from 'dotenv'
 dotenv.config({ path: '.env.local' })
 
+interface PlaceResult {
+  name: string
+  place_id: string
+  formatted_address: string
+}
+
+interface PlacesSearchResponse {
+  results: PlaceResult[]
+  status: string
+}
+
 async function findPlaceId() {
   const API_KEY = process.env.GOOGLE_PLACES_API_KEY
 
@@ -28,7 +39,7 @@ async function findPlaceId() {
       `key=${API_KEY}`
 
     const searchResponse = await fetch(searchUrl)
-    const searchData = await searchResponse.json()
+    const searchData: PlacesSearchResponse = await searchResponse.json()
 
     if (searchData.status !== 'OK') {
       console.error('❌ Search failed:', searchData.status)
@@ -37,7 +48,7 @@ async function findPlaceId() {
 
     console.log(`\n✅ Found ${searchData.results.length} results:\n`)
 
-    searchData.results.forEach((place, index) => {
+    searchData.results.forEach((place: PlaceResult, index: number) => {
       console.log(`${index + 1}. ${place.name}`)
       console.log(`   Address: ${place.formatted_address}`)
       console.log(`   Place ID: ${place.place_id}`)

@@ -4,6 +4,25 @@
 import dotenv from 'dotenv'
 dotenv.config({ path: '.env.local' })
 
+interface PlaceResult {
+  name: string
+  place_id: string
+  formatted_address: string
+  rating?: number
+  user_ratings_total?: number
+}
+
+interface PlacesSearchResponse {
+  results: PlaceResult[]
+  status: string
+  error_message?: string
+}
+
+interface PlaceDetailsResponse {
+  result: PlaceResult
+  status: string
+}
+
 async function findPlaceFromLudocid() {
   const API_KEY = process.env.GOOGLE_PLACES_API_KEY
   
@@ -30,7 +49,7 @@ async function findPlaceFromLudocid() {
       `key=${API_KEY}`
 
     const response = await fetch(searchUrl)
-    const data = await response.json()
+    const data: PlacesSearchResponse = await response.json()
 
     if (data.status !== 'OK') {
       console.error('❌ Search failed:', data.status)
@@ -41,7 +60,7 @@ async function findPlaceFromLudocid() {
     console.log(`\n✅ Found ${data.results.length} results:\n`)
 
     // Look for exact match
-    const exactMatch = data.results.find(place => 
+    const exactMatch = data.results.find((place: PlaceResult) => 
       place.name.toLowerCase().includes('glute project')
     )
 
@@ -60,7 +79,7 @@ async function findPlaceFromLudocid() {
         `key=${API_KEY}`
         
       const detailsResponse = await fetch(detailsUrl)
-      const details = await detailsResponse.json()
+      const details: PlaceDetailsResponse = await detailsResponse.json()
       
       if (details.result) {
         console.log(`\n📊 Current stats:`)
@@ -69,7 +88,7 @@ async function findPlaceFromLudocid() {
       }
     } else {
       // Show all results
-      data.results.forEach((place, i) => {
+      data.results.forEach((place: PlaceResult, i: number) => {
         console.log(`${i + 1}. ${place.name}`)
         console.log(`   Address: ${place.formatted_address}`)
         console.log(`   Place ID: ${place.place_id}`)

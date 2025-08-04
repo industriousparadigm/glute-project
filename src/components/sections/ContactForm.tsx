@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { useTranslations } from '@/lib/i18n/hooks'
 import { motion } from 'framer-motion'
 import { MessageCircle, Phone, ChevronDown, ChevronUp } from 'lucide-react'
+import { trackEvent } from '@/lib/analytics/track-event'
 
 interface FormData {
   name: string
@@ -19,7 +20,7 @@ interface FormStatus {
 }
 
 export function ContactForm() {
-  const { t } = useTranslations()
+  const { t, locale } = useTranslations()
   const [showForm, setShowForm] = useState(false)
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -89,6 +90,7 @@ export function ContactForm() {
       
       setStatus({ loading: false, success: true, error: false })
       setFormData({ name: '', email: '', phone: '', message: '' })
+      trackEvent('form_submit', { language: locale })
       
       // Reset success message after 5 seconds
       setTimeout(() => {
@@ -131,6 +133,7 @@ export function ContactForm() {
               target="_blank"
               rel="noopener noreferrer"
               className="block"
+              onClick={() => trackEvent('whatsapp_click', { source: 'contact_form', language: locale })}
             >
               <button className="w-full inline-flex items-center justify-center gap-3 px-8 py-6 bg-accent-orange text-white font-bold text-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
                 <MessageCircle size={28} />
@@ -141,6 +144,7 @@ export function ContactForm() {
             <a
               href="tel:+351912345678"
               className="block"
+              onClick={() => trackEvent('call_click', { source: 'contact_form', language: locale })}
             >
               <button className="w-full inline-flex items-center justify-center gap-3 px-8 py-6 bg-accent-orange text-white font-bold text-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
                 <Phone size={28} />
@@ -149,7 +153,10 @@ export function ContactForm() {
             </a>
 
             <button
-              onClick={() => setShowForm(!showForm)}
+              onClick={() => {
+                setShowForm(!showForm)
+                if (!showForm) trackEvent('form_open', { language: locale })
+              }}
               className="w-full inline-flex items-center justify-center gap-3 px-6 py-4 bg-zinc-800 border-2 border-accent-lime text-accent-lime font-semibold text-lg hover:bg-accent-lime hover:text-black transition-all duration-300"
             >
               {showForm ? t('contact.form_toggle_close') : t('contact.form_toggle_open')}

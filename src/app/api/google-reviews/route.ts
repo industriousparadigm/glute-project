@@ -27,8 +27,17 @@ export async function GET() {
       throw new Error(`Google API Error: ${data.status}`)
     }
 
+    interface GoogleReview {
+      author_url: string
+      author_name: string
+      text: string
+      rating: number
+      profile_photo_url?: string
+      time: number
+    }
+
     // Transform Google reviews to match our testimonial format
-    const reviews = data.result.reviews?.map((review: any) => ({
+    const reviews = data.result.reviews?.map((review: GoogleReview) => ({
       id: review.author_url,
       name: review.author_name,
       content: review.text,

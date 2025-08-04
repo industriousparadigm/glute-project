@@ -4,7 +4,12 @@ const CACHE_DURATION = 3600000 // 1 hour
 
 let requestCount = 0
 let resetTime = Date.now() + 86400000 // 24 hours
-let cache: { data: any; expires: number } | null = null
+interface CachedData {
+  data: unknown
+  expires: number
+}
+
+let cache: CachedData | null = null
 
 export function checkRateLimit() {
   // Reset counter daily
@@ -28,7 +33,7 @@ export function getCached() {
   return null
 }
 
-export function setCache(data: any) {
+export function setCache(data: unknown) {
   cache = {
     data,
     expires: Date.now() + CACHE_DURATION

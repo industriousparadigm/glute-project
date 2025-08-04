@@ -16,7 +16,7 @@ type GridItemType = 'photo' | 'feature'
 
 interface PhotoItem {
   type: 'photo'
-  src: any
+  src: string | { src: string; height: number; width: number; blurDataURL?: string }
   altKey: string
   imageIndex: number
   colSpan?: number

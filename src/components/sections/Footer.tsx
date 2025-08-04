@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import { useTranslations } from '@/lib/i18n/hooks'
 import { useLanguagePreference } from '@/lib/i18n/useLanguagePreference'
+import { trackEvent } from '@/lib/analytics/track-event'
 import { Phone, Mail, Clock, Instagram, Facebook } from 'lucide-react'
 
 export function Footer() {
@@ -17,6 +18,7 @@ export function Footer() {
   const switchLanguage = (newLocale: string) => {
     const newPath = pathname.replace(`/${locale}`, `/${newLocale}`)
     saveLanguagePreference(newLocale)
+    trackEvent('language_switch', { from: locale, to: newLocale })
     router.push(newPath)
     setShowLanguages(false)
   }
@@ -67,6 +69,7 @@ export function Footer() {
               rel="noopener noreferrer"
               aria-label="Instagram"
               className="text-text-gray hover:text-accent-orange transition-colors"
+              onClick={() => trackEvent('instagram_click', { source: 'footer', language: locale })}
             >
               <Instagram size={20} />
             </a>
@@ -76,6 +79,7 @@ export function Footer() {
               rel="noopener noreferrer"
               aria-label="Facebook"
               className="text-text-gray hover:text-accent-orange transition-colors"
+              onClick={() => trackEvent('facebook_click', { source: 'footer', language: locale })}
             >
               <Facebook size={20} />
             </a>

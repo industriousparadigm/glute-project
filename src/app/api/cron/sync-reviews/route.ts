@@ -73,8 +73,9 @@ export async function GET(request: Request) {
 
   } catch (error) {
     console.error('Review sync failed:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
     return NextResponse.json(
-      { error: 'Sync failed', details: error.message },
+      { error: 'Sync failed', details: errorMessage },
       { status: 500 }
     )
   }

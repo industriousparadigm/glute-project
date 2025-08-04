@@ -4,6 +4,23 @@
 import dotenv from 'dotenv'
 dotenv.config({ path: '.env.local' })
 
+interface GoogleReview {
+  author_name: string
+  rating: number
+  text: string
+}
+
+interface PlaceDetailsResponse {
+  status: string
+  error_message?: string
+  result?: {
+    name: string
+    rating: number
+    user_ratings_total: number
+    reviews?: GoogleReview[]
+  }
+}
+
 async function testGoogleReviews() {
   const API_KEY = process.env.GOOGLE_PLACES_API_KEY
   const PLACE_ID = process.env.GOOGLE_PLACE_ID
@@ -26,11 +43,16 @@ async function testGoogleReviews() {
       `key=${API_KEY}`
 
     const response = await fetch(url)
-    const data = await response.json()
+    const data: PlaceDetailsResponse = await response.json()
 
     if (data.status !== 'OK') {
       console.error('❌ API Error:', data.status)
       console.error('Error message:', data.error_message)
+      return
+    }
+
+    if (!data.result) {
+      console.error('❌ No result found')
       return
     }
 
@@ -39,7 +61,7 @@ async function testGoogleReviews() {
     
     if (data.result.reviews && data.result.reviews.length > 0) {
       console.log(`\n📝 Latest ${data.result.reviews.length} reviews:`)
-      data.result.reviews.forEach((review, i) => {
+      data.result.reviews.forEach((review: GoogleReview, i: number) => {
         console.log(`\n${i + 1}. ${review.author_name} - ${review.rating}⭐`)
         console.log(`   "${review.text.substring(0, 100)}..."`)
       })
