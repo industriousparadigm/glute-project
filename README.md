@@ -28,7 +28,7 @@ Visit [http://localhost:3001](http://localhost:3001) to see the development serv
 ## 🎯 Features
 
 - **Bilingual Support** - Portuguese (default) and English with automatic locale detection
-- **V3 Bold Black Theme** - 100% dark surfaces with high-contrast orange CTAs
+- **Dark Gradient Theme** - Sophisticated visual variety with strategic gradient system
 - **Admin Dashboard** - Manage prices, testimonials, and settings
 - **Contact Form** - Direct inquiries with validation
 - **Instagram Integration** - Ready for live feed (currently mock data)
@@ -141,12 +141,14 @@ npm start
 
 ## 🎨 Design System
 
-The project uses the V3 Bold Black theme:
+The project uses a sophisticated dark gradient system:
 
-- **Colors**: Dark backgrounds (#0A0A0A), Orange CTAs (#FF5E1B)
-- **Typography**: Barlow Condensed (display), Oswald (body)
+- **Visual Rhythm**: Strategic gradients create depth while maintaining dark aesthetic
+- **Colors**: Dark gradients with Orange (#FF5E1B) and Lime (#E8ED4A) accents
+- **Typography**: Bebas Neue (display), Oswald (body), Barlow Condensed (accents)
 - **Spacing**: 8px grid system
-- **Animations**: 250ms transitions, Framer Motion for complex effects
+- **Animations**: Enhanced CTAs, card glows, hover effects with Framer Motion
+- **Mobile**: Simplified gradients for optimal performance
 
 ## 📝 Content Management
 

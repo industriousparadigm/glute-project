@@ -16,7 +16,7 @@ npm run init-db      # Use create-tables-now.ts
 
 - **Purpose**: High-converting fitness studio website, Matosinhos Portugal
 - **Stack**: Next.js 15.4.5, TypeScript 5.x, Tailwind v4, PostgreSQL, JWT auth
-- **Theme**: 100% dark (#0A0A0A), orange CTAs (#FF5E1B), no light sections
+- **Theme**: Dark gradient system with strategic visual variety
 - **Copy**: Max 4-word headings, 10-word sub-copy, punchy/direct
 
 ## Code Style Rules
@@ -57,7 +57,22 @@ return <h2>{t('section.title')}</h2>
 ### Styling
 ```typescript
 // Tailwind only, use theme tokens
-className="bg-brand-black text-accent-orange"
+className="bg-gradient-services text-accent-orange"
+
+// Gradient backgrounds per section
+bg-gradient-studio      // Charcoal gradient
+bg-gradient-services    // Orange-tinted gradient  
+bg-gradient-testimonials // Elevated charcoal
+bg-gradient-team        // Deep gradient
+bg-gradient-instagram   // Lime-tinted gradient
+bg-gradient-contact     // Warm conversion gradient
+
+// Enhanced components
+cta-primary            // Gradient button with hover
+service-card           // Orange glow on hover
+team-card              // Orange rim lighting
+testimonial-quote      // Lime accent quotes
+instagram-post         // Lime hover overlay
 ```
 
 ### Images
@@ -122,9 +137,29 @@ NEXT_PUBLIC_BASE_URL=  # Production URL
 
 ## Current State
 
-✅ Complete: Theme, sections, admin, i18n, SEO, a11y
+✅ Complete: Gradient system, sections, admin, i18n, SEO, a11y
 ⚠️ Mock only: Instagram feed
 🔧 Manual: Database init required
+
+## Visual Design System
+
+### Gradient Strategy
+- **Hero**: Pure black (#0A0A0A) - dramatic entry
+- **Studio**: Charcoal gradient - subtle depth
+- **Services**: Orange-tinted - warm conversion point
+- **Testimonials**: Elevated charcoal with lime accents
+- **Team**: Deep gradient with orange rim lighting
+- **Instagram**: Lime-tinted for energy
+- **Contact**: Warm gradient - conversion focus
+- **Footer**: Pure black - grounding
+
+### Key Visual Elements
+- Enhanced CTAs with gradient animations
+- Service cards with orange glow effects
+- Team photos with rim lighting on hover
+- Testimonial quotes with lime accents
+- Instagram posts with lime overlay
+- Mobile-optimized simplified gradients
 
 ## Anti-Patterns to Avoid
 
