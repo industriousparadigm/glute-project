@@ -60,9 +60,9 @@ export function InstagramFeed() {
       href="https://instagram.com/glute_project"
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative aspect-square overflow-hidden cursor-pointer ${
-        isLarge ? '' : ''
-      }`}
+      className={`instagram-post group relative aspect-square cursor-pointer ${
+        isLarge ? 'col-span-2 row-span-2' : ''
+      } rounded-lg`}
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
@@ -107,9 +107,9 @@ export function InstagramFeed() {
       href={post.permalink}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative aspect-square overflow-hidden cursor-pointer ${
-        isLarge ? '' : ''
-      }`}
+      className={`instagram-post group relative aspect-square cursor-pointer ${
+        isLarge ? 'col-span-2 row-span-2' : ''
+      } rounded-lg`}
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
