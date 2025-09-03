@@ -16,13 +16,18 @@ const navItems: NavItem[] = [
   { id: 'testimonials', label: 'Testimonials' },
   { id: 'team', label: 'Team' },
   { id: 'lifestyle', label: 'Lifestyle' },
+  { id: 'regybox', label: 'Regybox' },
   { id: 'contact', label: 'Contact' }
 ]
 
 export function NavRail() {
   const [activeSection, setActiveSection] = useState('hero')
   const [hoveredDot, setHoveredDot] = useState<string | null>(null)
+  const [isLightSection, setIsLightSection] = useState(false)
   const { t } = useTranslations()
+  
+  // Define which sections have light backgrounds
+  const lightSections = ['studio', 'services', 'testimonials', 'lifestyle']
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,6 +42,7 @@ export function NavRail() {
         const section = sections[i]
         if (section.element && section.element.offsetTop <= scrollPosition) {
           setActiveSection(section.id)
+          setIsLightSection(lightSections.includes(section.id))
           break
         }
       }
@@ -82,7 +88,9 @@ export function NavRail() {
                     x: isHovered || isActive ? 0 : 10
                   }}
                   transition={{ duration: 0.2 }}
-                  className="absolute right-6 whitespace-nowrap text-sm font-semibold text-accent-orange"
+                  className={`absolute right-6 whitespace-nowrap text-sm font-semibold ${
+                    isLightSection ? 'text-accent-orange' : 'text-accent-orange'
+                  }`}
                 >
                   {t(`navigation.${item.id}`)}
                 </motion.span>

@@ -83,7 +83,7 @@ export function TestimonialCarousel() {
     return (
       <section className="py-12 md:py-16">
         <div className="container text-center">
-          <p className="text-text-gray">{t('community.empty')}</p>
+          <p className="text-dark-secondary">{t('community.empty')}</p>
         </div>
       </section>
     )
@@ -100,10 +100,10 @@ export function TestimonialCarousel() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-accent-orange font-display text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase mb-4 tracking-tight">
+          <h2 className="text-accent-orange font-display text-5xl sm:text-6xl md:text-7xl font-bold uppercase mb-4 tracking-normal">
             {t('community.title')}
           </h2>
-          <p className="text-text-gray text-lg font-body">{t('community.subtitle')}</p>
+          <p className="text-dark-secondary text-lg font-body">{t('community.subtitle')}</p>
         </motion.div>
 
         <div className="relative">
@@ -119,7 +119,7 @@ export function TestimonialCarousel() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <blockquote className="testimonial-quote relative mb-4">
-                  <p className="text-white/90 text-sm leading-relaxed italic">
+                  <p className="text-dark-primary text-sm leading-relaxed italic">
                     {locale === 'pt' ? testimonial.text_pt : testimonial.text_en}
                   </p>
                 </blockquote>
@@ -131,24 +131,24 @@ export function TestimonialCarousel() {
             ))}
           </div>
 
-          {/* Desktop - horizontal scroll */}
+          {/* Desktop - horizontal scroll full width */}
           <motion.div 
-            className="hidden md:block overflow-x-auto scrollbar-hide"
+            className="hidden md:block -mx-4 md:-mx-8 lg:-mx-12 xl:-mx-20 overflow-x-auto scrollbar-hide"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex gap-6 pb-4">
+            <div className="flex gap-6 pb-4 px-4 md:px-8 lg:px-12 xl:px-20">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={`${testimonial.id}-${index}`}
-                  className="bg-surface-dark/50 backdrop-blur-sm border border-white/5 p-8 w-80 shrink-0 snap-start relative group hover:border-accent-lime/20 transition-all duration-300"
+                  className="bg-white shadow-lg border border-gray-200 p-8 w-80 shrink-0 snap-start relative group hover:border-accent-orange/40 hover:shadow-xl transition-all duration-300"
                 >
                   {/* Quote glyph now handled by CSS with lime accent */}
                   
                   <blockquote className="testimonial-quote relative mb-4 md:mb-6 mt-2 md:mt-12">
-                    <p className="text-white/90 text-sm leading-relaxed italic">
+                    <p className="text-dark-primary text-sm leading-relaxed italic">
                       {locale === 'pt' ? testimonial.text_pt : testimonial.text_en}
                     </p>
                   </blockquote>

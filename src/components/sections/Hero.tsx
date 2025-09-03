@@ -76,6 +76,28 @@ export function Hero() {
         </h1>
       </motion.div>
 
+      {/* Book Visit button in top right */}
+      <motion.div 
+        className="absolute top-8 right-8 md:top-12 md:right-12 z-10"
+        initial="hidden"
+        animate="visible"
+        variants={glitchVariants}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+      >
+        <Link href="#contact" className="group">
+          <span className="inline-flex items-center justify-center px-5 py-2.5 md:px-6 md:py-3
+                         border-2 border-accent-orange bg-transparent
+                         font-display font-normal uppercase tracking-widest text-sm md:text-base
+                         text-accent-orange 
+                         transition-all duration-300
+                         hover:bg-accent-orange/10 hover:shadow-[0_0_20px_rgba(255,94,27,0.4)]
+                         active:scale-[0.98]
+                         focus:outline-none focus:ring-2 focus:ring-accent-orange focus:ring-offset-2 focus:ring-offset-brand-black">
+            {t('hero.book_visit')}
+          </span>
+        </Link>
+      </motion.div>
+
       {/* Massive scrolling typography at bottom */}
       <div className="absolute bottom-9 left-0 w-full h-48 md:h-64 overflow-hidden">
         <div className="scrolling-text-container">

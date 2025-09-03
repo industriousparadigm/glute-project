@@ -123,6 +123,8 @@
   },
   "contact": {
     "title": "AGENDAR VISITA",
+    "whatsapp": "CONTACTAR VIA WHATSAPP",
+    "call": "LIGAR AGORA",
     "form": {
       "name": "Nome",
       "email": "Email",
@@ -183,6 +185,7 @@
     "testimonials": "Testemunhos",
     "team": "Equipa",
     "lifestyle": "Lifestyle",
+    "regybox": "Regybox",
     "contact": "Contacto"
   },
   "lifestyle": {
@@ -194,5 +197,25 @@
     "crossGames": "CROSS GAMES",
     "explore": "Explorar",
     "viewMore": "Ver mais"
+  },
+  "regybox": {
+    "subtitle": "Gestão completa do estúdio",
+    "accessApp": "ACEDER À APP"
+  },
+  "location": {
+    "title": "LOCALIZAÇÃO",
+    "address": "Morada",
+    "hours": {
+      "title": "HORÁRIO DE CONTACTO",
+      "weekdays": "Segunda a Sexta: 9h - 20h",
+      "saturday": "Sábado: 9h - 13h",
+      "sunday": "Domingo: Fechado",
+      "members": "Ginásio aberto 24/7 para membros"
+    },
+    "transport": {
+      "title": "Transporte público",
+      "metro": "Metro: Estação Matosinhos Sul (10 min a pé)",
+      "car": "Autocarro: Linhas 500, 502, 507"
+    }
   }
 }

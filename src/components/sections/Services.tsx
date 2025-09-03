@@ -109,7 +109,7 @@ export function Services() {
   }
 
   return (
-    <section className="min-h-screen py-16 md:py-24 relative overflow-hidden">
+    <section className="min-h-screen py-16 md:py-24 relative overflow-hidden bg-gradient-services">
       {/* Background texture */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -126,10 +126,10 @@ export function Services() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-display text-5xl md:text-7xl font-normal uppercase text-accent-orange mb-2 tracking-tight">
+          <h2 className="font-display text-5xl md:text-7xl font-bold uppercase text-accent-orange mb-2 tracking-normal">
             {t('services.title')}
           </h2>
-          <p className="text-text-gray font-body text-lg md:text-xl uppercase tracking-wider">
+          <p className="text-dark-secondary font-body text-lg md:text-xl uppercase tracking-wider">
             {t('services.subtitle')}
           </p>
         </motion.div>
@@ -146,7 +146,7 @@ export function Services() {
             <motion.div
               key={service.id}
               variants={itemVariants}
-              className="service-card group relative p-6 md:p-8 overflow-hidden rounded-lg"
+              className="service-card group p-6 md:p-8"
             >
               {/* Featured Badge */}
               {service.featured && (
@@ -158,18 +158,18 @@ export function Services() {
               )}
 
               {/* Icon */}
-              <div className="text-white/40 group-hover:text-accent-orange transition-all duration-300 mb-4 transform group-hover:scale-110">
+              <div className="text-accent-orange/60 group-hover:text-accent-orange transition-all duration-300 mb-4 transform group-hover:scale-110">
                 {service.icon}
               </div>
 
               {/* Service Name */}
-              <h3 className="font-display text-2xl md:text-3xl font-normal uppercase text-white mb-2 
+              <h3 className="font-display text-2xl md:text-3xl font-normal uppercase text-dark-primary mb-2 
                            group-hover:text-accent-orange transition-colors duration-300">
                 {t(`services.${service.nameKey}` as any)}
               </h3>
 
               {/* Description */}
-              <p className="text-text-gray text-sm md:text-base font-body mb-4">
+              <p className="text-dark-secondary text-sm md:text-base font-body mb-4">
                 {t(`services.${service.descriptionKey}` as any)}
               </p>
 
@@ -193,7 +193,7 @@ export function Services() {
         >
           <button
             onClick={handleWhatsAppClick}
-            className="cta-primary group relative inline-flex items-center gap-3 px-8 py-4 
+            className="cta-primary-light group relative inline-flex items-center gap-3 px-8 py-4 
                      text-white font-display text-lg md:text-xl uppercase tracking-wider z-10"
           >
             <MessageCircle className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300 relative z-10" />

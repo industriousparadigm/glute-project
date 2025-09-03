@@ -123,6 +123,8 @@
   },
   "contact": {
     "title": "SCHEDULE A VISIT",
+    "whatsapp": "CONTACT VIA WHATSAPP",
+    "call": "CALL NOW",
     "form": {
       "name": "Name",
       "email": "Email",
@@ -183,6 +185,7 @@
     "testimonials": "Testimonials",
     "team": "Team",
     "lifestyle": "Lifestyle",
+    "regybox": "Regybox",
     "contact": "Contact"
   },
   "lifestyle": {
@@ -194,5 +197,25 @@
     "crossGames": "CROSS GAMES",
     "explore": "Explore",
     "viewMore": "View more"
+  },
+  "regybox": {
+    "subtitle": "Complete studio management",
+    "accessApp": "ACCESS APP"
+  },
+  "location": {
+    "title": "LOCATION",
+    "address": "Address",
+    "hours": {
+      "title": "CONTACT HOURS",
+      "weekdays": "Monday to Friday: 9am - 8pm",
+      "saturday": "Saturday: 9am - 1pm",
+      "sunday": "Sunday: Closed",
+      "members": "Gym open 24/7 for members"
+    },
+    "transport": {
+      "title": "Public transport",
+      "metro": "Metro: Matosinhos Sul Station (10 min walk)",
+      "car": "Bus: Lines 500, 502, 507"
+    }
   }
 }

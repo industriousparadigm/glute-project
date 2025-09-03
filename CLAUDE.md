@@ -27,6 +27,9 @@ npm run init-db      # Use create-tables-now.ts
 - Handle all error states
 - Mobile-first responsive
 - Test critical paths (auth, API, forms)
+- **MINIMAL COPY**: Always use fewer words, not more
+- **Keep text ultra-concise** - max 4-word headings, 10-word descriptions
+- **Less is more** - prefer visual impact over text explanations
 
 ## File Structure
 

@@ -7,7 +7,7 @@ import { useTranslations } from '@/lib/i18n/hooks'
 import { motion } from 'framer-motion'
 
 // Import images
-import gluteApparel from '../../../public/images/glute-apparel.png'
+import gluteApparel from '../../../public/images/glute-apparel-link.jpg'
 import womanJumping from '../../../public/images/woman-jumping.png'
 import crossGames from '../../../public/images/cross-games.png'
 
@@ -39,8 +39,8 @@ export function Lifestyle() {
   const { t } = useTranslations()
 
   return (
-    <section className="bg-gradient-instagram py-16 md:py-20">
-      <div className="container">
+    <section className="bg-gradient-lifestyle py-16 md:py-20">
+      <div className="container relative z-10">
         {/* Header */}
         <motion.div 
           className="text-center mb-12 md:mb-16"
@@ -52,10 +52,10 @@ export function Lifestyle() {
           <p className="text-accent-lime font-bold uppercase tracking-[0.2em] text-sm md:text-base mb-3">
             {t('lifestyle.tagline')}
           </p>
-          <h2 className="text-white font-display text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+          <h2 className="text-dark-primary font-display text-4xl sm:text-5xl md:text-7xl font-bold uppercase tracking-normal">
             {t('lifestyle.title')}
           </h2>
-          <p className="text-white/60 text-lg md:text-xl mt-4 max-w-2xl mx-auto">
+          <p className="text-dark-secondary text-lg md:text-xl mt-4 max-w-2xl mx-auto">
             {t('lifestyle.subtitle')}
           </p>
         </motion.div>

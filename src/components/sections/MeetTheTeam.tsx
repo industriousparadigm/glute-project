@@ -20,10 +20,10 @@ interface TeamMember {
 }
 
 const teamMembers: TeamMember[] = [
-  { name: 'Miguel Carvalho', role: 'trainer', image: miguelCarvalho },
+  { name: 'Miguel Ferrer', role: 'trainer', image: miguelFerrer },
   { name: 'Francisco França', role: 'nutritionist', image: franciscoFranca },
   { name: 'Joana Martins', role: 'trainer', image: joanaMartins },
-  { name: 'Miguel Ferrer', role: 'trainer', image: miguelFerrer },
+  { name: 'Miguel Carvalho', role: 'trainer', image: miguelCarvalho },
   { name: 'Renato Fonseca', role: 'trainer', image: renatoFonseca },
   { name: 'Sandro Moutinho', role: 'trainer', image: sandroMoutinho },
 ]
@@ -73,7 +73,7 @@ export function MeetTheTeam() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-display text-5xl md:text-7xl font-normal uppercase text-accent-orange mb-2 tracking-tight">
+          <h2 className="font-display text-5xl md:text-7xl font-bold uppercase text-accent-orange mb-2 tracking-normal">
             {t('team.title')}
           </h2>
           <p className="text-text-gray font-body text-lg md:text-xl uppercase tracking-wider">

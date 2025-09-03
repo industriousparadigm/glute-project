@@ -125,10 +125,10 @@ export function OurStudio() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-accent-orange font-display text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase mb-4 tracking-tight">
+          <h2 className="text-accent-orange font-display text-5xl sm:text-6xl md:text-7xl font-bold uppercase mb-4 tracking-normal">
             {t('studio.title')}
           </h2>
-          <p className="text-text-gray text-lg font-body">{t('studio.subtitle')}</p>
+          <p className="text-dark-secondary text-lg font-body">{t('studio.subtitle')}</p>
         </motion.div>
 
         {/* 4x3 Grid Layout - 2 cols on mobile, 3 on desktop */}

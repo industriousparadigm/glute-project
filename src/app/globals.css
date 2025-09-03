@@ -247,7 +247,7 @@ body {
   color: var(--color-white);
   opacity: 1;
   white-space: nowrap;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
   transform: scaleX(1);
 }
 
@@ -367,32 +367,86 @@ body {
 }
 
 /* ========================================
-   UI REVAMP: GRADIENT SYSTEM V1
+   UI REVAMP: BOLD GRADIENT SYSTEM V2
+   50/50 LIGHT-DARK BALANCE
    ======================================== */
 
-/* Section Background Gradients */
+/* LIGHT BACKGROUNDS (50% of site) */
 .bg-gradient-studio {
-  background: linear-gradient(135deg, #0A0A0A 0%, #151515 100%);
+  background: linear-gradient(135deg, #F5F7FA 0%, #FAFBFC 100%);
 }
 
 .bg-gradient-services {
-  background: linear-gradient(180deg, #0A0A0A 0%, #1F0E08 50%, #0A0A0A 100%);
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(255, 94, 27, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(232, 237, 74, 0.02) 0%, transparent 50%),
+    linear-gradient(135deg, #FFFFFF 0%, #F9FAFB 100%);
+  position: relative;
+}
+
+/* Services section texture overlay - GRITTY GYM TEXTURE */
+.bg-gradient-services::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/images/bg-pattern.png');
+  background-repeat: repeat;
+  background-size: 100px 100px;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: multiply;
 }
 
 .bg-gradient-testimonials {
-  background: #1A1A1A;
-}
-
-.bg-gradient-team {
-  background: linear-gradient(135deg, #151515 0%, #0A0A0A 100%);
+  background: linear-gradient(180deg, #E5E7EB 0%, #F3F4F6 100%);
 }
 
 .bg-gradient-instagram {
-  background: linear-gradient(135deg, #0A0A0A 0%, #1A1D0F 100%);
+  background: #FFFFFF;
+}
+
+/* New Lifestyle section (to be added) */
+.bg-gradient-lifestyle {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF5F0 100%);
+  position: relative;
+}
+
+/* Lifestyle section texture overlay - GRITTY GYM TEXTURE */
+.bg-gradient-lifestyle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/images/bg-pattern.png');
+  background-repeat: repeat;
+  background-size: 100px 100px;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
+.bg-gradient-regybox {
+  background: linear-gradient(135deg, #0A0A0A 0%, #1A0F14 50%, #2D141F 100%);
+}
+
+/* DARK BACKGROUNDS (50% of site) */
+.bg-gradient-hero {
+  background: #0A0A0A; /* Keep dark dramatic entry */
+}
+
+.bg-gradient-team {
+  background: radial-gradient(ellipse at center, #1A0F0A 0%, #0A0A0A 60%);
 }
 
 .bg-gradient-contact {
-  background: linear-gradient(135deg, #1F0E08 0%, #0A0A0A 100%);
+  background: linear-gradient(135deg, #FF5E1B 0%, #2D1410 30%, #0A0A0A 100%);
 }
 
 /* Mobile-optimized gradients (simplified for performance) */
@@ -418,6 +472,19 @@ body {
   }
 }
 
+/* Text colors for light sections */
+.text-dark-primary {
+  color: #0A0A0A !important;
+}
+
+.text-dark-secondary {
+  color: #374151 !important;
+}
+
+.text-dark-muted {
+  color: #6B7280 !important;
+}
+
 /* Enhanced CTA Button Styles */
 .cta-primary {
   background: linear-gradient(135deg, #FF5E1B, #FF7E3B);
@@ -425,6 +492,19 @@ body {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+}
+
+/* CTA for light sections - more prominent */
+.cta-primary-light {
+  background: linear-gradient(135deg, #FF5E1B, #D84315);
+  color: white !important;
+  box-shadow: 0 10px 40px rgba(255, 94, 27, 0.5);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta-primary-light:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(255, 94, 27, 0.6);
 }
 
 .cta-primary::before {
@@ -453,15 +533,54 @@ body {
   box-shadow: 0 4px 16px rgba(255, 94, 27, 0.3);
 }
 
-/* Service Card Glow Effects */
+/* Enhanced Service Card Styles with Glassmorphism */
 .service-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 94, 27, 0.08);
+  border-radius: 12px;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.03),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #FF5E1B 0%, #E8ED4A 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 12px 24px -4px rgba(255, 94, 27, 0.08),
+    0 6px 12px -2px rgba(0, 0, 0, 0.04);
+  border-color: rgba(255, 94, 27, 0.15);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+/* Dark version for dark sections */
+.service-card-dark {
   background: rgba(43, 20, 16, 0.3);
   border: 1px solid rgba(255, 94, 27, 0.2);
   backdrop-filter: blur(10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.service-card:hover {
+.service-card-dark:hover {
   background: rgba(43, 20, 16, 0.5);
   border-color: rgba(255, 94, 27, 0.4);
   box-shadow: 0 8px 32px rgba(255, 94, 27, 0.3);
@@ -557,6 +676,12 @@ body {
 
 .hover-lift:hover {
   transform: translateY(-2px);
+}
+
+/* Content above texture pattern */
+.content-above-texture {
+  position: relative;
+  z-index: 2;
 }
 
 .hover-glow-orange {

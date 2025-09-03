@@ -1,4 +1,4 @@
-import { Hero, OurStudio, Services, TestimonialCarousel, MeetTheTeam, ContactForm, Location, Lifestyle, Footer } from '@/components/sections'
+import { Hero, OurStudio, Services, TestimonialCarousel, MeetTheTeam, Lifestyle, Regybox, Contact, Footer } from '@/components/sections'
 import { NavRail } from '@/components/ui'
 import { LanguageTracker } from './LanguageTracker'
 
@@ -7,30 +7,34 @@ export default function HomePage() {
     <>
       <LanguageTracker />
       <NavRail />
-      <main id="main" className="min-h-screen bg-brand-black text-white">
-        <section id="hero" className="snap-section">
+      <main id="main" className="min-h-screen">
+        <section id="hero" className="snap-section bg-brand-black text-white">
           <Hero />
         </section>
-        <section id="studio" className="snap-section bg-gradient-studio">
+        <section id="studio" className="snap-section bg-gradient-studio text-dark-primary">
           <OurStudio />
         </section>
-        <section id="services" className="snap-section bg-gradient-services">
+        <section id="services" className="snap-section bg-gradient-services text-dark-primary">
           <Services />
         </section>
-        <section id="testimonials" className="snap-section bg-gradient-testimonials">
+        <section id="testimonials" className="snap-section bg-gradient-testimonials text-dark-primary">
           <TestimonialCarousel />
         </section>
-        <section id="team" className="snap-section bg-gradient-team">
+        <section id="team" className="snap-section bg-gradient-team text-white">
           <MeetTheTeam />
         </section>
-        <section id="lifestyle" className="snap-section bg-gradient-instagram">
+        <section id="lifestyle" className="snap-section bg-gradient-lifestyle text-dark-primary">
           <Lifestyle />
         </section>
-        <section id="contact" className="snap-section bg-gradient-contact">
-          <ContactForm />
-          <Location />
+        <section id="regybox" className="snap-section bg-gradient-regybox text-white">
+          <Regybox />
         </section>
-        <Footer />
+        <section id="contact" className="snap-section bg-gradient-contact text-white">
+          <Contact />
+        </section>
+        <div className="bg-brand-black text-white">
+          <Footer />
+        </div>
       </main>
     </>
   )

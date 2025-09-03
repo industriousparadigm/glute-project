@@ -4,14 +4,7 @@ Comprehensively update README.md and CLAUDE.md based on current best practices a
 
 ## Process
 
-1. **Audit Codebase**
-   - Analyze project structure and architecture
-   - Review tech stack and dependencies
-   - Identify key features and functionality
-   - Check code quality and patterns
-   - Note configuration and deployment setup
-
-2. **Update README.md** (User-facing)
+1. **Update README.md** (User-facing)
    - Clear quick start section
    - Comprehensive feature list
    - Tech stack with badges
@@ -19,7 +12,7 @@ Comprehensively update README.md and CLAUDE.md based on current best practices a
    - Testing and deployment guides
    - Professional tone, well-organized
 
-3. **Update CLAUDE.md** (AI Context)
+2. **Update CLAUDE.md** (AI Context)
    - **Token-efficient**: Bullet points, not paragraphs
    - **Declarative style**: "You're writing for Claude, not onboarding a junior dev"
    - **Essential content only**:
@@ -30,7 +23,7 @@ Comprehensively update README.md and CLAUDE.md based on current best practices a
      - Common tasks
      - Current state/limitations
      - Anti-patterns to avoid
-   - **Target**: ~150 lines max (1/3 of verbose versions)
+   - **Target**: ~150 lines max
 
 ## Best Practices
 
