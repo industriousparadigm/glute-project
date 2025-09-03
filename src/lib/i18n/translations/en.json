@@ -3,7 +3,8 @@
     "title": "GLUTE PROJECT",
     "subtitle": "THE BODY ACHIEVES WHAT THE MIND BELIEVES",
     "cta": "BOOK NOW",
-    "cta_secondary": "EXPLORE THE SPACE"
+    "cta_secondary": "EXPLORE THE SPACE",
+    "book_visit": "BOOK VISIT"
   },
   "differentiators": {
     "title": "WHY US",
@@ -88,6 +89,38 @@
       "description": "Personalized plans"
     }
   },
+  "services": {
+    "title": "SERVICES",
+    "subtitle": "Choose the perfect training for you",
+    "featured": "Popular",
+    "contactForPricing": "Contact for pricing",
+    "ctaButton": "Talk to trainer",
+    "responseTime": "Response in under 2 hours",
+    "ptExpress": {
+      "name": "PT Express",
+      "description": "Quick personalized training session for immediate results"
+    },
+    "ptDuo": {
+      "name": "PT Duo",
+      "description": "Personal training for two people, perfect for couples or friends"
+    },
+    "sessionPlan": {
+      "name": "Session + Training Plan",
+      "description": "Complete session with personalized training plan included"
+    },
+    "smallGroup": {
+      "name": "Small Group Classes",
+      "description": "Small group classes, maximum 4 people for personalized attention"
+    }
+  },
+  "team": {
+    "title": "MEET THE TEAM",
+    "subtitle": "Elite trainers pushing limits",
+    "roles": {
+      "trainer": "Personal Trainer",
+      "nutritionist": "Nutritionist"
+    }
+  },
   "contact": {
     "title": "SCHEDULE A VISIT",
     "form": {
@@ -144,11 +177,22 @@
     "required": "Required"
   },
   "navigation": {
-    "hero": "Hero",
+    "hero": "Home",
     "studio": "Our Studio",
+    "services": "Services",
     "testimonials": "Testimonials",
-    "pricing": "Pricing",
-    "instagram": "Instagram",
+    "team": "Team",
+    "lifestyle": "Lifestyle",
     "contact": "Contact"
+  },
+  "lifestyle": {
+    "tagline": "IT'S MORE THAN A WORKOUT",
+    "title": "IT'S A LIFESTYLE",
+    "subtitle": "From studio to everyday life, we've got you covered",
+    "shopApparel": "GLUTE APPAREL",
+    "followUs": "FOLLOW US",
+    "crossGames": "CROSS GAMES",
+    "explore": "Explore",
+    "viewMore": "View more"
   }
 }

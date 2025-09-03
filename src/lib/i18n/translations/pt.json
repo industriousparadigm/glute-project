@@ -3,7 +3,8 @@
     "title": "GLUTE PROJECT",
     "subtitle": "THE BODY ACHIEVES WHAT THE MIND BELIEVES",
     "cta": "MARCA JÁ",
-    "cta_secondary": "CONHECER O ESPAÇO"
+    "cta_secondary": "CONHECER O ESPAÇO",
+    "book_visit": "MARCAR VISITA"
   },
   "differentiators": {
     "title": "PORQUÊ NÓS",
@@ -70,8 +71,32 @@
     "previousTestimonial": "Testemunho anterior",
     "nextTestimonial": "Próximo testemunho"
   },
+  "services": {
+    "title": "SERVIÇOS",
+    "subtitle": "Escolhe o treino perfeito para ti",
+    "featured": "Popular",
+    "contactForPricing": "Contactar para preços",
+    "ctaButton": "Falar com treinador",
+    "responseTime": "Resposta em menos de 2 horas",
+    "ptExpress": {
+      "name": "PT Express",
+      "description": "Sessão rápida de treino personalizado para resultados imediatos"
+    },
+    "ptDuo": {
+      "name": "PT Duo",
+      "description": "Treino personalizado para duas pessoas, perfeito para casais ou amigos"
+    },
+    "sessionPlan": {
+      "name": "Sessão + Plano",
+      "description": "Sessão completa com plano de treino personalizado incluído"
+    },
+    "smallGroup": {
+      "name": "Small Group Classes",
+      "description": "Aulas em pequenos grupos, máximo 4 pessoas para atenção personalizada"
+    }
+  },
   "pricing": {
-    "title": "PREÇOS & OFERTA DE EXPERIMENTAÇÃO",
+    "title": "PACOTES E OFERTAS",
     "trial": {
       "title": "PRIMEIRA SESSÃO",
       "price": "GRÁTIS",
@@ -86,6 +111,14 @@
       "title": "PERSONAL TRAINING",
       "price": "Sob consulta",
       "description": "Planos personalizados"
+    }
+  },
+  "team": {
+    "title": "CONHEÇA A EQUIPA",
+    "subtitle": "Treinadores de elite ultrapassando limites",
+    "roles": {
+      "trainer": "Personal Trainer",
+      "nutritionist": "Nutricionista"
     }
   },
   "contact": {
@@ -146,9 +179,20 @@
   "navigation": {
     "hero": "Início",
     "studio": "O Nosso Estúdio",
+    "services": "Serviços",
     "testimonials": "Testemunhos",
-    "pricing": "Preços",
-    "instagram": "Instagram",
+    "team": "Equipa",
+    "lifestyle": "Lifestyle",
     "contact": "Contacto"
+  },
+  "lifestyle": {
+    "tagline": "É MAIS DO QUE UM TREINO",
+    "title": "É UM LIFESTYLE",
+    "subtitle": "Do estúdio ao dia-a-dia, estamos contigo",
+    "shopApparel": "GLUTE APPAREL",
+    "followUs": "SIGA-NOS",
+    "crossGames": "CROSS GAMES",
+    "explore": "Explorar",
+    "viewMore": "Ver mais"
   }
 }

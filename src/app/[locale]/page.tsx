@@ -1,4 +1,4 @@
-import { Hero, OurStudio, Services, TestimonialCarousel, MeetTheTeam, ContactForm, Location, InstagramFeed, Footer } from '@/components/sections'
+import { Hero, OurStudio, Services, TestimonialCarousel, MeetTheTeam, ContactForm, Location, Lifestyle, Footer } from '@/components/sections'
 import { NavRail } from '@/components/ui'
 import { LanguageTracker } from './LanguageTracker'
 
@@ -23,8 +23,8 @@ export default function HomePage() {
         <section id="team" className="snap-section bg-gradient-team">
           <MeetTheTeam />
         </section>
-        <section id="instagram" className="snap-section bg-gradient-instagram">
-          <InstagramFeed />
+        <section id="lifestyle" className="snap-section bg-gradient-instagram">
+          <Lifestyle />
         </section>
         <section id="contact" className="snap-section bg-gradient-contact">
           <ContactForm />
