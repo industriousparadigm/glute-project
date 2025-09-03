@@ -118,7 +118,7 @@ export function TestimonialCarousel() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <blockquote className="mb-4">
+                <blockquote className="testimonial-quote relative mb-4">
                   <p className="text-white/90 text-sm leading-relaxed italic">
                     {locale === 'pt' ? testimonial.text_pt : testimonial.text_en}
                   </p>
@@ -143,15 +143,11 @@ export function TestimonialCarousel() {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={`${testimonial.id}-${index}`}
-                  className="bg-black p-8 w-80 shrink-0 snap-start relative group hover:bg-zinc-900 transition-colors duration-300"
+                  className="bg-surface-dark/50 backdrop-blur-sm border border-white/5 p-8 w-80 shrink-0 snap-start relative group hover:border-accent-lime/20 transition-all duration-300"
                 >
-                  {/* Orange quote glyph - hide on mobile */}
-                  <Quote 
-                    size={40} 
-                    className="text-accent-orange absolute top-6 left-6 opacity-50 hidden md:block"
-                  />
+                  {/* Quote glyph now handled by CSS with lime accent */}
                   
-                  <blockquote className="mb-4 md:mb-6 mt-2 md:mt-12">
+                  <blockquote className="testimonial-quote relative mb-4 md:mb-6 mt-2 md:mt-12">
                     <p className="text-white/90 text-sm leading-relaxed italic">
                       {locale === 'pt' ? testimonial.text_pt : testimonial.text_en}
                     </p>
