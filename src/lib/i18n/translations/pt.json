@@ -96,7 +96,9 @@
     "error": "Erro ao carregar testemunhos",
     "empty": "Ainda não temos testemunhos",
     "previousTestimonial": "Testemunho anterior",
-    "nextTestimonial": "Próximo testemunho"
+    "nextTestimonial": "Próximo testemunho",
+    "loadMore": "CARREGAR MAIS",
+    "viewAll": "VER TODOS"
   },
   "services": {
     "title": "SERVIÇOS",
@@ -104,6 +106,8 @@
     "featured": "Popular",
     "new": "Novo",
     "contactForPricing": "Contactar para preços",
+    "viewAllServices": "VER TODOS OS SERVIÇOS",
+    "showLess": "VER MENOS",
     "ctaButton": "Falar com treinador",
     "ctaNutrition": "Falar com nutricionista",
     "responseTime": "Resposta em menos de 2 horas",
@@ -246,6 +250,7 @@
     "viewMore": "Ler",
     "viewGallery": "Ver galeria",
     "readArticle": "Ler",
+    "comingSoon": "Em breve",
     "newsTitle": "NA IMPRENSA"
   },
   "gallery": {
@@ -258,7 +263,15 @@
   },
   "regybox": {
     "subtitle": "Gestão completa do estúdio",
-    "accessApp": "ACEDER À APP"
+    "accessApp": "ACEDER À APP",
+    "tagline": "O TEU TREINO",
+    "headline": "NAS TUAS MÃOS",
+    "cta": "ACEDER AGORA",
+    "features": {
+      "workouts": "Treinos",
+      "schedule": "Horários",
+      "progress": "Progresso"
+    }
   },
   "location": {
     "title": "LOCALIZAÇÃO",
@@ -279,5 +292,14 @@
       "metro": "Metro: Estação Matosinhos Sul (10 min a pé)",
       "car": "Autocarro: Linhas 500, 502, 507"
     }
+  },
+  "nav": {
+    "studio": "Estúdio",
+    "services": "Serviços",
+    "team": "Equipa",
+    "testimonials": "Testemunhos",
+    "lifestyle": "Lifestyle",
+    "contact": "Contacto",
+    "language": "Idioma"
   }
 }

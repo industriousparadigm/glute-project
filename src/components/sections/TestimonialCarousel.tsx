@@ -19,6 +19,7 @@ export function TestimonialCarousel() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const [visibleCount, setVisibleCount] = useState(3)
 
   useEffect(() => {
     fetchTestimonials()
@@ -108,7 +109,7 @@ export function TestimonialCarousel() {
 
         {/* Responsive flex layout with centered rows - max 4 per row */}
         <div className="flex flex-wrap justify-center gap-6">
-          {testimonials.map((testimonial, index) => (
+          {testimonials.slice(0, visibleCount).map((testimonial, index) => (
             <motion.div
               key={`${testimonial.id}-${index}`}
               className="w-full sm:w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(25%-18px)] max-w-sm bg-white shadow-lg border border-gray-200 p-6 md:p-8 relative group hover:border-accent-orange/40 hover:shadow-xl transition-all duration-300"
@@ -131,6 +132,42 @@ export function TestimonialCarousel() {
             </motion.div>
           ))}
         </div>
+
+        {/* Load More Button - Mobile Only */}
+        {visibleCount < testimonials.length && (
+          <motion.div
+            className="flex justify-center mt-8 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            <button
+              onClick={() => setVisibleCount(prev => Math.min(prev + 3, testimonials.length))}
+              className="px-6 py-3 border-2 border-accent-orange text-accent-orange font-display uppercase text-sm
+                       transition-all duration-300 hover:bg-accent-orange/10 active:scale-95"
+            >
+              {String(t('community.loadMore'))} ({visibleCount}/{testimonials.length})
+            </button>
+          </motion.div>
+        )}
+
+        {/* Show All on Desktop */}
+        {visibleCount < testimonials.length && (
+          <motion.div
+            className="hidden md:flex justify-center mt-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            <button
+              onClick={() => setVisibleCount(testimonials.length)}
+              className="px-8 py-3 border-2 border-accent-orange text-accent-orange font-display uppercase text-base
+                       transition-all duration-300 hover:bg-accent-orange/10"
+            >
+              {String(t('community.viewAll'))} ({testimonials.length})
+            </button>
+          </motion.div>
+        )}
       </div>
     </section>
   )

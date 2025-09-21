@@ -1,9 +1,14 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
 import { useTranslations } from '@/lib/i18n/hooks'
 import { MessageCircle } from 'lucide-react'
 import { ReactElement } from 'react'
+
+const ServicesMobile = dynamic(() => import('@/components/ServicesMobile').then(mod => mod.ServicesMobile), {
+  ssr: false
+})
 
 interface Service {
   id: string
@@ -184,9 +189,12 @@ export function Services() {
           </p>
         </motion.div>
 
-        {/* Services Grid - 4-3 layout (2 rows) */}
+        {/* Mobile Services */}
+        <ServicesMobile />
+
+        {/* Desktop Services Grid - 4-3 layout (2 rows) */}
         <motion.div
-          className="max-w-7xl mx-auto mb-8 space-y-6"
+          className="hidden md:block max-w-7xl mx-auto mb-8 space-y-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -258,9 +266,9 @@ export function Services() {
           </div>
         </motion.div>
 
-        {/* WhatsApp CTA with pricing notice */}
+        {/* Desktop WhatsApp CTA with pricing notice */}
         <motion.div
-          className="text-center"
+          className="hidden md:block text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

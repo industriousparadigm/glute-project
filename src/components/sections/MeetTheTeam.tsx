@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useTranslations } from '@/lib/i18n/hooks'
@@ -31,6 +32,13 @@ const teamMembers: TeamMember[] = [
 
 export function MeetTheTeam() {
   const { t, locale } = useTranslations()
+  const [activeMember, setActiveMember] = useState<string | null>(null)
+
+  const handleMemberClick = (name: string) => {
+    if (window.innerWidth <= 768) {
+      setActiveMember(activeMember === name ? null : name)
+    }
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -94,7 +102,8 @@ export function MeetTheTeam() {
             <motion.div
               key={member.name}
               variants={itemVariants}
-              className="team-card group relative aspect-[3/4] overflow-hidden rounded-lg"
+              className="team-card group relative aspect-[3/4] overflow-hidden rounded-lg cursor-pointer md:cursor-default"
+              onClick={() => handleMemberClick(member.name)}
             >
               {/* Image Container */}
               <div className="absolute inset-0">
@@ -119,8 +128,10 @@ export function MeetTheTeam() {
                 </p>
               </div>
 
-              {/* Skills Overlay - appears on hover */}
-              <div className="absolute inset-0 flex flex-col justify-center items-center p-4 bg-brand-black/75 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
+              {/* Skills Overlay - appears on hover (desktop) or tap (mobile) */}
+              <div className={`absolute inset-0 flex flex-col justify-center items-center p-4 bg-brand-black/90 md:bg-brand-black/75 transition-all duration-500 pointer-events-none ${
+                activeMember === member.name ? 'opacity-100' : 'opacity-0 md:group-hover:opacity-100'
+              }`}>
                 <div className="space-y-3">
                   <h4 className="font-display text-xl md:text-2xl uppercase text-accent-orange text-center mb-4">
                     {locale === 'pt' ? 'Especialidades' : 'Specialties'}

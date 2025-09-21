@@ -4,6 +4,7 @@ import { Hero, OurStudio, Services, TestimonialCarousel, MeetTheTeam, Lifestyle,
 import { NavRail } from '@/components/ui'
 import { LanguageTracker } from './LanguageTracker'
 import { GalleryProvider, useGallery } from '@/components/GalleryContext'
+import { StickyHeader } from '@/components/StickyHeader'
 
 function HomeContent() {
   const { isGalleryOpen } = useGallery()
@@ -12,6 +13,7 @@ function HomeContent() {
     <>
       <LanguageTracker />
       {!isGalleryOpen && <NavRail />}
+      <StickyHeader />
       <main id="main" className="min-h-screen">
         <section id="hero" className="snap-section bg-brand-black text-white">
           <Hero />

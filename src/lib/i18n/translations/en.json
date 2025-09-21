@@ -96,7 +96,9 @@
     "error": "Error loading testimonials",
     "empty": "No testimonials yet",
     "previousTestimonial": "Previous testimonial",
-    "nextTestimonial": "Next testimonial"
+    "nextTestimonial": "Next testimonial",
+    "loadMore": "LOAD MORE",
+    "viewAll": "VIEW ALL"
   },
   "pricing": {
     "title": "PRICING & TRIAL OFFER",
@@ -122,6 +124,8 @@
     "featured": "Popular",
     "new": "New",
     "contactForPricing": "Contact for pricing",
+    "viewAllServices": "VIEW ALL SERVICES",
+    "showLess": "SHOW LESS",
     "ctaButton": "Talk to trainer",
     "ctaNutrition": "Talk to nutritionist",
     "responseTime": "Response in under 2 hours",
@@ -246,6 +250,7 @@
     "viewMore": "Read",
     "viewGallery": "View gallery",
     "readArticle": "Read",
+    "comingSoon": "Coming Soon",
     "newsTitle": "IN THE PRESS"
   },
   "gallery": {
@@ -258,7 +263,15 @@
   },
   "regybox": {
     "subtitle": "Complete studio management",
-    "accessApp": "ACCESS APP"
+    "accessApp": "ACCESS APP",
+    "tagline": "YOUR WORKOUT",
+    "headline": "IN YOUR HANDS",
+    "cta": "ACCESS NOW",
+    "features": {
+      "workouts": "Workouts",
+      "schedule": "Schedule",
+      "progress": "Progress"
+    }
   },
   "location": {
     "title": "LOCATION",
@@ -279,5 +292,14 @@
       "metro": "Metro: Matosinhos Sul Station (10 min walk)",
       "car": "Bus: Lines 500, 502, 507"
     }
+  },
+  "nav": {
+    "studio": "Studio",
+    "services": "Services",
+    "team": "Team",
+    "testimonials": "Testimonials",
+    "lifestyle": "Lifestyle",
+    "contact": "Contact",
+    "language": "Language"
   }
 }

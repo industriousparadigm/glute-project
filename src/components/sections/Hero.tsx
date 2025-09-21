@@ -64,8 +64,8 @@ export function Hero() {
       </div>
       
       {/* GLUTE PROJECT in top left - double size */}
-      <motion.div 
-        className="absolute top-8 left-8 md:top-12 md:left-12 z-10"
+      <motion.div
+        className="absolute top-[max(2rem,env(safe-area-inset-top))] left-[max(1.5rem,env(safe-area-inset-left))] md:top-12 md:left-12 z-10"
         initial="hidden"
         animate="visible"
         variants={glitchVariants}
@@ -73,7 +73,7 @@ export function Hero() {
       >
         <h1 className="text-accent-orange font-display font-normal uppercase"
            style={{
-             fontSize: 'clamp(4rem, 8vw, 6rem)',
+             fontSize: 'clamp(2.5rem, 8vw, 6rem)',
              lineHeight: 0.85,
              letterSpacing: '-0.03em',
              fontWeight: 400
@@ -85,7 +85,7 @@ export function Hero() {
 
       {/* Language switcher and Book Visit button in top right */}
       <motion.div
-        className="absolute top-8 right-8 md:top-12 md:right-12 z-10 flex items-center gap-4"
+        className="absolute top-[max(2rem,env(safe-area-inset-top))] right-[max(1.5rem,env(safe-area-inset-right))] md:top-12 md:right-12 z-10 flex flex-col md:flex-row items-end md:items-center gap-2 md:gap-4"
         initial="hidden"
         animate="visible"
         variants={glitchVariants}
@@ -93,10 +93,10 @@ export function Hero() {
       >
         {/* Language Switcher */}
         <div className="flex items-center gap-1 text-accent-orange">
-          <Globe size={18} />
+          <Globe size={16} className="md:w-[18px] md:h-[18px]" />
           <button
             onClick={() => switchLanguage('en')}
-            className={`px-2 py-1 text-sm font-display uppercase transition-all ${
+            className={`px-1.5 md:px-2 py-1 text-xs md:text-sm font-display uppercase transition-all ${
               locale === 'en' ? 'text-accent-orange' : 'text-white/60 hover:text-accent-orange'
             }`}
           >
@@ -105,7 +105,7 @@ export function Hero() {
           <span className="text-white/40">|</span>
           <button
             onClick={() => switchLanguage('pt')}
-            className={`px-2 py-1 text-sm font-display uppercase transition-all ${
+            className={`px-1.5 md:px-2 py-1 text-xs md:text-sm font-display uppercase transition-all ${
               locale === 'pt' ? 'text-accent-orange' : 'text-white/60 hover:text-accent-orange'
             }`}
           >
@@ -113,8 +113,8 @@ export function Hero() {
           </button>
         </div>
 
-        {/* Book Visit button */}
-        <Link href="#contact" className="group">
+        {/* Book Visit button - Desktop only */}
+        <Link href="#contact" className="group hidden md:block">
           <span className="inline-flex items-center justify-center px-5 py-2.5 md:px-6 md:py-3
                          border-2 border-accent-orange bg-transparent
                          font-display font-normal uppercase tracking-widest text-sm md:text-base
@@ -128,8 +128,31 @@ export function Hero() {
         </Link>
       </motion.div>
 
-      {/* Massive scrolling typography at bottom */}
-      <div className="absolute bottom-0 left-0 w-full h-48 md:h-64 overflow-hidden">
+      {/* Mobile-centered CTA button - shows before sticky header appears */}
+      <motion.div
+        className="absolute top-1/3 left-1/2 transform -translate-x-1/2 md:hidden z-20"
+        initial="hidden"
+        animate="visible"
+        variants={glitchVariants}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+      >
+        <Link href="#contact" className="group inline-block">
+          <span className="inline-flex items-center justify-center px-8 py-4
+                         border-2 border-accent-orange bg-accent-orange
+                         font-display font-normal uppercase tracking-widest text-lg
+                         text-brand-black
+                         transition-all duration-300
+                         hover:bg-transparent hover:text-accent-orange
+                         hover:shadow-[0_0_30px_rgba(255,94,27,0.6)]
+                         active:scale-[0.95]
+                         focus:outline-none focus:ring-2 focus:ring-accent-orange focus:ring-offset-2 focus:ring-offset-brand-black">
+            {String(t('hero.book_visit'))}
+          </span>
+        </Link>
+      </motion.div>
+
+      {/* Massive scrolling typography at bottom - mobile in bottom third, desktop at bottom */}
+      <div className="absolute bottom-[20vh] md:bottom-0 left-0 w-full h-24 md:h-64 overflow-hidden">
         <div className="scrolling-text-container">
           <div className="scrolling-text">
             <span>{String(t('hero.subtitle'))}</span>

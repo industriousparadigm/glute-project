@@ -13,9 +13,10 @@ Bilingual fitness studio website. Next.js 15.4, TypeScript strict, V3 Bold Black
 - Less is ALWAYS more
 
 ### 2. BILINGUAL REQUIREMENT
-- **EVERY piece of content MUST have PT and EN versions**
-- Portuguese (PT) is primary language
+- **EVERY piece of content MUST have PT_PT and EN versions**
+- Portuguese (PT_PT - European Portuguese) is primary language
 - English (EN) is secondary
+- **IMPORTANT: Use PT_PT (European Portuguese) NOT PT_BR (Brazilian Portuguese)**
 - No exceptions - all copy, buttons, messages, errors must be bilingual
 - Always update both `pt.json` and `en.json` translation files
 
