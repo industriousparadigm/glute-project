@@ -10,7 +10,7 @@ The following environment variables must be set in your Vercel project settings 
 - **JWT_SECRET** - Secret key for JWT token generation (use a strong, random string)
   - Example: Generate with `openssl rand -base64 32`
 - **ADMIN_EMAIL** - Email address for admin login
-  - Example: `admin@gluteproject.com`
+  - Example: `geral@gluteproject.pt`
 - **ADMIN_PASSWORD** - Password for admin login (use a strong password)
 
 ## Payload CMS

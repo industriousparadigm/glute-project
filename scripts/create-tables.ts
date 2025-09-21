@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS site_settings (
 const seedData = `
 -- Insert admin user with bcrypt hash for 'GluteProject2024!'
 INSERT INTO admin_users (email, password_hash) 
-VALUES ('admin@gluteproject.com', '$2a$10$8Kx7o3lHB5LH8R8R8R8R8Ou7wK7wK7wK7wK7wK7wK7wK7wK7wK7wK')
+VALUES ('geral@gluteproject.pt', '$2a$10$8Kx7o3lHB5LH8R8R8R8R8Ou7wK7wK7wK7wK7wK7wK7wK7wK7wK7wK')
 ON CONFLICT (email) DO NOTHING;
 
 -- Insert default prices
@@ -69,7 +69,7 @@ ON CONFLICT DO NOTHING;
 INSERT INTO site_settings (key, value) VALUES
 ('phone', '+351 123 456 789'),
 ('whatsapp', '+351 123 456 789'),
-('email', 'info@gluteproject.com'),
+('email', 'geral@gluteproject.pt'),
 ('address_street', 'Rua Example, 123'),
 ('address_city', '4450-001 Matosinhos'),
 ('instagram', 'glute_project')

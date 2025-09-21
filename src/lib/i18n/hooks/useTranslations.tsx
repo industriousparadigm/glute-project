@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { getCurrentLocale, getTranslations } from '../i18n'
 
-type TranslationFunction = (key: string) => string
+type TranslationFunction = (key: string) => string | string[] | unknown
 
 export function useTranslations() {
   const pathname = usePathname()
@@ -27,7 +27,11 @@ export function useTranslations() {
       }
     }
 
-    return typeof value === 'string' ? value : key
+    // Return the value as is (string, array, object, etc.)
+    if (typeof value === 'string') return value
+    if (Array.isArray(value)) return value
+    if (typeof value === 'object') return value
+    return key
   }
 
   return { t, locale }

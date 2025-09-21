@@ -92,7 +92,7 @@ export function NavRail() {
                     isLightSection ? 'text-accent-orange' : 'text-accent-orange'
                   }`}
                 >
-                  {t(`navigation.${item.id}`)}
+                  {String(t(`navigation.${item.id}`))}
                 </motion.span>
 
                 {/* Dot - square for grittier look */}

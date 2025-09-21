@@ -29,9 +29,9 @@ describe('Admin Settings API', () => {
       mockVerifyToken.mockReturnValue({ id: 1, email: 'admin@test.com' })
       mockQuery.mockResolvedValueOnce({
         rows: [
-          { key: 'phone', value: '+351 912 345 678' },
-          { key: 'whatsapp', value: '+351912345678' },
-          { key: 'email', value: 'info@gluteproject.com' },
+          { key: 'phone', value: '+351 937 370 304' },
+          { key: 'whatsapp', value: '+351937370304' },
+          { key: 'email', value: 'geral@gluteproject.pt' },
           { key: 'address', value: 'Rua Example 123, Matosinhos' },
           { key: 'instagram', value: '@gluteproject' },
           { key: 'facebook', value: 'gluteproject' },
@@ -51,8 +51,8 @@ describe('Admin Settings API', () => {
       
       expect(response.status).toBe(200)
       const data = await response.json()
-      expect(data.phone).toBe('+351 912 345 678')
-      expect(data.email).toBe('info@gluteproject.com')
+      expect(data.phone).toBe('+351 937 370 304')
+      expect(data.email).toBe('geral@gluteproject.pt')
       expect(data.instagram).toBe('@gluteproject')
     })
 
@@ -95,7 +95,7 @@ describe('Admin Settings API', () => {
         .mockResolvedValueOnce({
           rows: [
             { key: 'phone', value: '+351 999 888 777' },
-            { key: 'email', value: 'newemail@gluteproject.com' }
+            { key: 'email', value: 'newemail@gluteproject.pt' }
           ],
           rowCount: 2,
           command: '',
@@ -111,7 +111,7 @@ describe('Admin Settings API', () => {
         },
         body: JSON.stringify({
           phone: '+351 999 888 777',
-          email: 'newemail@gluteproject.com'
+          email: 'newemail@gluteproject.pt'
         })
       })
       
@@ -120,7 +120,7 @@ describe('Admin Settings API', () => {
       expect(response.status).toBe(200)
       const data = await response.json()
       expect(data.phone).toBe('+351 999 888 777')
-      expect(data.email).toBe('newemail@gluteproject.com')
+      expect(data.email).toBe('newemail@gluteproject.pt')
     })
 
     it('should return 400 if no settings provided', async () => {

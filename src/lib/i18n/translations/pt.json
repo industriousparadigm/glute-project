@@ -23,6 +23,18 @@
     "community": {
       "title": "COMUNIDADE",
       "description": "Juntos · Mais fortes"
+    },
+    "results": {
+      "title": "RESULTADOS",
+      "description": "Visíveis · Rápidos"
+    },
+    "energy": {
+      "title": "ENERGIA",
+      "description": "Máxima · Sempre"
+    },
+    "progress": {
+      "title": "PROGRESSO",
+      "description": "Constante · Medido"
     }
   },
   "studio": {
@@ -30,6 +42,21 @@
     "subtitle": "500m² de pura motivação e equipamento profissional",
     "viewAll": "Ver todas as fotos",
     "close": "Fechar"
+  },
+  "equipment": {
+    "upper_machines": {
+      "title": "MÁQUINAS SUPERIORES",
+      "description": "Topo de gama"
+    },
+    "lower_machines": {
+      "title": "MÁQUINAS INFERIORES",
+      "description": "Alta performance"
+    },
+    "space": {
+      "title": "ESPAÇO",
+      "description": "500m² · Maior do Norte"
+    },
+    "viewMore": "Ver mais"
   },
   "facility": {
     "title": "INSTALAÇÕES & EQUIPAMENTO",
@@ -75,9 +102,15 @@
     "title": "SERVIÇOS",
     "subtitle": "Escolhe o treino perfeito para ti",
     "featured": "Popular",
+    "new": "Novo",
     "contactForPricing": "Contactar para preços",
     "ctaButton": "Falar com treinador",
+    "ctaNutrition": "Falar com nutricionista",
     "responseTime": "Resposta em menos de 2 horas",
+    "pricingNotice": {
+      "title": "PREÇOS PERSONALIZADOS",
+      "description": "Contacta para preços"
+    },
     "ptExpress": {
       "name": "PT Express",
       "description": "Sessão rápida de treino personalizado para resultados imediatos"
@@ -93,6 +126,18 @@
     "smallGroup": {
       "name": "Small Group Classes",
       "description": "Aulas em pequenos grupos, máximo 4 pessoas para atenção personalizada"
+    },
+    "teamBuilding": {
+      "name": "Team Building",
+      "description": "Small group classes para empresas"
+    },
+    "ptSenior": {
+      "name": "PT 3ª Idade",
+      "description": "Aulas individuais ou grupo para a 3ª idade"
+    },
+    "nutrition": {
+      "name": "Nutrição",
+      "description": "Acompanhamento nutricional, planos alimentares e biopedância"
     }
   },
   "pricing": {
@@ -119,31 +164,32 @@
     "roles": {
       "trainer": "Personal Trainer",
       "nutritionist": "Nutricionista"
+    },
+    "members": {
+      "miguel-ferrer": {
+        "skills": ["Perda de gordura", "Massa muscular"]
+      },
+      "francisco-franca": {
+        "skills": ["Nutrição", "Planos alimentares", "Biopedância"]
+      },
+      "joana-martins": {
+        "skills": ["Pilates", "Pilates clínico", "Massa muscular", "Treino kids", "Grávidas"]
+      },
+      "miguel-carvalho": {
+        "skills": ["Performance", "Treino sénior"]
+      },
+      "renato-fonseca": {
+        "skills": ["Massa muscular", "Perda de gordura", "Treino sénior"]
+      },
+      "sandro-moutinho": {
+        "skills": ["Performance", "Massa muscular", "Técnico especialista em exercício físico", "CrossFit"]
+      }
     }
   },
   "contact": {
     "title": "AGENDAR VISITA",
     "whatsapp": "CONTACTAR VIA WHATSAPP",
-    "call": "LIGAR AGORA",
-    "form": {
-      "name": "Nome",
-      "email": "Email",
-      "phone": "Telefone",
-      "message": "Mensagem (opcional)",
-      "submit": "ENVIAR",
-      "submitting": "A enviar...",
-      "success": "Mensagem enviada com sucesso!",
-      "error": "Erro ao enviar mensagem. Tente novamente."
-    },
-    "whatsapp": "CONTACTAR VIA WHATSAPP",
-    "call": "LIGAR AGORA",
-    "form_toggle_open": "Quero formulário",
-    "form_toggle_close": "Fechar formulário",
-    "contact_hours": "Horário de contacto",
-    "weekdays": "Segunda a Sexta: 9h - 20h",
-    "saturday": "Sábado: 9h - 13h",
-    "sunday": "Domingo: Fechado",
-    "member_access": "* Ginásio aberto 24/7 para membros"
+    "call": "LIGAR AGORA"
   },
   "location": {
     "title": "LOCALIZAÇÃO",
@@ -162,8 +208,8 @@
     "rights": "© 2025 Glute Project. Todos os direitos reservados.",
     "language": "Idioma",
     "contact": "CONTACTO",
-    "phone": "+351 912 345 678",
-    "email": "info@gluteproject.com",
+    "phone": "+351 937 370 304",
+    "email": "geral@gluteproject.pt",
     "address": "Rua Dr. Afonso Cordeiro, 109",
     "city": "4450-001 Matosinhos, Portugal",
     "links": "LINKS ÚTEIS",
@@ -195,8 +241,20 @@
     "shopApparel": "GLUTE APPAREL",
     "followUs": "SIGA-NOS",
     "crossGames": "CROSS GAMES",
+    "dayToDay": "O NOSSO DIA-A-DIA",
     "explore": "Explorar",
-    "viewMore": "Ver mais"
+    "viewMore": "Ler",
+    "viewGallery": "Ver galeria",
+    "readArticle": "Ler",
+    "newsTitle": "NA IMPRENSA"
+  },
+  "gallery": {
+    "loading": "A carregar imagens...",
+    "noImages": "Sem imagens disponíveis",
+    "close": "Fechar",
+    "fullscreen": "Ecrã completo",
+    "previous": "Anterior",
+    "next": "Próxima"
   },
   "regybox": {
     "subtitle": "Gestão completa do estúdio",
@@ -206,11 +264,15 @@
     "title": "LOCALIZAÇÃO",
     "address": "Morada",
     "hours": {
-      "title": "HORÁRIO DE CONTACTO",
-      "weekdays": "Segunda a Sexta: 9h - 20h",
-      "saturday": "Sábado: 9h - 13h",
-      "sunday": "Domingo: Fechado",
-      "members": "Ginásio aberto 24/7 para membros"
+      "title": "HORÁRIO",
+      "days": "Segunda a Sábado",
+      "closed": "Domingo: Encerrado",
+      "personal_training": "Treino personalizado",
+      "personal_training_hours": "05h00 - 22h00",
+      "small_group": "SMALL GROUP CLASSES",
+      "small_group_morning": "06h00 - 13h30",
+      "small_group_evening": "17h30 - 21h30",
+      "member_access": "* Estúdio aberto 24/7 para membros"
     },
     "transport": {
       "title": "Transporte público",

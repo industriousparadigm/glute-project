@@ -23,7 +23,7 @@ describe('POST /api/admin/auth/login', () => {
     const req = new NextRequest('http://localhost:3000/api/admin/auth/login', {
       method: 'POST',
       body: JSON.stringify({
-        email: 'admin@gluteproject.com',
+        email: 'geral@gluteproject.pt',
         password: 'wrongpassword',
       }),
     })
@@ -31,7 +31,7 @@ describe('POST /api/admin/auth/login', () => {
     mockQuery.mockResolvedValue({
       rows: [{
         id: 1,
-        email: 'admin@gluteproject.com',
+        email: 'geral@gluteproject.pt',
         password_hash: 'hashedpassword',
       }],
       rowCount: 1,
@@ -71,7 +71,7 @@ describe('POST /api/admin/auth/login', () => {
     const req = new NextRequest('http://localhost:3000/api/admin/auth/login', {
       method: 'POST',
       body: JSON.stringify({
-        email: 'admin@gluteproject.com',
+        email: 'geral@gluteproject.pt',
         password: 'admin123',
       }),
     })
@@ -79,7 +79,7 @@ describe('POST /api/admin/auth/login', () => {
     mockQuery.mockResolvedValue({
       rows: [{
         id: 1,
-        email: 'admin@gluteproject.com',
+        email: 'geral@gluteproject.pt',
         password_hash: 'hashedpassword',
       }],
       rowCount: 1,
@@ -95,7 +95,7 @@ describe('POST /api/admin/auth/login', () => {
     expect(data).toHaveProperty('user')
     expect(data.user).toEqual({
       id: 1,
-      email: 'admin@gluteproject.com',
+      email: 'geral@gluteproject.pt',
     })
     
     // Check if auth cookie is set
@@ -107,7 +107,7 @@ describe('POST /api/admin/auth/login', () => {
     const req = new NextRequest('http://localhost:3000/api/admin/auth/login', {
       method: 'POST',
       body: JSON.stringify({
-        email: 'admin@gluteproject.com',
+        email: 'geral@gluteproject.pt',
       }),
     })
     
@@ -122,7 +122,7 @@ describe('POST /api/admin/auth/login', () => {
     const req = new NextRequest('http://localhost:3000/api/admin/auth/login', {
       method: 'POST',
       body: JSON.stringify({
-        email: 'admin@gluteproject.com',
+        email: 'geral@gluteproject.pt',
         password: 'password',
       }),
     })

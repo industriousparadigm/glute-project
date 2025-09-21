@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS site_settings (
 
 -- Insert default admin user (password: admin123)
 INSERT INTO admin_users (email, password_hash) 
-VALUES ('admin@gluteproject.com', '$2a$10$YKvJX6H1n6kWxKJp3N5QSuVlNtkCQv3R9QWQ1Kj8Qr1Jg3XB5YXKy')
+VALUES ('geral@gluteproject.pt', '$2a$10$YKvJX6H1n6kWxKJp3N5QSuVlNtkCQv3R9QWQ1Kj8Qr1Jg3XB5YXKy')
 ON CONFLICT (email) DO NOTHING;
 
 -- Insert default prices
@@ -61,7 +61,7 @@ ON CONFLICT (key) DO NOTHING;
 INSERT INTO site_settings (key, value) VALUES
 ('phone', '+351 123 456 789'),
 ('whatsapp', '+351 123 456 789'),
-('email', 'info@gluteproject.com'),
+('email', 'geral@gluteproject.pt'),
 ('address_street', 'Rua Example, 123'),
 ('address_city', '4450-001 Matosinhos'),
 ('instagram', 'glute_project')

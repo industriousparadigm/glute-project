@@ -23,7 +23,7 @@ describe('Auth Functions', () => {
       mockQuery.mockResolvedValue({
         rows: [{
           id: 1,
-          email: 'admin@gluteproject.com',
+          email: 'geral@gluteproject.pt',
           password_hash: 'hashedpassword',
         }],
         rowCount: 1,
@@ -31,15 +31,15 @@ describe('Auth Functions', () => {
       
       mockCompare.mockResolvedValue(true as never)
       
-      const user = await verifyCredentials('admin@gluteproject.com', 'admin123')
+      const user = await verifyCredentials('geral@gluteproject.pt', 'admin123')
       
       expect(user).toEqual({
         id: 1,
-        email: 'admin@gluteproject.com',
+        email: 'geral@gluteproject.pt',
       })
       expect(mockQuery).toHaveBeenCalledWith(
         'SELECT id, email, password_hash FROM admin_users WHERE email = $1',
-        ['admin@gluteproject.com']
+        ['geral@gluteproject.pt']
       )
     })
     
@@ -47,7 +47,7 @@ describe('Auth Functions', () => {
       mockQuery.mockResolvedValue({
         rows: [{
           id: 1,
-          email: 'admin@gluteproject.com',
+          email: 'geral@gluteproject.pt',
           password_hash: 'hashedpassword',
         }],
         rowCount: 1,
@@ -55,7 +55,7 @@ describe('Auth Functions', () => {
       
       mockCompare.mockResolvedValue(false as never)
       
-      const user = await verifyCredentials('admin@gluteproject.com', 'wrongpassword')
+      const user = await verifyCredentials('geral@gluteproject.pt', 'wrongpassword')
       
       expect(user).toBeNull()
     })
@@ -74,7 +74,7 @@ describe('Auth Functions', () => {
     it('should handle database errors', async () => {
       mockQuery.mockRejectedValue(new Error('Database error'))
       
-      const user = await verifyCredentials('admin@gluteproject.com', 'password')
+      const user = await verifyCredentials('geral@gluteproject.pt', 'password')
       
       expect(user).toBeNull()
     })
@@ -82,7 +82,7 @@ describe('Auth Functions', () => {
   
   describe('generateToken', () => {
     it('should generate JWT token for user', () => {
-      const user = { id: 1, email: 'admin@gluteproject.com' }
+      const user = { id: 1, email: 'geral@gluteproject.pt' }
       const mockToken = 'mock.jwt.token'
       
       mockSign.mockReturnValue(mockToken)
@@ -91,7 +91,7 @@ describe('Auth Functions', () => {
       
       expect(token).toBe(mockToken)
       expect(mockSign).toHaveBeenCalledWith(
-        { id: 1, email: 'admin@gluteproject.com' },
+        { id: 1, email: 'geral@gluteproject.pt' },
         'test-secret',
         { expiresIn: '24h' }
       )
@@ -100,7 +100,7 @@ describe('Auth Functions', () => {
   
   describe('verifyToken', () => {
     it('should verify and decode valid token', () => {
-      const mockPayload = { id: 1, email: 'admin@gluteproject.com' }
+      const mockPayload = { id: 1, email: 'geral@gluteproject.pt' }
       
       mockVerify.mockReturnValue(mockPayload)
       

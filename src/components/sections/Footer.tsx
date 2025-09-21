@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import { useTranslations } from '@/lib/i18n/hooks'
 import { useLanguagePreference } from '@/lib/i18n/useLanguagePreference'
 import { trackEvent } from '@/lib/analytics/track-event'
-import { Phone, Mail, Clock, Instagram, Facebook } from 'lucide-react'
+import { Phone, Mail, Instagram, Facebook, Youtube, Linkedin } from 'lucide-react'
 
 export function Footer() {
   const { t, locale } = useTranslations()
@@ -45,20 +45,20 @@ export function Footer() {
         <div className="flex flex-wrap justify-between items-center gap-6">
           {/* Contact */}
           <a 
-            href="tel:+351912345678" 
+            href="tel:+351937370304" 
             className="flex items-center gap-2 text-text-gray hover:text-accent-orange transition-colors"
           >
             <Phone size={20} />
-            <span className="text-sm font-medium">+351 912 345 678</span>
+            <span className="text-sm font-medium">+351 937 370 304</span>
           </a>
 
           {/* Email */}
           <a 
-            href="mailto:info@gluteproject.com" 
+            href="mailto:geral@gluteproject.pt" 
             className="flex items-center gap-2 text-text-gray hover:text-accent-orange transition-colors"
           >
             <Mail size={20} />
-            <span className="text-sm font-medium">info@gluteproject.com</span>
+            <span className="text-sm font-medium">geral@gluteproject.pt</span>
           </a>
 
           {/* Social */}
@@ -82,6 +82,26 @@ export function Footer() {
               onClick={() => trackEvent('facebook_click', { source: 'footer', language: locale })}
             >
               <Facebook size={20} />
+            </a>
+            <a
+              href="https://www.youtube.com/@gluteproject"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+              className="text-text-gray hover:text-accent-orange transition-colors"
+              onClick={() => trackEvent('youtube_click', { source: 'footer', language: locale })}
+            >
+              <Youtube size={20} />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/glute-project/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="text-text-gray hover:text-accent-orange transition-colors"
+              onClick={() => trackEvent('linkedin_click', { source: 'footer', language: locale })}
+            >
+              <Linkedin size={20} />
             </a>
           </div>
 
@@ -120,7 +140,7 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="mt-6 pt-6 border-t border-gray-800 text-center">
-          <p className="text-gray-600 text-xs">© 2024 Glute Project. {t('footer.rights')}</p>
+          <p className="text-gray-600 text-xs">{String(t('footer.rights'))}</p>
         </div>
       </div>
     </footer>

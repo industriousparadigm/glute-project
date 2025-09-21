@@ -1,10 +1,12 @@
 import { track } from '@vercel/analytics'
 
-export type EventName = 
+export type EventName =
   | 'whatsapp_click'
   | 'call_click'
   | 'instagram_click'
   | 'facebook_click'
+  | 'youtube_click'
+  | 'linkedin_click'
   | 'form_submit'
   | 'form_open'
   | 'pricing_view'

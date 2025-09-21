@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { useTranslations } from '@/lib/i18n/hooks'
 import { motion } from 'framer-motion'
-import { Users, Utensils, Clock, Heart } from 'lucide-react'
+import { Users, Utensils, Clock, Heart, Dumbbell, Weight, ExternalLink, MapPin, Target, Zap, TrendingUp } from 'lucide-react'
 import { images } from '@/lib/images'
 
 // Import additional images
@@ -25,13 +25,22 @@ interface PhotoItem {
 
 interface FeatureItem {
   type: 'feature'
-  key: 'trainer_guided' | 'nutrition' | 'access_24h' | 'community'
+  key: 'trainer_guided' | 'nutrition' | 'access_24h' | 'community' | 'results' | 'energy' | 'progress'
   icon: React.ComponentType<{ size?: number; className?: string; 'aria-hidden'?: boolean }>
   colSpan?: number
   rowSpan?: number
 }
 
-type GridItem = PhotoItem | FeatureItem
+interface EquipmentItem {
+  type: 'equipment'
+  key: 'upper_machines' | 'lower_machines' | 'space'
+  icon: React.ComponentType<{ size?: number; className?: string; 'aria-hidden'?: boolean }>
+  href: string
+  colSpan?: number
+  rowSpan?: number
+}
+
+type GridItem = PhotoItem | FeatureItem | EquipmentItem
 
 // All gallery images (8 total)
 const galleryImages = [
@@ -43,31 +52,35 @@ const galleryImages = [
   { src: gymEquipment, altKey: 'facility.image8.alt' as const }
 ]
 
-// Grid layout: 4x3 with special sizing
+// Grid layout: 4x4 with creative sizing
 // Desktop:
-// Row 1: feature | wide photo (2x1)
-// Row 2: vertical (1x2) | photo | feature  
-// Row 3: (vertical cont.) | nutrition | photo
-// Row 4: photo | community | photo
+// Row 1: feature | wide photo (2x1) | placeholder
+// Row 2: vertical (1x2) | equipment | feature | photo
+// Row 3: (vertical cont.) | equipment | photo | placeholder
+// Row 4: photo | community | photo | placeholder
 const gridItems: GridItem[] = [
-  // Row 1
+  // Row 1 (4 cells)
   { type: 'feature', key: 'access_24h', icon: Clock },
   { type: 'photo', src: galleryImages[0].src, altKey: galleryImages[0].altKey, imageIndex: 0, colSpan: 2 }, // Wide 2x1
-  
-  // Row 2
-  { type: 'photo', src: galleryImages[1].src, altKey: galleryImages[1].altKey, imageIndex: 1, rowSpan: 2 }, // Vertical 1x2 - Cardio Zone
-  { type: 'photo', src: galleryImages[6].src, altKey: galleryImages[6].altKey, imageIndex: 6 },
+  { type: 'feature', key: 'nutrition', icon: Utensils }, // Placeholder - can be replaced
+
+  // Row 2 (4 cells)
+  { type: 'photo', src: galleryImages[1].src, altKey: galleryImages[1].altKey, imageIndex: 1, rowSpan: 2 }, // Vertical 1x2
+  { type: 'equipment', key: 'upper_machines', icon: Dumbbell, href: 'https://www.instagram.com/stories/highlights/18148374118390744' },
   { type: 'feature', key: 'trainer_guided', icon: Users },
-  
-  // Row 3
+  { type: 'photo', src: galleryImages[5].src, altKey: galleryImages[5].altKey, imageIndex: 5 },
+
+  // Row 3 (4 cells - first is continuation of vertical)
   // (vertical photo continues here)
-  { type: 'feature', key: 'nutrition', icon: Utensils },
+  { type: 'equipment', key: 'lower_machines', icon: Weight, href: 'https://www.instagram.com/stories/highlights/17903819189546729' },
   { type: 'photo', src: galleryImages[2].src, altKey: galleryImages[2].altKey, imageIndex: 2 },
-  
-  // Row 4
+  { type: 'equipment', key: 'space', icon: MapPin, href: 'https://www.instagram.com/stories/highlights/17977709071656182' },
+
+  // Row 4 (4 cells)
   { type: 'photo', src: galleryImages[3].src, altKey: galleryImages[3].altKey, imageIndex: 3 },
   { type: 'feature', key: 'community', icon: Heart },
   { type: 'photo', src: galleryImages[4].src, altKey: galleryImages[4].altKey, imageIndex: 4 },
+  { type: 'photo', src: galleryImages[6].src, altKey: galleryImages[6].altKey, imageIndex: 6 }, // Placeholder photo
 ]
 
 export function OurStudio() {
@@ -126,13 +139,13 @@ export function OurStudio() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-accent-orange font-display text-5xl sm:text-6xl md:text-7xl font-bold uppercase mb-4 tracking-normal">
-            {t('studio.title')}
+            {String(t('studio.title'))}
           </h2>
-          <p className="text-dark-secondary text-lg font-body">{t('studio.subtitle')}</p>
+          <p className="text-dark-secondary text-lg font-body">{String(t('studio.subtitle'))}</p>
         </motion.div>
 
-        {/* 4x3 Grid Layout - 2 cols on mobile, 3 on desktop */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 auto-rows-[140px] sm:auto-rows-[180px] md:auto-rows-[200px]">
+        {/* 4x4 Grid Layout - 2 cols on mobile, 4 on desktop */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 auto-rows-[140px] sm:auto-rows-[180px] md:auto-rows-[200px]">
           {gridItems.map((item, index) => {
             const colSpanClass = item.colSpan === 2 ? 'col-span-2' : 'col-span-1'
             const rowSpanClass = item.rowSpan === 2 ? 'row-span-1 md:row-span-2' : 'row-span-1'
@@ -143,7 +156,7 @@ export function OurStudio() {
                   key={index}
                   className={`group relative overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl ${colSpanClass} ${rowSpanClass}`}
                   onClick={() => openModal(item.imageIndex)}
-                  aria-label={`${t('facility.viewAll')} - ${t(item.altKey)}`}
+                  aria-label={`${String(t('facility.viewAll'))} - ${String(t(item.altKey))}`}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -151,7 +164,7 @@ export function OurStudio() {
                 >
                   <Image
                     src={item.src}
-                    alt={t(item.altKey)}
+                    alt={String(t(item.altKey))}
                     fill
                     className="object-cover"
                     loading={index < 6 ? "eager" : "lazy"}
@@ -160,16 +173,55 @@ export function OurStudio() {
                   <div className="absolute inset-0 bg-brand-black/30 transition-all duration-300" />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-white font-display font-bold uppercase text-sm tracking-wide drop-shadow-lg">{t(item.altKey)}</p>
+                    <p className="text-white font-display font-bold uppercase text-sm tracking-wide drop-shadow-lg">{String(t(item.altKey))}</p>
                   </div>
                 </motion.button>
+              )
+            } else if (item.type === 'equipment') {
+              // Equipment showcase card
+              const IconComponent = item.icon
+
+              return (
+                <motion.a
+                  key={index}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`relative overflow-hidden bg-zinc-900 group hover:bg-zinc-800 transition-all duration-300 ${colSpanClass} ${rowSpanClass}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  aria-label={String(t(`equipment.${item.key}.title`))}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent-orange/10 to-transparent opacity-50" />
+                  <div className="relative p-6 h-full flex flex-col items-center justify-center text-center">
+                    <div className="mb-4 transform transition-transform duration-300 group-hover:scale-110">
+                      <IconComponent
+                        size={48}
+                        className="text-accent-orange mx-auto stroke-2"
+                        aria-hidden={true}
+                      />
+                    </div>
+                    <h3 className="text-accent-orange font-display text-lg md:text-xl font-bold uppercase mb-2 tracking-wide">
+                      {String(t(`equipment.${item.key}.title`))}
+                    </h3>
+                    <p className="text-white font-body text-xs md:text-sm font-semibold mb-3">
+                      {String(t(`equipment.${item.key}.description`))}
+                    </p>
+                    <div className="flex items-center gap-2 text-white/70 group-hover:text-accent-orange transition-colors">
+                      <span className="text-xs uppercase tracking-wide font-bold">{String(t('equipment.viewMore'))}</span>
+                      <ExternalLink size={14} className="stroke-2" />
+                    </div>
+                  </div>
+                </motion.a>
               )
             } else {
               // Feature card
               const IconComponent = item.icon
-              const description = t(`differentiators.${item.key}.description`)
+              const description = String(t(`differentiators.${item.key}.description`))
               const [part1, part2] = description.split(' · ')
-              
+
               return (
                 <motion.div
                   key={index}
@@ -189,7 +241,7 @@ export function OurStudio() {
                       />
                     </div>
                     <h3 className="text-accent-orange font-display text-lg md:text-xl font-bold uppercase mb-2 tracking-wide">
-                      {t(`differentiators.${item.key}.title`)}
+                      {String(t(`differentiators.${item.key}.title`))}
                     </h3>
                     <div className="space-y-1">
                       <p className="text-white font-body text-xs md:text-sm font-semibold">{part1}</p>
@@ -210,14 +262,14 @@ export function OurStudio() {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={t('facility.viewAll')}
+          aria-label={String(t('facility.viewAll'))}
           className="fixed inset-0 z-50 flex items-center justify-center"
         >
           {/* Backdrop */}
           <button
             className="absolute inset-0 bg-black bg-opacity-90"
             onClick={closeModal}
-            aria-label={t('facility.close')}
+            aria-label={String(t('facility.close'))}
           />
           <div
             className="relative max-w-5xl max-h-[90vh] mx-4 z-10"
@@ -226,7 +278,7 @@ export function OurStudio() {
             <div className="relative w-full h-full">
               <Image
                 src={galleryImages[selectedImageIndex].src}
-                alt={t(galleryImages[selectedImageIndex].altKey)}
+                alt={String(t(galleryImages[selectedImageIndex].altKey))}
                 fill
                 className="object-contain"
                 sizes="90vw"
@@ -276,7 +328,7 @@ export function OurStudio() {
 
             {/* Close button */}
             <button
-              aria-label={t('facility.close')}
+              aria-label={String(t('facility.close'))}
               onClick={closeModal}
               className="absolute top-4 right-4 w-12 h-12 bg-white bg-opacity-20 hover:bg-opacity-30 flex items-center justify-center text-white transition-opacity"
             >

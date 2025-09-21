@@ -17,7 +17,7 @@ export async function verifyCredentials(email: string, password: string): Promis
     if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
       return {
         id: '1',
-        email: process.env.ADMIN_EMAIL || 'admin@gluteproject.com',
+        email: process.env.ADMIN_EMAIL || 'geral@gluteproject.pt',
       }
     }
     
@@ -47,7 +47,7 @@ export async function verifyCredentials(email: string, password: string): Promis
     if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
       return {
         id: '1',
-        email: process.env.ADMIN_EMAIL || 'admin@gluteproject.com',
+        email: process.env.ADMIN_EMAIL || 'geral@gluteproject.pt',
       }
     }
     return null

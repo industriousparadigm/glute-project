@@ -25,7 +25,7 @@ echo ""
 
 # Prompt for each variable
 DATABASE_URL=$(prompt_with_default "DATABASE_URL (PostgreSQL connection string)" "" "DATABASE_URL")
-ADMIN_EMAIL=$(prompt_with_default "ADMIN_EMAIL" "admin@gluteproject.com" "ADMIN_EMAIL")
+ADMIN_EMAIL=$(prompt_with_default "ADMIN_EMAIL" "geral@gluteproject.pt" "ADMIN_EMAIL")
 ADMIN_PASSWORD=$(prompt_with_default "ADMIN_PASSWORD" "GluteProject2024!" "ADMIN_PASSWORD")
 NEXT_PUBLIC_BASE_URL=$(prompt_with_default "NEXT_PUBLIC_BASE_URL" "https://glute-project.vercel.app" "NEXT_PUBLIC_BASE_URL")
 

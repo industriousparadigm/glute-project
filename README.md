@@ -31,7 +31,8 @@ Visit [http://localhost:3001](http://localhost:3001) to see the development serv
 - **Dark Gradient Theme** - Sophisticated visual variety with strategic gradient system
 - **Admin Dashboard** - Manage prices, testimonials, and settings
 - **Contact Form** - Direct inquiries with validation
-- **Instagram Integration** - Ready for live feed (currently mock data)
+- **Gallery Modal** - Fullscreen image carousel with keyboard/touch navigation
+- **Dropbox Gallery** - Live photo integration from Dropbox folder
 - **Google Reviews** - Sync with Google My Business
 - **Mobile Optimized** - Different layouts and images for mobile devices
 - **SEO Optimized** - Dynamic metadata and structured data
@@ -82,6 +83,9 @@ GOOGLE_PLACE_ID=your-place-id
 # Optional: Instagram
 INSTAGRAM_ACCESS_TOKEN=your-token
 INSTAGRAM_USER_ID=your-id
+
+# Dropbox Gallery
+DROPBOX_REFRESH_TOKEN=your-refresh-token
 ```
 
 ### Database Setup
@@ -91,6 +95,13 @@ Initialize the database schema:
 ```bash
 npx tsx scripts/create-tables-now.ts
 ```
+
+### Dropbox Gallery Setup
+
+1. Visit `/api/dropbox/auth` in your browser
+2. Authorize the app with your Dropbox account
+3. Copy the refresh token to `DROPBOX_REFRESH_TOKEN` in `.env.local`
+4. Upload images to `/dia-a-dia/optimized` folder in your Dropbox app folder
 
 ## 📊 Database Schema
 

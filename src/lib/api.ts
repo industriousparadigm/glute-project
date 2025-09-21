@@ -103,7 +103,7 @@ export async function getSiteSettings() {
   return {
     phone: '+351 123 456 789',
     whatsapp: '+351 123 456 789',
-    email: 'info@gluteproject.com',
+    email: 'geral@gluteproject.pt',
     address: {
       street: 'Rua Example, 123',
       city: '4450-001 Matosinhos',

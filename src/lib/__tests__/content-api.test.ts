@@ -152,7 +152,7 @@ describe('Content API', () => {
     it('should return site settings from database', async () => {
       const mockSettings = [
         { key: 'phone', value: '+351 123 456 789' },
-        { key: 'email', value: 'info@gluteproject.com' },
+        { key: 'email', value: 'geral@gluteproject.pt' },
         { key: 'whatsapp', value: '+351 123 456 789' },
         { key: 'address_street', value: 'Rua Example, 123' },
         { key: 'address_city', value: '4450-001 Matosinhos' },
@@ -171,7 +171,7 @@ describe('Content API', () => {
     it('should transform database rows to structured object', async () => {
       const mockSettings = [
         { key: 'phone', value: '+351 123 456 789' },
-        { key: 'email', value: 'info@gluteproject.com' },
+        { key: 'email', value: 'geral@gluteproject.pt' },
         { key: 'whatsapp', value: '+351 123 456 789' },
         { key: 'address_street', value: 'Rua Example, 123' },
         { key: 'address_city', value: '4450-001 Matosinhos' },
@@ -183,7 +183,7 @@ describe('Content API', () => {
       const settings = await getSiteSettings()
       
       expect(settings).toHaveProperty('phone', '+351 123 456 789')
-      expect(settings).toHaveProperty('email', 'info@gluteproject.com')
+      expect(settings).toHaveProperty('email', 'geral@gluteproject.pt')
       expect(settings).toHaveProperty('whatsapp', '+351 123 456 789')
       expect(settings).toHaveProperty('address')
       expect(settings.address).toEqual({

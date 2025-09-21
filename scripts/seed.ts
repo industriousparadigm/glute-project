@@ -11,14 +11,14 @@ const seed = async () => {
     await payload.create({
       collection: 'users',
       data: {
-        email: 'admin@gluteproject.com',
+        email: 'geral@gluteproject.pt',
         password: 'admin123',
         role: 'admin',
       },
     })
 
     console.log('Admin user created successfully!')
-    console.log('Email: admin@gluteproject.com')
+    console.log('Email: geral@gluteproject.pt')
     console.log('Password: admin123')
     
     // Create initial site settings
@@ -28,7 +28,7 @@ const seed = async () => {
         siteName: 'Glute Project',
         phone: '+351 123 456 789',
         whatsapp: '+351 123 456 789',
-        email: 'info@gluteproject.com',
+        email: 'geral@gluteproject.pt',
         address: {
           street: 'Rua Example, 123',
           city: '4450-001 Matosinhos',

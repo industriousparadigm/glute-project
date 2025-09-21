@@ -38,7 +38,7 @@ export function Pricing() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          {t('pricing.title')}
+          {String(t('pricing.title'))}
         </motion.h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -62,15 +62,15 @@ export function Pricing() {
                   </div>
                 )}
                 <h3 className="text-accent-orange font-display text-2xl font-bold uppercase mb-4 text-center tracking-wide">
-                  {t(`pricing.${option.key}.title`)}
+                  {String(t(`pricing.${option.key}.title`))}
                 </h3>
                 <div className="mb-6 text-center">
                   <p className="text-accent-orange font-display text-4xl font-extrabold">
-                    {t(`pricing.${option.key}.price`)}
+                    {String(t(`pricing.${option.key}.price`))}
                   </p>
                 </div>
                 <p className="text-text-gray mb-8 text-center flex-grow">
-                  {t(`pricing.${option.key}.description`)}
+                  {String(t(`pricing.${option.key}.description`))}
                 </p>
               </div>
               
@@ -80,7 +80,7 @@ export function Pricing() {
                     ? 'bg-accent-orange text-white hover:bg-accent-orange/90 hover:-translate-y-0.5 shadow-lg'
                     : 'bg-accent-orange text-white hover:bg-accent-orange/90'
                 }`}>
-                  {t('hero.cta')}
+                  {String(t('hero.cta'))}
                 </button>
               </Link>
             </motion.div>

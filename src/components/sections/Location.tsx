@@ -22,7 +22,7 @@ export function Location() {
     <section className="py-10 md:py-12 border-t border-zinc-800">
       <div className="container">
         <h2 className="text-accent-orange font-display text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase text-center mb-8 tracking-tight">
-          {t('location.title')}
+          {String(t('location.title'))}
         </h2>
         
         <div className="grid lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
@@ -54,8 +54,8 @@ export function Location() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-accent-orange mb-1">Morada</h3>
-                  <p className="text-text-gray text-sm">{t('location.address')}</p>
-                  <p className="text-text-gray text-sm">{t('location.city')}</p>
+                  <p className="text-text-gray text-sm">{String(t('location.address'))}</p>
+                  <p className="text-text-gray text-sm">{String(t('location.city'))}</p>
                 </div>
               </div>
             </div>
@@ -81,7 +81,7 @@ export function Location() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-accent-orange mb-1">Estacionamento</h3>
-                    <p className="text-text-gray text-sm">{t('location.parking')}</p>
+                    <p className="text-text-gray text-sm">{String(t('location.parking'))}</p>
                   </div>
                 </div>
                 
@@ -102,9 +102,9 @@ export function Location() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-accent-orange mb-1">{t('location.publicTransport')}</h3>
-                    <p className="text-text-gray text-sm">{t('location.metro')}</p>
-                    <p className="text-text-gray text-sm">{t('location.bus')}</p>
+                    <h3 className="font-semibold text-accent-orange mb-1">{String(t('location.publicTransport'))}</h3>
+                    <p className="text-text-gray text-sm">{String(t('location.metro'))}</p>
+                    <p className="text-text-gray text-sm">{String(t('location.bus'))}</p>
                   </div>
                 </div>
               </div>
@@ -117,7 +117,7 @@ export function Location() {
               rel="noopener noreferrer"
               className="block w-full py-3 bg-accent-orange text-white font-bold text-center hover:bg-accent-orange/90 transition-colors"
             >
-              {t('location.directions')}
+              {String(t('location.directions'))}
             </a>
           </div>
           

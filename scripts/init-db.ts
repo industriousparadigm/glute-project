@@ -29,11 +29,11 @@ async function initDatabase() {
     
     await client.query(
       'UPDATE admin_users SET password_hash = $1 WHERE email = $2',
-      [hash, 'admin@gluteproject.com']
+      [hash, 'geral@gluteproject.pt']
     )
     
     console.log('Database initialized successfully!')
-    console.log('Admin login: admin@gluteproject.com / admin123')
+    console.log('Admin login: geral@gluteproject.pt / admin123')
     
   } catch (error) {
     console.error('Error initializing database:', error)

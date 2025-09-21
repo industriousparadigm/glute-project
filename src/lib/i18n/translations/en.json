@@ -23,6 +23,18 @@
     "community": {
       "title": "COMMUNITY",
       "description": "Together · Stronger"
+    },
+    "results": {
+      "title": "RESULTS",
+      "description": "Visible · Fast"
+    },
+    "energy": {
+      "title": "ENERGY",
+      "description": "Maximum · Always"
+    },
+    "progress": {
+      "title": "PROGRESS",
+      "description": "Constant · Tracked"
     }
   },
   "studio": {
@@ -30,6 +42,21 @@
     "subtitle": "500m² of pure motivation and professional equipment",
     "viewAll": "View all photos",
     "close": "Close"
+  },
+  "equipment": {
+    "upper_machines": {
+      "title": "UPPER BODY",
+      "description": "State of the art"
+    },
+    "lower_machines": {
+      "title": "LOWER BODY",
+      "description": "High performance"
+    },
+    "space": {
+      "title": "SPACE",
+      "description": "500m² · Largest in the North"
+    },
+    "viewMore": "View more"
   },
   "facility": {
     "title": "FACILITY & EQUIPMENT",
@@ -93,9 +120,15 @@
     "title": "SERVICES",
     "subtitle": "Choose the perfect training for you",
     "featured": "Popular",
+    "new": "New",
     "contactForPricing": "Contact for pricing",
     "ctaButton": "Talk to trainer",
+    "ctaNutrition": "Talk to nutritionist",
     "responseTime": "Response in under 2 hours",
+    "pricingNotice": {
+      "title": "CUSTOM PRICING",
+      "description": "Contact for rates"
+    },
     "ptExpress": {
       "name": "PT Express",
       "description": "Quick personalized training session for immediate results"
@@ -111,6 +144,18 @@
     "smallGroup": {
       "name": "Small Group Classes",
       "description": "Small group classes, maximum 4 people for personalized attention"
+    },
+    "teamBuilding": {
+      "name": "Team Building",
+      "description": "Small group classes for companies"
+    },
+    "ptSenior": {
+      "name": "Senior PT",
+      "description": "Individual or group classes for seniors"
+    },
+    "nutrition": {
+      "name": "Nutrition",
+      "description": "Personalized nutrition plans, meal planning and bioimpedance"
     }
   },
   "team": {
@@ -119,31 +164,32 @@
     "roles": {
       "trainer": "Personal Trainer",
       "nutritionist": "Nutritionist"
+    },
+    "members": {
+      "miguel-ferrer": {
+        "skills": ["Fat loss", "Muscle gain"]
+      },
+      "francisco-franca": {
+        "skills": ["Nutrition", "Meal plans", "Bioimpedance"]
+      },
+      "joana-martins": {
+        "skills": ["Pilates", "Clinical Pilates", "Muscle gain", "Kids training", "Pregnancy"]
+      },
+      "miguel-carvalho": {
+        "skills": ["Performance", "Senior training"]
+      },
+      "renato-fonseca": {
+        "skills": ["Muscle gain", "Fat loss", "Senior training"]
+      },
+      "sandro-moutinho": {
+        "skills": ["Performance", "Muscle gain", "Exercise specialist", "CrossFit"]
+      }
     }
   },
   "contact": {
     "title": "SCHEDULE A VISIT",
     "whatsapp": "CONTACT VIA WHATSAPP",
-    "call": "CALL NOW",
-    "form": {
-      "name": "Name",
-      "email": "Email",
-      "phone": "Phone",
-      "message": "Message (optional)",
-      "submit": "SEND",
-      "submitting": "Sending...",
-      "success": "Message sent successfully!",
-      "error": "Error sending message. Please try again."
-    },
-    "whatsapp": "CONTACT VIA WHATSAPP",
-    "call": "CALL NOW",
-    "form_toggle_open": "I want the form",
-    "form_toggle_close": "Close form",
-    "contact_hours": "Contact hours",
-    "weekdays": "Monday to Friday: 9am - 8pm",
-    "saturday": "Saturday: 9am - 1pm",
-    "sunday": "Sunday: Closed",
-    "member_access": "* Gym open 24/7 for members"
+    "call": "CALL NOW"
   },
   "location": {
     "title": "LOCATION",
@@ -162,8 +208,8 @@
     "rights": "© 2025 Glute Project. All rights reserved.",
     "language": "Language",
     "contact": "CONTACT",
-    "phone": "+351 912 345 678",
-    "email": "info@gluteproject.com",
+    "phone": "+351 937 370 304",
+    "email": "geral@gluteproject.pt",
     "address": "Rua Dr. Afonso Cordeiro, 109",
     "city": "4450-001 Matosinhos, Portugal",
     "links": "USEFUL LINKS",
@@ -195,8 +241,20 @@
     "shopApparel": "GLUTE APPAREL",
     "followUs": "FOLLOW US",
     "crossGames": "CROSS GAMES",
+    "dayToDay": "OUR DAY-TO-DAY",
     "explore": "Explore",
-    "viewMore": "View more"
+    "viewMore": "Read",
+    "viewGallery": "View gallery",
+    "readArticle": "Read",
+    "newsTitle": "IN THE PRESS"
+  },
+  "gallery": {
+    "loading": "Loading images...",
+    "noImages": "No images available",
+    "close": "Close",
+    "fullscreen": "Fullscreen",
+    "previous": "Previous",
+    "next": "Next"
   },
   "regybox": {
     "subtitle": "Complete studio management",
@@ -206,11 +264,15 @@
     "title": "LOCATION",
     "address": "Address",
     "hours": {
-      "title": "CONTACT HOURS",
-      "weekdays": "Monday to Friday: 9am - 8pm",
-      "saturday": "Saturday: 9am - 1pm",
-      "sunday": "Sunday: Closed",
-      "members": "Gym open 24/7 for members"
+      "title": "SCHEDULE",
+      "days": "Monday to Saturday",
+      "closed": "Sunday: Closed",
+      "personal_training": "Personal training",
+      "personal_training_hours": "05:00 - 22:00",
+      "small_group": "SMALL GROUP CLASSES",
+      "small_group_morning": "06:00 - 13:30",
+      "small_group_evening": "17:30 - 21:30",
+      "member_access": "* Studio open 24/7 for members"
     },
     "transport": {
       "title": "Public transport",

@@ -1,12 +1,17 @@
+'use client'
+
 import { Hero, OurStudio, Services, TestimonialCarousel, MeetTheTeam, Lifestyle, Regybox, Contact, Footer } from '@/components/sections'
 import { NavRail } from '@/components/ui'
 import { LanguageTracker } from './LanguageTracker'
+import { GalleryProvider, useGallery } from '@/components/GalleryContext'
 
-export default function HomePage() {
+function HomeContent() {
+  const { isGalleryOpen } = useGallery()
+
   return (
     <>
       <LanguageTracker />
-      <NavRail />
+      {!isGalleryOpen && <NavRail />}
       <main id="main" className="min-h-screen">
         <section id="hero" className="snap-section bg-brand-black text-white">
           <Hero />
@@ -37,5 +42,13 @@ export default function HomePage() {
         </div>
       </main>
     </>
+  )
+}
+
+export default function HomePage() {
+  return (
+    <GalleryProvider>
+      <HomeContent />
+    </GalleryProvider>
   )
 }

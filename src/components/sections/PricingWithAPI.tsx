@@ -38,7 +38,7 @@ function PricingContent({ prices }: { prices: Price[] }) {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          {t('pricing.title')}
+          {String(t('pricing.title'))}
         </motion.h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -75,7 +75,7 @@ function PricingContent({ prices }: { prices: Price[] }) {
                     : 'bg-accent-orange text-white hover:bg-accent-orange/90'
                 }`}
               >
-                {t('hero.cta')}
+                {String(t('hero.cta'))}
               </Link>
             </motion.div>
           ))}

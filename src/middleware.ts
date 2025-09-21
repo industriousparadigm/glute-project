@@ -13,8 +13,14 @@ export function middleware(request: NextRequest) {
     }
   }
   
-  // Skip locale handling for admin and API routes
-  if (pathname.startsWith('/admin') || pathname.startsWith('/api')) {
+  // Skip locale handling for admin, API routes, and static files
+  if (
+    pathname.startsWith('/admin') ||
+    pathname.startsWith('/api') ||
+    pathname.startsWith('/videos/') ||
+    pathname.startsWith('/images/') ||
+    pathname.includes('.')  // Any file with an extension
+  ) {
     return NextResponse.next()
   }
   

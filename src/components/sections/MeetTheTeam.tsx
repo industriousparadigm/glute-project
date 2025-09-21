@@ -17,19 +17,20 @@ interface TeamMember {
   name: string
   role: 'trainer' | 'nutritionist'
   image: StaticImageData
+  skillsKey: string
 }
 
 const teamMembers: TeamMember[] = [
-  { name: 'Miguel Ferrer', role: 'trainer', image: miguelFerrer },
-  { name: 'Francisco França', role: 'nutritionist', image: franciscoFranca },
-  { name: 'Joana Martins', role: 'trainer', image: joanaMartins },
-  { name: 'Miguel Carvalho', role: 'trainer', image: miguelCarvalho },
-  { name: 'Renato Fonseca', role: 'trainer', image: renatoFonseca },
-  { name: 'Sandro Moutinho', role: 'trainer', image: sandroMoutinho },
+  { name: 'Miguel Ferrer', role: 'trainer', image: miguelFerrer, skillsKey: 'miguel-ferrer' },
+  { name: 'Francisco França', role: 'nutritionist', image: franciscoFranca, skillsKey: 'francisco-franca' },
+  { name: 'Joana Martins', role: 'trainer', image: joanaMartins, skillsKey: 'joana-martins' },
+  { name: 'Miguel Carvalho', role: 'trainer', image: miguelCarvalho, skillsKey: 'miguel-carvalho' },
+  { name: 'Renato Fonseca', role: 'trainer', image: renatoFonseca, skillsKey: 'renato-fonseca' },
+  { name: 'Sandro Moutinho', role: 'trainer', image: sandroMoutinho, skillsKey: 'sandro-moutinho' },
 ]
 
 export function MeetTheTeam() {
-  const { t } = useTranslations()
+  const { t, locale } = useTranslations()
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -74,10 +75,10 @@ export function MeetTheTeam() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="font-display text-5xl md:text-7xl font-bold uppercase text-accent-orange mb-2 tracking-normal">
-            {t('team.title')}
+            {String(t('team.title'))}
           </h2>
           <p className="text-text-gray font-body text-lg md:text-xl uppercase tracking-wider">
-            {t('team.subtitle')}
+            {String(t('team.subtitle'))}
           </p>
         </motion.div>
 
@@ -114,8 +115,31 @@ export function MeetTheTeam() {
                   {member.name}
                 </h3>
                 <p className="font-body text-accent-orange text-sm md:text-base font-medium uppercase tracking-wider">
-                  {member.role === 'nutritionist' ? t('team.roles.nutritionist') : t('team.roles.trainer')}
+                  {member.role === 'nutritionist' ? String(t('team.roles.nutritionist')) : String(t('team.roles.trainer'))}
                 </p>
+              </div>
+
+              {/* Skills Overlay - appears on hover */}
+              <div className="absolute inset-0 flex flex-col justify-center items-center p-4 bg-brand-black/75 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none">
+                <div className="space-y-3">
+                  <h4 className="font-display text-xl md:text-2xl uppercase text-accent-orange text-center mb-4">
+                    {locale === 'pt' ? 'Especialidades' : 'Specialties'}
+                  </h4>
+                  <div className="flex flex-wrap gap-2 justify-center">
+                    {(() => {
+                      const skills = t(`team.members.${member.skillsKey}.skills`)
+                      const skillsArray = Array.isArray(skills) ? skills : []
+                      return skillsArray.map((skill: string, skillIndex: number) => (
+                        <span
+                          key={skillIndex}
+                          className="px-3 py-1 bg-gradient-to-r from-accent-orange/20 to-accent-orange/10 border border-accent-orange/30 text-white text-xs md:text-sm font-body uppercase rounded-full"
+                        >
+                          {skill}
+                        </span>
+                      ))
+                    })()}
+                  </div>
+                </div>
               </div>
 
               {/* Hover Border Glow */}

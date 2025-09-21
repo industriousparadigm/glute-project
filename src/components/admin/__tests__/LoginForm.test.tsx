@@ -63,7 +63,7 @@ describe('LoginForm', () => {
     const user = userEvent.setup()
     mockFetch.mockResolvedValueOnce({
       ok: true,
-      json: async () => ({ success: true, user: { id: 1, email: 'admin@gluteproject.com' } }),
+      json: async () => ({ success: true, user: { id: 1, email: 'geral@gluteproject.pt' } }),
     } as Response)
     
     render(<LoginForm />)
@@ -71,7 +71,7 @@ describe('LoginForm', () => {
     const emailInput = screen.getByLabelText(/email/i)
     const passwordInput = screen.getByLabelText(/password/i)
     
-    await user.type(emailInput, 'admin@gluteproject.com')
+    await user.type(emailInput, 'geral@gluteproject.pt')
     await user.type(passwordInput, 'admin123')
     
     const submitButton = screen.getByRole('button', { name: /sign in/i })
@@ -82,7 +82,7 @@ describe('LoginForm', () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: 'admin@gluteproject.com',
+          email: 'geral@gluteproject.pt',
           password: 'admin123',
         }),
       })
@@ -105,7 +105,7 @@ describe('LoginForm', () => {
     const emailInput = screen.getByLabelText(/email/i)
     const passwordInput = screen.getByLabelText(/password/i)
     
-    await user.type(emailInput, 'admin@gluteproject.com')
+    await user.type(emailInput, 'geral@gluteproject.pt')
     await user.type(passwordInput, 'wrongpassword')
     
     const submitButton = screen.getByRole('button', { name: /sign in/i })
@@ -133,7 +133,7 @@ describe('LoginForm', () => {
     const passwordInput = screen.getByLabelText(/password/i)
     const submitButton = screen.getByRole('button', { name: /sign in/i })
     
-    await user.type(emailInput, 'admin@gluteproject.com')
+    await user.type(emailInput, 'geral@gluteproject.pt')
     await user.type(passwordInput, 'admin123')
     await user.click(submitButton)
     

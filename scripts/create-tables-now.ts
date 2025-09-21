@@ -67,7 +67,7 @@ async function createAndSeedTables() {
     
     await pool.query(
       "INSERT INTO admin_users (email, password_hash) VALUES ($1, $2) ON CONFLICT (email) DO NOTHING",
-      ['admin@gluteproject.com', passwordHash]
+      ['geral@gluteproject.pt', passwordHash]
     )
     console.log('Admin user created!')
     

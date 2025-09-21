@@ -10,8 +10,8 @@
 4. **Wrong contact info & address:**
    * **Address:** _Rua Dr. Afonso Cordeiro, 109 \| 4450‑001 Matosinhos, Portugal_
    * **Phone:** `+351 912 345 678`
-   * **Email:** `info@gluteproject.com`
-   * **WhatsApp deep‑link:** `https://wa.me/351912345678`
+   * **Email:** `geral@gluteproject.pt`
+   * **WhatsApp deep‑link:** `https://wa.me/351937370304`
 5. **Admin contrast:** Input text is invisible (white on white). Use theme tokens and 1 px inner shadow for focus.
 
 ---

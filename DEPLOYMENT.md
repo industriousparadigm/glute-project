@@ -77,7 +77,7 @@ Before deploying, ensure you have:
 |----------|-------------|---------|
 | `DATABASE_URL` | PostgreSQL connection string | `postgres://user:pass@host/db?sslmode=require` |
 | `JWT_SECRET` | Secret for JWT tokens | `your-32-char-secret` |
-| `ADMIN_EMAIL` | Admin login email | `admin@gluteproject.com` |
+| `ADMIN_EMAIL` | Admin login email | `geral@gluteproject.pt` |
 | `ADMIN_PASSWORD` | Admin login password | `SecurePassword123!` |
 | `NEXT_PUBLIC_BASE_URL` | Production URL | `https://gluteproject.vercel.app` |
 | `PAYLOAD_SECRET` | Payload CMS secret | `another-32-char-secret` |

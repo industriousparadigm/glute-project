@@ -146,7 +146,7 @@ export default function SettingsPage() {
                   value={settings.email}
                   onChange={(e) => setSettings({ ...settings, email: e.target.value })}
                   className="pl-10 w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
-                  placeholder="info@gluteproject.com"
+                  placeholder="geral@gluteproject.pt"
                 />
               </div>
             </div>
