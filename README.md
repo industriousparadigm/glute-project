@@ -1,8 +1,8 @@
 # Glute Project - Private Fitness Studio
 
-A modern, high-performance bilingual website for Glute Project fitness studio in Matosinhos, Portugal. Built with Next.js 15.4 and featuring a bold dark theme optimized for conversion.
+A modern, high-performance bilingual website for Glute Project fitness studio in Matosinhos, Portugal. Built with Next.js 15.4.5 and featuring a bold dark theme with enhanced mobile UX and desktop features.
 
-![Next.js](https://img.shields.io/badge/Next.js-15.4-black?style=for-the-badge&logo=next.js)
+![Next.js](https://img.shields.io/badge/Next.js-15.4.5-black?style=for-the-badge&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
@@ -13,7 +13,7 @@ A modern, high-performance bilingual website for Glute Project fitness studio in
 # Install dependencies
 npm install
 
-# Run development server
+# Run development server (port 3001)
 npm run dev
 
 # Build for production
@@ -27,36 +27,65 @@ Visit [http://localhost:3001](http://localhost:3001) to see the development serv
 
 ## 🎯 Features
 
-- **Bilingual Support** - Portuguese (default) and English with automatic locale detection
+- **Bilingual Support** - Portuguese (PT_PT) default and English with automatic locale detection
 - **Dark Gradient Theme** - Sophisticated visual variety with strategic gradient system
+- **Mobile-First Design** - Sticky header, hamburger menu, optimized layouts
+- **Desktop Features** - Infinite testimonial carousel, preserved layouts, hover effects
 - **Admin Dashboard** - Manage prices, testimonials, and settings
-- **Contact Form** - Direct inquiries with validation
+- **Contact Form** - Direct inquiries with validation and auto-formatting
 - **Gallery Modal** - Fullscreen image carousel with keyboard/touch navigation
-- **Dropbox Gallery** - Live photo integration from Dropbox folder
-- **Google Reviews** - Sync with Google My Business
-- **Mobile Optimized** - Different layouts and images for mobile devices
+- **Cloudinary Gallery** - Optimized image delivery with Dropbox fallback
+- **Partnerships** - Regybox integration, Glute Apparel showcase
 - **SEO Optimized** - Dynamic metadata and structured data
 - **Performance** - 90+ Lighthouse scores across all metrics
 - **Accessibility** - WCAG 2.2 AA compliant
 
-## 📱 Key Pages
+## 📱 Mobile & Desktop Experience
 
-- **Homepage** - Hero, studio showcase, testimonials, pricing, contact
-- **Admin Panel** - `/admin` - Protected area for content management
+### Mobile Features
+- Sticky navigation header appearing at 1/3 scroll
+- Hamburger menu with fullscreen overlay
+- Touch gestures for gallery and testimonials
+- Accordion-style service cards
+- Optimized image sizes and layouts
+- Responsive grids for team and lifestyle sections
+
+### Desktop Features
+- Fixed side navigation rail with section indicators
+- Infinite testimonial carousel with arrow controls
+- Service cards with orange glow hover effects
+- Team photos with rim lighting on hover
+- Keyboard navigation for gallery (arrows, ESC, F for fullscreen)
+- Preserved layouts from V3 Bold Black theme
+
+## 📄 Key Pages & Sections
+
+- **Homepage** (`/`) - All sections with smooth scrolling
+  - Hero with video background
+  - Studio showcase
+  - Services (PT Express, Small Group, PT Duo, Glute Apparel)
+  - Testimonials carousel
+  - Team members
+  - Lifestyle gallery
+  - Regybox partnership
+  - Contact & location
+- **Admin Panel** (`/admin`) - Protected dashboard
   - Login: `/admin/login`
-  - Prices: `/admin/prices`
-  - Testimonials: `/admin/testimonials`
-  - Settings: `/admin/settings`
+  - Prices management
+  - Testimonials management
+  - Site settings
 
 ## 🏗️ Tech Stack
 
-- **Framework**: [Next.js 15.4](https://nextjs.org/) with App Router
+- **Framework**: [Next.js 15.4.5](https://nextjs.org/) with App Router
+- **Language**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
 - **Database**: [PostgreSQL](https://www.postgresql.org/) (Neon)
-- **CMS**: [Payload CMS](https://payloadcms.com/)
 - **Animation**: [Framer Motion](https://www.framer.com/motion/)
+- **Images**: [Cloudinary](https://cloudinary.com/) with Dropbox fallback
 - **Testing**: [Jest](https://jestjs.io/) + [React Testing Library](https://testing-library.com/)
 - **Deployment**: [Vercel](https://vercel.com/)
+- **Authentication**: JWT-based admin auth
 
 ## 🔧 Configuration
 
@@ -76,15 +105,13 @@ ADMIN_PASSWORD=secure-password
 # Base URL
 NEXT_PUBLIC_BASE_URL=https://your-domain.com
 
-# Optional: Google Places API
-GOOGLE_PLACES_API_KEY=your-api-key
-GOOGLE_PLACE_ID=your-place-id
+# Gallery - Cloudinary (Primary)
+CLOUDINARY_URL=cloudinary://api_key:api_secret@cloud_name
+CLOUDINARY_CLOUD_NAME=your-cloud-name
+CLOUDINARY_API_KEY=your-api-key
+CLOUDINARY_API_SECRET=your-api-secret
 
-# Optional: Instagram
-INSTAGRAM_ACCESS_TOKEN=your-token
-INSTAGRAM_USER_ID=your-id
-
-# Dropbox Gallery
+# Gallery - Dropbox (Fallback)
 DROPBOX_REFRESH_TOKEN=your-refresh-token
 ```
 
@@ -93,30 +120,42 @@ DROPBOX_REFRESH_TOKEN=your-refresh-token
 Initialize the database schema:
 
 ```bash
-npx tsx scripts/create-tables-now.ts
+npm run init-db
+# or manually:
+npx tsx scripts/init-db.ts
 ```
 
-### Dropbox Gallery Setup
+### Gallery Setup
 
+#### Cloudinary (Recommended)
+1. Create Cloudinary account
+2. Add environment variables (see above)
+3. Upload images to `/glute/dia-a-dia` folder
+4. Images are automatically optimized with smart cropping
+
+#### Dropbox (Fallback)
 1. Visit `/api/dropbox/auth` in your browser
 2. Authorize the app with your Dropbox account
-3. Copy the refresh token to `DROPBOX_REFRESH_TOKEN` in `.env.local`
-4. Upload images to `/dia-a-dia/optimized` folder in your Dropbox app folder
+3. Copy the refresh token to `.env.local`
+4. Upload images to `/dia-a-dia/optimized` folder
 
 ## 📊 Database Schema
 
-The application uses PostgreSQL with the following tables:
+PostgreSQL database with the following tables:
 
-- **admin_users** - Administrator accounts
-- **prices** - Pricing tiers and plans
-- **testimonials** - Customer reviews
-- **site_settings** - Global settings and contact info
+- **admin_users** - Administrator accounts with bcrypt passwords
+- **prices** - Pricing tiers and plans (PT Express, Small Group, PT Duo)
+- **testimonials** - Customer reviews with ratings and translations
+- **site_settings** - Global settings, contact info, social links
 
 ## 🧪 Testing
 
 ```bash
-# Run all tests
+# Run all tests in watch mode
 npm test
+
+# Run tests once (CI mode)
+npm run test:ci
 
 # Run with coverage
 npm run test:coverage
@@ -131,8 +170,8 @@ npm test -- ContactForm.test.tsx
 
 1. Fork this repository
 2. Import to Vercel
-3. Add environment variables
-4. Deploy
+3. Add all environment variables
+4. Deploy (automatic on push to main)
 
 ### Manual Deployment
 
@@ -144,37 +183,80 @@ npm run build
 npm start
 ```
 
-## 🔐 Admin Access
+## 🌍 Internationalization
 
-1. Navigate to `/admin/login`
-2. Use credentials from environment variables
-3. Manage content through the dashboard
+The site supports two languages:
+- **Portuguese (PT_PT)** - European Portuguese (default)
+- **English (EN)** - Secondary language
+
+All text content is stored in translation files:
+- `/src/lib/i18n/translations/pt.json`
+- `/src/lib/i18n/translations/en.json`
+
+**Important**: Always use PT_PT (European Portuguese), never PT_BR (Brazilian).
 
 ## 🎨 Design System
 
-The project uses a sophisticated dark gradient system:
+### Gradient Theme
+Each section has a unique gradient background:
+- **Hero**: Pure black (#0A0A0A)
+- **Studio**: Charcoal gradient
+- **Services**: Orange-tinted gradient
+- **Testimonials**: Elevated charcoal with lime accents
+- **Team**: Deep gradient with orange rim lighting
+- **Lifestyle**: Dynamic gradient
+- **Regybox**: Partnership gradient
+- **Contact**: Warm conversion gradient
 
-- **Visual Rhythm**: Strategic gradients create depth while maintaining dark aesthetic
-- **Colors**: Dark gradients with Orange (#FF5E1B) and Lime (#E8ED4A) accents
-- **Typography**: Bebas Neue (display), Oswald (body), Barlow Condensed (accents)
-- **Spacing**: 8px grid system
-- **Animations**: Enhanced CTAs, card glows, hover effects with Framer Motion
-- **Mobile**: Simplified gradients for optimal performance
+### Colors
+- **Primary**: Orange (#FF5E1B)
+- **Accent**: Lime (#E8ED4A)
+- **Dark**: Gradient variations of black/charcoal
+- **Text**: White on dark, dark on light backgrounds
+
+### Typography
+- **Display**: Bebas Neue
+- **Body**: Oswald
+- **Accent**: Barlow Condensed
+
+### Components
+- `cta-primary` - Gradient button with hover effects
+- `cta-primary-light` - Light variant for dark backgrounds
+- `service-card` - Orange glow on hover (desktop)
+- `team-card` - Orange rim lighting
+- `testimonial-quote` - Lime accent quotes
+- `sticky-header` - Mobile navigation
 
 ## 📝 Content Management
 
-Content can be managed in two ways:
+### Dynamic Content (via Admin Panel)
+- Pricing plans and features
+- Customer testimonials
+- Site settings (contact info, social links)
 
-1. **Admin Panel** - For dynamic content (prices, testimonials, settings)
-2. **Translation Files** - For static content (`src/lib/i18n/translations/`)
+### Static Content (via Translation Files)
+- Section headings and descriptions
+- Navigation labels
+- Form labels and messages
+- Schedule information
 
 ## 🤝 Contributing
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+3. Ensure PT_PT and EN translations are added for any new text
+4. Test on both mobile and desktop viewports
+5. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
+
+### Code Style Guidelines
+- TypeScript strict mode (no `any` types)
+- Mobile-first responsive design
+- Maximum 4-word headings
+- Maximum 10-word descriptions
+- Build must pass before commits
+- All text must be bilingual (PT_PT/EN)
 
 ## 📄 License
 
@@ -184,7 +266,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Design inspired by modern fitness brands
 - Built with love for the Glute Project community
-- Special thanks to all contributors
+- Special thanks to all trainers and members
 
 ---
 

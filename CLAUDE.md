@@ -1,6 +1,6 @@
 # Glute Project - AI Context
 
-Bilingual fitness studio website. Next.js 15.4, TypeScript strict, V3 Bold Black theme. PT default, EN secondary.
+Bilingual fitness studio website. Next.js 15.4.5, TypeScript strict, V3 Bold Black theme. PT_PT default, EN secondary. Mobile-first responsive design with enhanced UX.
 
 ## 🚨 ABSOLUTE GROUND RULES - NEVER VIOLATE 🚨
 
@@ -23,20 +23,23 @@ Bilingual fitness studio website. Next.js 15.4, TypeScript strict, V3 Bold Black
 ## Critical Commands
 
 ```bash
-npm run dev          # Dev server (stable webpack, better hot reload)
+npm run dev          # Dev server (stable webpack) - port 3001
 npm run dev:turbo    # Dev server with Turbopack (faster but less stable)
 npm run build        # ALWAYS before push
 npm run test         # Watch mode
+npm run test:ci      # CI mode
 npm run lint         # Check quality
-npm run init-db      # Use create-tables-now.ts
+npm run init-db      # Database setup via scripts/init-db.ts
 ```
 
 ## Project Context
 
 - **Purpose**: High-converting fitness studio website, Matosinhos Portugal
-- **Stack**: Next.js 15.4.5, TypeScript 5.x, Tailwind v4, PostgreSQL, JWT auth
+- **Stack**: Next.js 15.4.5, TypeScript 5.x, Tailwind CSS v4, PostgreSQL, JWT auth
 - **Theme**: Dark gradient system with strategic visual variety
 - **Copy**: Max 4-word headings, 10-word sub-copy, punchy/direct
+- **Mobile UX**: Sticky header, hamburger menu, optimized layouts, touch gestures
+- **Desktop Features**: Infinite testimonial carousel with arrows, preserved layouts
 
 ## Code Style Rules
 
@@ -65,9 +68,12 @@ src/
 ├── app/[locale]/page.tsx      # Homepage (all sections)
 ├── app/admin/                 # Protected dashboard
 ├── app/api/                   # API routes
-├── components/sections/       # Page sections
-├── components/GalleryModal.tsx # Fullscreen image carousel
-├── components/GalleryContext.tsx # Gallery state management
+├── components/
+│   ├── sections/             # Page sections
+│   ├── GalleryModal.tsx      # Fullscreen image carousel
+│   ├── GalleryContext.tsx    # Gallery state management
+│   ├── StickyHeader.tsx      # Mobile sticky nav with hamburger
+│   └── ServicesMobile.tsx    # Mobile-specific services layout
 ├── lib/i18n/                 # Translations (pt.json, en.json)
 └── lib/db/client.ts          # Database pooling
 ```
@@ -82,7 +88,7 @@ import { query } from '@/lib/db/client'
 
 ### Translations
 ```typescript
-const { t } = useTranslations()
+const { t, locale } = useTranslations()
 return <h2>{t('section.title')}</h2>
 ```
 
@@ -92,19 +98,21 @@ return <h2>{t('section.title')}</h2>
 className="bg-gradient-services text-accent-orange"
 
 // Gradient backgrounds per section
-bg-gradient-studio      // Charcoal gradient
-bg-gradient-services    // Orange-tinted gradient  
+bg-gradient-studio       // Charcoal gradient
+bg-gradient-services     // Orange-tinted gradient
 bg-gradient-testimonials // Elevated charcoal
-bg-gradient-team        // Deep gradient
-bg-gradient-instagram   // Lime-tinted gradient
-bg-gradient-contact     // Warm conversion gradient
+bg-gradient-team         // Deep gradient
+bg-gradient-lifestyle    // Dynamic lifestyle section
+bg-gradient-regybox      // Regybox partnership section
+bg-gradient-contact      // Warm conversion gradient
 
 // Enhanced components
-cta-primary            // Gradient button with hover
-service-card           // Orange glow on hover
-team-card              // Orange rim lighting
-testimonial-quote      // Lime accent quotes
-instagram-post         // Lime hover overlay
+cta-primary             // Gradient button with hover
+cta-primary-light       // Light variant for dark backgrounds
+service-card            // Orange glow on hover
+team-card               // Orange rim lighting
+testimonial-quote       // Lime accent quotes
+sticky-header           // Mobile navigation header
 ```
 
 ### Images
@@ -158,7 +166,7 @@ DROPBOX_REFRESH_TOKEN= # Dropbox fallback access
 ### Add Section
 1. Create in `components/sections/`
 2. Import in `[locale]/page.tsx`
-3. Add to NavRail items
+3. Add to NavRail items (desktop) and StickyHeader (mobile)
 4. Add translations to BOTH pt.json AND en.json (NO EXCEPTIONS)
 
 ### Update Content
@@ -201,16 +209,30 @@ To update schedules, modify the `location.hours.*` translation keys:
 
 ## Mobile Specific
 
-- Hero: Different image `woman-strong.png`
-- Testimonials: Stacked cards
-- Lifestyle: Gallery modal access
-- Pricing: Smaller headings/padding
+- **Sticky Header**: Appears at 1/3 scroll with hamburger menu
+- **Hero**: Different image `woman-strong.png`, optimized layout
+- **Services**: Custom ServicesMobile component with accordion
+- **Testimonials**: Stacked cards, swipe navigation
+- **Lifestyle**: Gallery modal access, responsive grid
+- **Team**: 2-column grid, optimized spacing
+- **Regybox**: Responsive partnership section
+- **Navigation**: Fullscreen menu overlay with smooth animations
+
+## Desktop Specific
+
+- **NavRail**: Fixed side navigation with section indicators
+- **Testimonials**: Infinite carousel with arrow navigation
+- **Services**: Grid layout with hover effects
+- **Team**: 3-column grid with rim lighting
+- **Layouts**: All desktop layouts preserved during mobile fixes
 
 ## Testing Focus
 
 - Auth flows (JWT)
 - API routes (admin)
 - Contact form
+- Mobile navigation
+- Responsive layouts
 - Critical UI paths
 
 ## Edge Cases
@@ -219,11 +241,16 @@ To update schedules, modify the `location.hours.*` translation keys:
 - Edge runtime limits (middleware token check only)
 - Form phones auto-format +351
 - Database always pooled + SSL
+- Mobile menu closes on navigation
+- Testimonial carousel infinite loop
 
 ## Current State
 
-✅ Complete: Gradient system, sections, admin, i18n, SEO, a11y, gallery modal
-✅ Live: Cloudinary gallery (38+ images) with Dropbox fallback
+✅ Complete: Gradient system, all sections, admin, i18n, SEO, a11y, gallery modal
+✅ Mobile UX: Sticky header, hamburger menu, optimized layouts, touch gestures
+✅ Desktop: Infinite testimonial carousel, preserved layouts, keyboard nav
+✅ Gallery: Cloudinary primary (38+ images) with Dropbox fallback
+✅ Partnerships: Regybox section, Glute Apparel "Coming Soon"
 ✅ Optimized: Intelligent preloading, smooth transitions, auto-scrolling thumbnails
 🔧 Manual: Database init, Cloudinary/Dropbox token setup
 
@@ -264,21 +291,25 @@ To update schedules, modify the `location.hours.*` translation keys:
 - **Services**: Orange-tinted - warm conversion point
 - **Testimonials**: Elevated charcoal with lime accents
 - **Team**: Deep gradient with orange rim lighting
-- **Instagram**: Lime-tinted for energy
+- **Lifestyle**: Dynamic gradient for gallery showcase
+- **Regybox**: Partnership gradient theme
 - **Contact**: Warm gradient - conversion focus
 - **Footer**: Pure black - grounding
 
 ### Key Visual Elements
 - Enhanced CTAs with gradient animations
-- Service cards with orange glow effects
+- Service cards with orange glow effects (desktop)
+- Service accordion with smooth transitions (mobile)
 - Team photos with rim lighting on hover
 - Testimonial quotes with lime accents
 - Gallery modal with lime accents
 - Mobile-optimized simplified gradients
+- Sticky header with blur backdrop
 
 ## Common Pitfalls & Debugging Tips
 
 ### Translation/i18n Issues
+- **PT_PT vs PT_BR**: ALWAYS use European Portuguese (PT_PT), never Brazilian
 - **useTranslations returns ANY type**: The `t()` function can return strings, arrays, or objects
   ```typescript
   // WRONG - assumes string
@@ -296,11 +327,14 @@ To update schedules, modify the `location.hours.*` translation keys:
 - **Framer-motion vendor chunk errors**: Delete `.next` and run `npm ci`
 - **Hot reload not working**: Kill all dev servers, clean cache, restart
 - **MODULE_NOT_FOUND errors**: Usually stale cache - clean and rebuild
+- **Syntax errors in components**: Check for missing closing tags, especially in JSX
+- **Mobile layout breaking desktop**: Use responsive classes, not separate components when possible
 
 ### Component Patterns
 - **Always get locale for conditional text**: Don't hardcode Portuguese
 - **Type assertions for translations**: Cast when you know the type
 - **Check array/object returns**: Translation function is flexible
+- **Mobile-first approach**: Start with mobile layout, enhance for desktop
 
 ## Anti-Patterns to Avoid
 
@@ -310,6 +344,9 @@ To update schedules, modify the `location.hours.*` translation keys:
 - **NO MONOLINGUAL CONTENT** (violates ground rule #2)
 - No client-only SEO
 - No unpooled DB connections
-- Never add text without PT and EN versions
+- Never add text without PT_PT and EN versions
 - Never use more words when fewer will do
 - Don't assume translation returns are strings
+- Don't break desktop layouts when fixing mobile
+- Don't use PT_BR instead of PT_PT
+- Don't create custom button styles - use existing classes
