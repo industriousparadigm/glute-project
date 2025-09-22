@@ -318,31 +318,18 @@ export function Lifestyle() {
                   <div className="group relative block h-full overflow-hidden rounded-lg">
                     {lifestyleCards[3]?.comingSoon ? (
                       <div className="relative h-full cursor-default">
-                    ) : (
-                      <Link
-                        href={lifestyleCards[3]?.link || '#'}
-                        target={lifestyleCards[3]?.external ? "_blank" : undefined}
-                        rel={lifestyleCards[3]?.external ? "noopener noreferrer" : undefined}
-                        className="block h-full"
-                      >
-                    )}
-                      <Image
-                        src={lifestyleCards[3]?.image}
-                        alt={String(t(lifestyleCards[3]?.labelKey || ''))}
-                        fill
-                        className={`object-cover transition-transform duration-700 ${
-                          lifestyleCards[3]?.comingSoon ? 'group-hover:scale-105 filter grayscale' : 'group-hover:scale-110'
-                        }`}
-                        sizes="(max-width: 768px) 100vw, 16vw"
-                      />
+                        <Image
+                          src={lifestyleCards[3]?.image}
+                          alt={String(t(lifestyleCards[3]?.labelKey || ''))}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale"
+                          sizes="(max-width: 768px) 100vw, 16vw"
+                        />
 
-                      {/* Overlay */}
-                      <div className={`absolute inset-0 bg-gradient-to-t from-brand-black/80 via-brand-black/40 to-transparent transition-opacity duration-300 ${
-                        lifestyleCards[3]?.comingSoon ? 'opacity-85' : 'opacity-70 group-hover:opacity-85'
-                      }`} />
+                        {/* Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-brand-black/40 to-transparent opacity-85 transition-opacity duration-300" />
 
-                      {/* Coming Soon Badge */}
-                      {lifestyleCards[3]?.comingSoon && (
+                        {/* Coming Soon Badge */}
                         <div className="absolute top-3 right-3 z-10">
                           <div className="bg-accent-orange/90 backdrop-blur-sm px-2 py-1 rounded-full border border-accent-orange">
                             <span className="text-white text-xs font-display font-bold uppercase tracking-wider">
@@ -350,26 +337,53 @@ export function Lifestyle() {
                             </span>
                           </div>
                         </div>
-                      )}
 
-                      {/* Content */}
-                      <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                        <motion.div
-                          className="transform transition-transform duration-300 group-hover:translate-y-[-3px]"
-                        >
-                          <p className="text-accent-lime font-bold uppercase tracking-wider text-xs mb-1">
-                            {String(t(lifestyleCards[3]?.labelKey || ''))}
-                          </p>
-                          <div className="flex items-center gap-1">
-                            <span className={`text-sm font-medium ${
-                              lifestyleCards[3]?.comingSoon ? 'text-white/60' : ''
-                            }`}>
-                              {lifestyleCards[3]?.comingSoon
-                                ? String(t('lifestyle.comingSoon'))
-                                : String(t('lifestyle.explore'))
-                              }
-                            </span>
-                            {!lifestyleCards[3]?.comingSoon && (
+                        {/* Content */}
+                        <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                          <motion.div
+                            className="transform transition-transform duration-300 group-hover:translate-y-[-3px]"
+                          >
+                            <p className="text-accent-lime font-bold uppercase tracking-wider text-xs mb-1">
+                              {String(t(lifestyleCards[3]?.labelKey || ''))}
+                            </p>
+                            <div className="flex items-center gap-1">
+                              <span className="text-sm font-medium text-white/60">
+                                {String(t('lifestyle.comingSoon'))}
+                              </span>
+                            </div>
+                          </motion.div>
+                        </div>
+                      </div>
+                    ) : (
+                      <Link
+                        href={lifestyleCards[3]?.link || '#'}
+                        target={lifestyleCards[3]?.external ? "_blank" : undefined}
+                        rel={lifestyleCards[3]?.external ? "noopener noreferrer" : undefined}
+                        className="block h-full"
+                      >
+                        <Image
+                          src={lifestyleCards[3]?.image}
+                          alt={String(t(lifestyleCards[3]?.labelKey || ''))}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          sizes="(max-width: 768px) 100vw, 16vw"
+                        />
+
+                        {/* Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-brand-black/40 to-transparent opacity-70 group-hover:opacity-85 transition-opacity duration-300" />
+
+                        {/* Content */}
+                        <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                          <motion.div
+                            className="transform transition-transform duration-300 group-hover:translate-y-[-3px]"
+                          >
+                            <p className="text-accent-lime font-bold uppercase tracking-wider text-xs mb-1">
+                              {String(t(lifestyleCards[3]?.labelKey || ''))}
+                            </p>
+                            <div className="flex items-center gap-1">
+                              <span className="text-sm font-medium">
+                                {String(t('lifestyle.explore'))}
+                              </span>
                               <svg
                                 className="w-3 h-3 transform transition-transform duration-300 group-hover:translate-x-1"
                                 fill="none"
@@ -378,13 +392,9 @@ export function Lifestyle() {
                               >
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                               </svg>
-                            )}
-                          </div>
-                        </motion.div>
-                      </div>
-                    {lifestyleCards[3]?.comingSoon ? (
-                      </div>
-                    ) : (
+                            </div>
+                          </motion.div>
+                        </div>
                       </Link>
                     )}
                   </div>
@@ -449,43 +459,28 @@ export function Lifestyle() {
                     </div>
                   </div>
                 </button>
-              ) : (
+              ) : card.comingSoon ? (
                 <div className="group relative block h-[250px] overflow-hidden rounded-lg">
-                  {card.comingSoon ? (
-                    <div className="relative h-full cursor-default">
-                  ) : (
-                    <Link
-                      href={card.link}
-                      target={card.external ? "_blank" : undefined}
-                      rel={card.external ? "noopener noreferrer" : undefined}
-                      className="block h-full"
-                    >
-                  )}
+                  <div className="relative h-full cursor-default">
                     <Image
                       src={card.image}
                       alt={String(t(card.labelKey))}
                       fill
-                      className={`object-cover transition-transform duration-700 ${
-                        card.comingSoon ? 'group-hover:scale-105 filter grayscale' : 'group-hover:scale-110'
-                      }`}
+                      className="object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale"
                       sizes="100vw"
                     />
 
                     {/* Overlay */}
-                    <div className={`absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent ${
-                      card.comingSoon ? 'opacity-80' : 'opacity-60'
-                    }`} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent opacity-80" />
 
                     {/* Coming Soon Badge */}
-                    {card.comingSoon && (
-                      <div className="absolute top-4 right-4 z-10">
-                        <div className="bg-accent-orange/90 backdrop-blur-sm px-3 py-1 rounded-full border border-accent-orange">
-                          <span className="text-white text-xs font-display font-bold uppercase tracking-wider">
-                            {String(t('lifestyle.comingSoon'))}
-                          </span>
-                        </div>
+                    <div className="absolute top-4 right-4 z-10">
+                      <div className="bg-accent-orange/90 backdrop-blur-sm px-3 py-1 rounded-full border border-accent-orange">
+                        <span className="text-white text-xs font-display font-bold uppercase tracking-wider">
+                          {String(t('lifestyle.comingSoon'))}
+                        </span>
                       </div>
-                    )}
+                    </div>
 
                     {/* Content */}
                     <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
@@ -493,34 +488,54 @@ export function Lifestyle() {
                         {String(t(card.labelKey))}
                       </p>
                       <div className="flex items-center gap-2">
-                        <span className={`text-base font-medium ${
-                          card.comingSoon ? 'text-white/60' : ''
-                        }`}>
-                          {card.comingSoon
-                            ? String(t('lifestyle.comingSoon'))
-                            : card.id === 'apparel'
-                              ? String(t('lifestyle.explore'))
-                              : String(t('lifestyle.viewMore'))
-                          }
+                        <span className="text-base font-medium text-white/60">
+                          {String(t('lifestyle.comingSoon'))}
                         </span>
-                        {!card.comingSoon && (
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                          </svg>
-                        )}
                       </div>
                     </div>
-                  {card.comingSoon ? (
-                    </div>
-                  ) : (
-                    </Link>
-                  )}
+                  </div>
                 </div>
+              ) : (
+                <Link
+                  href={card.link}
+                  target={card.external ? "_blank" : undefined}
+                  rel={card.external ? "noopener noreferrer" : undefined}
+                  className="group relative block h-[250px] overflow-hidden rounded-lg"
+                >
+                  <Image
+                    src={card.image}
+                    alt={String(t(card.labelKey))}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="100vw"
+                  />
+
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent opacity-60" />
+
+                  {/* Content */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <p className="text-accent-lime font-bold uppercase tracking-wider text-xs mb-1">
+                      {String(t(card.labelKey))}
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <span className="text-base font-medium">
+                        {card.id === 'apparel'
+                          ? String(t('lifestyle.explore'))
+                          : String(t('lifestyle.viewMore'))
+                        }
+                      </span>
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </div>
+                  </div>
+                </Link>
               )}
             </motion.div>
           ))}
