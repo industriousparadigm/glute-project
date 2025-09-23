@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useCallback } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import { useTranslations } from '@/lib/i18n/hooks'
 import { motion } from 'framer-motion'
@@ -85,48 +85,6 @@ const gridItems: GridItem[] = [
 
 export function OurStudio() {
   const { t } = useTranslations()
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null)
-
-  const openModal = (index: number) => {
-    setSelectedImageIndex(index)
-  }
-
-  const closeModal = useCallback(() => {
-    setSelectedImageIndex(null)
-  }, [])
-
-  const navigateImage = useCallback((direction: 'prev' | 'next') => {
-    if (selectedImageIndex === null) return
-
-    if (direction === 'next') {
-      setSelectedImageIndex((selectedImageIndex + 1) % galleryImages.length)
-    } else {
-      setSelectedImageIndex(
-        selectedImageIndex === 0 ? galleryImages.length - 1 : selectedImageIndex - 1
-      )
-    }
-  }, [selectedImageIndex])
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (selectedImageIndex === null) return
-
-      switch (e.key) {
-        case 'ArrowRight':
-          navigateImage('next')
-          break
-        case 'ArrowLeft':
-          navigateImage('prev')
-          break
-        case 'Escape':
-          closeModal()
-          break
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [selectedImageIndex, navigateImage, closeModal])
 
   return (
     <section id="studio" className="py-12 md:py-16">
@@ -152,17 +110,15 @@ export function OurStudio() {
             
             if (item.type === 'photo') {
               return (
-                <motion.button
+                <motion.div
                   key={index}
-                  className={`group relative overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-xl ${colSpanClass} ${rowSpanClass}`}
-                  onClick={() => openModal(item.imageIndex)}
-                  aria-label={`${String(t('facility.viewAll'))} - ${String(t(item.altKey))}`}
+                  className={`group relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl ${colSpanClass} ${rowSpanClass}`}
+                  aria-label={`${String(t(item.altKey))}`}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
                   whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
                 >
                   <Image
                     src={item.src}
@@ -186,9 +142,8 @@ export function OurStudio() {
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                     <p className="text-white font-display font-bold uppercase text-sm tracking-wide drop-shadow-lg">{String(t(item.altKey))}</p>
-                    <p className="text-accent-orange text-xs uppercase tracking-wider mt-1">{String(t('studio.viewAll'))}</p>
                   </div>
-                </motion.button>
+                </motion.div>
               )
             } else if (item.type === 'equipment') {
               // Equipment showcase card
@@ -277,104 +232,6 @@ export function OurStudio() {
           })}
         </div>
       </div>
-
-      {/* Modal - reuse from original */}
-      {selectedImageIndex !== null && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={String(t('facility.viewAll'))}
-          className="fixed inset-0 z-50 flex items-center justify-center"
-        >
-          {/* Backdrop */}
-          <button
-            className="absolute inset-0 bg-black bg-opacity-90"
-            onClick={closeModal}
-            aria-label={String(t('facility.close'))}
-          />
-          <div
-            className="relative max-w-5xl max-h-[90vh] mx-4 z-10"
-            role="document"
-          >
-            <div className="relative w-full h-full">
-              <Image
-                src={galleryImages[selectedImageIndex].src}
-                alt={String(t(galleryImages[selectedImageIndex].altKey))}
-                fill
-                className="object-contain"
-                sizes="90vw"
-              />
-            </div>
-
-            {/* Navigation buttons */}
-            <button
-              aria-label="Previous image"
-              onClick={() => navigateImage('prev')}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white bg-opacity-20 hover:bg-opacity-30 flex items-center justify-center text-white transition-opacity"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-
-            <button
-              aria-label="Next image"
-              onClick={() => navigateImage('next')}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white bg-opacity-20 hover:bg-opacity-30 flex items-center justify-center text-white transition-opacity"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-
-            {/* Close button */}
-            <button
-              aria-label={String(t('facility.close'))}
-              onClick={closeModal}
-              className="absolute top-4 right-4 w-12 h-12 bg-white bg-opacity-20 hover:bg-opacity-30 flex items-center justify-center text-white transition-opacity"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-
-            {/* Image counter */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black bg-opacity-50 text-white">
-              {selectedImageIndex + 1} / {galleryImages.length}
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   )
 }
