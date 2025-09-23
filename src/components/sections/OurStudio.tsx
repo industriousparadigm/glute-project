@@ -132,17 +132,6 @@ export function OurStudio() {
                   {/* Subtle rim lighting effect */}
                   <div className="absolute inset-0 ring-1 ring-inset ring-transparent group-hover:ring-accent-orange/30 transition-all duration-300" />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                  {/* Gallery icon indicator */}
-                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100">
-                    <div className="bg-accent-orange/90 backdrop-blur-sm rounded-full p-2">
-                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-white font-display font-bold uppercase text-sm tracking-wide drop-shadow-lg">{String(t(item.altKey))}</p>
-                  </div>
                 </motion.div>
               )
             } else if (item.type === 'equipment') {
