@@ -4,8 +4,9 @@ import React from 'react'
 import Image from 'next/image'
 import { useTranslations } from '@/lib/i18n/hooks'
 import { motion } from 'framer-motion'
-import { Users, Utensils, Clock, Heart, Dumbbell, Weight, ExternalLink, MapPin, Target, Zap, TrendingUp } from 'lucide-react'
+import { Users, Utensils, Clock, Heart, Dumbbell, Weight, ExternalLink, MapPin, Target, Zap, TrendingUp, ImageIcon } from 'lucide-react'
 import { images } from '@/lib/images'
+import { useGallery } from '@/components/GalleryContext'
 
 // Import additional images
 import gymCardio from '../../../public/images/gym-cardio-zone.jpg'
@@ -40,7 +41,15 @@ interface EquipmentItem {
   rowSpan?: number
 }
 
-type GridItem = PhotoItem | FeatureItem | EquipmentItem
+interface GalleryItem {
+  type: 'gallery'
+  key: 'senior_training'
+  icon: React.ComponentType<{ size?: number; className?: string; 'aria-hidden'?: boolean }>
+  colSpan?: number
+  rowSpan?: number
+}
+
+type GridItem = PhotoItem | FeatureItem | EquipmentItem | GalleryItem
 
 // All gallery images (8 total)
 const galleryImages = [
@@ -80,11 +89,12 @@ const gridItems: GridItem[] = [
   { type: 'photo', src: galleryImages[3].src, altKey: galleryImages[3].altKey, imageIndex: 3 },
   { type: 'feature', key: 'community', icon: Heart },
   { type: 'photo', src: galleryImages[4].src, altKey: galleryImages[4].altKey, imageIndex: 4 },
-  { type: 'photo', src: galleryImages[6].src, altKey: galleryImages[6].altKey, imageIndex: 6 }, // Placeholder photo
+  { type: 'gallery', key: 'senior_training', icon: ImageIcon }, // Senior training gallery
 ]
 
 export function OurStudio() {
   const { t } = useTranslations()
+  const { openGallery } = useGallery()
 
   return (
     <section id="studio" className="py-12 md:py-16">
@@ -176,6 +186,47 @@ export function OurStudio() {
                     </div>
                   </div>
                 </motion.a>
+              )
+            } else if (item.type === 'gallery') {
+              // Gallery card (opens gallery modal)
+              const IconComponent = item.icon
+
+              return (
+                <motion.button
+                  key={index}
+                  onClick={() => openGallery('glute/senior')}
+                  className={`relative overflow-hidden bg-zinc-900 group hover:bg-zinc-800 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg ${colSpanClass} ${rowSpanClass}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  aria-label={String(t(`equipment.${item.key}.title`))}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent-orange/10 to-transparent opacity-50 group-hover:opacity-70 transition-opacity duration-300" />
+                  {/* Subtle pulse animation on hover */}
+                  <div className="absolute inset-0 ring-1 ring-inset ring-transparent group-hover:ring-accent-orange/20 transition-all duration-300" />
+                  <div className="relative p-3 md:p-6 h-full flex flex-col items-center justify-center text-center">
+                    <div className="mb-2 md:mb-4 transform transition-transform duration-300 group-hover:scale-110">
+                      <IconComponent
+                        size={32}
+                        className="text-accent-orange mx-auto stroke-2 md:w-12 md:h-12"
+                        aria-hidden={true}
+                      />
+                    </div>
+                    <h3 className="text-accent-orange font-display text-base md:text-xl font-bold uppercase mb-1 md:mb-2 tracking-wide">
+                      {String(t(`equipment.${item.key}.title`))}
+                    </h3>
+                    <p className="text-white font-body text-[10px] md:text-sm font-semibold mb-2 md:mb-3 hidden md:block">
+                      {String(t(`equipment.${item.key}.description`))}
+                    </p>
+                    <div className="flex items-center gap-1 md:gap-2 text-white/70 group-hover:text-accent-orange transition-colors">
+                      <span className="text-[10px] md:text-xs uppercase tracking-wide font-bold">{String(t('equipment.viewGallery'))}</span>
+                      <ImageIcon size={10} className="stroke-2 md:w-[14px] md:h-[14px]" />
+                    </div>
+                  </div>
+                </motion.button>
               )
             } else {
               // Feature card

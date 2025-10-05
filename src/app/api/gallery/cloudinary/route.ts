@@ -4,10 +4,10 @@ const CACHE_SECONDS = 3600 // 1 hour cache for Cloudinary
 const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME || 'thunder-fusion'
 const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY
 const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET
-const GALLERY_FOLDER = 'glute/dia-a-dia' // Folder in Cloudinary
+const DEFAULT_GALLERY_FOLDER = 'glute/dia-a-dia' // Default folder in Cloudinary
 
-// In-memory cache
-let cachedData: { images: any[], timestamp: number } | null = null
+// In-memory cache per folder
+const folderCaches = new Map<string, { images: any[], timestamp: number }>()
 const MEMORY_CACHE_MS = 5 * 60 * 1000 // 5 minutes
 
 interface CloudinaryResource {
@@ -39,12 +39,12 @@ function shuffleArray<T>(array: T[]): T[] {
   return shuffled
 }
 
-async function fetchCloudinaryImages(): Promise<CloudinaryResource[]> {
+async function fetchCloudinaryImages(folder: string): Promise<CloudinaryResource[]> {
   console.log('=== CLOUDINARY DEBUG START ===')
   console.log('[Cloudinary] Cloud Name:', CLOUDINARY_CLOUD_NAME)
   console.log('[Cloudinary] API Key exists:', !!CLOUDINARY_API_KEY)
   console.log('[Cloudinary] API Secret exists:', !!CLOUDINARY_API_SECRET)
-  console.log('[Cloudinary] Gallery Folder:', GALLERY_FOLDER)
+  console.log('[Cloudinary] Gallery Folder:', folder)
 
   if (!CLOUDINARY_API_KEY || !CLOUDINARY_API_SECRET) {
     console.error('[Cloudinary] FATAL: Missing API credentials')
@@ -60,7 +60,7 @@ async function fetchCloudinaryImages(): Promise<CloudinaryResource[]> {
   const url = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/resources/image`
   const params = new URLSearchParams({
     type: 'upload',
-    prefix: GALLERY_FOLDER,
+    prefix: folder,
     max_results: '50',
     context: 'true',
     tags: 'true',
@@ -147,9 +147,11 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
   const count = parseInt(searchParams.get('count') || '20', 10)
   const order = searchParams.get('order') || 'latest'
-  console.log('[Cloudinary Gallery API] Count:', count, 'Order:', order)
+  const folder = searchParams.get('folder') || DEFAULT_GALLERY_FOLDER
+  console.log('[Cloudinary Gallery API] Count:', count, 'Order:', order, 'Folder:', folder)
 
-  // Check memory cache first
+  // Check memory cache first (per folder)
+  const cachedData = folderCaches.get(folder)
   if (cachedData && Date.now() - cachedData.timestamp < MEMORY_CACHE_MS) {
     console.log('[Cloudinary Gallery API] Serving from cache')
     const images = order === 'random'
@@ -170,7 +172,7 @@ export async function GET(request: NextRequest) {
 
   try {
     // Fetch images from Cloudinary
-    const resources = await fetchCloudinaryImages()
+    const resources = await fetchCloudinaryImages(folder)
 
     // Transform to gallery format
     let images = resources.map(transformToGalleryImage)
@@ -184,8 +186,8 @@ export async function GET(request: NextRequest) {
       images = shuffleArray(images)
     }
 
-    // Update cache with all images
-    cachedData = { images, timestamp: Date.now() }
+    // Update cache with all images (per folder)
+    folderCaches.set(folder, { images, timestamp: Date.now() })
 
     // Return requested count
     const selectedImages = images.slice(0, Math.min(count, images.length))

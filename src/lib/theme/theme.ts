@@ -1,15 +1,15 @@
 export const colors = {
   // V3 Bold Black Theme
   accent: {
-    orange: '#FF5E1B', // CTAs, icons, h1 - WCAG 4.78:1 on black
-    lime: '#E8ED4A', // Highlight words - WCAG 4.62:1 on black  
+    orange: '#f27e00', // CTAs, icons, h1 - Official Glute Project orange
+    lime: '#E8ED4A', // Highlight words - WCAG 4.62:1 on black
   },
-  
+
   // Base colors
   brand: {
     black: '#0A0A0A', // Primary background everywhere
   },
-  
+
   // Text colors
   text: {
     white: '#FFFFFF', // Body on black - WCAG 21:1
@@ -17,15 +17,15 @@ export const colors = {
     light: '#FFFFFF', // White text even in "light" mode
     dark: '#FFFFFF',
   },
-  
+
   // Surface colors
   surface: {
     dark: '#111111', // Alt sections (gray-900)
     black: '#0A0A0A', // Main background
   },
-  
+
   // Legacy mappings (for backward compatibility)
-  primary: '#FF5E1B',
+  primary: '#f27e00',
   ink: '#0A0A0A',
   neutral: '#111111',
   white: '#FFFFFF',

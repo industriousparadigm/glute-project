@@ -14,7 +14,7 @@ function HomeContent() {
       <LanguageTracker />
       {!isGalleryOpen && <NavRail />}
       <StickyHeader />
-      <main id="main" className="min-h-screen">
+      <main id="main" className="min-h-screen w-full overflow-x-hidden">
         <section id="hero" className="snap-section bg-brand-black text-white">
           <Hero />
         </section>

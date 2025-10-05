@@ -3,7 +3,7 @@ import { theme, colors, typography } from '../theme'
 describe('Theme Configuration', () => {
   describe('Colors', () => {
     it('should have the correct brand colors', () => {
-      expect(colors.primary).toBe('#FF5E1B')
+      expect(colors.primary).toBe('#f27e00')
       expect(colors.ink).toBe('#0A0A0A')
       expect(colors.accent).toBe('#D4FF41')
       expect(colors.white).toBe('#FFFFFF')

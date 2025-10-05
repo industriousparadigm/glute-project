@@ -1,41 +1,59 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'outline'
   size?: 'sm' | 'md' | 'lg'
   fullWidth?: boolean
+  icon?: ReactNode
+  iconPosition?: 'left' | 'right'
   children: React.ReactNode
 }
 
 export const Button: React.FC<ButtonProps> = ({
+  variant = 'primary',
   size = 'md',
   fullWidth = false,
   disabled = false,
+  icon,
+  iconPosition = 'left',
   className = '',
   children,
   ...props
 }) => {
-  // Base classes - removed rounded corners for grittier look
-  const baseClasses = 'inline-flex items-center justify-center gap-2 font-display font-semibold uppercase tracking-wider transition-all duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 hover:scale-[1.02] active:scale-[0.98]'
-  
-  // Single primary style only - solid orange with white text
-  const colorClasses = 'bg-[#FF5E1B] text-white hover:bg-[#E54515] active:bg-[#CC3D12]'
-  
+  // Base classes - NO rounded corners, gradient with glow
+  const baseClasses = 'group relative inline-flex items-center justify-center gap-3 font-display uppercase tracking-wider transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent-orange/50 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
+
+  // Variant styles
+  const variantClasses = {
+    primary: 'cta-primary-light text-white',
+    outline: 'border border-accent-orange/30 text-accent-orange hover:bg-accent-orange/10 transition-all duration-300'
+  }
+
   const sizeClasses = {
     sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg',
+    md: 'px-6 py-3 text-base md:text-lg',
+    lg: 'px-8 py-4 text-lg md:text-xl',
   }
-  
-  const disabledClasses = disabled ? 'opacity-50 cursor-not-allowed hover:scale-100 active:scale-100' : 'cursor-pointer'
+
   const widthClasses = fullWidth ? 'w-full' : ''
-  
+
   return (
     <button
-      className={`${baseClasses} ${colorClasses} ${sizeClasses[size]} ${disabledClasses} ${widthClasses} ${className}`}
+      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${widthClasses} ${className}`}
       disabled={disabled}
       {...props}
     >
-      {children}
+      {icon && iconPosition === 'left' && (
+        <span className="relative z-10 group-hover:rotate-12 transition-transform duration-300">
+          {icon}
+        </span>
+      )}
+      <span className="relative z-10">{children}</span>
+      {icon && iconPosition === 'right' && (
+        <span className="relative z-10 group-hover:rotate-12 transition-transform duration-300">
+          {icon}
+        </span>
+      )}
     </button>
   )
 }

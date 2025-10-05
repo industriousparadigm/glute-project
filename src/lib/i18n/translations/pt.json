@@ -56,7 +56,12 @@
       "title": "ESPAÇO",
       "description": "500m² · Maior do Norte"
     },
-    "viewMore": "Ver mais"
+    "senior_training": {
+      "title": "TREINO SÉNIOR",
+      "description": "Aulas especializadas"
+    },
+    "viewMore": "Ver mais",
+    "viewGallery": "Ver galeria"
   },
   "facility": {
     "title": "INSTALAÇÕES & EQUIPAMENTO",
@@ -189,11 +194,15 @@
       },
       "sandro-moutinho": {
         "skills": ["Performance", "Massa muscular", "Técnico especialista em exercício físico", "CrossFit"]
+      },
+      "tiago-oliveira": {
+        "skills": ["Treino Sénior", "Performance", "Perda de massa gorda"]
       }
     }
   },
   "contact": {
     "title": "AGENDAR VISITA",
+    "cta_title": "AGENDAR VISITA",
     "whatsapp": "CONTACTAR VIA WHATSAPP",
     "call": "LIGAR AGORA"
   },

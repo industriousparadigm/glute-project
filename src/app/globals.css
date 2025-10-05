@@ -2,12 +2,12 @@
 
 :root {
   /* V3 Bold Black Theme */
-  --color-primary: #FF5E1B;
+  --color-primary: #f27e00;
   --color-ink: #0A0A0A;
   --color-accent: #E8ED4A; /* Updated lime for better contrast */
   --color-white: #FFFFFF;
   --color-neutral: #111111; /* Dark surface */
-  
+
   /* Force dark theme always */
   --background: #0A0A0A;
   --foreground: #FFFFFF;
@@ -39,25 +39,34 @@
 
 @theme inline {
   /* V3 Bold Black colors */
-  --color-primary: #FF5E1B;
+  --color-primary: #f27e00;
+  --color-primary-hover: #ff9c1e;
+  --color-primary-light: #ff9c32;
+  --color-primary-dark: #c85a00;
   --color-ink: #0A0A0A;
   --color-accent: #E8ED4A;
   --color-neutral: #111111;
-  
+
   /* Named colors for Tailwind classes */
-  --color-accent-orange: #FF5E1B;
+  --color-accent-orange: #f27e00;
   --color-accent-lime: #E8ED4A;
   --color-brand-black: #0A0A0A;
-  
+
   /* Semantic colors - always dark */
   --color-background: #0A0A0A;
   --color-foreground: #FFFFFF;
   --color-surface-dark: #111111;
   --color-text-gray: #B4B4B4;
-  
+
   /* Typography */
   --font-display: var(--font-bebas-neue);
   --font-body: var(--font-oswald);
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 body {
@@ -358,7 +367,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #FF7E3B; /* Lighter orange on hover */
+  background: var(--color-primary-hover);
 }
 
 /* Animation timing */
@@ -369,12 +378,12 @@ body {
 
 /* Orange glow effect for CTAs */
 .glow-orange {
-  box-shadow: 0 0 20px rgba(255, 94, 27, 0.5);
+  box-shadow: 0 0 20px rgba(242, 126, 0, 0.5);
   transition: box-shadow 0.3s ease;
 }
 
 .glow-orange:hover {
-  box-shadow: 0 0 30px rgba(255, 94, 27, 0.7);
+  box-shadow: 0 0 30px rgba(242, 126, 0, 0.7);
 }
 
 /* ========================================
@@ -388,8 +397,8 @@ body {
 }
 
 .bg-gradient-services {
-  background: 
-    radial-gradient(circle at 20% 80%, rgba(255, 94, 27, 0.03) 0%, transparent 50%),
+  background:
+    radial-gradient(circle at 20% 80%, rgba(242, 126, 0, 0.03) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(232, 237, 74, 0.02) 0%, transparent 50%),
     linear-gradient(135deg, #FFFFFF 0%, #F9FAFB 100%);
   position: relative;
@@ -457,7 +466,7 @@ body {
 }
 
 .bg-gradient-contact {
-  background: linear-gradient(135deg, #FF5E1B 0%, #2D1410 30%, #0A0A0A 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #2D1410 30%, #0A0A0A 100%);
 }
 
 /* Mobile-optimized gradients (simplified for performance) */
@@ -498,8 +507,8 @@ body {
 
 /* Enhanced CTA Button Styles */
 .cta-primary {
-  background: linear-gradient(135deg, #FF5E1B, #FF7E3B);
-  box-shadow: 0 8px 32px rgba(255, 94, 27, 0.4);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+  box-shadow: 0 8px 32px rgba(242, 126, 0, 0.4);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -507,15 +516,15 @@ body {
 
 /* CTA for light sections - more prominent */
 .cta-primary-light {
-  background: linear-gradient(135deg, #FF5E1B, #D84315);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
   color: white !important;
-  box-shadow: 0 10px 40px rgba(255, 94, 27, 0.5);
+  box-shadow: 0 10px 40px rgba(242, 126, 0, 0.5);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cta-primary-light:hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 20px 60px rgba(255, 94, 27, 0.6);
+  box-shadow: 0 20px 60px rgba(242, 126, 0, 0.6);
 }
 
 .cta-primary::before {
@@ -525,14 +534,14 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #FF7E3B, #FF9E5B);
+  background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary-light));
   opacity: 0;
   transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cta-primary:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 12px 48px rgba(255, 94, 27, 0.6);
+  box-shadow: 0 12px 48px rgba(242, 126, 0, 0.6);
 }
 
 .cta-primary:hover::before {
@@ -541,15 +550,15 @@ body {
 
 .cta-primary:active {
   transform: translateY(0) scale(1);
-  box-shadow: 0 4px 16px rgba(255, 94, 27, 0.3);
+  box-shadow: 0 4px 16px rgba(242, 126, 0, 0.3);
 }
 
 /* Enhanced Service Card Styles with Glassmorphism */
 .service-card {
   background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(255, 94, 27, 0.08);
+  border: 1px solid rgba(242, 126, 0, 0.08);
   border-radius: 12px;
-  box-shadow: 
+  box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.03),
     0 2px 4px -1px rgba(0, 0, 0, 0.02);
   backdrop-filter: blur(10px);
@@ -566,17 +575,17 @@ body {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #FF5E1B 0%, #E8ED4A 100%);
+  background: linear-gradient(90deg, var(--color-primary) 0%, #E8ED4A 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .service-card:hover {
   transform: translateY(-4px);
-  box-shadow: 
-    0 12px 24px -4px rgba(255, 94, 27, 0.08),
+  box-shadow:
+    0 12px 24px -4px rgba(242, 126, 0, 0.08),
     0 6px 12px -2px rgba(0, 0, 0, 0.04);
-  border-color: rgba(255, 94, 27, 0.15);
+  border-color: rgba(242, 126, 0, 0.15);
 }
 
 .service-card:hover::before {
@@ -586,15 +595,15 @@ body {
 /* Dark version for dark sections */
 .service-card-dark {
   background: rgba(43, 20, 16, 0.3);
-  border: 1px solid rgba(255, 94, 27, 0.2);
+  border: 1px solid rgba(242, 126, 0, 0.2);
   backdrop-filter: blur(10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .service-card-dark:hover {
   background: rgba(43, 20, 16, 0.5);
-  border-color: rgba(255, 94, 27, 0.4);
-  box-shadow: 0 8px 32px rgba(255, 94, 27, 0.3);
+  border-color: rgba(242, 126, 0, 0.4);
+  box-shadow: 0 8px 32px rgba(242, 126, 0, 0.3);
   transform: translateY(-4px);
 }
 
@@ -608,7 +617,7 @@ body {
   content: '';
   position: absolute;
   inset: -1px;
-  background: linear-gradient(135deg, rgba(255, 94, 27, 0.4), transparent);
+  background: linear-gradient(135deg, rgba(242, 126, 0, 0.4), transparent);
   opacity: 0;
   border-radius: inherit;
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -661,7 +670,7 @@ body {
 
 /* Gradient Text Effect for Headers */
 .gradient-text-orange {
-  background: linear-gradient(135deg, #FF5E1B, #FF9E5B);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -676,7 +685,7 @@ body {
 
 /* Enhanced Focus States for Accessibility */
 .cta-primary:focus-visible {
-  outline: 3px solid #FF5E1B;
+  outline: 3px solid var(--color-primary);
   outline-offset: 3px;
 }
 
@@ -700,7 +709,7 @@ body {
 }
 
 .hover-glow-orange:hover {
-  box-shadow: 0 0 40px rgba(255, 94, 27, 0.5);
+  box-shadow: 0 0 40px rgba(242, 126, 0, 0.5);
   transform: translateY(-2px);
 }
 

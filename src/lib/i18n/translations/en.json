@@ -56,7 +56,12 @@
       "title": "SPACE",
       "description": "500m² · Largest in the North"
     },
-    "viewMore": "View more"
+    "senior_training": {
+      "title": "SENIOR TRAINING",
+      "description": "Specialized classes"
+    },
+    "viewMore": "View more",
+    "viewGallery": "View gallery"
   },
   "facility": {
     "title": "FACILITY & EQUIPMENT",
@@ -189,11 +194,15 @@
       },
       "sandro-moutinho": {
         "skills": ["Performance", "Muscle gain", "Exercise specialist", "CrossFit"]
+      },
+      "tiago-oliveira": {
+        "skills": ["Senior training", "Performance", "Fat loss"]
       }
     }
   },
   "contact": {
     "title": "SCHEDULE A VISIT",
+    "cta_title": "SCHEDULE A VISIT",
     "whatsapp": "CONTACT VIA WHATSAPP",
     "call": "CALL NOW"
   },

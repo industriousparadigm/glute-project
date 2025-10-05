@@ -6,6 +6,7 @@ import { useTranslations } from '@/lib/i18n/hooks'
 import { MessageCircle, Calendar, ExternalLink } from 'lucide-react'
 import { ReactElement } from 'react'
 import { useGallery } from '@/components/GalleryContext'
+import { Button } from '@/components/ui/Button'
 
 const ServicesMobile = dynamic(() => import('@/components/ServicesMobile').then(mod => mod.ServicesMobile), {
   ssr: false
@@ -243,25 +244,29 @@ export function Services() {
                 {/* Schedule buttons - only for small-group */}
                 {service.id === 'small-group' && (
                   <div className="mt-auto flex gap-2">
-                    <button
+                    <Button
                       onClick={() => openSingleImage(scheduleImageUrl)}
-                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2
-                               border border-accent-orange/30 rounded-lg text-accent-orange
-                               hover:bg-accent-orange/10 transition-all duration-300 text-xs font-display uppercase"
+                      variant="outline"
+                      size="sm"
+                      icon={<Calendar className="w-3.5 h-3.5" />}
+                      className="flex-1 text-xs"
                     >
-                      <Calendar className="w-3.5 h-3.5" />
-                      <span>{String(t('services.sampleSchedule'))}</span>
-                    </button>
+                      {String(t('services.sampleSchedule'))}
+                    </Button>
                     <a
                       href={instagramScheduleUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2
-                               border border-accent-orange/30 rounded-lg text-accent-orange
-                               hover:bg-accent-orange/10 transition-all duration-300 text-xs font-display uppercase"
+                      className="flex-1"
                     >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      <span>{String(t('services.liveSchedule'))}</span>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        icon={<ExternalLink className="w-3.5 h-3.5" />}
+                        className="text-xs w-full"
+                      >
+                        {String(t('services.liveSchedule'))}
+                      </Button>
                     </a>
                   </div>
                 )}
@@ -296,25 +301,29 @@ export function Services() {
                 {/* Schedule buttons - only for small-group */}
                 {service.id === 'small-group' && (
                   <div className="mt-auto flex gap-2">
-                    <button
+                    <Button
                       onClick={() => openSingleImage(scheduleImageUrl)}
-                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2
-                               border border-accent-orange/30 rounded-lg text-accent-orange
-                               hover:bg-accent-orange/10 transition-all duration-300 text-xs font-display uppercase"
+                      variant="outline"
+                      size="sm"
+                      icon={<Calendar className="w-3.5 h-3.5" />}
+                      className="flex-1 text-xs"
                     >
-                      <Calendar className="w-3.5 h-3.5" />
-                      <span>{String(t('services.sampleSchedule'))}</span>
-                    </button>
+                      {String(t('services.sampleSchedule'))}
+                    </Button>
                     <a
                       href={instagramScheduleUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2
-                               border border-accent-orange/30 rounded-lg text-accent-orange
-                               hover:bg-accent-orange/10 transition-all duration-300 text-xs font-display uppercase"
+                      className="flex-1"
                     >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      <span>{String(t('services.liveSchedule'))}</span>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        icon={<ExternalLink className="w-3.5 h-3.5" />}
+                        className="text-xs w-full"
+                      >
+                        {String(t('services.liveSchedule'))}
+                      </Button>
                     </a>
                   </div>
                 )}
@@ -338,23 +347,21 @@ export function Services() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-            <button
+            <Button
               onClick={() => handleWhatsAppClick('trainer')}
-              className="cta-primary-light group relative inline-flex items-center gap-3 px-8 py-4
-                       text-white font-display text-lg md:text-xl uppercase tracking-wider z-10"
+              size="lg"
+              icon={<MessageCircle className="w-6 h-6" />}
             >
-              <MessageCircle className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300 relative z-10" />
-              <span className="relative z-10">{String(t('services.ctaButton'))}</span>
-            </button>
+              {String(t('services.ctaButton'))}
+            </Button>
 
-            <button
+            <Button
               onClick={() => handleWhatsAppClick('nutritionist')}
-              className="cta-primary-light group relative inline-flex items-center gap-3 px-8 py-4
-                       text-white font-display text-lg md:text-xl uppercase tracking-wider z-10"
+              size="lg"
+              icon={<MessageCircle className="w-6 h-6" />}
             >
-              <MessageCircle className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300 relative z-10" />
-              <span className="relative z-10">{String(t('services.ctaNutrition'))}</span>
-            </button>
+              {String(t('services.ctaNutrition'))}
+            </Button>
           </div>
 
           <p className="mt-4 text-text-gray/60 text-sm font-body">

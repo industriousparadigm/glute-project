@@ -18,9 +18,10 @@ interface GalleryModalProps {
   isOpen: boolean
   onClose: () => void
   singleImageUrl?: string | null
+  galleryFolder?: string | null
 }
 
-export default function GalleryModal({ isOpen, onClose, singleImageUrl = null }: GalleryModalProps) {
+export default function GalleryModal({ isOpen, onClose, singleImageUrl = null, galleryFolder = null }: GalleryModalProps) {
   const { t } = useTranslations()
   const [images, setImages] = useState<GalleryImage[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -97,7 +98,8 @@ export default function GalleryModal({ isOpen, onClose, singleImageUrl = null }:
       }
 
       // Gallery mode - fetch all images
-      fetch('/api/gallery/cloudinary?count=50&order=latest')
+      const folderParam = galleryFolder ? `&folder=${encodeURIComponent(galleryFolder)}` : ''
+      fetch(`/api/gallery/cloudinary?count=50&order=latest${folderParam}`)
         .then(res => res.json())
         .then(data => {
           if (data.images && data.images.length > 0) {
@@ -139,7 +141,7 @@ export default function GalleryModal({ isOpen, onClose, singleImageUrl = null }:
             })
         })
     }
-  }, [isOpen, isSingleImageMode, singleImageUrl])
+  }, [isOpen, isSingleImageMode, singleImageUrl, galleryFolder])
 
   // Preload adjacent images when current index changes
   useEffect(() => {

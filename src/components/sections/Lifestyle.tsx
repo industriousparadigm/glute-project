@@ -85,7 +85,7 @@ const lifestyleCards = [
 
 export function Lifestyle() {
   const { t } = useTranslations()
-  const { isGalleryOpen, setIsGalleryOpen, singleImageUrl, closeGallery } = useGallery()
+  const { isGalleryOpen, openGallery, singleImageUrl, galleryFolder, closeGallery } = useGallery()
   const [newsMetadata, setNewsMetadata] = useState<NewsMetadata[]>([])
   const [loadingNews, setLoadingNews] = useState(true)
 
@@ -152,7 +152,7 @@ export function Lifestyle() {
               transition={{ duration: 0.8 }}
             >
               <button
-                onClick={() => setIsGalleryOpen(true)}
+                onClick={() => openGallery()}
                 className="group relative block h-full w-full overflow-hidden rounded-xl cursor-pointer"
               >
                 <Image
@@ -416,7 +416,7 @@ export function Lifestyle() {
             >
               {card.isGallery ? (
                 <button
-                  onClick={() => setIsGalleryOpen(true)}
+                  onClick={() => openGallery()}
                   className="group relative block h-[250px] w-full overflow-hidden rounded-lg cursor-pointer"
                 >
                   <Image
@@ -638,6 +638,7 @@ export function Lifestyle() {
           isOpen={isGalleryOpen}
           onClose={closeGallery}
           singleImageUrl={singleImageUrl}
+          galleryFolder={galleryFolder}
         />
       </div>
     </section>

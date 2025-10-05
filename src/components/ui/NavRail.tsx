@@ -100,7 +100,7 @@ export function NavRail() {
                   className="w-2 h-2 bg-accent-orange"
                   animate={{
                     scale: isActive ? 1.8 : 1,
-                    backgroundColor: isActive ? '#FF5E1B' : isHovered ? '#FF7E3B' : '#FF5E1B',
+                    backgroundColor: isActive ? 'var(--color-primary)' : isHovered ? 'var(--color-primary-hover)' : 'var(--color-primary)',
                     rotate: isActive ? 45 : 0
                   }}
                   transition={{ duration: 0.25, ease: 'easeOut' }}

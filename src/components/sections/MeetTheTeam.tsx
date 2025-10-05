@@ -4,30 +4,24 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useTranslations } from '@/lib/i18n/hooks'
-import { StaticImageData } from 'next/image'
-
-// Import all team images
-import miguelCarvalho from '../../../public/images/team/miguel-carvalho.png'
-import franciscoFranca from '../../../public/images/team/francisco-franca.png'
-import joanaMartins from '../../../public/images/team/joana-martins.png'
-import miguelFerrer from '../../../public/images/team/miguel-ferrer.png'
-import renatoFonseca from '../../../public/images/team/renato-fonseca.png'
-import sandroMoutinho from '../../../public/images/team/sandro-moutinho.png'
 
 interface TeamMember {
   name: string
   role: 'trainer' | 'nutritionist'
-  image: StaticImageData
+  image: string
   skillsKey: string
 }
 
+const CLOUDINARY_BASE = 'https://res.cloudinary.com/thunder-fusion/image/upload/v1759665299/glute/team'
+
 const teamMembers: TeamMember[] = [
-  { name: 'Miguel Ferrer', role: 'trainer', image: miguelFerrer, skillsKey: 'miguel-ferrer' },
-  { name: 'Francisco França', role: 'nutritionist', image: franciscoFranca, skillsKey: 'francisco-franca' },
-  { name: 'Joana Martins', role: 'trainer', image: joanaMartins, skillsKey: 'joana-martins' },
-  { name: 'Miguel Carvalho', role: 'trainer', image: miguelCarvalho, skillsKey: 'miguel-carvalho' },
-  { name: 'Renato Fonseca', role: 'trainer', image: renatoFonseca, skillsKey: 'renato-fonseca' },
-  { name: 'Sandro Moutinho', role: 'trainer', image: sandroMoutinho, skillsKey: 'sandro-moutinho' },
+  { name: 'Miguel Ferrer', role: 'trainer', image: `${CLOUDINARY_BASE}/miguel-ferrer.png`, skillsKey: 'miguel-ferrer' },
+  { name: 'Francisco França', role: 'nutritionist', image: `${CLOUDINARY_BASE}/francisco-franca.png`, skillsKey: 'francisco-franca' },
+  { name: 'Joana Martins', role: 'trainer', image: `${CLOUDINARY_BASE}/joana-martins.png`, skillsKey: 'joana-martins' },
+  { name: 'Miguel Carvalho', role: 'trainer', image: `${CLOUDINARY_BASE}/miguel-carvalho.png`, skillsKey: 'miguel-carvalho' },
+  { name: 'Renato Fonseca', role: 'trainer', image: `${CLOUDINARY_BASE}/renato-fonseca.png`, skillsKey: 'renato-fonseca' },
+  { name: 'Sandro Moutinho', role: 'trainer', image: `${CLOUDINARY_BASE}/sandro-moutinho.png`, skillsKey: 'sandro-moutinho' },
+  { name: 'Tiago Oliveira', role: 'trainer', image: `${CLOUDINARY_BASE}/tiago-oliveira.png`, skillsKey: 'tiago-oliveira' },
 ]
 
 export function MeetTheTeam() {
@@ -91,8 +85,8 @@ export function MeetTheTeam() {
         </motion.div>
 
         {/* Team Grid */}
-        <motion.div 
-          className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto"
+        <motion.div
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-7xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

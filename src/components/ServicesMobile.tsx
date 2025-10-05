@@ -6,6 +6,7 @@ import { useTranslations } from '@/lib/i18n/hooks'
 import { MessageCircle, ChevronDown, ChevronUp, Calendar, ExternalLink } from 'lucide-react'
 import { ReactElement } from 'react'
 import { useGallery } from '@/components/GalleryContext'
+import { Button } from '@/components/ui/Button'
 
 interface Service {
   id: string
@@ -191,25 +192,29 @@ export function ServicesMobile() {
               {/* Schedule buttons - only for small-group */}
               {service.id === 'small-group' && (
                 <div className="mt-auto flex gap-2">
-                  <button
+                  <Button
                     onClick={() => openSingleImage(scheduleImageUrl)}
-                    className="flex-1 flex items-center justify-center gap-1 px-2 py-2
-                             border border-accent-orange/30 rounded-lg text-accent-orange
-                             active:bg-accent-orange/10 transition-all duration-300 text-xs font-display uppercase"
+                    variant="outline"
+                    size="sm"
+                    icon={<Calendar className="w-3 h-3" />}
+                    className="flex-1 text-xs"
                   >
-                    <Calendar className="w-3 h-3" />
-                    <span>{String(t('services.sampleSchedule'))}</span>
-                  </button>
+                    {String(t('services.sampleSchedule'))}
+                  </Button>
                   <a
                     href={instagramScheduleUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-1 px-2 py-2
-                             border border-accent-orange/30 rounded-lg text-accent-orange
-                             active:bg-accent-orange/10 transition-all duration-300 text-xs font-display uppercase"
+                    className="flex-1"
                   >
-                    <ExternalLink className="w-3 h-3" />
-                    <span>{String(t('services.liveSchedule'))}</span>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      icon={<ExternalLink className="w-3 h-3" />}
+                      className="text-xs w-full"
+                    >
+                      {String(t('services.liveSchedule'))}
+                    </Button>
                   </a>
                 </div>
               )}
@@ -220,34 +225,42 @@ export function ServicesMobile() {
 
       {/* Show More/Less Button */}
       {!showAll && (
-        <motion.button
-          onClick={() => setShowAll(true)}
-          className="w-full py-3 mb-6 border border-accent-orange/30 rounded-lg
-                   flex items-center justify-center gap-2
-                   text-accent-orange font-display uppercase text-sm
-                   transition-all duration-300 active:scale-95"
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
+          className="mb-6"
         >
-          <span>{String(t('services.viewAllServices'))}</span>
-          <ChevronDown className="w-4 h-4" />
-        </motion.button>
+          <Button
+            onClick={() => setShowAll(true)}
+            variant="outline"
+            fullWidth
+            icon={<ChevronDown className="w-4 h-4" />}
+            iconPosition="right"
+            className="text-sm"
+          >
+            {String(t('services.viewAllServices'))}
+          </Button>
+        </motion.div>
       )}
 
       {showAll && (
-        <motion.button
-          onClick={() => setShowAll(false)}
-          className="w-full py-3 mb-6 border border-accent-orange/30 rounded-lg
-                   flex items-center justify-center gap-2
-                   text-accent-orange font-display uppercase text-sm
-                   transition-all duration-300 active:scale-95"
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          className="mb-6"
         >
-          <span>{String(t('services.showLess'))}</span>
-          <ChevronUp className="w-4 h-4" />
-        </motion.button>
+          <Button
+            onClick={() => setShowAll(false)}
+            variant="outline"
+            fullWidth
+            icon={<ChevronUp className="w-4 h-4" />}
+            iconPosition="right"
+            className="text-sm"
+          >
+            {String(t('services.showLess'))}
+          </Button>
+        </motion.div>
       )}
 
       {/* WhatsApp CTA */}
@@ -257,23 +270,21 @@ export function ServicesMobile() {
         </p>
 
         <div className="flex flex-col gap-3">
-          <button
+          <Button
             onClick={() => handleWhatsAppClick('trainer')}
-            className="cta-primary-light group relative inline-flex items-center justify-center gap-2 px-6 py-3
-                     text-white font-display text-base uppercase tracking-wider z-10 w-full"
+            fullWidth
+            icon={<MessageCircle className="w-5 h-5" />}
           >
-            <MessageCircle className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300 relative z-10" />
-            <span className="relative z-10">{String(t('services.ctaButton'))}</span>
-          </button>
+            {String(t('services.ctaButton'))}
+          </Button>
 
-          <button
+          <Button
             onClick={() => handleWhatsAppClick('nutritionist')}
-            className="cta-primary-light group relative inline-flex items-center justify-center gap-2 px-6 py-3
-                     text-white font-display text-base uppercase tracking-wider z-10 w-full"
+            fullWidth
+            icon={<MessageCircle className="w-5 h-5" />}
           >
-            <MessageCircle className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300 relative z-10" />
-            <span className="relative z-10">{String(t('services.ctaNutrition'))}</span>
-          </button>
+            {String(t('services.ctaNutrition'))}
+          </Button>
         </div>
       </div>
     </div>

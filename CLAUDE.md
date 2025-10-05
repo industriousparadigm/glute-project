@@ -62,8 +62,12 @@ npm run init-db      # Database setup via scripts/init-db.ts
 ## UI Consistency Rules (CRITICAL - ALWAYS FOLLOW)
 
 - **HEADINGS**: Always uppercase (use `uppercase` class)
-- **CTA BUTTONS**: Use existing `cta-primary` or `cta-primary-light` classes
-- **NEVER** create custom button styles - reuse existing patterns
+- **BUTTONS**: Use the reusable `<Button>` component from `@/components/ui/Button`
+  - **NEVER** create inline button styles - always use the Button component
+  - **NO ROUNDED CORNERS** - buttons have sharp corners for gritty aesthetic
+  - Supports variants: `primary` (gradient with glow) and `outline` (border only)
+  - Supports optional icons with rotation on hover
+  - Example: `<Button icon={<MessageCircle />} size="lg">Contact</Button>`
 - **ALWAYS** check existing components for style patterns before creating new ones
 - **MAINTAIN** consistent spacing, colors, and interactions across all sections
 - When in doubt, look at existing sections for reference
@@ -114,12 +118,23 @@ bg-gradient-regybox      // Regybox partnership section
 bg-gradient-contact      // Warm conversion gradient
 
 // Enhanced components
-cta-primary             // Gradient button with hover
-cta-primary-light       // Light variant for dark backgrounds
 service-card            // Orange glow on hover
 team-card               // Orange rim lighting
 testimonial-quote       // Lime accent quotes
 sticky-header           // Mobile navigation header
+
+// Reusable Button component (ALWAYS USE THIS)
+import { Button } from '@/components/ui/Button'
+
+<Button
+  variant="primary"     // or "outline"
+  size="md"             // sm, md, lg
+  fullWidth={false}     // optional
+  icon={<Icon />}       // optional, rotates on hover
+  iconPosition="left"   // or "right"
+>
+  Button Text
+</Button>
 ```
 
 ### Images
@@ -320,6 +335,7 @@ To update schedules, modify the `location.hours.*` translation keys:
 - Database always pooled + SSL
 - Mobile menu closes on navigation
 - Testimonial carousel infinite loop
+- Horizontal overflow prevented (html/body `overflow-x: hidden` + main container `w-full overflow-x-hidden`)
 
 ## Current State
 
