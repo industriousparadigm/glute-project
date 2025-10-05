@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Oswald, Barlow_Condensed } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import { ClerkProvider } from '@clerk/nextjs';
 import "../globals.css";
 
 const oswald = Oswald({
@@ -71,11 +72,13 @@ export default async function LocaleLayout({
       <body
         className={`${oswald.variable} ${bebasNeue.variable} ${barlowCondensed.variable} antialiased`}
       >
-        <a href="#main" className="skip-link">
-          {locale === 'en' ? 'Skip to main content' : 'Ir para o conteúdo principal'}
-        </a>
-        {children}
-        <Analytics />
+        <ClerkProvider>
+          <a href="#main" className="skip-link">
+            {locale === 'en' ? 'Skip to main content' : 'Ir para o conteúdo principal'}
+          </a>
+          {children}
+          <Analytics />
+        </ClerkProvider>
       </body>
     </html>
   );

@@ -312,5 +312,108 @@
     "lifestyle": "Lifestyle",
     "contact": "Contacto",
     "language": "Idioma"
+  },
+  "online": {
+    "hero": {
+      "title": "GLUTE ONLINE",
+      "subtitle": "Treino personalizado à distância · Onde estiveres",
+      "cta_primary": "COMEÇAR AGORA",
+      "cta_secondary": "JÁ SOU CLIENTE"
+    },
+    "howItWorks": {
+      "title": "COMO FUNCIONA",
+      "step1": {
+        "title": "ESCOLHE O PACOTE",
+        "description": "Seleciona o plano perfeito para ti"
+      },
+      "step2": {
+        "title": "ENVIA ANAMNESE",
+        "description": "Completa avaliação física e objetivos"
+      },
+      "step3": {
+        "title": "RECEBE PLANO",
+        "description": "Treino personalizado na app Regybox"
+      }
+    },
+    "packages": {
+      "title": "PACOTES DISPONÍVEIS",
+      "period": "mês",
+      "cta": "ESCOLHER PLANO",
+      "starter": {
+        "name": "STARTER",
+        "price": "€49",
+        "features": [
+          "Plano de treino personalizado",
+          "Atualização mensal do plano",
+          "Suporte via email",
+          "Acesso app Regybox"
+        ]
+      },
+      "pro": {
+        "name": "PRO",
+        "price": "€89",
+        "features": [
+          "Tudo do Starter",
+          "Videochamadas semanais",
+          "Ajustes de plano ilimitados",
+          "Plano nutricional básico",
+          "Suporte WhatsApp prioritário"
+        ]
+      },
+      "elite": {
+        "name": "ELITE",
+        "price": "€149",
+        "features": [
+          "Tudo do Pro",
+          "Check-ins diários via WhatsApp",
+          "Plano nutricional completo",
+          "Análise de progresso semanal",
+          "Acesso à comunidade privada"
+        ]
+      }
+    },
+    "benefits": {
+      "title": "PORQUÊ ONLINE",
+      "flexibility": {
+        "title": "FLEXIBILIDADE TOTAL",
+        "description": "Treina quando e onde quiseres, sem limites"
+      },
+      "personalized": {
+        "title": "100% PERSONALIZADO",
+        "description": "Plano criado só para ti e objetivos"
+      },
+      "community": {
+        "title": "COMUNIDADE ATIVA",
+        "description": "Partilha progresso com atletas de todo mundo"
+      },
+      "results": {
+        "title": "RESULTADOS GARANTIDOS",
+        "description": "Acompanhamento constante para sucesso assegurado"
+      }
+    },
+    "stats": {
+      "title": "NÚMEROS QUE FALAM",
+      "clients": {
+        "value": "500+",
+        "label": "Clientes online ativos"
+      },
+      "sessions": {
+        "value": "2000+",
+        "label": "Sessões virtuais realizadas"
+      },
+      "satisfaction": {
+        "value": "98%",
+        "label": "Taxa de satisfação"
+      }
+    },
+    "cta": {
+      "title": "PRONTO PARA MUDAR",
+      "subtitle": "Junta-te a centenas de atletas online",
+      "primary": "COMEÇAR AGORA",
+      "secondary": "CONTACTAR EQUIPA"
+    },
+    "footer": {
+      "backHome": "← Voltar à página principal"
+    }
   }
 }

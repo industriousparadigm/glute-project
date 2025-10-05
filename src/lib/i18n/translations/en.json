@@ -312,5 +312,108 @@
     "lifestyle": "Lifestyle",
     "contact": "Contact",
     "language": "Language"
+  },
+  "online": {
+    "hero": {
+      "title": "GLUTE ONLINE",
+      "subtitle": "Personalized remote training · Wherever you are",
+      "cta_primary": "START NOW",
+      "cta_secondary": "ALREADY A CLIENT"
+    },
+    "howItWorks": {
+      "title": "HOW IT WORKS",
+      "step1": {
+        "title": "CHOOSE PACKAGE",
+        "description": "Select perfect plan for you"
+      },
+      "step2": {
+        "title": "SUBMIT ASSESSMENT",
+        "description": "Complete physical evaluation and goals"
+      },
+      "step3": {
+        "title": "RECEIVE PLAN",
+        "description": "Custom training in Regybox app"
+      }
+    },
+    "packages": {
+      "title": "AVAILABLE PACKAGES",
+      "period": "month",
+      "cta": "CHOOSE PLAN",
+      "starter": {
+        "name": "STARTER",
+        "price": "€49",
+        "features": [
+          "Personalized training plan",
+          "Monthly plan updates",
+          "Email support",
+          "Regybox app access"
+        ]
+      },
+      "pro": {
+        "name": "PRO",
+        "price": "€89",
+        "features": [
+          "Everything in Starter",
+          "Weekly video calls",
+          "Unlimited plan adjustments",
+          "Basic nutrition plan",
+          "Priority WhatsApp support"
+        ]
+      },
+      "elite": {
+        "name": "ELITE",
+        "price": "€149",
+        "features": [
+          "Everything in Pro",
+          "Daily WhatsApp check-ins",
+          "Complete nutrition plan",
+          "Weekly progress analysis",
+          "Private community access"
+        ]
+      }
+    },
+    "benefits": {
+      "title": "WHY ONLINE",
+      "flexibility": {
+        "title": "TOTAL FLEXIBILITY",
+        "description": "Train when and where you want, no limits"
+      },
+      "personalized": {
+        "title": "100% PERSONALIZED",
+        "description": "Plan created just for you and goals"
+      },
+      "community": {
+        "title": "ACTIVE COMMUNITY",
+        "description": "Share progress with athletes worldwide"
+      },
+      "results": {
+        "title": "GUARANTEED RESULTS",
+        "description": "Constant monitoring for assured success"
+      }
+    },
+    "stats": {
+      "title": "NUMBERS SPEAK",
+      "clients": {
+        "value": "500+",
+        "label": "Active online clients"
+      },
+      "sessions": {
+        "value": "2000+",
+        "label": "Virtual sessions completed"
+      },
+      "satisfaction": {
+        "value": "98%",
+        "label": "Satisfaction rate"
+      }
+    },
+    "cta": {
+      "title": "READY TO CHANGE",
+      "subtitle": "Join hundreds of online athletes",
+      "primary": "START NOW",
+      "secondary": "CONTACT TEAM"
+    },
+    "footer": {
+      "backHome": "← Back to main page"
+    }
   }
 }

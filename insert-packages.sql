@@ -1,0 +1,6 @@
+-- Insert default online packages
+INSERT INTO online_packages (name_pt, name_en, description_pt, description_en, price_monthly, features_pt, features_en, is_popular) VALUES
+('STARTER', 'STARTER', 'Perfeito para começar', 'Perfect to get started', 49.00, '["Plano de treino personalizado", "Atualização mensal do plano", "Suporte via email", "Acesso app Regybox"]', '["Personalized training plan", "Monthly plan updates", "Email support", "Regybox app access"]', false),
+('PRO', 'PRO', 'Mais acompanhamento e resultados', 'More support and results', 89.00, '["Tudo do Starter", "Videochamadas semanais", "Ajustes de plano ilimitados", "Plano nutricional básico", "Suporte WhatsApp prioritário"]', '["Everything in Starter", "Weekly video calls", "Unlimited plan adjustments", "Basic nutrition plan", "Priority WhatsApp support"]', true),
+('ELITE', 'ELITE', 'Acompanhamento premium completo', 'Complete premium coaching', 149.00, '["Tudo do Pro", "Check-ins diários via WhatsApp", "Plano nutricional completo", "Análise de progresso semanal", "Acesso à comunidade privada"]', '["Everything in Pro", "Daily WhatsApp check-ins", "Complete nutrition plan", "Weekly progress analysis", "Private community access"]', false)
+ON CONFLICT DO NOTHING;

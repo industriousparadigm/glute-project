@@ -15,6 +15,7 @@
     "init-db": "tsx scripts/init-db.ts"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.33.2",
     "@payloadcms/db-postgres": "^3.49.1",
     "@payloadcms/richtext-lexical": "^3.49.1",
     "@types/jsonwebtoken": "^9.0.10",
@@ -29,7 +30,9 @@
     "pg": "^8.16.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "sharp": "^0.34.3"
+    "sharp": "^0.34.3",
+    "stripe": "^19.1.0",
+    "svix": "^1.76.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
