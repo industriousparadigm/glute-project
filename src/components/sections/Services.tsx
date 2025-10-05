@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
 import { useTranslations } from '@/lib/i18n/hooks'
-import { MessageCircle, Calendar } from 'lucide-react'
+import { MessageCircle, Calendar, ExternalLink } from 'lucide-react'
 import { ReactElement } from 'react'
 import { useGallery } from '@/components/GalleryContext'
 
@@ -62,22 +62,6 @@ const services: Service[] = [
     )
   },
   {
-    id: 'small-group',
-    nameKey: 'smallGroup.name',
-    descriptionKey: 'smallGroup.description',
-    featured: true,
-    icon: (
-      <svg className="w-12 h-12" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="24" cy="12" r="4" fill="currentColor"/>
-        <circle cx="12" cy="20" r="4" fill="currentColor"/>
-        <circle cx="36" cy="20" r="4" fill="currentColor"/>
-        <rect x="20" y="28" width="8" height="12" fill="currentColor"/>
-        <rect x="8" y="28" width="8" height="12" fill="currentColor"/>
-        <rect x="32" y="28" width="8" height="12" fill="currentColor"/>
-      </svg>
-    )
-  },
-  {
     id: 'team-building',
     nameKey: 'teamBuilding.name',
     descriptionKey: 'teamBuilding.description',
@@ -109,6 +93,22 @@ const services: Service[] = [
     )
   },
   {
+    id: 'small-group',
+    nameKey: 'smallGroup.name',
+    descriptionKey: 'smallGroup.description',
+    featured: true,
+    icon: (
+      <svg className="w-12 h-12" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="12" r="4" fill="currentColor"/>
+        <circle cx="12" cy="20" r="4" fill="currentColor"/>
+        <circle cx="36" cy="20" r="4" fill="currentColor"/>
+        <rect x="20" y="28" width="8" height="12" fill="currentColor"/>
+        <rect x="8" y="28" width="8" height="12" fill="currentColor"/>
+        <rect x="32" y="28" width="8" height="12" fill="currentColor"/>
+      </svg>
+    )
+  },
+  {
     id: 'nutrition',
     nameKey: 'nutrition.name',
     descriptionKey: 'nutrition.description',
@@ -129,6 +129,7 @@ export function Services() {
   const { openSingleImage } = useGallery()
 
   const scheduleImageUrl = 'https://res.cloudinary.com/thunder-fusion/image/upload/v1759663400/glute/schedules/ypkimtutnk3vcyfpzxtj.png'
+  const instagramScheduleUrl = 'https://www.instagram.com/stories/highlights/17868853560118259/?hl=en'
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -239,17 +240,30 @@ export function Services() {
                   {String(t(`services.${service.descriptionKey}`))}
                 </p>
 
-                {/* Schedule button - only for small-group */}
+                {/* Schedule buttons - only for small-group */}
                 {service.id === 'small-group' && (
-                  <button
-                    onClick={() => openSingleImage(scheduleImageUrl)}
-                    className="mt-auto flex items-center justify-center gap-2 px-4 py-2
-                             border border-accent-orange/30 rounded-lg text-accent-orange
-                             hover:bg-accent-orange/10 transition-all duration-300 text-sm font-display uppercase"
-                  >
-                    <Calendar className="w-4 h-4" />
-                    <span>{String(t('services.viewSchedule'))}</span>
-                  </button>
+                  <div className="mt-auto flex gap-2">
+                    <button
+                      onClick={() => openSingleImage(scheduleImageUrl)}
+                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2
+                               border border-accent-orange/30 rounded-lg text-accent-orange
+                               hover:bg-accent-orange/10 transition-all duration-300 text-xs font-display uppercase"
+                    >
+                      <Calendar className="w-3.5 h-3.5" />
+                      <span>{String(t('services.sampleSchedule'))}</span>
+                    </button>
+                    <a
+                      href={instagramScheduleUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2
+                               border border-accent-orange/30 rounded-lg text-accent-orange
+                               hover:bg-accent-orange/10 transition-all duration-300 text-xs font-display uppercase"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>{String(t('services.liveSchedule'))}</span>
+                    </a>
+                  </div>
                 )}
               </motion.div>
             ))}
@@ -261,7 +275,7 @@ export function Services() {
               <motion.div
                 key={service.id}
                 variants={itemVariants}
-                className="service-card group p-6 md:p-8 h-full"
+                className="service-card group p-6 md:p-8 h-full flex flex-col"
               >
                 {/* Icon */}
                 <div className="text-accent-orange/60 group-hover:text-accent-orange transition-all duration-300 mb-4 transform group-hover:scale-110">
@@ -275,9 +289,35 @@ export function Services() {
                 </h3>
 
                 {/* Description */}
-                <p className="text-dark-secondary text-sm md:text-base font-body leading-relaxed">
+                <p className="text-dark-secondary text-sm md:text-base font-body leading-relaxed mb-4 flex-grow">
                   {String(t(`services.${service.descriptionKey}`))}
                 </p>
+
+                {/* Schedule buttons - only for small-group */}
+                {service.id === 'small-group' && (
+                  <div className="mt-auto flex gap-2">
+                    <button
+                      onClick={() => openSingleImage(scheduleImageUrl)}
+                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2
+                               border border-accent-orange/30 rounded-lg text-accent-orange
+                               hover:bg-accent-orange/10 transition-all duration-300 text-xs font-display uppercase"
+                    >
+                      <Calendar className="w-3.5 h-3.5" />
+                      <span>{String(t('services.sampleSchedule'))}</span>
+                    </button>
+                    <a
+                      href={instagramScheduleUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2
+                               border border-accent-orange/30 rounded-lg text-accent-orange
+                               hover:bg-accent-orange/10 transition-all duration-300 text-xs font-display uppercase"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>{String(t('services.liveSchedule'))}</span>
+                    </a>
+                  </div>
+                )}
               </motion.div>
             ))}
           </div>

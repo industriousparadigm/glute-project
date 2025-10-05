@@ -129,7 +129,8 @@
     "ctaButton": "Talk to trainer",
     "ctaNutrition": "Talk to nutritionist",
     "responseTime": "Response in under 2 hours",
-    "viewSchedule": "View Schedule",
+    "sampleSchedule": "Sample Schedule",
+    "liveSchedule": "Monthly Schedule",
     "pricingNotice": {
       "title": "CUSTOM PRICING",
       "description": "Contact for rates"

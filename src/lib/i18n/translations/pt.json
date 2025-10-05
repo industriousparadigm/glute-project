@@ -111,7 +111,8 @@
     "ctaButton": "Falar com treinador",
     "ctaNutrition": "Falar com nutricionista",
     "responseTime": "Resposta em menos de 2 horas",
-    "viewSchedule": "Ver Horários",
+    "sampleSchedule": "Horário Exemplo",
+    "liveSchedule": "Horário Mensal",
     "pricingNotice": {
       "title": "PREÇOS PERSONALIZADOS",
       "description": "Contacta para preços"

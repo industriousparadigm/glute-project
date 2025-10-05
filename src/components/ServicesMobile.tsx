@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslations } from '@/lib/i18n/hooks'
-import { MessageCircle, ChevronDown, ChevronUp, Calendar } from 'lucide-react'
+import { MessageCircle, ChevronDown, ChevronUp, Calendar, ExternalLink } from 'lucide-react'
 import { ReactElement } from 'react'
 import { useGallery } from '@/components/GalleryContext'
 
@@ -125,6 +125,7 @@ export function ServicesMobile() {
   const [showAll, setShowAll] = useState(false)
 
   const scheduleImageUrl = 'https://res.cloudinary.com/thunder-fusion/image/upload/v1759663400/glute/schedules/ypkimtutnk3vcyfpzxtj.png'
+  const instagramScheduleUrl = 'https://www.instagram.com/stories/highlights/17868853560118259/?hl=en'
 
   const visibleServices = showAll ? services : services.slice(0, 3)
 
@@ -187,17 +188,30 @@ export function ServicesMobile() {
                 {String(t(`services.${service.descriptionKey}`))}
               </p>
 
-              {/* Schedule button - only for small-group */}
+              {/* Schedule buttons - only for small-group */}
               {service.id === 'small-group' && (
-                <button
-                  onClick={() => openSingleImage(scheduleImageUrl)}
-                  className="mt-auto flex items-center justify-center gap-2 px-3 py-2
-                           border border-accent-orange/30 rounded-lg text-accent-orange
-                           active:bg-accent-orange/10 transition-all duration-300 text-xs font-display uppercase"
-                >
-                  <Calendar className="w-3.5 h-3.5" />
-                  <span>{String(t('services.viewSchedule'))}</span>
-                </button>
+                <div className="mt-auto flex gap-2">
+                  <button
+                    onClick={() => openSingleImage(scheduleImageUrl)}
+                    className="flex-1 flex items-center justify-center gap-1 px-2 py-2
+                             border border-accent-orange/30 rounded-lg text-accent-orange
+                             active:bg-accent-orange/10 transition-all duration-300 text-xs font-display uppercase"
+                  >
+                    <Calendar className="w-3 h-3" />
+                    <span>{String(t('services.sampleSchedule'))}</span>
+                  </button>
+                  <a
+                    href={instagramScheduleUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-1 px-2 py-2
+                             border border-accent-orange/30 rounded-lg text-accent-orange
+                             active:bg-accent-orange/10 transition-all duration-300 text-xs font-display uppercase"
+                  >
+                    <ExternalLink className="w-3 h-3" />
+                    <span>{String(t('services.liveSchedule'))}</span>
+                  </a>
+                </div>
               )}
             </motion.div>
           ))}
