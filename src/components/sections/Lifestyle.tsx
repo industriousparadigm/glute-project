@@ -85,7 +85,7 @@ const lifestyleCards = [
 
 export function Lifestyle() {
   const { t } = useTranslations()
-  const { isGalleryOpen, setIsGalleryOpen } = useGallery()
+  const { isGalleryOpen, setIsGalleryOpen, singleImageUrl, closeGallery } = useGallery()
   const [newsMetadata, setNewsMetadata] = useState<NewsMetadata[]>([])
   const [loadingNews, setLoadingNews] = useState(true)
 
@@ -636,7 +636,8 @@ export function Lifestyle() {
         {/* Gallery Modal */}
         <GalleryModal
           isOpen={isGalleryOpen}
-          onClose={() => setIsGalleryOpen(false)}
+          onClose={closeGallery}
+          singleImageUrl={singleImageUrl}
         />
       </div>
     </section>

@@ -3,14 +3,17 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useTranslations } from '@/lib/i18n/hooks'
 import { Menu, X, Globe } from 'lucide-react'
 import { useRouter, usePathname } from 'next/navigation'
+import { useGallery } from '@/components/GalleryContext'
 
 export function StickyHeader() {
   const { t, locale } = useTranslations()
   const router = useRouter()
   const pathname = usePathname()
+  const { isGalleryOpen } = useGallery()
   const [isVisible, setIsVisible] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -50,7 +53,7 @@ export function StickyHeader() {
 
   return (
     <AnimatePresence>
-      {isVisible && (
+      {isVisible && !isGalleryOpen && (
         <motion.div
           initial={{ y: -100 }}
           animate={{ y: 0 }}
@@ -60,9 +63,18 @@ export function StickyHeader() {
         >
           <div className="bg-brand-black/95 backdrop-blur-md border-b border-accent-orange/20">
             <div className="flex items-center justify-between px-4 py-3">
-              <h1 className="text-accent-orange font-display text-xl uppercase tracking-tight">
-                GLUTE PROJECT
-              </h1>
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="relative w-[120px] h-[36px] active:opacity-70 transition-opacity"
+                aria-label="Scroll to top"
+              >
+                <Image
+                  src="/images/glute-project-logo.png"
+                  alt="Glute Project"
+                  fill
+                  className="object-contain object-left"
+                />
+              </button>
 
               <div className="flex items-center gap-3">
                 <Link

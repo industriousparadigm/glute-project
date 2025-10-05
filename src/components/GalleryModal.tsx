@@ -17,9 +17,10 @@ interface GalleryImage {
 interface GalleryModalProps {
   isOpen: boolean
   onClose: () => void
+  singleImageUrl?: string | null
 }
 
-export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
+export default function GalleryModal({ isOpen, onClose, singleImageUrl = null }: GalleryModalProps) {
   const { t } = useTranslations()
   const [images, setImages] = useState<GalleryImage[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -29,6 +30,9 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
   const modalRef = useRef<HTMLDivElement>(null)
   const preloadedImages = useRef<Record<number, HTMLImageElement>>({})
   const [allImagesPreloaded, setAllImagesPreloaded] = useState(false)
+
+  // Single image mode
+  const isSingleImageMode = !!singleImageUrl
   
   // Preload an image
   const preloadImage = useCallback((index: number) => {
@@ -72,7 +76,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
     setAllImagesPreloaded(true)
   }, [images, preloadImage, allImagesPreloaded])
 
-  // Fetch images from Cloudinary API
+  // Fetch images from Cloudinary API or set single image
   useEffect(() => {
     if (isOpen) {
       setIsLoading(true)
@@ -80,7 +84,19 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
       setImageLoadStates({}) // Reset load states
       setAllImagesPreloaded(false)
 
-      // Use new Cloudinary endpoint - get ALL images
+      // Single image mode - just set the single image
+      if (isSingleImageMode && singleImageUrl) {
+        setImages([{
+          url: singleImageUrl,
+          name: 'Image',
+          modified: new Date().toISOString()
+        }])
+        setCurrentIndex(0)
+        setIsLoading(false)
+        return
+      }
+
+      // Gallery mode - fetch all images
       fetch('/api/gallery/cloudinary?count=50&order=latest')
         .then(res => res.json())
         .then(data => {
@@ -123,7 +139,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
             })
         })
     }
-  }, [isOpen])
+  }, [isOpen, isSingleImageMode, singleImageUrl])
 
   // Preload adjacent images when current index changes
   useEffect(() => {
@@ -175,6 +191,19 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
       })
     }
   }, [images])
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
 
   // Keyboard navigation
   useEffect(() => {
@@ -288,20 +317,22 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
       {/* Close button */}
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 z-[10001] p-3 bg-black/50 backdrop-blur-sm rounded-full text-white/70 hover:text-white hover:bg-accent-orange/20 transition-all duration-300 group"
+        className="fixed top-4 right-4 z-[10002] p-3 bg-black/80 backdrop-blur-sm rounded-full text-white hover:text-accent-orange hover:bg-black transition-all duration-300 group shadow-lg"
         aria-label={String(t('gallery.close'))}
       >
         <X className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300" />
       </button>
-      
-      {/* Fullscreen toggle */}
-      <button
-        onClick={() => setIsFullscreen(!isFullscreen)}
-        className="absolute top-4 right-20 z-[10001] p-3 bg-black/50 backdrop-blur-sm rounded-full text-white/70 hover:text-white hover:bg-accent-orange/20 transition-all duration-300 group"
-        aria-label={String(t('gallery.fullscreen'))}
-      >
-        <Maximize2 className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
-      </button>
+
+      {/* Fullscreen toggle - hide in single image mode */}
+      {!isSingleImageMode && (
+        <button
+          onClick={() => setIsFullscreen(!isFullscreen)}
+          className="fixed top-4 right-20 z-[10002] p-3 bg-black/80 backdrop-blur-sm rounded-full text-white hover:text-accent-orange hover:bg-black transition-all duration-300 group shadow-lg"
+          aria-label={String(t('gallery.fullscreen'))}
+        >
+          <Maximize2 className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
+        </button>
+      )}
       
       {/* Main container */}
       <div className={`h-full flex flex-col ${isFullscreen ? 'p-0' : 'p-4 md:p-8'}`}>
@@ -323,8 +354,8 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
             </div>
           ) : (
             <>
-              {/* Navigation arrows */}
-              {images.length > 1 && (
+              {/* Navigation arrows - hide in single image mode */}
+              {!isSingleImageMode && images.length > 1 && (
                 <>
                   <button
                     onClick={navigatePrev}
@@ -356,9 +387,9 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
               {currentImage && (
                 <div
                   className={`relative w-full h-full flex items-center justify-center ${
-                    isFullscreen ? 'cursor-zoom-out' : 'cursor-zoom-in'
+                    isSingleImageMode ? '' : isFullscreen ? 'cursor-zoom-out' : 'cursor-zoom-in'
                   }`}
-                  onClick={() => setIsFullscreen(!isFullscreen)}
+                  onClick={() => !isSingleImageMode && setIsFullscreen(!isFullscreen)}
                 >
                   <div className={`relative ${isFullscreen ? 'w-full h-full' : 'w-full max-w-[90vw] h-[70vh]'}`}>
                     {/* Always show spinner while loading */}
@@ -408,9 +439,9 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
                       )
                     })}
                   </div>
-                  
-                  {/* Image counter */}
-                  {!isFullscreen && images.length > 1 && (
+
+                  {/* Image counter - hide in single image mode */}
+                  {!isSingleImageMode && !isFullscreen && images.length > 1 && (
                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/50 backdrop-blur-sm rounded-full text-white/70 text-sm">
                       {currentIndex + 1} / {images.length}
                     </div>
@@ -420,9 +451,9 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
             </>
           )}
         </div>
-        
-        {/* Thumbnails */}
-        {!isFullscreen && !isLoading && images.length > 1 && (
+
+        {/* Thumbnails - hide in single image mode */}
+        {!isSingleImageMode && !isFullscreen && !isLoading && images.length > 1 && (
           <div className="mt-4 pb-4">
             <div
               className="flex gap-2 overflow-x-auto py-2 px-4 max-w-full"

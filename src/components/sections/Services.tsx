@@ -3,8 +3,9 @@
 import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
 import { useTranslations } from '@/lib/i18n/hooks'
-import { MessageCircle } from 'lucide-react'
+import { MessageCircle, Calendar } from 'lucide-react'
 import { ReactElement } from 'react'
+import { useGallery } from '@/components/GalleryContext'
 
 const ServicesMobile = dynamic(() => import('@/components/ServicesMobile').then(mod => mod.ServicesMobile), {
   ssr: false
@@ -125,6 +126,9 @@ const services: Service[] = [
 
 export function Services() {
   const { t, locale } = useTranslations()
+  const { openSingleImage } = useGallery()
+
+  const scheduleImageUrl = 'https://res.cloudinary.com/thunder-fusion/image/upload/v1759663400/glute/schedules/ypkimtutnk3vcyfpzxtj.png'
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -206,7 +210,7 @@ export function Services() {
               <motion.div
                 key={service.id}
                 variants={itemVariants}
-                className="service-card group p-6 md:p-8 h-full"
+                className="service-card group p-6 md:p-8 h-full flex flex-col"
               >
                 {/* POPULAR Badge - Only for PT Express and Small Group */}
                 {service.featured && (
@@ -231,9 +235,22 @@ export function Services() {
                 </h3>
 
                 {/* Description */}
-                <p className="text-dark-secondary text-sm md:text-base font-body leading-relaxed">
+                <p className="text-dark-secondary text-sm md:text-base font-body leading-relaxed mb-4 flex-grow">
                   {String(t(`services.${service.descriptionKey}`))}
                 </p>
+
+                {/* Schedule button - only for small-group */}
+                {service.id === 'small-group' && (
+                  <button
+                    onClick={() => openSingleImage(scheduleImageUrl)}
+                    className="mt-auto flex items-center justify-center gap-2 px-4 py-2
+                             border border-accent-orange/30 rounded-lg text-accent-orange
+                             hover:bg-accent-orange/10 transition-all duration-300 text-sm font-display uppercase"
+                  >
+                    <Calendar className="w-4 h-4" />
+                    <span>{String(t('services.viewSchedule'))}</span>
+                  </button>
+                )}
               </motion.div>
             ))}
           </div>

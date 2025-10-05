@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '@/components/ui'
 import { useTranslations } from '@/lib/i18n/hooks'
 import { motion } from 'framer-motion'
@@ -63,24 +64,23 @@ export function Hero() {
         <div className="absolute inset-0 bg-brand-black/80" />
       </div>
       
-      {/* GLUTE PROJECT in top left - double size */}
+      {/* GLUTE PROJECT logo in top left */}
       <motion.div
         className="absolute top-[max(2rem,env(safe-area-inset-top))] left-[max(1.5rem,env(safe-area-inset-left))] md:top-12 md:left-12 z-10"
         initial="hidden"
         animate="visible"
         variants={glitchVariants}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
       >
-        <h1 className="text-accent-orange font-display font-normal uppercase"
-           style={{
-             fontSize: 'clamp(2.5rem, 8vw, 6rem)',
-             lineHeight: 0.85,
-             letterSpacing: '-0.03em',
-             fontWeight: 400
-           }}
-        >
-          GLUTE PROJECT
-        </h1>
+        <div className="relative w-[200px] h-[60px] md:w-[400px] md:h-[120px]">
+          <Image
+            src="/images/glute-project-logo.png"
+            alt="Glute Project"
+            fill
+            className="object-contain object-left"
+            priority
+          />
+        </div>
       </motion.div>
 
       {/* Language switcher and Book Visit button in top right */}

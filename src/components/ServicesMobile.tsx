@@ -3,8 +3,9 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslations } from '@/lib/i18n/hooks'
-import { MessageCircle, ChevronDown, ChevronUp } from 'lucide-react'
+import { MessageCircle, ChevronDown, ChevronUp, Calendar } from 'lucide-react'
 import { ReactElement } from 'react'
+import { useGallery } from '@/components/GalleryContext'
 
 interface Service {
   id: string
@@ -120,7 +121,10 @@ const services: Service[] = [
 
 export function ServicesMobile() {
   const { t, locale } = useTranslations()
+  const { openSingleImage } = useGallery()
   const [showAll, setShowAll] = useState(false)
+
+  const scheduleImageUrl = 'https://res.cloudinary.com/thunder-fusion/image/upload/v1759663400/glute/schedules/ypkimtutnk3vcyfpzxtj.png'
 
   const visibleServices = showAll ? services : services.slice(0, 3)
 
@@ -154,7 +158,7 @@ export function ServicesMobile() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
-              className="service-card group p-4 h-full"
+              className="service-card group p-4 h-full flex flex-col"
             >
               {/* POPULAR Badge */}
               {service.featured && (
@@ -179,9 +183,22 @@ export function ServicesMobile() {
               </h3>
 
               {/* Description - always show full description */}
-              <p className="text-dark-secondary text-sm font-body leading-relaxed">
+              <p className="text-dark-secondary text-sm font-body leading-relaxed mb-3 flex-grow">
                 {String(t(`services.${service.descriptionKey}`))}
               </p>
+
+              {/* Schedule button - only for small-group */}
+              {service.id === 'small-group' && (
+                <button
+                  onClick={() => openSingleImage(scheduleImageUrl)}
+                  className="mt-auto flex items-center justify-center gap-2 px-3 py-2
+                           border border-accent-orange/30 rounded-lg text-accent-orange
+                           active:bg-accent-orange/10 transition-all duration-300 text-xs font-display uppercase"
+                >
+                  <Calendar className="w-3.5 h-3.5" />
+                  <span>{String(t('services.viewSchedule'))}</span>
+                </button>
+              )}
             </motion.div>
           ))}
         </AnimatePresence>

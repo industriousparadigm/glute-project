@@ -20,6 +20,13 @@ Bilingual fitness studio website. Next.js 15.4.5, TypeScript strict, V3 Bold Bla
 - No exceptions - all copy, buttons, messages, errors must be bilingual
 - Always update both `pt.json` and `en.json` translation files
 
+### 3. MOBILE-FIRST REQUIREMENT
+- **MOBILE IS THE PRIMARY EXPERIENCE** - most users access the site on mobile
+- Always test mobile first, then desktop
+- Mobile viewports are narrow and have overlays (sticky header, browser UI)
+- Touch targets must be large enough (minimum 44x44px)
+- Modals/overlays must work perfectly on mobile before desktop
+
 ## Critical Commands
 
 ```bash
@@ -123,20 +130,90 @@ import heroImg from '@/public/images/hero.png'
 
 ### Gallery Modal
 ```typescript
-// Use GalleryContext to open modal
-const { openGallery } = useGallery()
-openGallery(0) // Open at specific index
+// REUSABLE IMAGE MODAL PATTERN - supports both modes:
 
-// Features:
-// - Arrow/ESC/F keyboard controls
+// 1. Multi-image gallery mode (lifestyle section)
+const { isGalleryOpen, setIsGalleryOpen } = useGallery()
+setIsGalleryOpen(true) // Opens full gallery from Cloudinary
+
+// 2. Single image mode (schedules, diagrams, etc.)
+const { openSingleImage } = useGallery()
+openSingleImage('https://cloudinary.com/...') // Opens single image fullscreen
+
+// Close gallery (works for both modes)
+const { closeGallery } = useGallery()
+closeGallery()
+
+// Render modal (add to component with GalleryProvider)
+<GalleryModal
+  isOpen={isGalleryOpen}
+  onClose={closeGallery}
+  singleImageUrl={singleImageUrl}
+/>
+
+// Features (both modes):
+// - ESC to close, F for fullscreen
 // - Touch/swipe on mobile
-// - Fullscreen mode (F key)
 // - Lime accent theme
+// - Smooth transitions
+
+// Features (gallery mode only):
+// - Arrow navigation
 // - Cloudinary integration via /api/gallery/cloudinary
 // - Intelligent preloading (current + adjacent images)
 // - Auto-scrolling thumbnail strip
-// - Smooth transitions without flicker
+// - Image counter
+
+// Use case examples:
+// - Gallery mode: Lifestyle "Dia a Dia" section
+// - Single image mode: Small Group schedule viewer
 ```
+
+### Modal/Overlay Patterns (CRITICAL FOR MOBILE)
+
+**Problem**: Mobile has sticky header (z-50) that overlays content. Modals must be above header and prevent scroll.
+
+**Solution Pattern**:
+```typescript
+// 1. Higher z-index than sticky header (header is z-50)
+className="fixed inset-0 z-[9999]"  // Modal container
+
+// 2. Modal buttons must be fixed with even higher z-index
+className="fixed top-4 right-4 z-[10002]"  // Above everything
+className="bg-black/80 ... shadow-lg"       // High contrast for visibility
+
+// 3. Hide sticky header when modal is open
+const { isGalleryOpen } = useGallery()
+{isVisible && !isGalleryOpen && <StickyHeader />}
+
+// 4. Prevent body scroll when modal is open
+useEffect(() => {
+  if (isOpen) {
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.overflow = ''
+  }
+  return () => { document.body.style.overflow = '' }
+}, [isOpen])
+```
+
+**Modal Checklist**:
+- [ ] Container has `z-[9999]` or higher
+- [ ] Buttons use `fixed` positioning with `z-[10002]`
+- [ ] Sticky header hidden when modal open
+- [ ] Body scroll prevented when modal open
+- [ ] Close button visible on mobile (test on narrow viewport)
+- [ ] ESC key closes modal
+- [ ] Click outside closes modal (optional, depends on UX)
+- [ ] Works on mobile first, then desktop
+
+**Common Pitfalls**:
+- ❌ Using `absolute` instead of `fixed` for modal buttons (they scroll with content)
+- ❌ Forgetting to hide sticky header (buttons get covered)
+- ❌ Not preventing body scroll (page scrolls behind modal)
+- ❌ Low z-index (header appears on top of modal)
+- ❌ Poor button contrast (hard to see on mobile)
+- ❌ Testing only on desktop (most users are mobile!)
 
 ## Admin Panel
 
