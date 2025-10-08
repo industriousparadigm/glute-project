@@ -42,10 +42,6 @@ export function TestimonialCarousel() {
     }
   }
 
-  const renderStars = (rating: number) => {
-    return null; // Remove stars from display
-  }
-
   // Desktop carousel navigation
   const scrollToIndex = (index: number) => {
     if (!carouselRef.current || isTransitioning) return
